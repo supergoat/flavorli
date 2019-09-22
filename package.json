@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "lint": "eslint *",
+    "format": "yarn prettier --write",
+    "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.tsx": [
+      "eslint"
+    ],
+    "**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.3.0",
+    "prettier": "1.18.2"
+  }
+}
