@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "jsx": "react",
+    "declaration": true,
+    "declarationDir": "lib",
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "lib",
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
