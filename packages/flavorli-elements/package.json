@@ -18,6 +18,7 @@
   "devDependencies": {
     "@types/react": "^16.9.3",
     "@types/styled-components": "^4.1.19",
+    "@types/webfontloader": "^1.6.29",
     "react": "^16.10.0",
     "rollup": "^1.21.4",
     "rollup-plugin-terser": "^5.1.2",
@@ -25,5 +26,7 @@
     "styled-components": "^4.4.0",
     "typescript": "^3.6.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "webfontloader": "^1.6.28"
+  }
 }

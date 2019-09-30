@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es6",
     "jsx": "react",
     "declaration": true,
     "declarationDir": "lib",

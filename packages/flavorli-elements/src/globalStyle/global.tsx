@@ -3,6 +3,7 @@ import {css} from 'styled-components';
 export const global = css`
   * {
     box-sizing: border-box;
+    font-family: 'Titillium Web';
   }
 
   a {
