@@ -1,3 +1,4 @@
+import GlobalStyle from './globalStyle';
 import Button from './Button';
 
-export {Button};
+export {GlobalStyle, Button};
