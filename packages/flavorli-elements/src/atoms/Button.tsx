@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import {styled, theme} from '@flavorli/elements';
 
 const Button = styled.button`
   font-size: 16px;

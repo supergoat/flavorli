@@ -1,11 +1,14 @@
 import React from 'react';
-import {GlobalStyle, Button} from '@flavorli/elements';
+import {ThemeProvider} from 'styled-components';
+import {GlobalStyle, theme, Button} from '@flavorli/elements';
 
 const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <Button>Hello World</Button>
+      <ThemeProvider theme={theme}>
+        <Button>Hello World</Button>
+      </ThemeProvider>
     </>
   );
 };

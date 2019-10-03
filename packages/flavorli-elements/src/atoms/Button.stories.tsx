@@ -5,4 +5,4 @@ import Button from './Button';
 
 const Text = () => <Button onClick={action('clicked')}>Click me</Button>;
 
-storiesOf('Button', module).add('with text', () => <Text />);
+storiesOf('Atoms', module).add('Button', () => <Text />);

@@ -1,5 +1,5 @@
 import GlobalStyle from './globalStyle';
-import theme from './theme';
+import theme, {styled} from './theme';
 import {Button} from './atoms';
 
-export {GlobalStyle, Button, theme};
+export {GlobalStyle, Button, theme, styled};

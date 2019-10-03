@@ -6,7 +6,7 @@ WebFont.load({
   },
 });
 
-export const families = {
-  TitilliumWeb: 'Titillium Web',
-  Lato: 'Lato',
-};
+export enum families {
+  TitilliumWeb = 'Titillium Web',
+  Lato = 'Lato',
+}
