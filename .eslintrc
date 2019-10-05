@@ -24,6 +24,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "no-unused-vars": "off",
     "no-console": "off",
     "strict": ["error", "global"],
     "curly": "warn"
