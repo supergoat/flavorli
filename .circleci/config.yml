@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
@@ -12,4 +14,5 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: cd packages/flavorli-elements
       - run: yarn test
