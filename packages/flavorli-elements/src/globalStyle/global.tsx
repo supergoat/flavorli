@@ -1,9 +1,10 @@
 import {css} from 'styled-components';
+import {families} from '../fonts';
 
 export const global = css`
   * {
     box-sizing: border-box;
-    font-family: 'Titillium Web';
+    font-family: ${families.TitilliumWeb};
   }
 
   a {
@@ -17,6 +18,7 @@ export const global = css`
   h4,
   h5,
   p {
+    padding: 0;
     margin: 0;
   }
 
@@ -24,5 +26,12 @@ export const global = css`
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: ${families.TitilliumWeb};
   }
 `;

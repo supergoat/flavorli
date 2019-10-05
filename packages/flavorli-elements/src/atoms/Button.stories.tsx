@@ -1,8 +1,12 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {action} from '@storybook/addon-actions';
 import Button from './Button';
 
-const Text = () => <Button onClick={action('clicked')}>Click me</Button>;
-
-storiesOf('Atoms', module).add('Button', () => <Text />);
+export default {
+  title: 'Button',
+  parameters: {
+    component: Button,
+    componentSubtitle: 'Displays a Button',
+  },
+};
+export const text = () => <Button>Hello</Button>;
+export const emoji = () => <Button>😀😎👍💯</Button>;

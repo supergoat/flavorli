@@ -1,5 +1,8 @@
 import {styled} from '../theme';
 
+/**
+- Use the button
+**/
 const Button = styled.button`
   font-size: 16px;
   padding: 12px;
