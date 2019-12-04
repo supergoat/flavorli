@@ -1,6 +1,7 @@
 export const COLUMN_WIDTH = 105;
 
 export enum screens {
+  XS = COLUMN_WIDTH * 4, // 420
   SM = COLUMN_WIDTH * 7, // 735
   M = COLUMN_WIDTH * 8, // 840
   ML = COLUMN_WIDTH * 10, // 1050

@@ -1,12 +1,26 @@
 import React from 'react';
-import Button from './Button';
+import StoryButton, {Button} from './Button';
+import {styled} from '../theme';
 
 export default {
-  title: 'Button',
-  parameters: {
-    component: Button,
-    componentSubtitle: 'Displays a Button',
-  },
+  title: 'Elements|Button',
+  component: StoryButton,
 };
-export const text = () => <Button>Hello</Button>;
-export const emoji = () => <Button>😀😎👍💯</Button>;
+
+export const examples = () => (
+  <Buttons>
+    <Button>Click Me</Button>
+    <Button disabled>Click Me</Button>
+  </Buttons>
+);
+
+export const enabled = () => <Button>Click Me</Button>;
+
+export const disabled = () => <Button disabled>Click Me</Button>;
+
+const Buttons = styled.div`
+  display: flex;
+  ${Button} {
+    margin-right: 10px;
+  }
+`;

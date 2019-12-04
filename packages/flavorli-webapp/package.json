@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@flavorli/elements": "1.0.0",
+    "framer-motion": "^1.6.17",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.2"
