@@ -10,7 +10,7 @@ export interface IconProps {
 
 export default ({name, size, className}: IconProps) => {
   const icon = (icons[name] as unknown) as string;
-  return <Icon src={icon} size={size} className={className} />;
+  return <Icon src={icon} size={size} className={className} alt="" />;
 };
 
 export const Icon = styled.img<{size?: string}>`

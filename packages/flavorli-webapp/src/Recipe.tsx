@@ -5,7 +5,6 @@ import {
   H1,
   H2,
   Icon,
-  Label,
   Text,
   H3,
   Button,
@@ -15,30 +14,30 @@ import {recipe} from './recipeData';
 
 export default () => {
   return (
-    <Stack background="SURFACE">
-      <CoverImage src={recipe.image} alt={recipe.name} />
+    <article>
+      <CoverImage src={recipe.image} alt="" />
 
-      <Stack padding="SM" gap="M" width="100%">
+      <Stack padding="SM" gap="M" width="100%" role="main">
         <H1>{recipe.name}</H1>
         <Stack direction="horizontal" width="100%">
           <Stack width="25%" gap="XSS" alignment="center" distribution="center">
             <Icon name="preparationTime" />
-            <Label>{recipe.preparation}</Label>
+            <Text intent="highlight">{recipe.preparation}</Text>
             <Text intent="secondary">Preparation</Text>
           </Stack>
           <Stack width="25%" gap="XSS" alignment="center" distribution="center">
             <Icon name="cookingTime" />
-            <Label>{recipe.cooking}</Label>
+            <Text intent="highlight">{recipe.cooking}</Text>
             <Text intent="secondary">Cooking</Text>
           </Stack>
           <Stack width="25%" gap="XSS" alignment="center" distribution="center">
             <Icon name="serves" />
-            <Label>{recipe.portions}</Label>
+            <Text intent="highlight">{recipe.portions}</Text>
             <Text intent="secondary">Portions</Text>
           </Stack>
           <Stack width="25%" gap="XSS" alignment="center" distribution="center">
             <Icon name="difficulty" />
-            <Label>{recipe.difficulty}</Label>
+            <Text intent="highlight">{recipe.difficulty}</Text>
             <Text intent="secondary">Difficulty</Text>
           </Stack>
         </Stack>
@@ -89,7 +88,7 @@ export default () => {
           );
         })}
       </Stack>
-    </Stack>
+    </article>
   );
 };
 

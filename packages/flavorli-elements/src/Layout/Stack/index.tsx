@@ -3,7 +3,11 @@ import {styled} from '../../theme';
 import {spacings} from '../../spacings';
 import {colors} from '../../colors';
 
-export interface IStackProps {
+export interface IStackProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   children: React.ReactNode;
   direction?: 'horizontal' | 'vertical';
   distribution?:
@@ -20,15 +24,16 @@ export interface IStackProps {
   padding?: keyof typeof spacings;
   gap?: keyof typeof spacings;
 }
-export default ({
+const Stack: FC<IStackProps> = ({
   children,
   direction = 'vertical',
   distribution = 'start',
   alignment = 'start',
+  ref,
   ...rest
-}: IStackProps) => {
+}) => {
   return (
-    <Stach
+    <StackWrapper
       distribution={distribution}
       direction={direction}
       alignment={alignment}
@@ -37,15 +42,17 @@ export default ({
       {Children.map(children, child => (
         <Child component={child} />
       ))}
-    </Stach>
+    </StackWrapper>
   );
 };
+
+export default Stack;
 
 export const Child = styled(({component, ...props}) => {
   return React.cloneElement(component, props);
 })``;
 
-export const Stach = styled.div<IStackProps>`
+export const StackWrapper = styled.div<IStackProps>`
   display: flex;
   flex-direction: ${({direction}) =>
     direction === 'horizontal' ? 'row' : 'column'};
