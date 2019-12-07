@@ -75,7 +75,7 @@ export default () => {
 
         {Object.keys(recipe.steps).map(stepName => {
           return (
-            <Stack gap="XS" width="100%">
+            <Stack gap="SM" width="100%">
               <H3 width="100%">{stepName}</H3>
               {recipe.steps[stepName].map((step, index) => {
                 return (
