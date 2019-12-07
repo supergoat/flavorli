@@ -1,6 +1,7 @@
 import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
 import {terser} from 'rollup-plugin-terser';
+import image from '@rollup/plugin-image';
 
 export default {
   input: 'src/index.tsx', // our source file
@@ -19,6 +20,7 @@ export default {
     ...Object.keys(pkg.peerDependencies || {}),
   ],
   plugins: [
+    image(),
     typescript({
       typescript: require('typescript'),
     }),

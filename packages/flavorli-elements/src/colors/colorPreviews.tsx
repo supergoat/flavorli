@@ -3,26 +3,6 @@ import {styled} from '../theme';
 import {families} from '../fonts';
 import {COLORS} from './';
 
-export const PrimaryColor = () => {
-  return (
-    <>
-      <Color color={COLORS.RED_DARK}>Primary Dark</Color>
-      <Color color={COLORS.RED_500}>Primary</Color>
-      <Color color={COLORS.RED_LIGHT}>Primary Light</Color>
-    </>
-  );
-};
-
-export const SecondaryColor = () => {
-  return (
-    <>
-      <Color color={COLORS.PURPLE_DARK}>Secondary Dark</Color>
-      <Color color={COLORS.PURPLE_500}>Secondary</Color>
-      <Color color={COLORS.PURPLE_LIGHT}>Secondary Light</Color>
-    </>
-  );
-};
-
 export const Color = styled.div<{color: string; border?: boolean}>`
   display: inline-flex;
   align-items: flex-end;

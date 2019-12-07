@@ -1,13 +1,12 @@
 import {Meta, Preview} from '@storybook/addon-docs/blocks';
 import {PrimaryColor, SecondaryColor, Color} from './colorPreviews';
-import {COLORS} from './';
+import {colors} from './';
 
 <Meta title="Elements|Colors" />
 
 # Colors
 
 <h2>Primary Color</h2>
-
 <p>
 The primary color is the main brand color.
 
@@ -17,46 +16,42 @@ elements within a component, such different variants used on a button, and the
 icon within it. </p>
 
 <Preview name="primary">
-  <PrimaryColor />
+  <Color color={colors.PRIMARY} border>
+    Primary
+  </Color>
 </Preview>
-
 <h2>Secondary Color</h2>
-
 <p>
   The secondary color provides more ways to accent and distinguish. The
   secondary color should be applied sparingly to accent select parts of the UI.
 </p>
-
 <Preview name="secondary">
-  <SecondaryColor />
+  <Color color={colors.SECONDARY} border>
+    Secondary
+  </Color>
 </Preview>
-
 <h2>Surface Color</h2>
-
-<p>Surface colors affect surfaces of components, such as cards, sheets, and
-menus.</p>
-
+<p>
+  Surface colors affect surfaces of components, such as cards, sheets, and
+  menus.
+</p>
 <Preview name="surface">
-  <Color color={COLORS.WHITE} border>
+  <Color color={colors.WHITE} border>
     Surface
   </Color>
 </Preview>
-
 <h2>Background Color</h2>
-
 <p>The background color appears behind scrollable content</p>
-
 <Preview name="background">
-  <Color color={COLORS.WHITE} border>
+  <Color color={colors.WHITE} border>
     Background
   </Color>
 </Preview>
-
 <h2>Error Color</h2>
-
-<p>Error color indicates errors in components, such as invalid text in a text
-field.</p>
-
+<p>
+  Error color indicates errors in components, such as invalid text in a text
+  field.
+</p>
 <Preview name="error">
-  <Color color={COLORS.ERROR}>Error</Color>
+  <Color color={colors.ERROR}>Error</Color>
 </Preview>

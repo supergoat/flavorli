@@ -1,23 +1,26 @@
 import React, {FC} from 'react';
 import {styled} from '../theme';
 
-export interface ButtonProps {
-  disabled?: boolean;
+const DEFAULT_WIDTH = '120px';
+const DEFAULT_HEIGHT = '40px';
+
+export interface IButtonProps {
+  width?: string;
 }
 
-/**
- *`import {Button} from '@flavorli/elements'`
- */
-export const StoryButton: FC<ButtonProps> = ({disabled = false, ...rest}) => {
-  return <Button disabled={disabled} {...rest} />;
-};
-
-export const Button = styled.button<ButtonProps>`
-  font-size: 16px;
-  padding: 12px;
-  border-radius: 4px;
+export const Button = styled.button<IButtonProps>`
   border: none;
-  box-shadow: 1px 1px 4px #bbb;
+  height: ${DEFAULT_HEIGHT};
+  width: ${({width}) => (width ? width : DEFAULT_WIDTH)};
+  background-color: ${({theme}) => theme.colors.PRIMARY};
+  color: ${({theme}) => theme.colors.TEXT_ON_PRIMARY};
+  border-radius: ${({theme}) => theme.radius.XS};
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+
+  transition: 0.1s;
+  &:hover {
+    background-color: ${({theme}) => theme.colors.PRIMARY_DARK};
+  }
 `;
 
-export default StoryButton;
+export default Button;

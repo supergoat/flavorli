@@ -1,5 +1,21 @@
 import GlobalStyle from './globalStyle';
 import theme, {styled} from './theme';
-import {Button} from './atoms';
+import {Button, Icon} from './atoms';
+import {Label} from './Forms';
+import {H1, H2, H3, Text} from './Typography';
 
-export {GlobalStyle, Button, theme, styled};
+import {Stack} from './Layout';
+
+export {
+  GlobalStyle,
+  H1,
+  H2,
+  H3,
+  Text,
+  Button,
+  Icon,
+  Label,
+  Stack,
+  theme,
+  styled,
+};
