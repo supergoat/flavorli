@@ -1,5 +1,5 @@
 import React from 'react';
-import Stack from './index';
+import Stack from './Stack';
 
 export default {
   title: 'Elements|Layout|Stack',

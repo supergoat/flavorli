@@ -1,5 +1,5 @@
 import {css} from 'styled-components';
-import {families} from '../fonts';
+import {families} from '../theme/fonts';
 
 export const global = css`
   * {

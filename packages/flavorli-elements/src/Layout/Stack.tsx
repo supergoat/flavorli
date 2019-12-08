@@ -1,7 +1,7 @@
 import React, {FC, Children} from 'react';
 import styled from 'styled-components';
-import {spacings} from '../../spacings';
-import {colors} from '../../colors';
+import {spacings} from '../theme/spacings';
+import {colors} from '../theme/colors';
 import {motion, MotionProps} from 'framer-motion';
 
 export interface IStackProps extends MotionProps {
@@ -51,14 +51,18 @@ export const Stack = styled(motion.div)<IStackProps>`
   display: flex;
   flex-direction: ${({direction}) =>
     direction === 'horizontal' ? 'row' : 'column'};
+
   justify-content: ${({distribution}) =>
     distribution === 'start' || distribution === 'end'
       ? `flex-${distribution}`
       : distribution};
+
   align-items: ${({alignment}) =>
     alignment === 'center' ? 'center' : `flex-${alignment}`};
+
   padding: ${({theme, padding}) =>
     padding ? `${theme.spacings[padding]}px` : 0};
+
   width: ${props => props.width};
   height: ${props => props.height};
   overflow: ${props => props.overflow};

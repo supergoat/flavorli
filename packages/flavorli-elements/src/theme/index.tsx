@@ -1,9 +1,8 @@
-import baseStyled, {ThemedStyledInterface} from 'styled-components';
-import {families, weights} from '../fonts';
-import {colors} from '../colors';
-import {spacings} from '../spacings';
-import {screens, media} from '../responsive';
-import {radius} from '../radius';
+import {families, weights} from './fonts';
+import {colors} from './colors';
+import {spacings} from './spacings';
+import {screens, media} from './responsive';
+import {radius} from './radius';
 
 const theme = {
   families,
