@@ -1,5 +1,6 @@
 import React from 'react';
-import {useLockBodyScroll, styled, Stack} from '@flavorli/elements';
+import styled from 'styled-components';
+import {useLockBodyScroll, Stack} from '@flavorli/elements';
 import Page from './Page';
 
 export default () => {

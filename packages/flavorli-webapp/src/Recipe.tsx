@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  styled,
-  Stack,
-  H1,
-  H2,
-  Icon,
-  Text,
-  H3,
-  Button,
-} from '@flavorli/elements';
+import {Stack, H1, H2, Icon, Text, H3, Button} from '@flavorli/elements';
 import {motion} from 'framer-motion';
 
 import {recipe} from './recipeData';

@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {styled} from '../theme';
+import styled from 'styled-components';
 
 const DEFAULT_WIDTH = '120px';
 const DEFAULT_HEIGHT = '40px';

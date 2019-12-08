@@ -18,4 +18,7 @@ const theme = {
 export default theme;
 
 type Theme = typeof theme;
-export const styled = baseStyled as ThemedStyledInterface<Theme>;
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends Theme {}
+}

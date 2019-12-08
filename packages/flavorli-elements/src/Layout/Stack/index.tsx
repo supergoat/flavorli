@@ -1,5 +1,5 @@
 import React, {FC, Children} from 'react';
-import {styled} from '../../theme';
+import styled from 'styled-components';
 import {spacings} from '../../spacings';
 import {colors} from '../../colors';
 import {motion, MotionProps} from 'framer-motion';

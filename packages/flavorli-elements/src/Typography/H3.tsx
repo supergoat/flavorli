@@ -1,4 +1,4 @@
-import {styled} from '../theme';
+import styled from 'styled-components';
 
 interface IH3 {
   width?: string;

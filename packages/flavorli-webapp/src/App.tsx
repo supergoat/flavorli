@@ -1,6 +1,6 @@
 import React from 'react';
-import {ThemeProvider} from 'styled-components';
-import {GlobalStyle, theme, styled} from '@flavorli/elements';
+import styled, {ThemeProvider} from 'styled-components';
+import {GlobalStyle, theme} from '@flavorli/elements';
 import Recipe from './Recipe';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {styled} from '../../theme';
+import styled from 'styled-components';
 import {icons} from './icons';
 
 export interface IconProps {
