@@ -2,12 +2,9 @@ import React, {FC, Children} from 'react';
 import {styled} from '../../theme';
 import {spacings} from '../../spacings';
 import {colors} from '../../colors';
+import {motion, MotionProps} from 'framer-motion';
 
-export interface IStackProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {
+export interface IStackProps extends MotionProps {
   children: React.ReactNode;
   direction?: 'horizontal' | 'vertical';
   distribution?:
@@ -20,20 +17,20 @@ export interface IStackProps
   alignment?: 'start' | 'center' | 'end';
   width?: string;
   height?: string;
+  overflow?: 'hidden' | 'visible';
   background?: keyof typeof colors;
   padding?: keyof typeof spacings;
   gap?: keyof typeof spacings;
 }
-const Stack: FC<IStackProps> = ({
+export default ({
   children,
   direction = 'vertical',
   distribution = 'start',
   alignment = 'start',
-  ref,
   ...rest
-}) => {
+}: IStackProps) => {
   return (
-    <StackWrapper
+    <Stack
       distribution={distribution}
       direction={direction}
       alignment={alignment}
@@ -42,17 +39,15 @@ const Stack: FC<IStackProps> = ({
       {Children.map(children, child => (
         <Child component={child} />
       ))}
-    </StackWrapper>
+    </Stack>
   );
 };
-
-export default Stack;
 
 export const Child = styled(({component, ...props}) => {
   return React.cloneElement(component, props);
 })``;
 
-export const StackWrapper = styled.div<IStackProps>`
+export const Stack = styled(motion.div)<IStackProps>`
   display: flex;
   flex-direction: ${({direction}) =>
     direction === 'horizontal' ? 'row' : 'column'};
@@ -66,6 +61,8 @@ export const StackWrapper = styled.div<IStackProps>`
     padding ? `${theme.spacings[padding]}px` : 0};
   width: ${props => props.width};
   height: ${props => props.height};
+  overflow: ${props => props.overflow};
+
   background: ${({theme, background}) =>
     background && theme.colors[background]};
 

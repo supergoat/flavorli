@@ -1,10 +1,10 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import {GlobalStyle, theme, styled} from '@flavorli/elements';
-import Root from './Root';
 import Recipe from './Recipe';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Preparation from './Preparation';
 
 export default () => {
   return (
@@ -13,15 +13,16 @@ export default () => {
       <ThemeProvider theme={theme}>
         <Router>
           <App>
-            <Root>
-              {/* A <Switch> looks through its children <Route>s and
+            {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-              <Switch>
-                <Route path="/">
-                  <Recipe />
-                </Route>
-              </Switch>
-            </Root>
+            <Switch>
+              <Route path="/">
+                <Recipe />
+              </Route>
+            </Switch>
+            <Route path="/step-by-step">
+              <Preparation />
+            </Route>
           </App>
         </Router>
       </ThemeProvider>
@@ -30,10 +31,7 @@ export default () => {
 };
 
 const App = styled.div`
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eee;
+  position: relative;
+  width: 420px;
+  background: #fff;
 `;
