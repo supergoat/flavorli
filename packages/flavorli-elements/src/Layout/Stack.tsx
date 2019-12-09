@@ -17,31 +17,36 @@ export interface IStackProps extends MotionProps {
   alignment?: 'start' | 'center' | 'end';
   width?: string;
   height?: string;
-  overflow?: 'hidden' | 'visible';
   background?: keyof typeof colors;
   padding?: keyof typeof spacings;
   gap?: keyof typeof spacings;
 }
-export default ({
-  children,
-  direction = 'vertical',
-  distribution = 'start',
-  alignment = 'start',
-  ...rest
-}: IStackProps) => {
-  return (
-    <Stack
-      distribution={distribution}
-      direction={direction}
-      alignment={alignment}
-      {...rest}
-    >
-      {Children.map(children, child => (
-        <Child component={child} />
-      ))}
-    </Stack>
-  );
-};
+export default React.forwardRef<HTMLDivElement, IStackProps>(
+  (
+    {
+      children,
+      direction = 'vertical',
+      distribution = 'start',
+      alignment = 'start',
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <Stack
+        ref={ref}
+        distribution={distribution}
+        direction={direction}
+        alignment={alignment}
+        {...rest}
+      >
+        {Children.map(children, child => (
+          <Child component={child} />
+        ))}
+      </Stack>
+    );
+  },
+);
 
 export const Child = styled(({component, ...props}) => {
   return React.cloneElement(component, props);
@@ -65,7 +70,6 @@ export const Stack = styled(motion.div)<IStackProps>`
 
   width: ${props => props.width};
   height: ${props => props.height};
-  overflow: ${props => props.overflow};
 
   background: ${({theme, background}) =>
     background && theme.colors[background]};

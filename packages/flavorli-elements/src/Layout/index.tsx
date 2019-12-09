@@ -1,3 +1,4 @@
 import Stack from './Stack';
+import Page from './Page';
 
-export {Stack};
+export {Stack, Page};

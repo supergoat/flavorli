@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useLockBodyScroll, Stack} from '@flavorli/elements';
-import Page from './Page';
+import {useLockBodyScroll, Stack, Page} from '@flavorli/elements';
 
 export default () => {
   useLockBodyScroll();
@@ -42,6 +41,4 @@ const Preparation = styled(Stack)`
 const Card = styled.div`
   border: 1px solid black;
   background: white;
-  width: 420px;
-  height: 400px;
 `;

@@ -1,7 +1,7 @@
-import React, {useLayoutEffect} from 'react';
+import React from 'react';
 
 export function useLockBodyScroll() {
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = 'hidden';
 
@@ -9,4 +9,18 @@ export function useLockBodyScroll() {
       document.body.style.overflow = originalStyle;
     };
   }, []);
+}
+
+export function useDimensions(ref: React.RefObject<HTMLElement>) {
+  const [width, setWidth] = React.useState(0);
+  const [height, setHeight] = React.useState(0);
+
+  React.useLayoutEffect(() => {
+    if (ref && ref.current) {
+      setWidth(ref.current.offsetWidth);
+      setHeight(ref.current.offsetHeight);
+    }
+  }, [ref.current]);
+
+  return [width, height];
 }
