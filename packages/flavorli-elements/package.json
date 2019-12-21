@@ -10,9 +10,7 @@
   "scripts": {
     "test:watch": "jest --watch",
     "build": "rollup -c",
-    "watch": "rollup -cw",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "watch": "rollup -cw"
   },
   "peerDependencies": {
     "react": ">=16.12.0",
@@ -22,13 +20,6 @@
     "@babel/core": "^7.7.5",
     "@rollup/plugin-image": "^2.0.0",
     "@rollup/plugin-typescript": "^2.0.1",
-    "@storybook/addon-a11y": "^5.2.8",
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-docs": "^5.2.8",
-    "@storybook/addon-links": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/preset-typescript": "^1.1.0",
-    "@storybook/react": "^5.2.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^8.0.2",
