@@ -65,6 +65,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - https://serviceworkies.com/
 - https://kentcdodds.com/blog/effective-snapshot-testing
 - https://github.com/kentcdodds/testing-workshop/tree/fem-2018
+- https://github.com/americanexpress/jest-image-snapshot
 
 ## Accessibility
 

@@ -15,8 +15,8 @@ export const Button = styled.button<IButtonProps>`
   color: ${({theme}) => theme.colors.textOnPrimary};
   border-radius: ${({theme}) => `${theme.spacings['4']}px`};
   box-shadow: ${({theme}) => theme.shadows.LIGHT};
-
   transition: 0.1s;
+
   &:hover {
     background-color: ${({theme}) => theme.colors.primaryDark};
   }
