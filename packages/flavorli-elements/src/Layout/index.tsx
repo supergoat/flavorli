@@ -1,5 +1,3 @@
-import Stack from './Stack';
-import Scroll from './Scroll';
-import Page from './Page';
-
-export {Stack, Scroll, Page};
+export {Stack} from './Stack';
+export {Scroll} from './Scroll';
+export {Page} from './Page';

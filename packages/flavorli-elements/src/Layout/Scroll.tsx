@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Stack from './Stack';
+import {Stack} from './index';
 import {colors} from '../theme/colors';
 import {spacings} from '../theme/spacings';
 
@@ -16,7 +16,7 @@ interface IPageProps {
   paddingBottom?: keyof typeof spacings;
   paddingLeft?: keyof typeof spacings;
 }
-export default ({
+export const Scroll = ({
   children,
   direction = 'vertical',
   width = '100%',
@@ -24,13 +24,18 @@ export default ({
   ...rest
 }: IPageProps) => {
   return (
-    <Scroll direction={direction} height={height} width={width} {...rest}>
+    <ScrollWrapper
+      direction={direction}
+      height={height}
+      width={width}
+      {...rest}
+    >
       {children}
-    </Scroll>
+    </ScrollWrapper>
   );
 };
 
-const Scroll = styled(Stack)`
+const ScrollWrapper = styled(Stack)`
   position: relative;
   overflow-x: ${p => (p.direction === 'horizontal' ? 'scroll' : 'hidden')};
   overflow-y: ${p => (p.direction === 'vertical' ? 'scroll' : 'hidden')};

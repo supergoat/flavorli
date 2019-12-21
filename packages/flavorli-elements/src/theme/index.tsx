@@ -4,7 +4,7 @@ import {spacings} from './spacings';
 import {shadows} from './shadows';
 import {screens, media} from './responsive';
 
-const theme = {
+export const theme = {
   families,
   weights,
   fontSizes,
@@ -14,8 +14,6 @@ const theme = {
   screens,
   media,
 };
-
-export default theme;
 
 type Theme = typeof theme;
 

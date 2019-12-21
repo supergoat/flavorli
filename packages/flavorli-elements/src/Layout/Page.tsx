@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Stack from './Stack';
+import {Stack} from './index';
 import {useDimensions} from '../hooks';
 import {colors} from '../theme/colors';
 import {spacings} from '../theme/spacings';
@@ -16,7 +16,7 @@ interface IPageProps {
   padding?: keyof typeof spacings;
   gap?: keyof typeof spacings;
 }
-export default ({
+export const Page = ({
   children,
   direction = 'horizontal',
   background,
@@ -77,7 +77,12 @@ export default ({
     direction === 'horizontal' ? {left: 0, right: 0} : {top: 0, bottom: 0};
 
   return (
-    <Page width={width} height={height} ref={refEl} background={background}>
+    <PageWrapper
+      width={width}
+      height={height}
+      ref={refEl}
+      background={background}
+    >
       <Stack
         direction={direction}
         gap={gap}
@@ -97,7 +102,7 @@ export default ({
           />
         ))}
       </Stack>
-    </Page>
+    </PageWrapper>
   );
 };
 
@@ -108,7 +113,7 @@ export const Child = styled(({component, ...props}) => {
   height: ${props => `${props.height}px`} !important;
 `;
 
-const Page = styled(Stack)`
+const PageWrapper = styled(Stack)`
   position: relative;
   overflow: hidden;
 `;

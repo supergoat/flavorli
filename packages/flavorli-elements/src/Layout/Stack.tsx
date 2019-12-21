@@ -35,46 +35,49 @@ export interface IStackProps extends MotionProps {
   border?: string;
   overflow?: 'hidden' | 'visible';
 }
-export default React.forwardRef<HTMLDivElement, IStackProps>(
-  (
-    {
-      children,
-      direction = 'vertical',
-      distribution = 'start',
-      alignment = 'start',
-      ...rest
-    },
-    ref,
-  ) => {
-    return (
-      <Stack
-        ref={ref}
-        distribution={distribution}
-        direction={direction}
-        alignment={alignment}
-        {...rest}
-      >
-        {Children.map(children, child => {
-          const marginRight =
-            direction === 'horizontal' && rest.gap ? `${rest.gap}px` : 0;
-          const marginBottom =
-            direction === 'vertical' && rest.gap ? `${rest.gap}px` : 0;
-          return (
-            child && (
-              <Child
-                component={child}
-                marginRight={marginRight}
-                marginBottom={marginBottom}
-              />
-            )
-          );
-        })}
-      </Stack>
-    );
-  },
+
+const ForwardRefStack = (
+  {
+    children,
+    direction = 'vertical',
+    distribution = 'start',
+    alignment = 'start',
+    ...rest
+  }: IStackProps,
+  ref?: React.Ref<HTMLDivElement> | null | undefined,
+) => {
+  return (
+    <StackWrapper
+      ref={ref}
+      distribution={distribution}
+      direction={direction}
+      alignment={alignment}
+      {...rest}
+    >
+      {Children.map(children, child => {
+        const marginRight =
+          direction === 'horizontal' && rest.gap ? `${rest.gap}px` : 0;
+        const marginBottom =
+          direction === 'vertical' && rest.gap ? `${rest.gap}px` : 0;
+        return (
+          child && (
+            <Child
+              component={child}
+              marginRight={marginRight}
+              marginBottom={marginBottom}
+            />
+          )
+        );
+      })}
+    </StackWrapper>
+  );
+};
+
+export const Stack = React.forwardRef<HTMLDivElement, IStackProps>(
+  ForwardRefStack,
 );
 
-export const Child = styled(({component, ...props}) => {
+const Child = styled(({component, ...props}) => {
   return React.cloneElement(component, props);
 })`
   margin-right: ${p => p.marginRight};
@@ -87,7 +90,7 @@ export const Child = styled(({component, ...props}) => {
   }
 `;
 
-export const Stack = styled(motion.div)<IStackProps>`
+export const StackWrapper = styled(motion.div)<IStackProps>`
   position: relative;
   display: flex;
   flex-direction: ${p => (p.direction === 'horizontal' ? 'row' : 'column')};
@@ -128,17 +131,4 @@ export const Stack = styled(motion.div)<IStackProps>`
   }};
 
   box-shadow: ${p => p.shadow && p.theme.shadows[p.shadow]};
-
-  /* ${Child} {
-    margin-right: ${p =>
-      p.direction === 'horizontal' && p.gap ? `${p.gap}px` : 0};
-
-    margin-bottom: ${p =>
-      p.direction === 'vertical' && p.gap ? `${p.gap}px` : 0};
-
-    &:last-child {
-      margin-right: 0;
-      margin-bottom: 0;
-    }
-  } */
 `;

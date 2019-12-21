@@ -12,5 +12,3 @@ export const H2 = styled.h2<IH2>`
   width: ${props => props.width};
   text-align: ${props => props.align};
 `;
-
-export default H2;

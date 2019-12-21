@@ -1,6 +1,4 @@
-import H1 from './H1';
-import H2 from './H2';
-import H3 from './H3';
-import Text from './Text';
-
-export {H1, H2, H3, Text};
+export {H1} from './H1';
+export {H2} from './H2';
+export {H3} from './H3';
+export {Text} from './Text';

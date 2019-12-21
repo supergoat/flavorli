@@ -21,5 +21,3 @@ export const Button = styled.button<IButtonProps>`
     background-color: ${({theme}) => theme.colors.primaryDark};
   }
 `;
-
-export default Button;
