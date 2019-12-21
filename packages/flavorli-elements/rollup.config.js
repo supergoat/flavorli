@@ -9,10 +9,12 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
+      sourcemap: true,
     },
     {
       file: pkg.module,
       format: 'es', // the preferred format
+      sourcemap: true,
     },
   ],
   external: [
@@ -20,7 +22,7 @@ export default {
     ...Object.keys(pkg.peerDependencies || {}),
   ],
   plugins: [
-    image(),
+    image(), // enables importing images
     typescript({
       typescript: require('typescript'),
     }),

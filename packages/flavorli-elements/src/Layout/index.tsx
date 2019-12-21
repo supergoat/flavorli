@@ -1,4 +1,5 @@
 import Stack from './Stack';
+import Scroll from './Scroll';
 import Page from './Page';
 
-export {Stack, Page};
+export {Stack, Scroll, Page};

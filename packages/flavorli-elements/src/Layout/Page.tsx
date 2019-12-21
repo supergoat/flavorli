@@ -10,7 +10,6 @@ const SLIDE_TRIGGER_THRESHOLD = 70;
 interface IPageProps {
   children: React.ReactNode;
   direction?: 'horizontal' | 'vertical';
-  dragElastic?: number;
   width?: string;
   height?: string;
   background?: keyof typeof colors;
@@ -21,8 +20,7 @@ export default ({
   children,
   direction = 'horizontal',
   background,
-  dragElastic = 0.5,
-  gap = 'XS',
+  gap = 8,
   padding,
   width = '100%',
   height = '100%',
@@ -33,11 +31,11 @@ export default ({
 
   const noOfChildren = React.Children.count(children);
 
-  const paddingAdjustment = padding ? spacings[padding] * 2 : 0;
+  const paddingAdjustment = padding ? padding * 2 : 0;
   const pageOffset =
     page *
     ((direction === 'horizontal' ? pageWidth : pageHeight) +
-      spacings[gap] -
+      gap -
       paddingAdjustment);
 
   const onDragEnd = (e: any, {offset}: any) => {
@@ -71,8 +69,8 @@ export default ({
 
   const transition = {
     type: 'spring',
-    damping: 300,
-    stiffness: 300,
+    damping: 400,
+    stiffness: 200,
   };
 
   const dragConstraints =
@@ -85,7 +83,7 @@ export default ({
         gap={gap}
         padding={padding}
         drag={direction === 'horizontal' ? 'x' : 'y'}
-        dragElastic={dragElastic}
+        dragElastic={0.5}
         dragConstraints={dragConstraints}
         onDragEnd={onDragEnd}
         animate={animate}

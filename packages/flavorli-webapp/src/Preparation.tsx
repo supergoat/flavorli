@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useLockBodyScroll, Stack, Page} from '@flavorli/elements';
+import {useLockBodyScroll, Page, Stack} from '@flavorli/elements';
+import Step from './Step';
+
+import {steps} from './stepsData';
 
 export default () => {
   useLockBodyScroll();
@@ -9,12 +12,11 @@ export default () => {
     <>
       <Backdrop />
 
-      <Preparation width="100%">
-        <Page>
-          <Card>1</Card>
-          <Card>2</Card>
-          <Card>3</Card>
-          <Card>4</Card>
+      <Preparation>
+        <Page width="100%" height="100%">
+          {steps.map(step => {
+            return <Step step={step} />;
+          })}
         </Page>
       </Preparation>
     </>
@@ -27,7 +29,7 @@ const Backdrop = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 const Preparation = styled(Stack)`
@@ -36,9 +38,6 @@ const Preparation = styled(Stack)`
   bottom: 0;
   right: 0;
   left: 0;
-`;
-
-const Card = styled.div`
-  border: 1px solid black;
-  background: white;
+  height: 100%;
+  width: 100%;
 `;

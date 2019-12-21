@@ -1,15 +1,16 @@
-import {families, weights} from './fonts';
+import {families, weights, fontSizes} from './fonts';
 import {colors} from './colors';
 import {spacings} from './spacings';
+import {shadows} from './shadows';
 import {screens, media} from './responsive';
-import {radius} from './radius';
 
 const theme = {
   families,
   weights,
+  fontSizes,
   colors,
   spacings,
-  radius,
+  shadows,
   screens,
   media,
 };

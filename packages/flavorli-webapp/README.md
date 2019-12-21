@@ -57,3 +57,53 @@ You can learn more in the
 [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## testing
+
+- https://kentcdodds.com/blog/but-really-what-is-a-javascript-mock
+- https://github.com/kentcdodds/how-jest-mocking-works
+- https://serviceworkies.com/
+- https://kentcdodds.com/blog/effective-snapshot-testing
+- https://github.com/kentcdodds/testing-workshop/tree/fem-2018
+
+## Accessibility
+
+- https://www.gov.uk/service-manual/helping-people-to-use-your-service/understanding-wcag
+- https://www.w3.org/TR/WCAG21/#abstract
+- https://www.gov.uk/service-manual/helping-people-to-use-your-service/testing-for-accessibility#think-about-accessibility-from-the-start
+- https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#when-to-test
+- https://github.com/nickcolley/jest-axe
+- https://accessibility.18f.gov/checklist/
+- https://www.gov.uk/service-manual/helping-people-to-use-your-service/making-your-service-accessible-an-introduction#meeting-government-accessibility-requirements
+- https://design-system.service.gov.uk/get-started/
+- https://accessibility.digital.gov/
+- https://www.linkedin.com/pulse/wcag-scary-anymore-progressive-approach-website-herin-hentry/
+- https://accessibility.blog.gov.uk/2016/05/16/what-we-mean-when-we-talk-about-accessibility-2/
+- Microsoft inclusive design
+- https://www.w3.org/WAI/tutorials/
+- https://www.w3.org/TR/wai-aria-practices-1.1/#intro
+- https://w3c.github.io/aria-practices/#read_me_first
+- what input
+- github accessibility extension
+- https://www.makeitfable.com/product/
+- https://www.gatsbyjs.org/blog/2019-07-11-user-testing-accessible-client-routing/
+- cypress-axe
+- jest-axe
+
+## User Research
+
+- https://www.gov.uk/service-manual/user-research/running-research-sessions-with-people-with-disabilities
+- https://www.gov.uk/service-manual/user-research#user-research-methods
+
+## Features
+
+- Picture of ingredients
+- RECIPES NOTES
+- Recipe tips: 'Show the steps that requiring choping first'
+- Checklist
+- Ingredient notes - as author
+- Recipe notes - as author
+- Kitchen Essentials quide - Table Spoons, Scale
+- Make a note on a step as the user
+- Substitutions
+- Specify your oven to adjust temps

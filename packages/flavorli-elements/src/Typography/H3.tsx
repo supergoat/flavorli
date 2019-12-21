@@ -6,8 +6,8 @@ interface IH3 {
 }
 export const H3 = styled.h3<IH3>`
   font-family: ${props => props.theme.families.TitilliumWeb};
-  color: ${props => props.theme.colors.SECONDARY_TEXT_COLOR};
-  font-size: 16px;
+  color: ${props => props.theme.colors.secondaryTextColor};
+  font-size: ${p => p.theme.fontSizes[16]};
   font-weight: ${props => props.theme.weights.TitilliumWeb.BOLD};
   width: ${props => props.width};
   text-align: ${props => props.align};

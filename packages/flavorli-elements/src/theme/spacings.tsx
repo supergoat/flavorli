@@ -1,9 +1,10 @@
-export enum spacings {
-  XSS = 4,
-  XS = 8,
-  SM = 16,
-  M = 24,
-  L = 32,
-  XL = 48,
-  XXL = 64,
-}
+export const spacings = {
+  4: 4,
+  8: 8,
+  16: 16,
+  24: 24,
+  32: 32,
+  48: 48,
+  64: 64,
+  104: 104,
+};

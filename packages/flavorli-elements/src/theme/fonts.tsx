@@ -23,3 +23,13 @@ export const weights = {
     BOLD: 700,
   },
 };
+
+export const fontSizes = {
+  14: '14px',
+  16: '16px',
+  20: '20px',
+  24: '24px',
+  32: '32px',
+  48: '48px',
+  64: '64px',
+};
