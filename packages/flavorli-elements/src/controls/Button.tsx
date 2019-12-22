@@ -10,11 +10,11 @@ export interface IButtonProps {
 export const Button = styled.button<IButtonProps>`
   border: none;
   height: ${DEFAULT_HEIGHT};
-  width: ${({width}) => (width ? width : DEFAULT_WIDTH)};
-  background-color: ${({theme}) => theme.colors.primary};
-  color: ${({theme}) => theme.colors.textOnPrimary};
-  border-radius: ${({theme}) => `${theme.spacings['4']}px`};
-  box-shadow: ${({theme}) => theme.shadows.LIGHT};
+  width: ${p => (p.width ? p.width : DEFAULT_WIDTH)};
+  background-color: ${p => p.theme.colors.primary};
+  color: ${p => p.theme.colors.textOnPrimary};
+  border-radius: ${p => `${p.theme.spacings['4']}px`};
+  box-shadow: ${p => p.theme.shadows.LIGHT};
   transition: 0.1s;
 
   &:hover {
