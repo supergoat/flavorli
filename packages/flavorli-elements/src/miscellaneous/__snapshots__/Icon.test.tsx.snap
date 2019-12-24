@@ -1,12 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`display the icon that matches the icon name 1`] = `
-<img
-  alt=""
-  class="sc-fzXfLP czyQbP"
-/>
-`;
-
 exports[`should change the icon size to the desired size 1`] = `
 <img
   alt=""
@@ -15,20 +8,6 @@ exports[`should change the icon size to the desired size 1`] = `
 `;
 
 exports[`should display the icon that matches the icon name 1`] = `
-<img
-  alt=""
-  class="sc-fzXfLP czyQbP"
-/>
-`;
-
-exports[`should display the icon with the correct size  1`] = `
-<img
-  alt=""
-  class="sc-fzXfLP eZxLPX"
-/>
-`;
-
-exports[`should have the correct styles 1`] = `
 <img
   alt=""
   class="sc-fzXfLP czyQbP"

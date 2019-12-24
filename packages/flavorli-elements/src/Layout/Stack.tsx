@@ -54,21 +54,7 @@ const ForwardRefStack = (
       alignment={alignment}
       {...rest}
     >
-      {Children.map(children, child => {
-        const marginRight =
-          direction === 'horizontal' && rest.gap ? `${rest.gap}px` : 0;
-        const marginBottom =
-          direction === 'vertical' && rest.gap ? `${rest.gap}px` : 0;
-        return (
-          child && (
-            <Child
-              component={child}
-              marginRight={marginRight}
-              marginBottom={marginBottom}
-            />
-          )
-        );
-      })}
+      {children}
     </StackWrapper>
   );
 };
@@ -77,20 +63,18 @@ export const Stack = React.forwardRef<HTMLDivElement, IStackProps>(
   ForwardRefStack,
 );
 
-const Child = styled(({component, ...props}) => {
-  return React.cloneElement(component, props);
-})`
-  margin-right: ${p => p.marginRight};
-
-  margin-bottom: ${p => p.marginBottom};
-
-  &:last-child {
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-`;
-
 export const StackWrapper = styled(motion.div)<IStackProps>`
+  /* Select all direct children */
+  > * {
+    margin-bottom: ${p => p.direction === 'vertical' && `${p.gap}px`};
+    margin-right: ${p => p.direction === 'horizontal' && `${p.gap}px`};
+
+    &:last-child {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+  }
+
   position: relative;
   display: flex;
   flex-direction: ${p => (p.direction === 'horizontal' ? 'row' : 'column')};

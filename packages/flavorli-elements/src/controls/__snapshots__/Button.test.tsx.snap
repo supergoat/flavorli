@@ -7,11 +7,3 @@ exports[`should have display the default button 1`] = `
   Hello World
 </button>
 `;
-
-exports[`should have the correct styles 1`] = `
-<button
-  class="sc-AykKC cPGfCk"
->
-  Hello World
-</button>
-`;

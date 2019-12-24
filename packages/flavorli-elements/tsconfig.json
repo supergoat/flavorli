@@ -11,7 +11,10 @@
     "esModuleInterop": true,
     "noImplicitAny": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "../../node_modules/@testing-library/jest-dom/extend-expect.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "**/__tests__/**/*.+(ts|tsx|js)",
