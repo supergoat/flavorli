@@ -65,6 +65,7 @@ export default ({step, noOfSteps, onChangeStep, className}: IStepProps) => {
         paddingRight={48}
       >
         <PreviousButton
+          aria-label="Previous Step"
           aria-controls="recipe-steps"
           hide={step.no === 1}
           intent="secondary"
@@ -75,6 +76,7 @@ export default ({step, noOfSteps, onChangeStep, className}: IStepProps) => {
 
         {step.no !== noOfSteps && (
           <Button
+            aria-label="Next Step"
             aria-controls="recipe-steps"
             onClick={() => onChangeStep(1)}
             width="100%"

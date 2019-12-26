@@ -57,6 +57,14 @@ describe('Step', () => {
     expect(continueButton).toHaveAttribute('aria-controls', 'recipe-steps');
   });
 
+  it('should have an accessible label on the continue button to inform assistive technology users that clicking the button takes them to the next step', () => {
+    const {getByText} = setup();
+
+    const continueButton = getByText(/continue/i);
+
+    expect(continueButton).toHaveAttribute('aria-label', 'Next Step');
+  });
+
   it('clicking the continue button calls onChangeStep with 1 when clicked', () => {
     const {getByText, mockOnChangeStep} = setup();
 
@@ -78,6 +86,14 @@ describe('Step', () => {
     const previousButton = getByText(/previous/i);
 
     expect(previousButton).toHaveAttribute('aria-controls', 'recipe-steps');
+  });
+
+  it('should have an accessible label on the previous button to inform assistive technology users that clicking the button takes them to the next step', () => {
+    const {getByText} = setup();
+
+    const previousButton = getByText(/previous/i);
+
+    expect(previousButton).toHaveAttribute('aria-label', 'Previous Step');
   });
 
   it('clicking the previous button that calls onChangeStep with -1 when clicked', () => {
