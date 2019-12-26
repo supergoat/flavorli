@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Links should render correctly 1`] = `
+<div
+  class="sc-AykKH bocnpZ"
+  direction="vertical"
+  height="auto"
+  width="100%"
+>
+  <div
+    class="sc-AykKH jJpMVI"
+    direction="vertical"
+    width="100%"
+  >
+    <div
+      class="sc-AykKH ifuQoe"
+      direction="horizontal"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH kQGRhG"
+        direction="vertical"
+      >
+        <p
+          class="sc-AykKG jJvoyz"
+          font-size="14"
+        >
+          Link Heading
+        </p>
+        <p
+          class="sc-AykKG keBmAI"
+        >
+          Link Name
+        </p>
+      </div>
+      <p
+        class="sc-AykKG erRrXf"
+        color="primary"
+      >
+        0m 54s
+      </p>
+    </div>
+  </div>
+</div>
+`;

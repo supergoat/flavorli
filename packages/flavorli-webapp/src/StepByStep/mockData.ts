@@ -7,10 +7,10 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description: 'Place a pot of water in medium heat and set aside to boil',
     ingredients: [],
-    kitchenwareItems: [
+    kitchenware: [
       {
         qty: '1',
         name: 'Pot',
@@ -23,7 +23,7 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description: 'Place a sauce pan over high heat and add the olive oil',
     ingredients: [
       {
@@ -31,7 +31,7 @@ export const steps: IStep[] = [
         name: 'olive oil',
       },
     ],
-    kitchenwareItems: [
+    kitchenware: [
       {
         qty: '1',
         name: 'Sauce Pan',
@@ -44,7 +44,7 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description:
       'Cut the eggplan into 1 cm cubes. Add it to the pan and sauté for 1-2 minutes',
     ingredients: [
@@ -53,7 +53,7 @@ export const steps: IStep[] = [
         name: 'eggplants',
       },
     ],
-    kitchenwareItems: [
+    kitchenware: [
       {qty: '1', name: 'Knife'},
       {qty: '1', name: 'Cutting Board'},
       {qty: '1', name: 'Spoon'},
@@ -65,7 +65,7 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description:
       'Finely chop the onion, add it to the pan and sauté for 1-2 minutes',
     ingredients: [
@@ -74,7 +74,7 @@ export const steps: IStep[] = [
         name: 'onion',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '5',
@@ -82,7 +82,7 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description:
       'Cut the zucchinis and the peppers into small cubes and add them to the pan. Sauté for 4-5 minutes, until the vegetables are ready',
     ingredients: [
@@ -99,7 +99,7 @@ export const steps: IStep[] = [
         name: 'green bell pepper',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '6',
@@ -107,16 +107,16 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description:
       'Add the salt, pepper, oregano, thyme, chili flakes, sugar and tomato paste and sauté',
     ingredients: [
       {
-        qty: '-',
+        qty: '',
         name: 'salt',
       },
       {
-        qty: '-',
+        qty: '',
         name: 'pepper',
       },
       {
@@ -140,7 +140,7 @@ export const steps: IStep[] = [
         name: 'tomato paste',
       },
     ],
-    kitchenwareItems: [
+    kitchenware: [
       {
         qty: '1',
         name: 'Tea Spoon',
@@ -153,7 +153,7 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description:
       'Add the wine and canned tomatoes and simmer at medium-low heat for 10 minutes',
     ingredients: [
@@ -167,7 +167,7 @@ export const steps: IStep[] = [
       },
     ],
     timer: {name: '7. Simmer Sauce', minutes: 10, seconds: 0},
-    kitchenwareItems: [{qty: '1', name: 'scale'}],
+    kitchenware: [{qty: '1', name: 'scale'}],
   },
   {
     no: '8',
@@ -175,20 +175,17 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [
+    links: [
       {
         heading: 'From Step 1',
         name: 'Boiling water',
-        icon: 'cookingTime',
-        description:
-          'Place a pot of water on medium heat and set aside to boil',
       },
     ],
     description:
       'In the pot with boiling water, add salt along with the macaroni, and boil for ten minutes',
     ingredients: [
       {
-        qty: '-',
+        qty: '',
         name: 'salt',
       },
       {
@@ -197,7 +194,7 @@ export const steps: IStep[] = [
       },
     ],
     timer: {name: '8. Cook Pasta', minutes: 10, seconds: 0},
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '9',
@@ -205,10 +202,10 @@ export const steps: IStep[] = [
       text: 'Assembling',
       color: '#C69FB4',
     },
-    notifications: [],
+    links: [],
     description: 'Preheat the oven at 180 C set to fan',
     ingredients: [],
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '10',
@@ -216,7 +213,7 @@ export const steps: IStep[] = [
       text: 'Bechamel',
       color: '#CC3E1E',
     },
-    notifications: [],
+    links: [],
     description:
       'Place a pot over medium heat. Add the olive oil and the flour and using a hand whisk, mix well until all of the flour is absorbed',
     ingredients: [
@@ -229,7 +226,7 @@ export const steps: IStep[] = [
         name: 'all-purpose flour',
       },
     ],
-    kitchenwareItems: [
+    kitchenware: [
       {qty: '1', name: 'Small Pot'},
       {qty: '1', name: 'Hand Whisk'},
     ],
@@ -240,7 +237,7 @@ export const steps: IStep[] = [
       text: 'Bechamel',
       color: '#CC3E1E',
     },
-    notifications: [],
+    links: [],
     description: 'Add the soy milk in 7-8 batches, stirring constantly',
     ingredients: [
       {
@@ -248,7 +245,7 @@ export const steps: IStep[] = [
         name: 'soy milk',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '12',
@@ -256,20 +253,20 @@ export const steps: IStep[] = [
       text: 'Bechamel',
       color: '#CC3E1E',
     },
-    notifications: [],
+    links: [],
     description:
       'Season with salt and pepper and as soon as it thickens and comes to boil, remove from the heat',
     ingredients: [
       {
-        qty: '-',
+        qty: '',
         name: 'salt',
       },
       {
-        qty: '-',
+        qty: '',
         name: 'pepper',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '13',
@@ -277,26 +274,20 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: '#0E2D7B',
     },
-    notifications: [
+    links: [
       {
         heading: 'From Step 7',
-        icon: 'cookingTime',
         name: 'Pan with vegetables',
-        description:
-          'Add the wine and canned tomatoes and simmer at medium-low heat for 10 minutes',
       },
       {
         heading: 'From Step 8',
-        icon: 'cookingTime',
         name: 'Macaroni',
-        description:
-          'In the pot with boiling water, add salt along with the macaroni, and boil for ten minutes',
       },
     ],
     description:
       'Drain the macaroni and transfer to the pan with the vegetables. Mix and set aside',
     ingredients: [],
-    kitchenwareItems: [{qty: '1', name: 'Colander'}],
+    kitchenware: [{qty: '1', name: 'Colander'}],
   },
   {
     no: '14',
@@ -304,13 +295,10 @@ export const steps: IStep[] = [
       text: 'Assembling',
       color: '#C69FB4',
     },
-    notifications: [
+    links: [
       {
         heading: 'From Step 12',
-        icon: 'cookingTime',
         name: 'Bechamel sauce',
-        description:
-          'Season with salt and pepper and as soon as it thickens and comes to boil, remove from the heat',
       },
     ],
     description:
@@ -325,7 +313,7 @@ export const steps: IStep[] = [
         name: 'mint',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '15',
@@ -333,7 +321,7 @@ export const steps: IStep[] = [
       text: 'Assembling',
       color: '#C69FB4',
     },
-    notifications: [],
+    links: [],
     description:
       'Grease 40 cm ovenproof baking dish with olive oil and sprinke the breadcrumps',
     ingredients: [
@@ -346,7 +334,7 @@ export const steps: IStep[] = [
         name: 'breadcrumps',
       },
     ],
-    kitchenwareItems: [{qty: '1', name: '40 cm ovenproof baking dish'}],
+    kitchenware: [{qty: '1', name: '40 cm ovenproof baking dish'}],
   },
   {
     no: '16',
@@ -354,7 +342,7 @@ export const steps: IStep[] = [
       text: 'Assembling',
       color: '#C69FB4',
     },
-    notifications: [],
+    links: [],
     description:
       'Add the pasta mixture, spread the bechamel sauce, and sprinke the breadcrumps, olive oil, thyme and pepper',
     ingredients: [
@@ -371,11 +359,11 @@ export const steps: IStep[] = [
         name: 'thyme',
       },
       {
-        qty: '-',
+        qty: '',
         name: 'pepper',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '17',
@@ -383,11 +371,11 @@ export const steps: IStep[] = [
       text: 'Assembling',
       color: '#C69FB4',
     },
-    notifications: [],
+    links: [],
     description: 'Bake for 25 - 30 minutes. Remove and let it cool',
     ingredients: [],
     timer: {name: '17. Bake Pastitsio', minutes: 30, seconds: 0},
-    kitchenwareItems: [
+    kitchenware: [
       {
         qty: '1',
         name: 'Oven Mitts',

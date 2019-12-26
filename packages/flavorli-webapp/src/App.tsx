@@ -4,7 +4,7 @@ import {GlobalStyle, theme} from '@flavorli/elements';
 import Recipe from './Recipe';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Preparation from './Preparation';
+import StepByStep from './StepByStep';
 
 export default () => {
   return (
@@ -13,17 +13,15 @@ export default () => {
 
       <Router>
         <App>
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <ThemeProvider theme={theme}>
             <Switch>
+              <Route path="/step-by-step">
+                <StepByStep />
+              </Route>
               <Route path="/">
                 <Recipe />
               </Route>
             </Switch>
-            <Route path="/step-by-step">
-              <Preparation />
-            </Route>
           </ThemeProvider>
         </App>
       </Router>

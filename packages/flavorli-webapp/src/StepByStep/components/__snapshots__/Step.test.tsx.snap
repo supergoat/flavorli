@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Step should render correctly 1`] = `
+<div
+  aria-label="Step 1"
+  class="sc-AykKH dycljn"
+  direction="vertical"
+  height="100%"
+  role="group"
+  width="100%"
+>
+  <div
+    class="sc-AykKH hDeaPi"
+    direction="vertical"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG kSNvMr"
+      font-size="32"
+    >
+      1
+    </p>
+  </div>
+  <div
+    class="sc-AykKH eixNXI sc-AykKI Bbxok"
+    direction="vertical"
+    height="100%"
+    width="100%"
+  >
+    <div
+      class="sc-AykKH iFtICF"
+      direction="vertical"
+      height="100%"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH hZwNnR"
+        direction="vertical"
+        width="auto"
+      >
+        <p
+          class="sc-AykKG cSYcFR"
+        >
+           
+          Sauce
+        </p>
+      </div>
+      <div
+        class="sc-AykKH khQdtk"
+        direction="vertical"
+        width="100%"
+      >
+        <h3
+          class="sc-AykKF WzKqo"
+        >
+          You will need
+        </h3>
+        <p
+          class="sc-AykKG fCXClx"
+        >
+          1
+           
+          Pot
+        </p>
+      </div>
+      <p
+        class="sc-AykKG jhiDYp"
+        spacing="[object Object]"
+      >
+        Place a pot of water in medium heat and set aside to boil
+      </p>
+    </div>
+  </div>
+</div>
+`;

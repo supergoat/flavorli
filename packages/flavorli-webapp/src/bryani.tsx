@@ -1,4 +1,4 @@
-import {IStep} from './types';
+import {IStep} from './StepByStep/types';
 
 export const steps: IStep[] = [
   {
@@ -15,8 +15,8 @@ export const steps: IStep[] = [
         name: 'basmati rice',
       },
     ],
-    kitchenwareItems: [],
-    notifications: [],
+    kitchenware: [],
+    links: [],
     timer: {
       name: 'basmati rice',
       minutes: 10,
@@ -29,7 +29,7 @@ export const steps: IStep[] = [
       text: 'Biryani',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     description: 'Place a frying pan over high heat and add the olive oil',
     ingredients: [
       {
@@ -37,7 +37,7 @@ export const steps: IStep[] = [
         name: 'olive oil',
       },
     ],
-    kitchenwareItems: [
+    kitchenware: [
       {
         qty: '1',
         name: 'Frying Pan',
@@ -50,7 +50,7 @@ export const steps: IStep[] = [
       text: 'Biryani',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     ingredients: [
       {
         qty: '1 medium',
@@ -58,7 +58,7 @@ export const steps: IStep[] = [
       },
     ],
     description: 'Slice the onion. Add it to the pan and sauté for 1-2 minutes',
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '4',
@@ -66,7 +66,7 @@ export const steps: IStep[] = [
       text: 'Biryani',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     ingredients: [
       {
         qty: '170 g',
@@ -75,7 +75,7 @@ export const steps: IStep[] = [
     ],
     description:
       'Dice the carrots and add them to the frying pan and sauté for 3-4 minutes whilst regulary turning until slightly softened',
-    kitchenwareItems: [
+    kitchenware: [
       {
         qty: '1',
         name: 'Frying Pan',
@@ -88,7 +88,7 @@ export const steps: IStep[] = [
       text: 'Biryani',
       color: '#0E2D7B',
     },
-    notifications: [],
+    links: [],
     ingredients: [
       {
         qty: 'pinch',
@@ -126,7 +126,7 @@ export const steps: IStep[] = [
     ],
     description:
       'Add the spices to the frying pan and stir well to coat the carrots evenly',
-    kitchenwareItems: [],
+    kitchenware: [],
   },
   {
     no: '6',
@@ -134,8 +134,8 @@ export const steps: IStep[] = [
       text: 'Biryani',
       color: '#0E2D7B',
     },
-    notifications: [],
-    kitchenwareItems: [],
+    links: [],
+    kitchenware: [],
     ingredients: [
       {
         qty: '400 g',
@@ -159,16 +159,13 @@ export const steps: IStep[] = [
       text: 'Biryani',
       color: '#0E2D7B',
     },
-    notifications: [
+    links: [
       {
         heading: 'From Step 1',
         name: 'Soaked basmati rice',
-        description:
-          'Soak the rice for at least 10 minutes. Drain the water and set aside',
-        icon: 'cookingTime',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
     ingredients: [
       {
         qty: '2 russet',
@@ -188,8 +185,8 @@ export const steps: IStep[] = [
       text: 'Biryani',
       color: '#0E2D7B',
     },
-    notifications: [],
-    kitchenwareItems: [],
+    links: [],
+    kitchenware: [],
     ingredients: [
       {
         qty: '1',
@@ -214,8 +211,8 @@ export const steps: IStep[] = [
       text: 'Mint Raita',
       color: '#CC3E1E',
     },
-    notifications: [],
-    kitchenwareItems: [{qty: '1', name: 'Blender'}],
+    links: [],
+    kitchenware: [{qty: '1', name: 'Blender'}],
     ingredients: [
       {
         qty: '200g',
@@ -239,23 +236,17 @@ export const steps: IStep[] = [
       text: 'Assembling',
       color: '#C69FB4',
     },
-    notifications: [
+    links: [
       {
         heading: 'From Step 8',
         name: 'Reduce biryani',
-        description:
-          'Crumble the stock cube and add the water to the pan and bring to boil. Stir occasionally, and bring down to a simmer until all the water has gone and rice is well cooked.',
-        icon: 'cookingTime',
       },
       {
         heading: 'From Step 9',
         name: 'Mint Raita',
-        description:
-          "Place all the ingredients into a blender and blend them altogether briefly until smooth. If you don't have a blender then finely chop",
-        icon: 'cookingTime',
       },
     ],
-    kitchenwareItems: [],
+    kitchenware: [],
     ingredients: [],
     description: 'Serve up the biryani in a bowl with a dollop of mint raita',
   },

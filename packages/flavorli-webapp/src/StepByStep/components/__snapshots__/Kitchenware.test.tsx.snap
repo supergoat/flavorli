@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Kitchenware should render correctly 1`] = `
+<div
+  class="sc-AykKH khQdtk"
+  direction="vertical"
+  width="100%"
+>
+  <h3
+    class="sc-AykKF WzKqo"
+  >
+    You will need
+  </h3>
+  <p
+    class="sc-AykKG fCXClx"
+  >
+    1
+     
+    Pot
+  </p>
+</div>
+`;
