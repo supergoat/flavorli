@@ -1,6 +1,8 @@
+import {IColor} from '@flavorli/elements/lib/theme/colors';
+
 export interface ITag {
   text: string;
-  color: string;
+  color: IColor;
 }
 
 export interface ILink {

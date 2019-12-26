@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Stack} from './index';
-import {colors} from '../theme/colors';
+import {IColor} from '../theme/colors';
 import {spacings} from '../theme/spacings';
 
 interface IPageProps {
@@ -9,7 +9,7 @@ interface IPageProps {
   direction?: 'horizontal' | 'vertical';
   width?: string;
   height?: string;
-  background?: keyof typeof colors;
+  background?: IColor;
   padding?: keyof typeof spacings;
   paddingTop?: keyof typeof spacings;
   paddingRight?: keyof typeof spacings;

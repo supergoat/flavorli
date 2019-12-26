@@ -12,7 +12,7 @@ const Tag = ({tag}: {tag: ITag}) => {
       paddingLeft={24}
       paddingBottom={4}
       borderRadius={2}
-      background="primary"
+      background={tag.color}
     >
       <Text intent="textOnPrimary"> {tag.text}</Text>
     </Stack>

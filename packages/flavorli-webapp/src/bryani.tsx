@@ -5,7 +5,7 @@ export const steps: IStep[] = [
     no: 1,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     description:
       'Soak the rice for at least 10 minutes. Drain the water and set aside',
@@ -27,7 +27,7 @@ export const steps: IStep[] = [
     no: 2,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description: 'Place a frying pan over high heat and add the olive oil',
@@ -48,7 +48,7 @@ export const steps: IStep[] = [
     no: 3,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     ingredients: [
@@ -64,7 +64,7 @@ export const steps: IStep[] = [
     no: 4,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     ingredients: [
@@ -86,7 +86,7 @@ export const steps: IStep[] = [
     no: 5,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     ingredients: [
@@ -132,7 +132,7 @@ export const steps: IStep[] = [
     no: 6,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     kitchenware: [],
@@ -157,7 +157,7 @@ export const steps: IStep[] = [
     no: 7,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [
       {
@@ -183,7 +183,7 @@ export const steps: IStep[] = [
     no: 8,
     tag: {
       text: 'Biryani',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     kitchenware: [],
@@ -209,7 +209,7 @@ export const steps: IStep[] = [
     no: 9,
     tag: {
       text: 'Mint Raita',
-      color: '#CC3E1E',
+      color: 'tagOrange',
     },
     links: [],
     kitchenware: [{qty: '1', name: 'Blender'}],
@@ -234,7 +234,7 @@ export const steps: IStep[] = [
     no: 10,
     tag: {
       text: 'Assembling',
-      color: '#C69FB4',
+      color: 'tagPink',
     },
     links: [
       {

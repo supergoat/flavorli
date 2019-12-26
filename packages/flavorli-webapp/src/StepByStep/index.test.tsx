@@ -69,11 +69,4 @@ describe('StepByStep', () => {
       queryByLabelText(`Step ${step2.no} of ${steps.length}`),
     ).not.toBeInTheDocument();
   });
-
-  //   it('it should hide the previous button when the current slide is the first slide', () => {
-  //     const {queryByText} = render(
-  //       <StepByStep label="steps label"/>,
-  //     );
-  //     expect(queryByText('previous')).toBeNull();
-  //   });
 });

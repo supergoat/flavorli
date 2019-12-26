@@ -6,6 +6,7 @@ import Links from './Links';
 import Tag from './Tag';
 import Kitchenware from './Kitchenware';
 import Ingredients from './Ingredients';
+import styled from 'styled-components';
 
 interface IStepProps {
   step: IStep;
@@ -55,12 +56,32 @@ export default ({step, noOfSteps, onChangeStep, className}: IStepProps) => {
         </Stack>
       </Scroll>
 
-      {/* {step.no !== noOfSteps && ( */}
-      <Button onClick={() => onChangeStep(-1)}>Previous</Button>
-      {/* )} */}
-      {step.no !== noOfSteps && (
-        <Button onClick={() => onChangeStep(1)}>Continue</Button>
-      )}
+      <Stack
+        direction="horizontal"
+        gap={8}
+        distribution="end"
+        width="100%"
+        paddingLeft={48}
+        paddingRight={48}
+      >
+        <PreviousButton
+          hide={step.no === 1}
+          intent="secondary"
+          onClick={() => onChangeStep(-1)}
+        >
+          Previous
+        </PreviousButton>
+
+        {step.no !== noOfSteps && (
+          <Button onClick={() => onChangeStep(1)} width="100%">
+            Continue
+          </Button>
+        )}
+      </Stack>
     </Stack>
   );
 };
+
+const PreviousButton = styled(Button)<{hide: boolean}>`
+  visibility: ${p => (p.hide ? 'hidden' : 'visible')};
+`;

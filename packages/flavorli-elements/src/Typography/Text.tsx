@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {fontSizes} from '../theme/fonts';
 import {motion, MotionProps} from 'framer-motion';
-import {colors} from '../theme/colors';
+import {IColor} from '../theme/colors';
 
 interface IText extends MotionProps {
   width?: string;
@@ -12,7 +12,7 @@ interface IText extends MotionProps {
     letter?: string;
   };
   fontSize?: keyof typeof fontSizes;
-  color?: keyof typeof colors;
+  color?: IColor;
 }
 export const Text = styled(motion.p)<IText>`
   font-family: ${p => p.theme.families.TitilliumWeb};

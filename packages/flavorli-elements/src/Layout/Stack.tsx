@@ -1,7 +1,7 @@
 import React, {FC, Children} from 'react';
 import styled from 'styled-components';
 import {spacings} from '../theme/spacings';
-import {colors} from '../theme/colors';
+import {IColor} from '../theme/colors';
 import {motion, MotionProps} from 'framer-motion';
 import {shadows} from '../theme/shadows';
 
@@ -18,7 +18,7 @@ export interface IStackProps extends React.HTMLAttributes<HTMLDivElement> {
   alignment?: 'start' | 'center' | 'end';
   width?: string;
   height?: string;
-  background?: keyof typeof colors;
+  background?: IColor;
   padding?: keyof typeof spacings;
   paddingTop?: keyof typeof spacings;
   paddingRight?: keyof typeof spacings;

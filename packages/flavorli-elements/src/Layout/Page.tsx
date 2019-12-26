@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Stack} from './index';
 import {useDimensions} from '../hooks';
-import {colors} from '../theme/colors';
+import {IColor} from '../theme/colors';
 import {spacings} from '../theme/spacings';
 
 const SLIDE_TRIGGER_THRESHOLD = 70;
@@ -12,7 +12,7 @@ interface IPageProps {
   direction?: 'horizontal' | 'vertical';
   width?: string;
   height?: string;
-  background?: keyof typeof colors;
+  background?: IColor;
   padding?: keyof typeof spacings;
   gap?: keyof typeof spacings;
 }

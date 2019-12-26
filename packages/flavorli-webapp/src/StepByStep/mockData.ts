@@ -5,7 +5,7 @@ export const steps: IStep[] = [
     no: 1,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description: 'Place a pot of water in medium heat and set aside to boil',
@@ -21,7 +21,7 @@ export const steps: IStep[] = [
     no: 2,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description: 'Place a sauce pan over high heat and add the olive oil',
@@ -42,7 +42,7 @@ export const steps: IStep[] = [
     no: 3,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description:
@@ -63,7 +63,7 @@ export const steps: IStep[] = [
     no: 4,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description:
@@ -80,7 +80,7 @@ export const steps: IStep[] = [
     no: 5,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description:
@@ -105,7 +105,7 @@ export const steps: IStep[] = [
     no: 6,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description:
@@ -151,7 +151,7 @@ export const steps: IStep[] = [
     no: 7,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [],
     description:
@@ -173,7 +173,7 @@ export const steps: IStep[] = [
     no: 8,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [
       {
@@ -200,7 +200,7 @@ export const steps: IStep[] = [
     no: 9,
     tag: {
       text: 'Assembling',
-      color: '#C69FB4',
+      color: 'tagPink',
     },
     links: [],
     description: 'Preheat the oven at 180 C set to fan',
@@ -211,7 +211,7 @@ export const steps: IStep[] = [
     no: 10,
     tag: {
       text: 'Bechamel',
-      color: '#CC3E1E',
+      color: 'tagOrange',
     },
     links: [],
     description:
@@ -235,7 +235,7 @@ export const steps: IStep[] = [
     no: 11,
     tag: {
       text: 'Bechamel',
-      color: '#CC3E1E',
+      color: 'tagOrange',
     },
     links: [],
     description: 'Add the soy milk in 7-8 batches, stirring constantly',
@@ -251,7 +251,7 @@ export const steps: IStep[] = [
     no: 12,
     tag: {
       text: 'Bechamel',
-      color: '#CC3E1E',
+      color: 'tagOrange',
     },
     links: [],
     description:
@@ -272,7 +272,7 @@ export const steps: IStep[] = [
     no: 13,
     tag: {
       text: 'Sauce',
-      color: '#0E2D7B',
+      color: 'tagRed',
     },
     links: [
       {
@@ -293,7 +293,7 @@ export const steps: IStep[] = [
     no: 14,
     tag: {
       text: 'Assembling',
-      color: '#C69FB4',
+      color: 'tagPink',
     },
     links: [
       {
@@ -319,7 +319,7 @@ export const steps: IStep[] = [
     no: 15,
     tag: {
       text: 'Assembling',
-      color: '#C69FB4',
+      color: 'tagPink',
     },
     links: [],
     description:
@@ -340,7 +340,7 @@ export const steps: IStep[] = [
     no: 16,
     tag: {
       text: 'Assembling',
-      color: '#C69FB4',
+      color: 'tagPink',
     },
     links: [],
     description:
@@ -369,7 +369,7 @@ export const steps: IStep[] = [
     no: 17,
     tag: {
       text: 'Assembling',
-      color: '#C69FB4',
+      color: 'tagPink',
     },
     links: [],
     description: 'Bake for 25 - 30 minutes. Remove and let it cool',

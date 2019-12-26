@@ -35,7 +35,7 @@ describe('Step', () => {
     getByRole('group');
   });
 
-  it('should have an aria-label to indicate to assistive technology users the slide they are on', () => {
+  it('should have an aria-label to indicate to assistive technology users the step they are on', () => {
     const {getByLabelText, step, noOfSteps} = setup();
     getByLabelText(`Step ${step.no} of ${noOfSteps}`);
   });
@@ -55,7 +55,7 @@ describe('Step', () => {
     expect(mockOnChangeStep).toHaveBeenCalledWith(1);
   });
 
-  it('it should hide the continue button when the current step is the last slide', () => {
+  it('it should hide the continue button when the current step is the last step', () => {
     const {queryByText} = setup(steps.length);
     expect(queryByText('continue')).toBeNull();
   });
@@ -68,5 +68,10 @@ describe('Step', () => {
     userEvent.click(previousButton);
 
     expect(mockOnChangeStep).toHaveBeenCalledWith(-1);
+  });
+
+  it('it should hide the previous button when the current step is the first step', () => {
+    const {getByText} = setup(1);
+    expect(getByText(/previous/i)).not.toBeVisible();
   });
 });
