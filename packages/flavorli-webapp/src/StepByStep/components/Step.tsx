@@ -9,10 +9,11 @@ import Ingredients from './Ingredients';
 
 interface IStepProps {
   step: IStep;
+  noOfSteps: number;
   onChangeStep: (direction: 1 | -1) => void;
   className?: string;
 }
-export default ({step, onChangeStep, className}: IStepProps) => {
+export default ({step, noOfSteps, onChangeStep, className}: IStepProps) => {
   return (
     <Stack
       className={className}
@@ -23,7 +24,7 @@ export default ({step, onChangeStep, className}: IStepProps) => {
       borderRadiusTopRight={16}
       paddingBottom={24}
       role="group"
-      aria-label={`Step ${step.no}`}
+      aria-label={`Step ${step.no} of ${noOfSteps}`}
     >
       <Stack paddingLeft={24} paddingTop={24} width="100%">
         <Text fontSize={32} intent="secondary">
@@ -54,7 +55,9 @@ export default ({step, onChangeStep, className}: IStepProps) => {
         </Stack>
       </Scroll>
 
-      <Button onClick={() => onChangeStep(1)}>Continue</Button>
+      {Number(step.no) !== noOfSteps && (
+        <Button onClick={() => onChangeStep(1)}>Continue</Button>
+      )}
     </Stack>
   );
 };

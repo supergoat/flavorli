@@ -5,12 +5,21 @@ import {render} from '../../helpers/test-helpers';
 import Step from './Step';
 import {steps} from '../mockData';
 
-const setup = () => {
+const setup = (stepNo?: number) => {
   const mockOnChangeStep = jest.fn();
-  const step = steps[0];
+  const step = stepNo ? steps[stepNo - 1] : steps[0];
+  const noOfSteps = steps.length + 1;
+
   return {
-    ...render(<Step step={step} onChangeStep={mockOnChangeStep} />),
+    ...render(
+      <Step
+        step={step}
+        onChangeStep={mockOnChangeStep}
+        noOfSteps={noOfSteps}
+      />,
+    ),
     step,
+    noOfSteps,
     mockOnChangeStep,
   };
 };
@@ -27,8 +36,8 @@ describe('Step', () => {
   });
 
   it('should have an aria-label to indicate to assistive technology users the slide they are on', () => {
-    const {getByLabelText, step} = setup();
-    getByLabelText(`Step ${step.no}`);
+    const {getByLabelText, step, noOfSteps} = setup();
+    getByLabelText(`Step ${step.no} of ${noOfSteps}`);
   });
 
   it('should render correctly', () => {
@@ -44,5 +53,10 @@ describe('Step', () => {
     userEvent.click(continueButton);
 
     expect(mockOnChangeStep).toHaveBeenCalledWith(1);
+  });
+
+  it('it should hide the continue button when the current step is the last slide', () => {
+    const {queryByText} = setup(steps.length);
+    expect(queryByText('continue')).toBeNull();
   });
 });

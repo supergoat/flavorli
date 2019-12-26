@@ -2,7 +2,7 @@
 
 exports[`Step should render correctly 1`] = `
 <div
-  aria-label="Step 1"
+  aria-label="Step 1 of 18"
   class="sc-AykKH dycljn"
   direction="vertical"
   height="100%"

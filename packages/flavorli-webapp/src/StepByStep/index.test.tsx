@@ -27,25 +27,22 @@ describe('StepByStep', () => {
     const step1 = steps[0];
     const step2 = steps[1];
     const {queryByLabelText, getByText} = setup();
-    expect(queryByLabelText(`Step ${step1.no}`)).toBeInTheDocument();
+    expect(
+      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
+    ).toBeInTheDocument();
 
     const continueButton = getByText(/continue/i);
 
     userEvent.click(continueButton);
 
-    expect(queryByLabelText(`Step ${step2.no}`)).toBeInTheDocument();
+    expect(
+      queryByLabelText(`Step ${step2.no} of ${steps.length}`),
+    ).toBeInTheDocument();
 
-    expect(queryByLabelText(`Step ${step1.no}`)).not.toBeInTheDocument();
+    expect(
+      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
+    ).not.toBeInTheDocument();
   });
-
-  //   it('it should hide the next button when the current slide is the last slide', () => {
-  //     const {queryByText} = render(
-  //       <StepByStep label="steps label" currentSlide={items.length}>
-  //         {slides}
-  //       </StepByStep>,
-  //     );
-  //     expect(queryByText('next')).toBeNull();
-  //   });
 
   //   it('should have a previous button that when clicked hides the current slide and brings the previous slide into view', () => {
   //     const item1 = items[0];

@@ -12,11 +12,19 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
   const onChangeStep = (direction: 1 | -1) => {
     setCurrentStep(s => s + 1);
   };
+
   return (
     <Preparation aria-label="List of recipe steps">
       <StepList currentStep={currentStep}>
         {steps.map(step => {
-          return <Step step={step} key={step.no} onChangeStep={onChangeStep} />;
+          return (
+            <Step
+              step={step}
+              key={step.no}
+              onChangeStep={onChangeStep}
+              noOfSteps={steps.length}
+            />
+          );
         })}
       </StepList>
     </Preparation>
