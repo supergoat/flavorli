@@ -6,7 +6,13 @@ import {render as testRender} from '@testing-library/react';
 import {theme} from '@flavorli/elements';
 
 export function render(ui: React.ReactNode) {
-  const utils = testRender(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);
+  const Wrapper = ({children}: {children: React.ReactNode}) => (
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  );
+
+  const utils = testRender(<ThemeProvider theme={theme}>{ui}</ThemeProvider>, {
+    wrapper: Wrapper as React.ComponentType,
+  });
 
   return utils;
 }

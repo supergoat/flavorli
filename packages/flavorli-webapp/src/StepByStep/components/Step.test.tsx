@@ -12,11 +12,15 @@ const setup = (stepNo?: number) => {
 
   return {
     ...render(
-      <Step
-        step={step}
-        onChangeStep={mockOnChangeStep}
-        noOfSteps={noOfSteps}
-      />,
+      <>
+        {/* Add a div with id recipe-steps to be used by aria-controls */}
+        <div id="recipe-steps" />
+        <Step
+          step={step}
+          onChangeStep={mockOnChangeStep}
+          noOfSteps={noOfSteps}
+        />
+      </>,
     ),
     step,
     noOfSteps,
@@ -45,7 +49,15 @@ describe('Step', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should have a continue button that calls onChangeStep with 1 when clicked', () => {
+  it('should have a continue button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
+    const {getByText} = setup();
+
+    const continueButton = getByText(/continue/i);
+
+    expect(continueButton).toHaveAttribute('aria-controls', 'recipe-steps');
+  });
+
+  it('clicking the continue button calls onChangeStep with 1 when clicked', () => {
     const {getByText, mockOnChangeStep} = setup();
 
     const continueButton = getByText(/continue/i);
@@ -60,7 +72,15 @@ describe('Step', () => {
     expect(queryByText('continue')).toBeNull();
   });
 
-  it('should have a previous button that calls onChangeStep with -1 when clicked', () => {
+  it('should have a previous button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
+    const {getByText} = setup();
+
+    const previousButton = getByText(/previous/i);
+
+    expect(previousButton).toHaveAttribute('aria-controls', 'recipe-steps');
+  });
+
+  it('clicking the previous button that calls onChangeStep with -1 when clicked', () => {
     const {getByText, mockOnChangeStep} = setup(2);
 
     const previousButton = getByText(/previous/i);
