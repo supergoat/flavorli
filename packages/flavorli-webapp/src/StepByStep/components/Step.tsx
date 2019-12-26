@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Text, Scroll} from '@flavorli/elements';
+import {Stack, Text, Scroll, Button} from '@flavorli/elements';
 import {IStep} from '../types';
 import Timer from './Timer';
 import Links from './Links';
@@ -9,9 +9,10 @@ import Ingredients from './Ingredients';
 
 interface IStepProps {
   step: IStep;
+  onChangeStep: (direction: 1 | -1) => void;
   className?: string;
 }
-export default ({step, className}: IStepProps) => {
+export default ({step, onChangeStep, className}: IStepProps) => {
   return (
     <Stack
       className={className}
@@ -52,6 +53,8 @@ export default ({step, className}: IStepProps) => {
           <Timer timer={step.timer} />
         </Stack>
       </Scroll>
+
+      <Button onClick={() => onChangeStep(1)}>Continue</Button>
     </Stack>
   );
 };

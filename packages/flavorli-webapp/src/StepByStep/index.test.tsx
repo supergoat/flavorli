@@ -1,41 +1,42 @@
 import React from 'react';
-import {render} from '../helpers/test-helpers';
 import {axe} from 'jest-axe';
+import {render} from '../helpers/test-helpers';
 import StepByStep from '.';
+import userEvent from '@testing-library/user-event';
 
 import {steps} from './mockData';
 
+const setup = () => {
+  return render(<StepByStep steps={steps} />);
+};
 describe('StepByStep', () => {
   it('should not have any axe violations', async () => {
-    const {container} = render(<StepByStep steps={steps} />);
+    const {container} = setup();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
-  it('should use a section element to designate it as land mark region, with an aria-lable to describe its content', () => {
-    const {getByLabelText} = render(<StepByStep steps={steps} />);
+  it('should use a section element to designate stepByStep as land mark region, with an aria-lable to describe its content', () => {
+    const {getByLabelText} = setup();
     const section = getByLabelText('List of recipe steps');
 
     expect(section.tagName).toEqual('SECTION');
   });
 
-  //   it('should have a next button that when clicked hides the current slide and brings the next slide into view', () => {
-  //     const item1 = items[0];
-  //     const item2 = items[1];
+  it('should have a continue button that when clicked hides the current step and brings the next step into view', () => {
+    const step1 = steps[0];
+    const step2 = steps[1];
+    const {queryByLabelText, getByText} = setup();
+    expect(queryByLabelText(`Step ${step1.no}`)).toBeInTheDocument();
 
-  //     const {queryByText, getByText} = render(
-  //       <StepByStep label="steps label"/>,
-  //     );
-  //     expect(queryByText(item1.text)).toBeInTheDocument();
+    const continueButton = getByText(/continue/i);
 
-  //     const nextButton = getByText('next');
+    userEvent.click(continueButton);
 
-  //     userEvent.click(nextButton);
+    expect(queryByLabelText(`Step ${step2.no}`)).toBeInTheDocument();
 
-  //     expect(queryByText(item2.text)).toBeInTheDocument();
-
-  //     expect(queryByText(item1.text)).not.toBeInTheDocument();
-  //   });
+    expect(queryByLabelText(`Step ${step1.no}`)).not.toBeInTheDocument();
+  });
 
   //   it('it should hide the next button when the current slide is the last slide', () => {
   //     const {queryByText} = render(

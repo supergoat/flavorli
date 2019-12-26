@@ -71,5 +71,10 @@ exports[`Step should render correctly 1`] = `
       </p>
     </div>
   </div>
+  <button
+    class="sc-AykKC cPGfCk"
+  >
+    Continue
+  </button>
 </div>
 `;

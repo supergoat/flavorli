@@ -6,13 +6,17 @@ import Step from './components/Step';
 import {steps as STEPS} from './mockData';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
+  const [currentStep, setCurrentStep] = React.useState(1);
   useLockBodyScroll();
 
+  const onChangeStep = (direction: 1 | -1) => {
+    setCurrentStep(s => s + 1);
+  };
   return (
     <Preparation aria-label="List of recipe steps">
-      <StepList currentStep={9}>
+      <StepList currentStep={currentStep}>
         {steps.map(step => {
-          return <Step step={step} key={step.no} />;
+          return <Step step={step} key={step.no} onChangeStep={onChangeStep} />;
         })}
       </StepList>
     </Preparation>
