@@ -1,8 +1,12 @@
 import React from 'react';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack, Text, Button} from '@flavorli/elements';
 import {ILink} from '../types';
 
-const StepList = ({links}: {links: ILink[]}) => {
+interface IStepList {
+  links: ILink[];
+  onViewStep: (stepNo: number) => void;
+}
+const StepList = ({links, onViewStep}: IStepList) => {
   return !!links.length ? (
     <Stack gap={8} alignment="start" width="100%" height="auto">
       {links.map(link => {
@@ -29,9 +33,15 @@ const StepList = ({links}: {links: ILink[]}) => {
                 <Text intent="secondary" fontSize={14}>
                   {link.heading}
                 </Text>
-                <Text intent="highlight">{link.name}</Text>
+                <Text color="primary">{link.name}</Text>
               </Stack>
-              <Text color="primary">0m 54s</Text>
+              <Stack gap={4} alignment="end">
+                <Text color="primary">54s</Text>
+
+                <Button intent="text" onClick={() => onViewStep(link.from)}>
+                  View Step
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         );

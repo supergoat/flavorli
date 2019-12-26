@@ -161,6 +161,7 @@ export const steps: IStep[] = [
     },
     links: [
       {
+        from: 1,
         heading: 'From Step 1',
         name: 'Soaked basmati rice',
       },
@@ -238,10 +239,12 @@ export const steps: IStep[] = [
     },
     links: [
       {
+        from: 8,
         heading: 'From Step 8',
         name: 'Reduce biryani',
       },
       {
+        from: 9,
         heading: 'From Step 9',
         name: 'Mint Raita',
       },

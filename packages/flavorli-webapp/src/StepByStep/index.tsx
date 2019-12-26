@@ -13,6 +13,10 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
     setCurrentStep(s => s + direction);
   };
 
+  const onViewStep = (stepNo: number) => {
+    setCurrentStep(stepNo);
+  };
+
   return (
     <Preparation aria-label="List of recipe steps">
       <StepList currentStep={currentStep}>
@@ -22,6 +26,7 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
               step={step}
               key={step.no}
               onChangeStep={onChangeStep}
+              onViewStep={onViewStep}
               noOfSteps={steps.length}
             />
           );

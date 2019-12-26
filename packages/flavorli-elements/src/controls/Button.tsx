@@ -4,30 +4,43 @@ const DEFAULT_WIDTH = '120px';
 const DEFAULT_HEIGHT = '35px';
 
 export interface IButtonProps {
-  intent?: 'secondary';
+  intent?: 'secondary' | 'text';
+  height?: string;
   width?: string;
 }
 
 export const Button = styled.button<IButtonProps>`
-  border: none;
-  height: ${DEFAULT_HEIGHT};
-  width: ${p => (p.width ? p.width : DEFAULT_WIDTH)};
+  padding: 0;
+  height: ${p =>
+    p.height ? p.height : p.intent === 'text' ? 'auto' : DEFAULT_HEIGHT};
+  width: ${p =>
+    p.width ? p.width : p.intent === 'text' ? 'auto' : DEFAULT_WIDTH};
   background-color: ${p =>
-    p.intent === 'secondary' ? p.theme.colors.white : p.theme.colors.primary};
-  color: ${p =>
     p.intent === 'secondary'
+      ? p.theme.colors.white
+      : p.intent === 'text'
+      ? 'none'
+      : p.theme.colors.primary};
+  font-weight: ${p => (p.intent === 'text' ? 'bold' : 'regular')};
+  color: ${p =>
+    p.intent === 'secondary' || p.intent === 'text'
       ? p.theme.colors.primary
       : p.theme.colors.textOnPrimary};
   border-radius: ${p => `${p.theme.spacings['4']}px`};
-  border: ${p => `1px solid ${p.theme.colors.primary}`};
+  border: ${p =>
+    p.intent === 'text' ? 'none' : `1px solid ${p.theme.colors.primary}`};
   box-shadow: ${p =>
-    p.intent === 'secondary' ? 'none' : p.theme.shadows.LIGHT};
+    p.intent === 'secondary' || p.intent === 'text'
+      ? 'none'
+      : p.theme.shadows.LIGHT};
   transition: 0.1s;
 
   &:hover {
     background-color: ${p =>
       p.intent === 'secondary'
         ? p.theme.colors.secondarySurface
+        : p.intent === 'text'
+        ? 'none'
         : p.theme.colors.primaryDark};
   }
 `;

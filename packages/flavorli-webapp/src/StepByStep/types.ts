@@ -8,6 +8,7 @@ export interface ITag {
 export interface ILink {
   heading: string;
   name: string;
+  from: number;
 }
 
 export interface IIngredient {

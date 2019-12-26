@@ -23,6 +23,15 @@ describe('StepByStep', () => {
     expect(section.tagName).toEqual('SECTION');
   });
 
+  it('should render the first step', () => {
+    const step1 = steps[0];
+    const {queryByLabelText} = setup();
+
+    expect(
+      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
+    ).toBeInTheDocument();
+  });
+
   it('should have a continue button that when clicked hides the current step and brings the next step into view', () => {
     const step1 = steps[0];
     const step2 = steps[1];

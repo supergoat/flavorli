@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack, Text, Button} from '@flavorli/elements';
 import {useTimer} from '../../helpers/hooks';
 import {ITimer} from '../types';
 
@@ -26,35 +26,17 @@ export default ({timer}: ITimerProps) => {
         }s`}
       </Text>
 
-      <Stack direction="horizontal">
-        <StartPauseButton
+      <Stack direction="horizontal" gap={8}>
+        <Button
+          intent="text"
+          width="47px"
           onClick={() => setIsPaused(!isPaused)}
           aria-controls="timer"
         >
           {isPaused ? 'START' : 'PAUSE'}
-        </StartPauseButton>
+        </Button>
         {/* <ResetButton onClick={() => setIsPaused(!isPaused)}>RESET</ResetButton> */}
       </Stack>
     </Stack>
   );
 };
-
-const timerStyles = css`
-  color: ${p => p.theme.colors.primary};
-  font-weight: bold;
-  border: none;
-  background: none;
-  margin: 0;
-  width: 47px;
-  padding: 0;
-  margin-right: 8px;
-`;
-
-const StartPauseButton = styled.button`
-  ${timerStyles}
-`;
-
-// const ResetButton = styled.button`
-//   ${timerStyles}
-//   color: ${p => p.theme.colors.secondaryTextColor}
-// `;

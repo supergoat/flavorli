@@ -25,20 +25,31 @@ exports[`Links should render correctly 1`] = `
           class="sc-AykKG jJvoyz"
           font-size="14"
         >
-          Link Heading
+          From Step 1
         </p>
         <p
-          class="sc-AykKG keBmAI"
+          class="sc-AykKG erRrXf"
+          color="primary"
         >
-          Link Name
+          Boiling water
         </p>
       </div>
-      <p
-        class="sc-AykKG erRrXf"
-        color="primary"
+      <div
+        class="sc-AykKH bVhbKf"
+        direction="vertical"
       >
-        0m 54s
-      </p>
+        <p
+          class="sc-AykKG erRrXf"
+          color="primary"
+        >
+          54s
+        </p>
+        <button
+          class="sc-AykKC pUsFN"
+        >
+          View Step
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -175,12 +175,7 @@ export const steps: IStep[] = [
       text: 'Sauce',
       color: 'tagRed',
     },
-    links: [
-      {
-        heading: 'From Step 1',
-        name: 'Boiling water',
-      },
-    ],
+    links: [{from: 1, heading: 'From Step 1', name: 'Boiling water'}],
     description:
       'In the pot with boiling water, add salt along with the macaroni, and boil for ten minutes',
     ingredients: [
@@ -275,11 +270,9 @@ export const steps: IStep[] = [
       color: 'tagRed',
     },
     links: [
+      {from: 7, heading: 'From Step 7', name: 'Pan with vegetables'},
       {
-        heading: 'From Step 7',
-        name: 'Pan with vegetables',
-      },
-      {
+        from: 8,
         heading: 'From Step 8',
         name: 'Macaroni',
       },
@@ -295,12 +288,7 @@ export const steps: IStep[] = [
       text: 'Assembling',
       color: 'tagPink',
     },
-    links: [
-      {
-        heading: 'From Step 12',
-        name: 'Bechamel sauce',
-      },
-    ],
+    links: [{from: 12, heading: 'From Step 12', name: 'Bechamel sauce'}],
     description:
       'Add 100g of the bechamel into the pasta mixture, add oregano, mint, and mix well',
     ingredients: [

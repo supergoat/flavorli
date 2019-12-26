@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Stack} from './index';
+import {Stack} from './Stack';
 import {IColor} from '../theme/colors';
 import {spacings} from '../theme/spacings';
 

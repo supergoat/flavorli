@@ -12,9 +12,16 @@ interface IStepProps {
   step: IStep;
   noOfSteps: number;
   onChangeStep: (direction: 1 | -1) => void;
+  onViewStep: (stepNo: number) => void;
   className?: string;
 }
-export default ({step, noOfSteps, onChangeStep, className}: IStepProps) => {
+export default ({
+  step,
+  noOfSteps,
+  onChangeStep,
+  onViewStep,
+  className,
+}: IStepProps) => {
   return (
     <Stack
       className={className}
@@ -44,7 +51,7 @@ export default ({step, noOfSteps, onChangeStep, className}: IStepProps) => {
         >
           <Tag tag={step.tag} />
 
-          <Links links={step.links} />
+          <Links links={step.links} onViewStep={onViewStep} />
 
           <Kitchenware kitchenware={step.kitchenware} />
 
