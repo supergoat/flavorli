@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {svg} from '../images';
 
+export type IconName = keyof typeof svg;
 export interface IconProps {
-  name: keyof typeof svg;
+  name: IconName;
   size?: string;
   className?: string;
 }

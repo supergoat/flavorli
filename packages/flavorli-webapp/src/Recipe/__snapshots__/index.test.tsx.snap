@@ -2,7 +2,7 @@
 
 exports[`Recipe should render correctly 1`] = `
 <div
-  class="sc-AykKH eixNXI sc-AykKI Bbxok"
+  class="sc-AykKH LDnPj sc-AykKI iRiMwd"
   direction="vertical"
   height="100%"
   width="100%"
@@ -117,7 +117,7 @@ exports[`Recipe should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-AykKH hYtJFF"
+        class="sc-AykKH icGlyX"
         direction="horizontal"
       >
         <img
@@ -655,7 +655,7 @@ exports[`Recipe should render correctly 1`] = `
         Step By Step
       </button>
       <div
-        class="sc-AykKH gJsUPX"
+        class="sc-AykKH bFnGQL"
         direction="vertical"
         width="100%"
       >
@@ -689,7 +689,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            1
+            2
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -705,7 +705,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            1
+            3
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -721,7 +721,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            1
+            4
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -737,7 +737,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            1
+            5
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -753,7 +753,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            1
+            6
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -769,7 +769,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            1
+            7
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -785,7 +785,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            1
+            8
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -795,7 +795,7 @@ exports[`Recipe should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-AykKH gJsUPX"
+        class="sc-AykKH bFnGQL"
         direction="vertical"
         width="100%"
       >
@@ -813,7 +813,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            2
+            1
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -845,7 +845,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            2
+            3
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -855,7 +855,7 @@ exports[`Recipe should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-AykKH gJsUPX"
+        class="sc-AykKH bFnGQL"
         direction="vertical"
         width="100%"
       >
@@ -873,7 +873,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            3
+            1
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -889,7 +889,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            3
+            2
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -921,7 +921,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            3
+            4
           </p>
           <p
             class="sc-AykKG fCXClx"
@@ -937,7 +937,7 @@ exports[`Recipe should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            3
+            5
           </p>
           <p
             class="sc-AykKG fCXClx"

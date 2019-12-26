@@ -14,10 +14,12 @@ export function render(ui: React.ReactNode) {
 export function renderWithRouter(ui: React.ReactElement, route: string = '/') {
   const history = createMemoryHistory({initialEntries: [route]});
   const Wrapper = ({children}: {children: React.ReactNode}) => (
-    <Router history={history}>{children}</Router>
+    <ThemeProvider theme={theme}>
+      <Router history={history}>{children}</Router>
+    </ThemeProvider>
   );
   return {
-    ...testRender(<ThemeProvider theme={theme}>{ui}</ThemeProvider>, {
+    ...testRender(ui, {
       wrapper: Wrapper as React.ComponentType,
     }),
     // adding `history` to the returned utilities to allow us

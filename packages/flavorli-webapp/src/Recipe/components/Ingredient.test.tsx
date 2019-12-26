@@ -1,17 +1,21 @@
 import React from 'react';
-import {renderWithRouter} from './helpers/test-helpers';
+import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
-import App from './App';
+import Ingredient from './Ingredient';
 
-describe('App', () => {
+const setup = () => {
+  return render(<Ingredient ingredient={{qty: '1 cup', name: 'flour'}} />);
+};
+
+describe('Ingredient', () => {
   it('should not have any axe violations', async () => {
-    const {container} = renderWithRouter(<App />);
+    const {container} = setup();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
   it('should render correctly', () => {
-    const {container} = renderWithRouter(<App />);
+    const {container} = setup();
     expect(container.firstChild).toMatchSnapshot();
   });
 });

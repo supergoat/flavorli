@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ingredient should render correctly 1`] = `
+<div
+  class="sc-AykKH dujSYy"
+  direction="horizontal"
+  width="100%"
+>
+  <p
+    class="sc-AykKG iIcCYk"
+    width="25%"
+  >
+    1 cup
+  </p>
+  <p
+    class="sc-AykKG fCXClx"
+  >
+    flour
+  </p>
+</div>
+`;

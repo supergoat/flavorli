@@ -38,7 +38,8 @@ export const Page = ({
       gap -
       paddingAdjustment);
 
-  const onDragEnd = (e: any, {offset}: any) => {
+  const onDragEnd = (e: any, info?: any) => {
+    const {offset} = info;
     if (direction === 'horizontal') {
       const offsetX = offset.x;
 

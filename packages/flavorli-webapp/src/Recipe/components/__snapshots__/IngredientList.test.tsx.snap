@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IngredientList should render correctly 1`] = `
+<div
+  class="sc-AykKH bFnGQL"
+  direction="vertical"
+  width="100%"
+>
+  <h3
+    class="sc-AykKF lfwwnG"
+    width="100%"
+  >
+    Sauce
+  </h3>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      eggplans
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      4-6 tbsps
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      olive oil
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      onion
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1 clove
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      garlic
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      2
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      zucchinis
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      red bell pepper
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      green bell pepper
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1 tsp
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      oregano
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1 tbsp
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      thyme
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1 tsp
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      chilli flakes
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1 tbsp
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      granulated sugar
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      1 tbsp
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      tomato paste
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      50 g
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      white wine
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      400 g
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      canned tomatoes
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    >
+      500 g
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      macaroni
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    />
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      salt
+    </p>
+  </div>
+  <div
+    class="sc-AykKH dujSYy"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG iIcCYk"
+      width="25%"
+    />
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      pepper
+    </p>
+  </div>
+</div>
+`;

@@ -5,7 +5,7 @@ import {colors} from '../theme/colors';
 import {motion, MotionProps} from 'framer-motion';
 import {shadows} from '../theme/shadows';
 
-export interface IStackProps extends MotionProps {
+export interface IStackProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode | null;
   direction?: 'horizontal' | 'vertical';
   distribution?:
@@ -43,7 +43,7 @@ const ForwardRefStack = (
     distribution = 'start',
     alignment = 'start',
     ...rest
-  }: IStackProps,
+  }: IStackProps & MotionProps,
   ref?: React.Ref<HTMLDivElement> | null | undefined,
 ) => {
   return (
@@ -59,9 +59,10 @@ const ForwardRefStack = (
   );
 };
 
-export const Stack = React.forwardRef<HTMLDivElement, IStackProps>(
-  ForwardRefStack,
-);
+export const Stack = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<IStackProps & MotionProps>
+>(ForwardRefStack);
 
 export const StackWrapper = styled(motion.div)<IStackProps>`
   /* Select all direct children */

@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreparationStepList should render correctly 1`] = `
+<div
+  class="sc-AykKH bFnGQL"
+  direction="vertical"
+  width="100%"
+>
+  <h3
+    class="sc-AykKF lfwwnG"
+    width="100%"
+  >
+    Sauce
+  </h3>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      1
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Place a frying pan over high heat and add the olive oil
+    </p>
+  </div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      2
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Cut the eggplan into 1 cm cubes. Add it to the pan and sauté for 1-2 minutes
+    </p>
+  </div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      3
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Finely chop the onion, add it to the pan and sauté for 1-2 minutes
+    </p>
+  </div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      4
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Cut the zucchinis and the peppers into small cubes and add them to the pan. Sauté for 4-5 minutes. until the vegetables are ready
+    </p>
+  </div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      5
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Add the salt, pepper, oregano, thyme, chili flakes, sugar and tomato paste and sauté
+    </p>
+  </div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      6
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Add the wine and canned tomatoes and simmer at medium-low heat for 10 minutes. Remove and set aside
+    </p>
+  </div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      7
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      At the same time, in a pot with boiling water, add salt along with the macaroni, and boil for ten minutes
+    </p>
+  </div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
+  >
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      8
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Drain the macaroni and transfer to the pan with the vegetables. Mix and set aside
+    </p>
+  </div>
+</div>
+`;

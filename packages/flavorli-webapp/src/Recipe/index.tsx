@@ -1,18 +1,13 @@
 import React from 'react';
-import {
-  Stack,
-  H1,
-  H2,
-  Icon,
-  Text,
-  H3,
-  Button,
-  Scroll,
-} from '@flavorli/elements';
+import {Stack, H1, Button, Scroll} from '@flavorli/elements';
 import {motion} from 'framer-motion';
+import {useHistory} from 'react-router-dom';
+import SectionHeading from './components/SectionHeading';
+import Info from './components/Info';
+import IngredientList from './components/IngredientList';
+import PreparationStepList from './components/PreparationStepList';
 
 import {recipe} from './mockData';
-import {useHistory} from 'react-router-dom';
 
 export default () => {
   let history = useHistory();
@@ -24,89 +19,50 @@ export default () => {
 
         <Stack padding={16} gap={16} width="100%" role="main">
           <H1>{recipe.name}</H1>
+
           <Stack direction="horizontal" width="100%">
-            <Stack width="25%" gap={4} alignment="center" distribution="center">
-              <Icon name="preparationTime" />
-              <Text intent="highlight">{recipe.preparation}</Text>
-              <Text intent="secondary">Preparation</Text>
-            </Stack>
-            <Stack width="25%" gap={4} alignment="center" distribution="center">
-              <Icon name="cookingTime" />
-              <Text intent="highlight">{recipe.cooking}</Text>
-              <Text intent="secondary">Cooking</Text>
-            </Stack>
-            <Stack width="25%" gap={4} alignment="center" distribution="center">
-              <Icon name="serves" />
-              <Text intent="highlight">{recipe.portions}</Text>
-              <Text intent="secondary">Portions</Text>
-            </Stack>
-            <Stack width="25%" gap={4} alignment="center" distribution="center">
-              <Icon name="difficulty" />
-              <Text intent="highlight">{recipe.difficulty}</Text>
-              <Text intent="secondary">Difficulty</Text>
-            </Stack>
+            <Info
+              name="Preparation"
+              value={recipe.preparation}
+              icon="preparationTime"
+            />
+
+            <Info name="Cooking" value={recipe.cooking} icon="cookingTime" />
+
+            <Info name="Portions" value={recipe.portions} icon="serves" />
+
+            <Info
+              name="Difficulty"
+              value={recipe.difficulty}
+              icon="difficulty"
+            />
           </Stack>
 
-          <Stack direction="horizontal" gap={8} alignment="center">
-            <Icon name="ingredients" />
-            <H2>Ingredients</H2>
-          </Stack>
+          <SectionHeading icon="ingredients">Ingredients</SectionHeading>
 
-          {Object.keys(recipe.ingredients).map((step, index) => {
+          {recipe.tasks.map(task => {
             return (
-              <Stack
-                gap={8}
-                alignment="center"
-                width="100%"
-                key={index + 'step'}
-              >
-                <H3 width="100%">{step}</H3>
-                {recipe.ingredients[step].map((ingredient, index2) => {
-                  return (
-                    <Stack
-                      direction="horizontal"
-                      gap={8}
-                      width="100%"
-                      key={index2 + 'ingredient'}
-                    >
-                      <Text width="25%" align="right">
-                        {ingredient.qty}
-                      </Text>
-                      <Text>{ingredient.name}</Text>
-                    </Stack>
-                  );
-                })}
-              </Stack>
+              <IngredientList
+                key={task.name + 'ingredients'}
+                taskName={task.name}
+                ingredients={task.ingredients}
+              />
             );
           })}
 
-          <Stack direction="horizontal" gap={8} alignment="center">
-            <Icon name="preparation" />
-            <H2>Preparation</H2>
-          </Stack>
+          <SectionHeading icon="preparation">Preparation</SectionHeading>
 
           <Button width="100%" onClick={() => history.push('/step-by-step')}>
             Step By Step
           </Button>
 
-          {Object.keys(recipe.steps).map((stepName, index) => {
+          {recipe.tasks.map(task => {
             return (
-              <Stack gap={16} width="100%" key={index + 'stepName'}>
-                <H3 width="100%">{stepName}</H3>
-                {recipe.steps[stepName].map((step, index2) => {
-                  return (
-                    <Stack
-                      direction="horizontal"
-                      gap={16}
-                      width="100%"
-                      key={index2 + 'step2'}
-                    >
-                      <Text>{index + 1}</Text>
-                      <Text>{step}</Text>
-                    </Stack>
-                  );
-                })}
-              </Stack>
+              <PreparationStepList
+                taskName={task.name}
+                steps={task.steps}
+                key={task.name + 'preparation'}
+              />
             );
           })}
         </Stack>

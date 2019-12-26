@@ -1,17 +1,20 @@
 import React from 'react';
-import {renderWithRouter} from './helpers/test-helpers';
+import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
-import App from './App';
+import Info from './Info';
 
-describe('App', () => {
+const setup = () => {
+  return render(<Info icon="preparationTime" name="Preparation" value="10'" />);
+};
+describe('Info', () => {
   it('should not have any axe violations', async () => {
-    const {container} = renderWithRouter(<App />);
+    const {container} = setup();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
   it('should render correctly', () => {
-    const {container} = renderWithRouter(<App />);
+    const {container} = setup();
     expect(container.firstChild).toMatchSnapshot();
   });
 });

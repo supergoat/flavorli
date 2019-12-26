@@ -1,30 +1,18 @@
 import React from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 import {GlobalStyle, theme} from '@flavorli/elements';
-import Recipe from './Recipe';
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import StepByStep from './StepByStep';
+import Routes from './Routes';
 
 export default () => {
   return (
     <>
       <GlobalStyle />
-
-      <Router>
+      <ThemeProvider theme={theme}>
         <App>
-          <ThemeProvider theme={theme}>
-            <Switch>
-              <Route path="/step-by-step">
-                <StepByStep />
-              </Route>
-              <Route path="/">
-                <Recipe />
-              </Route>
-            </Switch>
-          </ThemeProvider>
+          <Routes />
         </App>
-      </Router>
+      </ThemeProvider>
     </>
   );
 };
