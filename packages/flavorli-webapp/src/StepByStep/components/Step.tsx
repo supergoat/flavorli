@@ -55,7 +55,10 @@ export default ({step, noOfSteps, onChangeStep, className}: IStepProps) => {
         </Stack>
       </Scroll>
 
-      {Number(step.no) !== noOfSteps && (
+      {/* {step.no !== noOfSteps && ( */}
+      <Button onClick={() => onChangeStep(-1)}>Previous</Button>
+      {/* )} */}
+      {step.no !== noOfSteps && (
         <Button onClick={() => onChangeStep(1)}>Continue</Button>
       )}
     </Stack>

@@ -2,7 +2,7 @@ import {IStep} from './types';
 
 export const steps: IStep[] = [
   {
-    no: '1',
+    no: 1,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -18,7 +18,7 @@ export const steps: IStep[] = [
     ],
   },
   {
-    no: '2',
+    no: 2,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -39,7 +39,7 @@ export const steps: IStep[] = [
     ],
   },
   {
-    no: '3',
+    no: 3,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -60,7 +60,7 @@ export const steps: IStep[] = [
     ],
   },
   {
-    no: '4',
+    no: 4,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -77,7 +77,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '5',
+    no: 5,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -102,7 +102,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '6',
+    no: 6,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -148,7 +148,7 @@ export const steps: IStep[] = [
     ],
   },
   {
-    no: '7',
+    no: 7,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -170,7 +170,7 @@ export const steps: IStep[] = [
     kitchenware: [{qty: '1', name: 'scale'}],
   },
   {
-    no: '8',
+    no: 8,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -197,7 +197,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '9',
+    no: 9,
     tag: {
       text: 'Assembling',
       color: '#C69FB4',
@@ -208,7 +208,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '10',
+    no: 10,
     tag: {
       text: 'Bechamel',
       color: '#CC3E1E',
@@ -232,7 +232,7 @@ export const steps: IStep[] = [
     ],
   },
   {
-    no: '11',
+    no: 11,
     tag: {
       text: 'Bechamel',
       color: '#CC3E1E',
@@ -248,7 +248,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '12',
+    no: 12,
     tag: {
       text: 'Bechamel',
       color: '#CC3E1E',
@@ -269,7 +269,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '13',
+    no: 13,
     tag: {
       text: 'Sauce',
       color: '#0E2D7B',
@@ -290,7 +290,7 @@ export const steps: IStep[] = [
     kitchenware: [{qty: '1', name: 'Colander'}],
   },
   {
-    no: '14',
+    no: 14,
     tag: {
       text: 'Assembling',
       color: '#C69FB4',
@@ -316,7 +316,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '15',
+    no: 15,
     tag: {
       text: 'Assembling',
       color: '#C69FB4',
@@ -337,7 +337,7 @@ export const steps: IStep[] = [
     kitchenware: [{qty: '1', name: '40 cm ovenproof baking dish'}],
   },
   {
-    no: '16',
+    no: 16,
     tag: {
       text: 'Assembling',
       color: '#C69FB4',
@@ -366,7 +366,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '17',
+    no: 17,
     tag: {
       text: 'Assembling',
       color: '#C69FB4',

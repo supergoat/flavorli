@@ -24,7 +24,7 @@ export interface IKitchenware {
   name: string;
 }
 export interface IStep {
-  no: string;
+  no: number;
   description: string;
   tag: ITag;
   links: ILink[];

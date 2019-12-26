@@ -2,7 +2,7 @@ import {IStep} from './StepByStep/types';
 
 export const steps: IStep[] = [
   {
-    no: '1',
+    no: 1,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -24,7 +24,7 @@ export const steps: IStep[] = [
     },
   },
   {
-    no: '2',
+    no: 2,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -45,7 +45,7 @@ export const steps: IStep[] = [
     ],
   },
   {
-    no: '3',
+    no: 3,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -61,7 +61,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '4',
+    no: 4,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -83,7 +83,7 @@ export const steps: IStep[] = [
     ],
   },
   {
-    no: '5',
+    no: 5,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -129,7 +129,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
-    no: '6',
+    no: 6,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -154,7 +154,7 @@ export const steps: IStep[] = [
       'Add the ginger to the frying pan along with the chickpeas and tomato puree and briefly stir',
   },
   {
-    no: '7',
+    no: 7,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -180,7 +180,7 @@ export const steps: IStep[] = [
       'Peel and chop the potatoes. Cut the cauliflower into large pieces. Add the potatoes and the cauliflower florets to the frying pan along with soaked basmati rice. Stir until everything is well coated in spices.',
   },
   {
-    no: '8',
+    no: 8,
     tag: {
       text: 'Biryani',
       color: '#0E2D7B',
@@ -206,7 +206,7 @@ export const steps: IStep[] = [
     },
   },
   {
-    no: '9',
+    no: 9,
     tag: {
       text: 'Mint Raita',
       color: '#CC3E1E',
@@ -231,7 +231,7 @@ export const steps: IStep[] = [
       "Place all the ingredients into a blender and blend them altogether briefly until smooth. If you don't have a blender then finely chop",
   },
   {
-    no: '10',
+    no: 10,
     tag: {
       text: 'Assembling',
       color: '#C69FB4',

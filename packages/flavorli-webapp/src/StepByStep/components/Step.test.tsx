@@ -59,4 +59,14 @@ describe('Step', () => {
     const {queryByText} = setup(steps.length);
     expect(queryByText('continue')).toBeNull();
   });
+
+  it('should have a previous button that calls onChangeStep with -1 when clicked', () => {
+    const {getByText, mockOnChangeStep} = setup(2);
+
+    const previousButton = getByText(/previous/i);
+
+    userEvent.click(previousButton);
+
+    expect(mockOnChangeStep).toHaveBeenCalledWith(-1);
+  });
 });

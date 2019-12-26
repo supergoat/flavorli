@@ -44,28 +44,31 @@ describe('StepByStep', () => {
     ).not.toBeInTheDocument();
   });
 
-  //   it('should have a previous button that when clicked hides the current slide and brings the previous slide into view', () => {
-  //     const item1 = items[0];
-  //     const item2 = items[1];
+  it('should have a previous button that when clicked hides the current steps and brings the previous step into view', () => {
+    const step1 = steps[0];
+    const step2 = steps[1];
+    const {queryByLabelText, getByText} = setup();
 
-  //     const {queryByText, getByText, getByLabelText} = render(
-  //       <StepByStep label="steps label" currentSlide={2}>
-  //         {slides}
-  //       </StepByStep>,
-  //     );
+    const continueButton = getByText(/continue/i);
 
-  //     expect(queryByText(item2.text)).toBeInTheDocument();
-  //     expect(getByLabelText(`Slide 2 of ${items.length}`));
+    userEvent.click(continueButton);
 
-  //     const previousButton = getByText('previous');
+    expect(
+      queryByLabelText(`Step ${step2.no} of ${steps.length}`),
+    ).toBeInTheDocument();
 
-  //     userEvent.click(previousButton);
+    const previousButton = getByText(/previous/i);
 
-  //     expect(queryByText(item1.text)).toBeInTheDocument();
-  //     expect(getByLabelText(`Slide 1 of ${items.length}`));
+    userEvent.click(previousButton);
 
-  //     expect(queryByText(item2.text)).not.toBeInTheDocument();
-  //   });
+    expect(
+      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
+    ).toBeInTheDocument();
+
+    expect(
+      queryByLabelText(`Step ${step2.no} of ${steps.length}`),
+    ).not.toBeInTheDocument();
+  });
 
   //   it('it should hide the previous button when the current slide is the first slide', () => {
   //     const {queryByText} = render(

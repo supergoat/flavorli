@@ -10,7 +10,7 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
   useLockBodyScroll();
 
   const onChangeStep = (direction: 1 | -1) => {
-    setCurrentStep(s => s + 1);
+    setCurrentStep(s => s + direction);
   };
 
   return (
