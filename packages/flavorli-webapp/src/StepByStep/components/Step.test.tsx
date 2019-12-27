@@ -5,7 +5,10 @@ import {render} from '../../helpers/test-helpers';
 import Step from './Step';
 import {steps} from '../mockData';
 
-const setup = (stepNo?: number) => {
+const setup = ({
+  stepNo,
+  isDialog,
+}: {stepNo?: number; isDialog?: boolean} = {}) => {
   const mockOnChangeStep = jest.fn();
   const step = stepNo ? steps[stepNo - 1] : steps[0];
   const noOfSteps = steps.length + 1;
@@ -16,6 +19,7 @@ const setup = (stepNo?: number) => {
         {/* Add a div with id recipe-steps to be used by aria-controls */}
         <div id="recipe-steps" />
         <Step
+          isDialog={isDialog}
           step={step}
           onChangeStep={mockOnChangeStep}
           noOfSteps={noOfSteps}
@@ -76,7 +80,7 @@ describe('Step', () => {
   });
 
   it('it should hide the continue button when the current step is the last step', () => {
-    const {queryByText} = setup(steps.length);
+    const {queryByText} = setup({stepNo: steps.length});
     expect(queryByText('continue')).toBeNull();
   });
 
@@ -97,7 +101,7 @@ describe('Step', () => {
   });
 
   it('clicking the previous button that calls onChangeStep with -1 when clicked', () => {
-    const {getByText, mockOnChangeStep} = setup(2);
+    const {getByText, mockOnChangeStep} = setup({stepNo: 2});
 
     const previousButton = getByText(/previous/i);
 
@@ -107,7 +111,19 @@ describe('Step', () => {
   });
 
   it('it should hide the previous button when the current step is the first step', () => {
-    const {getByText} = setup(1);
+    const {getByText} = setup({stepNo: 1});
     expect(getByText(/previous/i)).not.toBeVisible();
+    expect(getByText(/previous/i)).toHaveAttribute('tabIndex', '-1');
+  });
+
+  it('should hide the previous and continue buttons when the step is a dialog', () => {
+    const {queryByText} = setup({isDialog: true});
+    expect(queryByText(/previous/i)).not.toBeInTheDocument();
+    expect(queryByText(/continue/i)).not.toBeInTheDocument();
+  });
+
+  it('should have a done button when the step is a dialog', () => {
+    const {getByText} = setup({isDialog: true});
+    getByText(/done/i);
   });
 });

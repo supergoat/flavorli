@@ -1,4 +1,5 @@
 import React from 'react';
+import {trapFocus, focusFirstDescendant} from './utils';
 
 export function useLockBodyScroll() {
   React.useLayoutEffect(() => {
@@ -23,4 +24,47 @@ export function useDimensions(ref: React.RefObject<HTMLElement>) {
   }, [ref.current]);
 
   return [width, height];
+}
+
+export function useFocusFirstDescendant(refEl: any) {
+  React.useEffect(() => {
+    if (refEl.current) {
+      focusFirstDescendant(refEl.current);
+    }
+  }, [refEl.current]);
+}
+
+export function useTrapFocus(refEl: any) {
+  function handleFocus(e: any) {
+    trapFocus(e, refEl.current);
+  }
+
+  React.useEffect(() => {
+    refEl.current.addEventListener('keydown', handleFocus);
+
+    return () => {
+      refEl.current.removeEventListener('keydown', handleFocus);
+    };
+  }, [refEl.current]);
+}
+
+export function useCloseOnEsc(onClose: () => void) {
+  function handleEscKey(e: any) {
+    const KEYCODE_ESC = 27;
+    const isEsc = e.key === 'Escape' || e.keyCode === KEYCODE_ESC;
+
+    if (!isEsc) {
+      return;
+    }
+
+    onClose();
+  }
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', handleEscKey);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, []);
 }

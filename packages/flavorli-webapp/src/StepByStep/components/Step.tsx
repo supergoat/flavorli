@@ -9,6 +9,7 @@ import Ingredients from './Ingredients';
 import styled from 'styled-components';
 
 interface IStepProps {
+  isDialog?: boolean;
   step: IStep;
   noOfSteps: number;
   onChangeStep: (direction: 1 | -1) => void;
@@ -16,6 +17,7 @@ interface IStepProps {
   className?: string;
 }
 export default ({
+  isDialog,
   step,
   noOfSteps,
   onChangeStep,
@@ -63,35 +65,40 @@ export default ({
         </Stack>
       </Scroll>
 
-      <Stack
-        direction="horizontal"
-        gap={8}
-        distribution="end"
-        width="100%"
-        paddingLeft={48}
-        paddingRight={48}
-      >
-        <PreviousButton
-          aria-label="Previous Step"
-          aria-controls="recipe-steps"
-          hide={step.no === 1}
-          intent="secondary"
-          onClick={() => onChangeStep(-1)}
+      {!isDialog && (
+        <Stack
+          direction="horizontal"
+          gap={8}
+          distribution="end"
+          width="100%"
+          paddingLeft={48}
+          paddingRight={48}
         >
-          Previous
-        </PreviousButton>
-
-        {step.no !== noOfSteps && (
-          <Button
-            aria-label="Next Step"
+          <PreviousButton
+            aria-label="Previous Step"
             aria-controls="recipe-steps"
-            onClick={() => onChangeStep(1)}
-            width="100%"
+            hide={step.no === 1}
+            tabIndex={step.no === 1 ? -1 : undefined}
+            intent="secondary"
+            onClick={() => onChangeStep(-1)}
           >
-            Continue
-          </Button>
-        )}
-      </Stack>
+            Previous
+          </PreviousButton>
+
+          {step.no !== noOfSteps && (
+            <Button
+              aria-label="Next Step"
+              aria-controls="recipe-steps"
+              onClick={() => onChangeStep(1)}
+              width="100%"
+            >
+              Continue
+            </Button>
+          )}
+        </Stack>
+      )}
+
+      {isDialog && <Button width="100%">Done</Button>}
     </Stack>
   );
 };

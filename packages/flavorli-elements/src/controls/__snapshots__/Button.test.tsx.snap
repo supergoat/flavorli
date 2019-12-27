@@ -2,7 +2,7 @@
 
 exports[`should have display the default button 1`] = `
 <button
-  class="sc-AykKC cPGfCk"
+  class="sc-AykKC LbKtq"
 >
   Hello World
 </button>

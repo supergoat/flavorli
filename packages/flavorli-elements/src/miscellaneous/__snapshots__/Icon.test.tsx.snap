@@ -3,13 +3,13 @@
 exports[`should change the icon size to the desired size 1`] = `
 <img
   alt=""
-  class="sc-fzXfLP eZxLPX"
+  class="sc-AykKJ kvAWYT"
 />
 `;
 
 exports[`should display the icon that matches the icon name 1`] = `
 <img
   alt=""
-  class="sc-fzXfLP czyQbP"
+  class="sc-AykKJ dinHDj"
 />
 `;
