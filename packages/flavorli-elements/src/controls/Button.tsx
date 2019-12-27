@@ -33,7 +33,7 @@ export const Button = styled.button<IButtonProps>`
     p.intent === 'secondary' || p.intent === 'text'
       ? 'none'
       : p.theme.shadows.LIGHT};
-  transition: 0.1s;
+  /* transition: 0.1s; */
 
   &:hover {
     background-color: ${p =>

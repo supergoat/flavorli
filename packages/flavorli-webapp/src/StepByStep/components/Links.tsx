@@ -2,11 +2,11 @@ import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 import {ILink} from '../types';
 
-interface IStepList {
+interface ILinksProps {
   links: ILink[];
   onViewStep: (stepNo: number) => void;
 }
-const StepList = ({links, onViewStep}: IStepList) => {
+const Links = ({links, onViewStep}: ILinksProps) => {
   return !!links.length ? (
     <Stack gap={8} alignment="start" width="100%" height="auto">
       {links.map(link => {
@@ -50,4 +50,4 @@ const StepList = ({links, onViewStep}: IStepList) => {
   ) : null;
 };
 
-export default StepList;
+export default Links;

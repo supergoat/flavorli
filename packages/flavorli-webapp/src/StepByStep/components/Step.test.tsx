@@ -9,6 +9,7 @@ const setup = ({
   stepNo,
   isDialog,
 }: {stepNo?: number; isDialog?: boolean} = {}) => {
+  const mockOnClose = jest.fn();
   const mockOnChangeStep = jest.fn();
   const step = stepNo ? steps[stepNo - 1] : steps[0];
   const noOfSteps = steps.length + 1;
@@ -21,7 +22,9 @@ const setup = ({
         <Step
           isDialog={isDialog}
           step={step}
+          onViewStep={jest.fn()}
           onChangeStep={mockOnChangeStep}
+          onClose={mockOnClose}
           noOfSteps={noOfSteps}
         />
       </>,
@@ -29,6 +32,7 @@ const setup = ({
     step,
     noOfSteps,
     mockOnChangeStep,
+    mockOnClose,
   };
 };
 describe('Step', () => {
@@ -122,8 +126,16 @@ describe('Step', () => {
     expect(queryByText(/continue/i)).not.toBeInTheDocument();
   });
 
-  it('should have a done button when the step is a dialog', () => {
+  it('should have a close button when the step is a dialog', () => {
     const {getByText} = setup({isDialog: true});
-    getByText(/done/i);
+    getByText(/close/i);
+  });
+
+  it('should call onClose when the close button is clicked', () => {
+    const {getByText, mockOnClose} = setup({isDialog: true});
+    const closeButton = getByText(/close/i);
+
+    userEvent.click(closeButton);
+    expect(mockOnClose).toHaveBeenCalled();
   });
 });

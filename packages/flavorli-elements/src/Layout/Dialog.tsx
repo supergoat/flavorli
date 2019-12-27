@@ -5,6 +5,7 @@ import {
   useTrapFocus,
   useCloseOnEsc,
 } from '../hooks';
+import styled from 'styled-components';
 
 interface IDialog {
   label: string;
@@ -20,7 +21,7 @@ export const Dialog = ({label, describedbyID, onClose, children}: IDialog) => {
   useCloseOnEsc(onClose);
 
   return (
-    <div
+    <DialogWrapper
       ref={refEl}
       role="dialog"
       aria-modal={true}
@@ -28,6 +29,17 @@ export const Dialog = ({label, describedbyID, onClose, children}: IDialog) => {
       aria-describedby={describedbyID}
     >
       {children}
-    </div>
+    </DialogWrapper>
   );
 };
+
+const DialogWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
