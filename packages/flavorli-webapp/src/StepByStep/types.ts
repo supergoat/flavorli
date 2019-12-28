@@ -9,6 +9,7 @@ export interface ILink {
   heading: string;
   name: string;
   from: number;
+  timerId?: number;
 }
 
 export interface IIngredient {
@@ -17,6 +18,7 @@ export interface IIngredient {
 }
 
 export interface ITimer {
+  id: number;
   name: string;
   minutes: number;
   seconds: number;

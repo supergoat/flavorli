@@ -6,8 +6,6 @@ import userEvent from '@testing-library/user-event';
 
 import {steps} from './mockData';
 import {IStep} from './types';
-import {act} from 'react-dom/test-utils';
-import {prettyDOM, wait} from '@testing-library/react';
 
 const setup = (customSteps?: IStep[]) => {
   return render(<StepByStep steps={customSteps || steps} />);

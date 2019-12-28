@@ -1,28 +1,35 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
 import {Stack, Text, Button} from '@flavorli/elements';
-import {useTimer} from '../../helpers/hooks';
-import {ITimer} from '../types';
+import {useTimersContext} from '../../helpers/timers';
 
 interface ITimerProps {
-  timer?: ITimer;
+  timerName?: string;
+  id?: number;
 }
-export default ({timer}: ITimerProps) => {
-  if (!timer) return null;
+export default ({id, timerName}: ITimerProps) => {
+  if (!id || !timerName) return null;
 
-  const [time, isPaused, setIsPaused] = useTimer(timer.minutes, timer.seconds);
+  const {timers, setTimers} = useTimersContext();
+
+  const timer = timers[id];
 
   return (
-    <Stack gap={4}>
+    <Stack
+      width="100%"
+      gap={4}
+      // direction="horizontal"
+      // distribution="space-between"
+      // alignment="center"
+    >
       <Text
-        id="timer"
+        id={`timer-${id}`}
         role="timer"
-        aria-label={timer.name}
+        aria-label={timerName}
         aria-atomic={true}
         fontSize={32}
       >
-        {`${time.minutes}m ${
-          time.seconds < 10 ? `0${time.seconds}` : time.seconds
+        {`${timer.minutes}m ${
+          timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds
         }s`}
       </Text>
 
@@ -30,12 +37,17 @@ export default ({timer}: ITimerProps) => {
         <Button
           intent="text"
           width="47px"
-          onClick={() => setIsPaused(!isPaused)}
-          aria-controls="timer"
+          onClick={() =>
+            setTimers(t => ({
+              ...t,
+              [timer.id]: {...timer, isPaused: !timer.isPaused},
+            }))
+          }
+          aria-controls={`timer-${id}`}
         >
-          {isPaused ? 'START' : 'PAUSE'}
+          {timer.isPaused ? 'START' : 'PAUSE'}
         </Button>
-        {/* <ResetButton onClick={() => setIsPaused(!isPaused)}>RESET</ResetButton> */}
+        {/* <Button intent="text">RESET</Button> */}
       </Stack>
     </Stack>
   );

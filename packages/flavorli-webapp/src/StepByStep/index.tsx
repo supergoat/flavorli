@@ -4,6 +4,8 @@ import StepList from './components/StepList';
 import Step from './components/Step';
 import {steps as STEPS} from './mockData';
 import StepDialog from './components/StepDialog';
+import Timers from './components/Timers';
+import {TimersProvider} from '../helpers/timers';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
   const [lastFocus, setLastFocus] = React.useState();
@@ -25,29 +27,32 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
   };
 
   return (
-    <Preparation aria-label="List of recipe steps">
-      <StepList currentStep={currentStep}>
-        {steps.map(step => {
-          return (
-            <Step
-              step={step}
-              key={step.no}
-              onChangeStep={onChangeStep}
-              onViewStep={onViewStep}
-              noOfSteps={steps.length}
-            />
-          );
-        })}
-      </StepList>
-      {openLink && (
-        <StepDialog
-          stepNo={openLink}
-          noOfSteps={steps.length}
-          onViewStep={onViewStep}
-          onClose={() => onCloseDialog()}
-        />
-      )}
-    </Preparation>
+    <TimersProvider>
+      <Timers steps={steps} />
+      <Preparation aria-label="List of recipe steps">
+        <StepList currentStep={currentStep}>
+          {steps.map(step => {
+            return (
+              <Step
+                step={step}
+                key={step.no}
+                onChangeStep={onChangeStep}
+                onViewStep={onViewStep}
+                noOfSteps={steps.length}
+              />
+            );
+          })}
+        </StepList>
+        {openLink && (
+          <StepDialog
+            stepNo={openLink}
+            noOfSteps={steps.length}
+            onViewStep={onViewStep}
+            onClose={() => onCloseDialog()}
+          />
+        )}
+      </Preparation>
+    </TimersProvider>
   );
 };
 

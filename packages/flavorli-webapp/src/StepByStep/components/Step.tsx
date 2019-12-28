@@ -63,7 +63,7 @@ export default ({
 
           <Text spacing={{line: '1.5'}}>{step.description}</Text>
 
-          <Timer timer={step.timer} />
+          <Timer id={step?.timer?.id} timerName={step?.timer?.name} />
         </Stack>
       </Scroll>
 

@@ -166,7 +166,7 @@ export const steps: IStep[] = [
         name: 'canned tomatoes',
       },
     ],
-    timer: {name: '7. Simmer Sauce', minutes: 10, seconds: 0},
+    timer: {id: 7, name: 'Step 7: Simmer Sauce', minutes: 10, seconds: 0},
     kitchenware: [{qty: '1', name: 'scale'}],
   },
   {
@@ -188,7 +188,7 @@ export const steps: IStep[] = [
         name: 'macaroni',
       },
     ],
-    timer: {name: '8. Cook Pasta', minutes: 10, seconds: 0},
+    timer: {id: 8, name: 'Step 8: Cook Pasta', minutes: 10, seconds: 0},
     kitchenware: [],
   },
   {
@@ -270,11 +270,17 @@ export const steps: IStep[] = [
       color: 'tagRed',
     },
     links: [
-      {from: 7, heading: 'From Step 7', name: 'Pan with vegetables'},
+      {
+        from: 7,
+        heading: 'From Step 7',
+        name: 'Pan with vegetables',
+        timerId: 7,
+      },
       {
         from: 8,
         heading: 'From Step 8',
         name: 'Macaroni',
+        timerId: 8,
       },
     ],
     description:
@@ -362,7 +368,7 @@ export const steps: IStep[] = [
     links: [],
     description: 'Bake for 25 - 30 minutes. Remove and let it cool',
     ingredients: [],
-    timer: {name: '17. Bake Pastitsio', minutes: 30, seconds: 0},
+    timer: {id: 17, name: 'Step 17: Bake Pastitsio', minutes: 30, seconds: 0},
     kitchenware: [
       {
         qty: '1',

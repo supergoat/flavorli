@@ -38,14 +38,8 @@ exports[`Links should render correctly 1`] = `
         class="sc-AykKH bVhbKf"
         direction="vertical"
       >
-        <p
-          class="sc-AykKG erRrXf"
-          color="primary"
-        >
-          54s
-        </p>
         <button
-          class="sc-AykKC eqagQD"
+          class="sc-AykKC hPXCfd"
         >
           View Step
         </button>

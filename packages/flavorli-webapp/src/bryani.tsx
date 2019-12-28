@@ -18,6 +18,7 @@ export const steps: IStep[] = [
     kitchenware: [],
     links: [],
     timer: {
+      id: 1,
       name: 'basmati rice',
       minutes: 10,
       seconds: 0,
@@ -201,6 +202,7 @@ export const steps: IStep[] = [
     description:
       'Crumble the stock cube and add the water to the pan and bring to boil. Stir occasionally, and bring down to a simmer until all the water has gone and rice is well cooked.',
     timer: {
+      id: 2,
       name: 'Reduced Biryani',
       minutes: 10,
       seconds: 0,

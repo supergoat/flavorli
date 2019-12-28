@@ -19,7 +19,7 @@ export const Button = styled.button<IButtonProps>`
     p.intent === 'secondary'
       ? p.theme.colors.white
       : p.intent === 'text'
-      ? 'none'
+      ? 'transparent'
       : p.theme.colors.primary};
   font-weight: ${p => (p.intent === 'text' ? 'bold' : 'regular')};
   color: ${p =>
