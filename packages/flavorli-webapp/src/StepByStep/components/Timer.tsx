@@ -3,30 +3,40 @@ import {Stack, Text, Button} from '@flavorli/elements';
 import {useTimersContext} from '../../helpers/timers';
 
 interface ITimerProps {
-  timerName?: string;
+  type?: 'notification';
   id?: number;
 }
-export default ({id, timerName}: ITimerProps) => {
-  if (!id || !timerName) return null;
+export default ({id, type}: ITimerProps) => {
+  if (!id) return null;
 
   const {timers, setTimers} = useTimersContext();
 
   const timer = timers[id];
 
+  const toggleTimer = () => {
+    setTimers(t => ({
+      ...t,
+      [timer.id]: {
+        ...timer,
+        isPaused: !timer.isPaused,
+      },
+    }));
+  };
+
   return (
     <Stack
       width="100%"
       gap={4}
-      // direction="horizontal"
-      // distribution="space-between"
-      // alignment="center"
+      direction={type === 'notification' ? 'horizontal' : 'vertical'}
+      distribution={type === 'notification' ? 'space-between' : 'start'}
+      alignment={type === 'notification' ? 'center' : 'start'}
     >
       <Text
-        id={`timer-${id}`}
+        id={`timer-${timer.id}`}
         role="timer"
-        aria-label={timerName}
+        aria-label={timer.name}
         aria-atomic={true}
-        fontSize={32}
+        fontSize={type === 'notification' ? 24 : 32}
       >
         {`${timer.minutes}m ${
           timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds
@@ -37,17 +47,14 @@ export default ({id, timerName}: ITimerProps) => {
         <Button
           intent="text"
           width="47px"
-          onClick={() =>
-            setTimers(t => ({
-              ...t,
-              [timer.id]: {...timer, isPaused: !timer.isPaused},
-            }))
-          }
-          aria-controls={`timer-${id}`}
+          onClick={toggleTimer}
+          aria-controls={`timer-${timer.id}`}
         >
           {timer.isPaused ? 'START' : 'PAUSE'}
         </Button>
-        {/* <Button intent="text">RESET</Button> */}
+        <Button intent="text" color="secondaryTextColor">
+          RESET
+        </Button>
       </Stack>
     </Stack>
   );

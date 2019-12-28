@@ -12,13 +12,16 @@ afterEach(() => {
   jest.useRealTimers();
 });
 
-const setup = () => {
+const setup = (type?: 'notification') => {
   const stepWithTimer = steps[6];
   const timer = stepWithTimer.timer as ITimer;
+
   return {
     ...render(
-      <TimersProvider initialValues={{[timer.id]: {...timer, isPaused: true}}}>
-        <Timer id={timer.id} timerName={timer.name} />
+      <TimersProvider
+        initialValues={{timers: {[timer.id]: {...timer, isPaused: true}}}}
+      >
+        <Timer id={timer.id} type={type} />
       </TimersProvider>,
     ),
     timer,
@@ -47,46 +50,6 @@ describe('Timer', () => {
     expect(getByRole('timer')).toHaveAttribute('aria-atomic', 'true');
   });
 
-  it('should start/pause the timer when the start/pause button is clicked', () => {
-    const {queryByText, getByText} = setup();
-    jest.useFakeTimers();
-
-    const startButton = getByText('START');
-
-    act(() => {
-      userEvent.click(startButton);
-    });
-
-    act(() => {
-      jest.runOnlyPendingTimers();
-    });
-
-    expect(queryByText('START')).toBeNull();
-
-    getByText('9m 59s');
-
-    act(() => {
-      jest.runOnlyPendingTimers();
-    });
-
-    getByText('9m 58s');
-
-    const pauseButton = getByText('PAUSE');
-
-    act(() => {
-      userEvent.click(pauseButton);
-    });
-
-    expect(queryByText('PAUSE')).toBeNull();
-    getByText('START');
-
-    act(() => {
-      jest.runOnlyPendingTimers();
-    });
-
-    getByText('9m 58s');
-  });
-
   it('should have aria-controls pointing to the timer on the start/pause buttons that control the timer', () => {
     const {getByRole, getByText, timer} = setup();
     expect(getByRole('timer')).toHaveAttribute('id', `timer-${timer.id}`);
@@ -101,6 +64,16 @@ describe('Timer', () => {
 
     const pauseButton = getByText('PAUSE');
     expect(pauseButton).toHaveAttribute('aria-controls', `timer-${timer.id}`);
+  });
+
+  it('should render correctly', () => {
+    const {container} = setup();
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render correctly when type is notification', () => {
+    const {container} = setup('notification');
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should render an empty div if the timer is null', () => {

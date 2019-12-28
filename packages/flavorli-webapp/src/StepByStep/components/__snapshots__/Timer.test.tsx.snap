@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Timer should render correctly 1`] = `
+<div
+  class="sc-AykKH bWlsaY"
+  direction="vertical"
+  width="100%"
+>
+  <p
+    aria-atomic="true"
+    aria-label="Step 7: Simmer Sauce"
+    class="sc-AykKG jBmvtL"
+    font-size="32"
+    id="timer-7"
+    role="timer"
+  >
+    10m 00s
+  </p>
+  <div
+    class="sc-AykKH bhytJE"
+    direction="horizontal"
+  >
+    <button
+      aria-controls="timer-7"
+      class="sc-AykKC ipAPEz"
+      width="47px"
+    >
+      START
+    </button>
+    <button
+      class="sc-AykKC danRJn"
+      color="secondaryTextColor"
+    >
+      RESET
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Timer should render correctly when type is notification 1`] = `
+<div
+  class="sc-AykKH bdJbtG"
+  direction="horizontal"
+  width="100%"
+>
+  <p
+    aria-atomic="true"
+    aria-label="Step 7: Simmer Sauce"
+    class="sc-AykKG hCeYPE"
+    font-size="24"
+    id="timer-7"
+    role="timer"
+  >
+    10m 00s
+  </p>
+  <div
+    class="sc-AykKH bhytJE"
+    direction="horizontal"
+  >
+    <button
+      aria-controls="timer-7"
+      class="sc-AykKC ipAPEz"
+      width="47px"
+    >
+      START
+    </button>
+    <button
+      class="sc-AykKC danRJn"
+      color="secondaryTextColor"
+    >
+      RESET
+    </button>
+  </div>
+</div>
+`;

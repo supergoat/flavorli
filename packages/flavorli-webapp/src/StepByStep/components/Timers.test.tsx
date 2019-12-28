@@ -7,7 +7,7 @@ import Timers from './Timers';
 const setup = () => {
   return {
     ...render(
-      <TimersProvider>
+      <TimersProvider initialValues={{timers: []}}>
         <Timers />,
       </TimersProvider>,
     ),

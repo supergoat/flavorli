@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import {render} from '../../helpers/test-helpers';
 import Step from './Step';
 import {steps} from '../mockData';
+import {TimersProvider} from '../../helpers/timers';
 
 const setup = ({
   stepNo,
@@ -14,9 +15,16 @@ const setup = ({
   const step = stepNo ? steps[stepNo - 1] : steps[0];
   const noOfSteps = steps.length + 1;
 
+  const timers = step.timer
+    ? {[step.timer.id]: {...step.timer, isPaused: true}}
+    : [];
   return {
     ...render(
-      <>
+      <TimersProvider
+        initialValues={{
+          timers,
+        }}
+      >
         {/* Add a div with id recipe-steps to be used by aria-controls */}
         <div id="recipe-steps" />
         <Step
@@ -27,7 +35,7 @@ const setup = ({
           onClose={mockOnClose}
           noOfSteps={noOfSteps}
         />
-      </>,
+      </TimersProvider>,
     ),
     step,
     noOfSteps,

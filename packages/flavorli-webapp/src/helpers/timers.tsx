@@ -1,5 +1,6 @@
 import React from 'react';
-import {IStep, ITimer} from '../StepByStep/types';
+import {ITimer} from '../StepByStep/types';
+import {useInterval} from './hooks';
 
 export const TimersContext = React.createContext<{
   timers: any;
@@ -7,9 +8,16 @@ export const TimersContext = React.createContext<{
   resetTimer: React.Dispatch<React.SetStateAction<{}>>;
 } | null>(null);
 
-export function TimersProvider({initialValues = {}, ...props}) {
-  const [timers, setTimers] = React.useState(initialValues);
-  const resetTimer = () => setTimers(initialValues);
+export function TimersProvider({initialValues, ...props}: any) {
+  const [timers, setTimers] = React.useState();
+
+  React.useEffect(() => {
+    setTimers(initialValues.timers);
+  }, [initialValues.timers]);
+
+  if (!timers) return null;
+
+  const resetTimer = () => setTimers(initialValues.timers);
   return (
     <TimersContext.Provider
       value={{timers, setTimers, resetTimer}}
@@ -26,59 +34,31 @@ export function useTimersContext() {
   return context;
 }
 
-export function useInitStepTimers(steps: IStep[]) {
-  const {timers, setTimers} = useTimersContext();
+export interface initTimer extends ITimer {
+  isPaused: boolean;
+}
 
-  React.useEffect(() => {
-    steps.forEach(step => {
-      const timer = step.timer;
-      if (!timer) return;
+export function useUpdateTimers(timer: initTimer) {
+  const {setTimers} = useTimersContext();
+
+  useInterval(() => {
+    if (timer.isPaused) return;
+
+    if (timer.minutes === 0 && timer.seconds === 0) {
       setTimers(t => ({
         ...t,
         [timer.id]: {...timer, isPaused: true},
       }));
-    });
-  }, [setTimers, steps]);
-
-  useUpdateTimers(timers, setTimers);
-}
-
-interface initTimer extends ITimer {
-  isPaused: boolean;
-}
-
-export function useUpdateTimers(timers: initTimer[], setTimers: any) {
-  React.useEffect(() => {
-    const interval: number = setInterval(() => {
-      let updatedTimers = {...timers};
-
-      Object.values(timers).forEach(timer => {
-        if (timer.isPaused) return;
-
-        if (timer.minutes === 0 && timer.seconds === 0) {
-          updatedTimers = {
-            ...updatedTimers,
-            [timer.id]: {...timer, isPaused: true},
-          };
-          clearInterval(interval);
-        } else if (timer.seconds > 0) {
-          updatedTimers = {
-            ...updatedTimers,
-            [timer.id]: {...timer, seconds: timer.seconds - 1},
-          };
-        } else {
-          updatedTimers = {
-            ...updatedTimers,
-            [timer.id]: {...timer, minutes: timer.minutes - 1, seconds: 59},
-          };
-        }
-      });
-
-      setTimers(updatedTimers);
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [setTimers, timers]);
+    } else if (timer.seconds > 0) {
+      setTimers(t => ({
+        ...t,
+        [timer.id]: {...timer, seconds: timer.seconds - 1},
+      }));
+    } else {
+      setTimers(t => ({
+        ...t,
+        [timer.id]: {...timer, minutes: timer.minutes - 1, seconds: 59},
+      }));
+    }
+  }, 1000);
 }

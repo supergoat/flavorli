@@ -8,6 +8,7 @@ import Timers from './components/Timers';
 import {TimersProvider} from '../helpers/timers';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
+  const [timers, setTimers] = React.useState({});
   const [lastFocus, setLastFocus] = React.useState();
   const [currentStep, setCurrentStep] = React.useState(1);
   const [openLink, setOpenLink] = React.useState();
@@ -26,9 +27,18 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
     lastFocus.focus();
   };
 
+  React.useEffect(() => {
+    steps.forEach(step => {
+      const timer = step.timer;
+      if (!timer) return;
+
+      setTimers(t => ({...t, [timer.id]: {...timer, isPaused: true}}));
+    });
+  }, [steps]);
+
   return (
-    <TimersProvider>
-      <Timers steps={steps} />
+    <TimersProvider initialValues={{timers: timers}}>
+      <Timers />
       <Preparation aria-label="List of recipe steps">
         <StepList currentStep={currentStep}>
           {steps.map(step => {
