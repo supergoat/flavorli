@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Links from './Links';
-import {steps} from '../mockData';
+import {steps} from '../helpers/mockData';
 import {ILink} from '../types';
 import userEvent from '@testing-library/user-event';
 

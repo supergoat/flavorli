@@ -3,8 +3,8 @@ import {axe} from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import {render} from '../../helpers/test-helpers';
 import Step from './Step';
-import {steps} from '../mockData';
-import {TimersProvider} from '../../helpers/timers';
+import {steps} from '../helpers/mockData';
+import {TimersProvider} from '../helpers/timersContext';
 
 const setup = ({
   stepNo,

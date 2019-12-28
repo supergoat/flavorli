@@ -1,6 +1,6 @@
 import React from 'react';
-import {ITimer} from '../StepByStep/types';
-import {useInterval} from './hooks';
+import {ITimer} from '../types';
+import {useInterval} from '../../helpers/hooks';
 
 export const TimersContext = React.createContext<{
   timers: any;

@@ -2,11 +2,11 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Timer from './Timer';
-import {steps} from '../mockData';
+import {steps} from '../helpers/mockData';
 import {act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {ITimer} from '../types';
-import {TimersProvider} from '../../helpers/timers';
+import {TimersProvider} from '../helpers/timersContext';
 
 afterEach(() => {
   jest.useRealTimers();

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dialog} from '@flavorli/elements';
 import Step from './Step';
-import {steps} from '../mockData';
+import {steps} from '../helpers/mockData';
 
 interface IStepDialogProps {
   stepNo: number;

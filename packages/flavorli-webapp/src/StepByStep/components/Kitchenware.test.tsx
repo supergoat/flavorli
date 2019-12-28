@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Kitchenware from './Kitchenware';
-import {steps} from '../mockData';
+import {steps} from '../helpers/mockData';
 
 describe('Kitchenware', () => {
   it('should not have any axe violations', async () => {

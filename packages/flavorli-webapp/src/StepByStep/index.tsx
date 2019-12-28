@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import StepList from './components/StepList';
 import Step from './components/Step';
-import {steps as STEPS} from './mockData';
+import {steps as STEPS} from './helpers/mockData';
 import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
-import {TimersProvider} from '../helpers/timers';
+import {TimersProvider} from './helpers/timersContext';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
   const [timers, setTimers] = React.useState({});

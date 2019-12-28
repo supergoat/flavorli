@@ -1,7 +1,7 @@
 import React from 'react';
 import Timer from './Timer';
 import {Stack, Text} from '@flavorli/elements';
-import {useUpdateTimers, initTimer} from '../../helpers/timers';
+import {useUpdateTimers, initTimer} from '../helpers/timersContext';
 
 const NotificationTimer = ({timer}: {timer: initTimer}) => {
   useUpdateTimers(timer);

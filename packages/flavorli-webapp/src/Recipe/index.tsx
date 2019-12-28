@@ -7,7 +7,7 @@ import Info from './components/Info';
 import IngredientList from './components/IngredientList';
 import PreparationStepList from './components/PreparationStepList';
 
-import {recipe} from './mockData';
+import {recipe} from './helpers/mockData';
 
 export default () => {
   let history = useHistory();

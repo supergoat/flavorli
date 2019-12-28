@@ -4,7 +4,7 @@ import {render} from '../helpers/test-helpers';
 import StepByStep from '.';
 import userEvent from '@testing-library/user-event';
 
-import {steps} from './mockData';
+import {steps} from './helpers/mockData';
 import {IStep} from './types';
 
 const setup = (customSteps?: IStep[]) => {

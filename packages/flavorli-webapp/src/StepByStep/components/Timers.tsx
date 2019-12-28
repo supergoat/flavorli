@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Stack} from '@flavorli/elements';
-import {useTimersContext} from '../../helpers/timers';
+import {useTimersContext} from '../helpers/timersContext';
 import NotificationTimer from './NotificationTimer';
 
 export const Timers = () => {

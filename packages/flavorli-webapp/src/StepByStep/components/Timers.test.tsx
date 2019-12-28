@@ -1,7 +1,7 @@
 import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
-import {TimersProvider} from '../../helpers/timers';
+import {TimersProvider} from '../helpers/timersContext';
 import Timers from './Timers';
 
 const setup = () => {

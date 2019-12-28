@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import IngredientList from './IngredientList';
-import {recipe} from '../mockData';
+import {recipe} from '../helpers/mockData';
 
 const setup = () => {
   return render(

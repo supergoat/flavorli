@@ -2,9 +2,9 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import NotificationTimer from './NotificationTimer';
-import {steps} from '../mockData';
+import {steps} from '../helpers/mockData';
 
-import {TimersProvider, initTimer} from '../../helpers/timers';
+import {TimersProvider, initTimer} from '../helpers/timersContext';
 
 afterEach(() => {
   jest.useRealTimers();

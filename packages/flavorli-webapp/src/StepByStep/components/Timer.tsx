@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
-import {useTimersContext} from '../../helpers/timers';
+import {useTimersContext} from '../helpers/timersContext';
 
 interface ITimerProps {
   type?: 'notification';
