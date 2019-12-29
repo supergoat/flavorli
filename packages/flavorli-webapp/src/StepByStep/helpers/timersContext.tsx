@@ -4,7 +4,9 @@ import {useInterval} from '../../helpers/hooks';
 
 interface ITimersContext {
   timers: {[timerId: number]: ITimer};
-  setTimers: React.Dispatch<React.SetStateAction<{}>>;
+  setTimers: React.Dispatch<{
+    [timerId: number]: ITimer;
+  }>;
 }
 
 export const TimersContext = React.createContext<ITimersContext | null>(null);
@@ -13,29 +15,29 @@ export function TimersProvider({
   initialValues,
   ...props
 }: {
-  initialValues?: Partial<ITimersContext>;
+  initialValues?: {[timerId: number]: ITimer};
   children: React.ReactNode;
 }) {
-  const [contextTimers, setTimers] = React.useState({});
-
-  const timers = initialValues?.timers;
-
-  React.useEffect(() => {
-    if (timers) setTimers(timers);
-  }, [timers]);
-
-  if (!contextTimers) return null;
-
-  return (
-    <TimersContext.Provider
-      value={{timers: contextTimers, setTimers}}
-      {...props}
-    />
+  const [initState] = React.useState(initialValues || {});
+  const [timers, setTimers] = React.useReducer(
+    (
+      state: {[timerId: number]: ITimer},
+      action: {[timerId: number]: ITimer},
+    ) => ({
+      ...state,
+      ...action,
+    }),
+    initState,
   );
+
+  console.log('hello');
+
+  return <TimersContext.Provider value={{timers, setTimers}} {...props} />;
 }
 
 export function useTimersContext() {
   const context = React.useContext(TimersContext);
+
   if (!context) {
     throw new Error('useTimersContext must be used within a TimersProvider');
   }
@@ -43,35 +45,46 @@ export function useTimersContext() {
 }
 
 export function useAddTimerIfItDoesNotExist(timer: ITimer) {
-  const {timers, setTimers} = useTimersContext();
-  if (timers[timer.id]) return;
-  setTimers(t => ({
-    ...t,
+  const context = useTimersContext();
+
+  if (context.timers[timer.id]) return context;
+  context.setTimers({
     [timer.id]: {...timer, isPaused: timer.isPaused ?? true},
-  }));
+  });
+
+  return context;
 }
 
-export function useUpdateTimers(timer: ITimer) {
+function decrementTimer(timer: ITimer) {
+  if (timer.isPaused) return timer;
+
+  if (timer.minutes === 0 && timer.seconds === 0) {
+    return {...timer, isPaused: true};
+  }
+
+  if (timer.seconds > 0) {
+    return {...timer, seconds: timer.seconds - 1};
+  }
+
+  return {
+    ...timer,
+    minutes: timer.minutes - 1,
+    seconds: 59,
+  };
+}
+
+export function useDecrementTimer(timer: ITimer) {
   const {setTimers} = useTimersContext();
 
-  useInterval(() => {
-    if (timer.isPaused) return;
+  let updatedTimer = decrementTimer(timer);
 
-    if (timer.minutes === 0 && timer.seconds === 0) {
-      setTimers(t => ({
-        ...t,
-        [timer.id]: {...timer, isPaused: true},
-      }));
-    } else if (timer.seconds > 0) {
-      setTimers(t => ({
-        ...t,
-        [timer.id]: {...timer, seconds: timer.seconds - 1},
-      }));
-    } else {
-      setTimers(t => ({
-        ...t,
-        [timer.id]: {...timer, minutes: timer.minutes - 1, seconds: 59},
-      }));
-    }
-  }, 1000);
+  useInterval(
+    () => setTimers({[updatedTimer.id]: updatedTimer}),
+    updatedTimer.isPaused ||
+      (updatedTimer.minutes === 0 && updatedTimer.seconds === 0)
+      ? null
+      : 1000,
+  );
+
+  return updatedTimer;
 }

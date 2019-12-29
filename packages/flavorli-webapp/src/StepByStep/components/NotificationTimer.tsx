@@ -1,11 +1,11 @@
 import React from 'react';
 import Timer from './Timer';
 import {Stack, Text} from '@flavorli/elements';
-import {useUpdateTimers} from '../helpers/timersContext';
+import {useDecrementTimer} from '../helpers/timersContext';
 import {ITimer} from '../types';
 
 const NotificationTimer = ({timer}: {timer: ITimer}) => {
-  useUpdateTimers(timer);
+  useDecrementTimer(timer);
 
   return (
     <Stack

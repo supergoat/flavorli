@@ -1,9 +1,6 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
-import {
-  useTimersContext,
-  useAddTimerIfItDoesNotExist,
-} from '../helpers/timersContext';
+import {useAddTimerIfItDoesNotExist} from '../helpers/timersContext';
 import {ITimer} from '../types';
 
 interface ITimerProps {
@@ -11,22 +8,19 @@ interface ITimerProps {
   timer: ITimer;
 }
 export default ({timer, type}: ITimerProps) => {
-  useAddTimerIfItDoesNotExist(timer);
-
-  const {timers, setTimers} = useTimersContext();
+  const {timers, setTimers} = useAddTimerIfItDoesNotExist(timer);
 
   const initialisedTimer = timers[timer.id];
 
   if (!initialisedTimer) return null;
 
   const toggleTimer = () => {
-    setTimers(t => ({
-      ...t,
+    setTimers({
       [initialisedTimer.id]: {
         ...initialisedTimer,
         isPaused: !initialisedTimer.isPaused,
       },
-    }));
+    });
   };
 
   return (

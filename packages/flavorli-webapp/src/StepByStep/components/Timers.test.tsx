@@ -13,7 +13,7 @@ const setup = (timers?: {[timerId: number]: ITimer}) => {
   const contextTimers = timers || {[timer.id]: timer};
   return {
     ...render(
-      <TimersProvider initialValues={{timers: contextTimers}}>
+      <TimersProvider initialValues={contextTimers}>
         <Timers />
       </TimersProvider>,
     ),
