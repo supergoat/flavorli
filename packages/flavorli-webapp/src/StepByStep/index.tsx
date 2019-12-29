@@ -1,14 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import StepList from './components/StepList';
 import Step from './components/Step';
 import {steps as STEPS} from './helpers/mockData';
 import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
+import {Stack} from '@flavorli/elements';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
-  const [timers, setTimers] = React.useState({});
   const [lastFocus, setLastFocus] = React.useState();
   const [currentStep, setCurrentStep] = React.useState(1);
   const [openLink, setOpenLink] = React.useState();
@@ -27,32 +26,32 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
     lastFocus.focus();
   };
 
-  React.useEffect(() => {
-    steps.forEach(step => {
-      const timer = step.timer;
-      if (!timer) return;
-
-      setTimers(t => ({...t, [timer.id]: {...timer, isPaused: true}}));
-    });
-  }, [steps]);
-
   return (
-    <TimersProvider initialValues={{timers: timers}}>
-      <Timers />
-      <Preparation aria-label="List of recipe steps">
-        <StepList currentStep={currentStep}>
-          {steps.map(step => {
-            return (
-              <Step
-                step={step}
-                key={step.no}
-                onChangeStep={onChangeStep}
-                onViewStep={onViewStep}
-                noOfSteps={steps.length}
-              />
-            );
-          })}
-        </StepList>
+    <Stack width="100%" height="100%" background="backdropDark">
+      <TimersProvider>
+        <Timers />
+        <section
+          aria-label="List of recipe steps"
+          id="list-of-recipes"
+          style={{
+            width: '100%',
+            height: 'calc(100% - 50px)',
+          }}
+        >
+          <StepList currentStep={currentStep}>
+            {steps.map(step => {
+              return (
+                <Step
+                  step={step}
+                  key={step.no}
+                  onChangeStep={onChangeStep}
+                  onViewStep={onViewStep}
+                  noOfSteps={steps.length}
+                />
+              );
+            })}
+          </StepList>
+        </section>
         {openLink && (
           <StepDialog
             stepNo={openLink}
@@ -61,13 +60,7 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
             onClose={() => onCloseDialog()}
           />
         )}
-      </Preparation>
-    </TimersProvider>
+      </TimersProvider>
+    </Stack>
   );
 };
-
-const Preparation = styled.section`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`;

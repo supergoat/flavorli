@@ -3,14 +3,21 @@ import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import {TimersProvider} from '../helpers/timersContext';
 import Timers from './Timers';
+import {ITimer} from '../types';
+import {steps} from '../helpers/mockData';
+import userEvent from '@testing-library/user-event';
 
-const setup = () => {
+const setup = (timers?: {[timerId: number]: ITimer}) => {
+  const stepWithTimer = steps[6];
+  const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
+  const contextTimers = timers || {[timer.id]: timer};
   return {
     ...render(
-      <TimersProvider initialValues={{timers: []}}>
-        <Timers />,
+      <TimersProvider initialValues={{timers: contextTimers}}>
+        <Timers />
       </TimersProvider>,
     ),
+    timer,
   };
 };
 
@@ -24,5 +31,41 @@ describe('Timers', () => {
   it('should render correctly', () => {
     const {container} = setup();
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render a placeholder if there are no timers', () => {
+    const {container} = setup({});
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should hide the timers by default', () => {
+    const {queryByLabelText, timer} = setup();
+
+    expect(queryByLabelText(timer.name)).toBeNull();
+  });
+
+  it('should show the timers when clicking on View Timers button', () => {
+    const {getByText, queryByLabelText, timer} = setup();
+
+    const viewTimersButton = getByText(/View Timers/i);
+
+    userEvent.click(viewTimersButton);
+
+    expect(queryByLabelText(timer.name)).toBeDefined();
+  });
+
+  it('should hide the timers when clicking on Hide Timers button', () => {
+    const {getByText, queryByLabelText, timer} = setup();
+
+    const viewTimersButton = getByText(/View Timers/i);
+
+    // Click View Timers to show Hide Timers Button
+    userEvent.click(viewTimersButton);
+
+    const hideTimers = getByText(/Hide Timers/i);
+
+    userEvent.click(hideTimers);
+
+    expect(queryByLabelText(timer.name)).toBeNull();
   });
 });

@@ -31,6 +31,8 @@ export const colors = {
   background: COLORS.WHITE,
   surface: COLORS.WHITE,
   secondarySurface: COLORS.GREY_500,
+  backdropDark: 'rgba(0, 0, 0, 0.6)',
+  backdrop: 'rgba(255, 255, 255, 0.7)',
 
   textColor: COLORS.BLACK,
   secondaryTextColor: COLORS.GREY_700,

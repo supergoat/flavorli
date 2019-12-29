@@ -1,4 +1,4 @@
-import {IStep} from './types';
+import {IStep} from '../types';
 
 export const steps: IStep[] = [
   {

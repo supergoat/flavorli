@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import {Stack} from '@flavorli/elements';
 
 /**
  * Implemented according to
@@ -11,7 +11,9 @@ export interface IStepListProps {
 }
 const StepList = ({children, currentStep}: IStepListProps) => {
   return (
-    <StepListWrapper
+    <Stack
+      width="100%"
+      height="100%"
       id="recipe-steps"
       data-testid="recipe-steps"
       aria-live="polite"
@@ -21,13 +23,8 @@ const StepList = ({children, currentStep}: IStepListProps) => {
 
         return isCurrentSlide && <>{child}</>;
       })}
-    </StepListWrapper>
+    </Stack>
   );
 };
 
 export default StepList;
-
-const StepListWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-`;

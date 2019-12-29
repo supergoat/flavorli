@@ -14,14 +14,12 @@ afterEach(() => {
 
 const setup = (type?: 'notification') => {
   const stepWithTimer = steps[6];
-  const timer = stepWithTimer.timer as ITimer;
+  const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
   return {
     ...render(
-      <TimersProvider
-        initialValues={{timers: {[timer.id]: {...timer, isPaused: true}}}}
-      >
-        <Timer id={timer.id} type={type} />
+      <TimersProvider>
+        <Timer timer={timer} type={type} />
       </TimersProvider>,
     ),
     timer,
@@ -74,10 +72,5 @@ describe('Timer', () => {
   it('should render correctly when type is notification', () => {
     const {container} = setup('notification');
     expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it('should render an empty div if the timer is null', () => {
-    const {container} = render(<Timer />);
-    expect(container.firstChild).toBeNull();
   });
 });

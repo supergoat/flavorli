@@ -1,9 +1,10 @@
 import React from 'react';
 import Timer from './Timer';
 import {Stack, Text} from '@flavorli/elements';
-import {useUpdateTimers, initTimer} from '../helpers/timersContext';
+import {useUpdateTimers} from '../helpers/timersContext';
+import {ITimer} from '../types';
 
-const NotificationTimer = ({timer}: {timer: initTimer}) => {
+const NotificationTimer = ({timer}: {timer: ITimer}) => {
   useUpdateTimers(timer);
 
   return (
@@ -19,7 +20,7 @@ const NotificationTimer = ({timer}: {timer: initTimer}) => {
       <Text fontSize={14} color="primary">
         {timer.name}
       </Text>
-      <Timer id={timer.id} type="notification" />
+      <Timer timer={timer} type="notification" />
     </Stack>
   );
 };

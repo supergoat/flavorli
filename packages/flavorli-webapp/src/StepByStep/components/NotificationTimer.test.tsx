@@ -4,7 +4,8 @@ import {axe} from 'jest-axe';
 import NotificationTimer from './NotificationTimer';
 import {steps} from '../helpers/mockData';
 
-import {TimersProvider, initTimer} from '../helpers/timersContext';
+import {TimersProvider} from '../helpers/timersContext';
+import {ITimer} from '../types';
 
 afterEach(() => {
   jest.useRealTimers();
@@ -12,7 +13,7 @@ afterEach(() => {
 
 const setup = (type?: 'notification') => {
   const stepWithTimer = steps[6];
-  const timer = {...stepWithTimer.timer, isPaused: true} as initTimer;
+  const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
   return {
     ...render(

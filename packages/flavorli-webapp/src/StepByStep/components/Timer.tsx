@@ -1,24 +1,30 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
-import {useTimersContext} from '../helpers/timersContext';
+import {
+  useTimersContext,
+  useAddTimerIfItDoesNotExist,
+} from '../helpers/timersContext';
+import {ITimer} from '../types';
 
 interface ITimerProps {
   type?: 'notification';
-  id?: number;
+  timer: ITimer;
 }
-export default ({id, type}: ITimerProps) => {
-  if (!id) return null;
+export default ({timer, type}: ITimerProps) => {
+  useAddTimerIfItDoesNotExist(timer);
 
   const {timers, setTimers} = useTimersContext();
 
-  const timer = timers[id];
+  const initialisedTimer = timers[timer.id];
+
+  if (!initialisedTimer) return null;
 
   const toggleTimer = () => {
     setTimers(t => ({
       ...t,
-      [timer.id]: {
-        ...timer,
-        isPaused: !timer.isPaused,
+      [initialisedTimer.id]: {
+        ...initialisedTimer,
+        isPaused: !initialisedTimer.isPaused,
       },
     }));
   };
@@ -32,14 +38,16 @@ export default ({id, type}: ITimerProps) => {
       alignment={type === 'notification' ? 'center' : 'start'}
     >
       <Text
-        id={`timer-${timer.id}`}
+        id={`timer-${initialisedTimer.id}`}
         role="timer"
-        aria-label={timer.name}
+        aria-label={initialisedTimer.name}
         aria-atomic={true}
         fontSize={type === 'notification' ? 24 : 32}
       >
-        {`${timer.minutes}m ${
-          timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds
+        {`${initialisedTimer.minutes}m ${
+          initialisedTimer.seconds < 10
+            ? `0${initialisedTimer.seconds}`
+            : initialisedTimer.seconds
         }s`}
       </Text>
 
@@ -48,9 +56,9 @@ export default ({id, type}: ITimerProps) => {
           intent="text"
           width="47px"
           onClick={toggleTimer}
-          aria-controls={`timer-${timer.id}`}
+          aria-controls={`timer-${initialisedTimer.id}`}
         >
-          {timer.isPaused ? 'START' : 'PAUSE'}
+          {initialisedTimer.isPaused ? 'START' : 'PAUSE'}
         </Button>
         <Button intent="text" color="secondaryTextColor">
           RESET

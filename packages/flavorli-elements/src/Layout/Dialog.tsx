@@ -12,8 +12,15 @@ interface IDialog {
   describedbyID: string;
   onClose: () => void;
   children: React.ReactNode;
+  className?: string;
 }
-export const Dialog = ({label, describedbyID, onClose, children}: IDialog) => {
+export const Dialog = ({
+  label,
+  describedbyID,
+  onClose,
+  className,
+  children,
+}: IDialog) => {
   const refEl = React.useRef<HTMLDivElement>(null);
   useLockBodyScroll();
   useFocusFirstDescendant(refEl);
@@ -21,7 +28,8 @@ export const Dialog = ({label, describedbyID, onClose, children}: IDialog) => {
   useCloseOnEsc(onClose);
 
   return (
-    <DialogWrapper
+    <div
+      className={className}
       ref={refEl}
       role="dialog"
       aria-modal={true}
@@ -29,7 +37,7 @@ export const Dialog = ({label, describedbyID, onClose, children}: IDialog) => {
       aria-describedby={describedbyID}
     >
       {children}
-    </DialogWrapper>
+    </div>
   );
 };
 

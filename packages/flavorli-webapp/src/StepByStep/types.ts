@@ -22,6 +22,7 @@ export interface ITimer {
   name: string;
   minutes: number;
   seconds: number;
+  isPaused?: boolean;
 }
 
 export interface IKitchenware {

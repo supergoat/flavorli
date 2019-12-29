@@ -61,9 +61,11 @@ export default ({
 
           <Ingredients ingredients={step.ingredients} />
 
-          <Text spacing={{line: '1.5'}}>{step.description}</Text>
+          <Text spacing={{line: '1.5'}} id="step-description">
+            {step.description}
+          </Text>
 
-          {step.timer && <Timer id={step.timer.id} />}
+          {step.timer && <Timer timer={step.timer} />}
         </Stack>
       </Scroll>
 
@@ -72,6 +74,7 @@ export default ({
         gap={8}
         distribution="end"
         width="100%"
+        paddingTop={16}
         paddingLeft={48}
         paddingRight={48}
       >

@@ -2,25 +2,33 @@ import React from 'react';
 import {ITimer} from '../types';
 import {useInterval} from '../../helpers/hooks';
 
-export const TimersContext = React.createContext<{
-  timers: any;
+interface ITimersContext {
+  timers: {[timerId: number]: ITimer};
   setTimers: React.Dispatch<React.SetStateAction<{}>>;
-  resetTimer: React.Dispatch<React.SetStateAction<{}>>;
-} | null>(null);
+}
 
-export function TimersProvider({initialValues, ...props}: any) {
-  const [timers, setTimers] = React.useState();
+export const TimersContext = React.createContext<ITimersContext | null>(null);
+
+export function TimersProvider({
+  initialValues,
+  ...props
+}: {
+  initialValues?: Partial<ITimersContext>;
+  children: React.ReactNode;
+}) {
+  const [contextTimers, setTimers] = React.useState({});
+
+  const timers = initialValues?.timers;
 
   React.useEffect(() => {
-    setTimers(initialValues.timers);
-  }, [initialValues.timers]);
+    if (timers) setTimers(timers);
+  }, [timers]);
 
-  if (!timers) return null;
+  if (!contextTimers) return null;
 
-  const resetTimer = () => setTimers(initialValues.timers);
   return (
     <TimersContext.Provider
-      value={{timers, setTimers, resetTimer}}
+      value={{timers: contextTimers, setTimers}}
       {...props}
     />
   );
@@ -34,11 +42,13 @@ export function useTimersContext() {
   return context;
 }
 
-export interface initTimer extends ITimer {
-  isPaused: boolean;
+export function useAddTimerIfItDoesNotExist(timer: ITimer) {
+  const {timers, setTimers} = useTimersContext();
+  if (timers[timer.id]) return;
+  setTimers(t => ({...t, [timer.id]: {...timer, isPaused: true}}));
 }
 
-export function useUpdateTimers(timer: initTimer) {
+export function useUpdateTimers(timer: ITimer) {
   const {setTimers} = useTimersContext();
 
   useInterval(() => {
