@@ -12,9 +12,17 @@ afterEach(() => {
   jest.useRealTimers();
 });
 
-const setup = (type?: 'notification') => {
+const setup = (
+  {
+    type,
+    isPaused = true,
+  }: {
+    type?: 'notification';
+    isPaused?: boolean;
+  } = {isPaused: true},
+) => {
   const stepWithTimer = steps[6];
-  const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
+  const timer = {...stepWithTimer.timer, isPaused} as ITimer;
 
   return {
     ...render(
@@ -48,20 +56,51 @@ describe('Timer', () => {
     expect(getByRole('timer')).toHaveAttribute('aria-atomic', 'true');
   });
 
-  it('should have aria-controls pointing to the timer on the start/pause buttons that control the timer', () => {
-    const {getByRole, getByText, timer} = setup();
+  it('should have an id that can be used by aria-controls to point to the timer', () => {
+    const {getByRole, timer} = setup();
     expect(getByRole('timer')).toHaveAttribute('id', `timer-${timer.id}`);
+  });
 
+  it('should have aria-controls pointing to the timer on the start button to indicate that it controls the timer', () => {
+    const {getByText, timer} = setup();
     const startButton = getByText('START');
     expect(startButton).toHaveAttribute('aria-controls', `timer-${timer.id}`);
+  });
 
-    // Start the timer to have access to the pause button
+  it('should have aria-controls pointing to the timer on the pause button to indicate that it controls the timer', () => {
+    const {getByText, timer} = setup({isPaused: false});
+    const pauseButton = getByText('PAUSE');
+    expect(pauseButton).toHaveAttribute('aria-controls', `timer-${timer.id}`);
+  });
+
+  it('should start the timer when the start button is pressed', () => {
+    const {getByText, queryByText} = setup();
+
+    expect(queryByText('PAUSE')).toBeNull();
+    const startButton = getByText('START');
+
     act(() => {
       userEvent.click(startButton);
     });
 
+    expect(queryByText('START')).toBeNull();
+
+    getByText('PAUSE');
+  });
+
+  it('should pause the timer when the pause button is pressed', () => {
+    const {getByText, queryByText} = setup({isPaused: false});
+
+    expect(queryByText('START')).toBeNull();
     const pauseButton = getByText('PAUSE');
-    expect(pauseButton).toHaveAttribute('aria-controls', `timer-${timer.id}`);
+
+    act(() => {
+      userEvent.click(pauseButton);
+    });
+
+    expect(queryByText('PAUSE')).toBeNull();
+
+    getByText('START');
   });
 
   it('should render correctly', () => {
@@ -70,7 +109,7 @@ describe('Timer', () => {
   });
 
   it('should render correctly when type is notification', () => {
-    const {container} = setup('notification');
+    const {container} = setup({type: 'notification'});
     expect(container.firstChild).toMatchSnapshot();
   });
 });

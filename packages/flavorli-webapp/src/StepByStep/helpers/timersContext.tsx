@@ -45,7 +45,10 @@ export function useTimersContext() {
 export function useAddTimerIfItDoesNotExist(timer: ITimer) {
   const {timers, setTimers} = useTimersContext();
   if (timers[timer.id]) return;
-  setTimers(t => ({...t, [timer.id]: {...timer, isPaused: true}}));
+  setTimers(t => ({
+    ...t,
+    [timer.id]: {...timer, isPaused: timer.isPaused ?? true},
+  }));
 }
 
 export function useUpdateTimers(timer: ITimer) {
