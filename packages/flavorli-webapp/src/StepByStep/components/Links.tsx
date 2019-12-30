@@ -1,14 +1,14 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 import {ILink} from '../types';
-// import {useTimersContext} from './Timers';
+import {useTimersContext} from '../helpers/timersContext';
 
 interface ILinksProps {
   links: ILink[];
   onViewStep: (stepNo: number) => void;
 }
 const Links = ({links, onViewStep}: ILinksProps) => {
-  // const {timers} = useTimersContext();
+  const {timers} = useTimersContext();
 
   return !!links.length ? (
     <Stack gap={8} alignment="start" width="100%" height="auto">
@@ -39,12 +39,12 @@ const Links = ({links, onViewStep}: ILinksProps) => {
                 <Text color="primary">{link.name}</Text>
               </Stack>
               <Stack gap={4} alignment="end">
-                {/* {link.timerId && (
+                {link.timerId && (
                   <Text color="primary">
                     {timers[link.timerId].minutes}m{' '}
                     {timers[link.timerId].seconds}s
                   </Text>
-                )} */}
+                )}
 
                 <Button intent="text" onClick={() => onViewStep(link.from)}>
                   View Step

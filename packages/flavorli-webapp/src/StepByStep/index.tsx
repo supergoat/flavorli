@@ -5,7 +5,7 @@ import {steps as STEPS} from './helpers/mockData';
 import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
-import {useTrapFocus, useFocusFirstDescendant} from '@flavorli/elements';
+import {useTrapFocus, useFocusFirstDescendant, Stack} from '@flavorli/elements';
 import styled from 'styled-components';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
@@ -33,29 +33,31 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
   return (
     <DialogWrapper ref={refEl}>
       <TimersProvider>
-        <Timers />
-        <section
-          aria-label="List of recipe steps"
-          id="list-of-recipe-steps"
-          style={{
-            width: '100%',
-            height: 'calc(100% - 58px)',
-          }}
-        >
-          <StepList currentStep={currentStep}>
-            {steps.map(step => {
-              return (
-                <Step
-                  step={step}
-                  key={step.no}
-                  onChangeStep={onChangeStep}
-                  onViewStep={onViewStep}
-                  noOfSteps={steps.length}
-                />
-              );
-            })}
-          </StepList>
-        </section>
+        <Stack width="100%" height="100%">
+          <Timers />
+          <section
+            aria-label="List of recipe steps"
+            id="list-of-recipe-steps"
+            style={{
+              width: '100%',
+              height: 'calc(100% - 66px)',
+            }}
+          >
+            <StepList currentStep={currentStep}>
+              {steps.map(step => {
+                return (
+                  <Step
+                    step={step}
+                    key={step.no}
+                    onChangeStep={onChangeStep}
+                    onViewStep={onViewStep}
+                    noOfSteps={steps.length}
+                  />
+                );
+              })}
+            </StepList>
+          </section>
+        </Stack>
 
         {openLink && (
           <StepDialog
