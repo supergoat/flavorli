@@ -17,6 +17,8 @@ const StepList = ({children, currentStep}: IStepListProps) => {
       id="recipe-steps"
       data-testid="recipe-steps"
       aria-live="polite"
+      paddingLeft={8}
+      paddingRight={8}
     >
       {React.Children.map(children, (child, index: number) => {
         const isCurrentSlide = index === currentStep - 1;

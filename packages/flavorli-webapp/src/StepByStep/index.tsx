@@ -5,13 +5,17 @@ import {steps as STEPS} from './helpers/mockData';
 import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
-import {Stack} from '@flavorli/elements';
+import {useTrapFocus, useFocusFirstDescendant} from '@flavorli/elements';
+import styled from 'styled-components';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
+  const refEl = React.useRef<HTMLDivElement>(null);
   const [lastFocus, setLastFocus] = React.useState();
   const [currentStep, setCurrentStep] = React.useState(1);
   const [openLink, setOpenLink] = React.useState();
 
+  useFocusFirstDescendant(refEl);
+  useTrapFocus(refEl);
   const onChangeStep = (direction: 1 | -1) => {
     setCurrentStep(s => s + direction);
   };
@@ -27,15 +31,15 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
   };
 
   return (
-    <Stack width="100%" height="100%" background="backdropDark">
+    <DialogWrapper ref={refEl}>
       <TimersProvider>
         <Timers />
         <section
           aria-label="List of recipe steps"
-          id="list-of-recipes"
+          id="list-of-recipe-steps"
           style={{
             width: '100%',
-            height: 'calc(100% - 50px)',
+            height: 'calc(100% - 58px)',
           }}
         >
           <StepList currentStep={currentStep}>
@@ -52,6 +56,7 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
             })}
           </StepList>
         </section>
+
         {openLink && (
           <StepDialog
             stepNo={openLink}
@@ -61,6 +66,18 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
           />
         )}
       </TimersProvider>
-    </Stack>
+    </DialogWrapper>
   );
 };
+
+const DialogWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: ${p => p.theme.colors.backdropDark};
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+`;

@@ -4,7 +4,7 @@ import {
   useTimersContext,
   TimersProvider,
   useAddTimerIfItDoesNotExist,
-  useDecrementTimer,
+  useRunTimer,
 } from './timersContext';
 import {steps} from './mockData';
 import {ITimer} from '../types';
@@ -91,7 +91,7 @@ describe('useAddTimerIfItDoesNotExist', () => {
   });
 });
 
-describe('useDecrementTimer', () => {
+describe('useRunTimer', () => {
   it('it should return the timer if the timer isPaused', async () => {
     jest.useFakeTimers();
     const stepWithTimer = steps[6];
@@ -103,7 +103,7 @@ describe('useDecrementTimer', () => {
       </TimersProvider>
     );
 
-    const {result} = renderHook(() => useDecrementTimer(timer), {
+    const {result} = renderHook(() => useRunTimer(timer), {
       wrapper,
     });
 
@@ -133,7 +133,7 @@ describe('useDecrementTimer', () => {
       </TimersProvider>
     );
 
-    const {result} = renderHook(() => useDecrementTimer(timer), {
+    const {result} = renderHook(() => useRunTimer(timer), {
       wrapper,
     });
 
@@ -160,7 +160,7 @@ describe('useDecrementTimer', () => {
       </TimersProvider>
     );
 
-    const {result} = renderHook(() => useDecrementTimer(timer), {
+    const {result} = renderHook(() => useRunTimer(timer), {
       wrapper,
     });
 

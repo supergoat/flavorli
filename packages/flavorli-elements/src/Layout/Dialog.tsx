@@ -7,20 +7,24 @@ import {
 } from '../hooks';
 import styled from 'styled-components';
 
-interface IDialog {
-  label: string;
+interface IDialogProps {
+  label?: string;
+  labelledBy?: string;
   describedbyID: string;
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
 }
+
 export const Dialog = ({
   label,
+  labelledBy,
   describedbyID,
   onClose,
   className,
   children,
-}: IDialog) => {
+  ...rest
+}: IDialogProps) => {
   const refEl = React.useRef<HTMLDivElement>(null);
   useLockBodyScroll();
   useFocusFirstDescendant(refEl);
@@ -34,6 +38,7 @@ export const Dialog = ({
       role="dialog"
       aria-modal={true}
       aria-label={label}
+      aria-labelledby={labelledBy}
       aria-describedby={describedbyID}
     >
       {children}

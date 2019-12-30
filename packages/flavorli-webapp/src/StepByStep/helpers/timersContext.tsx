@@ -30,8 +30,6 @@ export function TimersProvider({
     initState,
   );
 
-  console.log('hello');
-
   return <TimersContext.Provider value={{timers, setTimers}} {...props} />;
 }
 
@@ -73,7 +71,7 @@ function decrementTimer(timer: ITimer) {
   };
 }
 
-export function useDecrementTimer(timer: ITimer) {
+export function useRunTimer(timer: ITimer) {
   const {setTimers} = useTimersContext();
 
   let updatedTimer = decrementTimer(timer);

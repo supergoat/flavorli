@@ -59,3 +59,15 @@ export function useInterval(callback: () => void, delay: number | null) {
     }
   }, [delay]);
 }
+
+export function useRestoreFocus(
+  refEl: React.RefObject<HTMLElement>,
+  predecate: boolean,
+) {
+  React.useEffect(() => {
+    if (predecate) {
+      const element = refEl?.current;
+      element?.focus();
+    }
+  }, [refEl, predecate]);
+}

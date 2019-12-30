@@ -1,16 +1,15 @@
 import React from 'react';
 import Timer from './Timer';
 import {Stack, Text} from '@flavorli/elements';
-import {useDecrementTimer} from '../helpers/timersContext';
+import {useRunTimer} from '../helpers/timersContext';
 import {ITimer} from '../types';
 
 const NotificationTimer = ({timer}: {timer: ITimer}) => {
-  useDecrementTimer(timer);
-
   return (
     <Stack
       width="100%"
-      background="secondary"
+      background="surface"
+      border="1px solid #e4e0ff"
       gap={4}
       borderRadius={4}
       padding={8}

@@ -8,13 +8,13 @@ const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/step-by-step">
-          <StepByStep />
-        </Route>
         <Route path="/">
           <Recipe />
         </Route>
       </Switch>
+      <Route path="/step-by-step">
+        <StepByStep />
+      </Route>
     </Router>
   );
 };

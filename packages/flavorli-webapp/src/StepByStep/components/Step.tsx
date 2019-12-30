@@ -32,8 +32,8 @@ export default ({
       width="100%"
       height="100%"
       background="surface"
-      borderRadiusTopLeft={16}
-      borderRadiusTopRight={16}
+      borderRadiusTopLeft={isDialog ? undefined : 24}
+      borderRadiusTopRight={isDialog ? undefined : 24}
       paddingBottom={24}
       role="group"
       aria-label={`Step ${step.no} of ${noOfSteps}`}
