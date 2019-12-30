@@ -40,7 +40,7 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
             id="list-of-recipe-steps"
             style={{
               width: '100%',
-              height: 'calc(100% - 66px)',
+              height: 'calc(100% - 54px)',
             }}
           >
             <StepList currentStep={currentStep}>

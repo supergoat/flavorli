@@ -2,9 +2,9 @@
 
 exports[`Timers should render a placeholder if there are no timers 1`] = `
 <div
-  class="sc-AykKH fFZteN"
+  class="sc-AykKH hsNCqR"
   direction="vertical"
-  height="50px"
+  height="54px"
 >
   <div />
 </div>
@@ -12,22 +12,29 @@ exports[`Timers should render a placeholder if there are no timers 1`] = `
 
 exports[`Timers should render correctly 1`] = `
 <div
-  class="sc-AykKH gtTFhs"
+  class="sc-AykKH bcqxzt"
   direction="vertical"
-  id="timers"
+  style="transform: translateY(-100%) translateZ(0);"
   width="100%"
 >
   <div
-    class="sc-AykKH fdUfjA"
+    class="sc-AykKH WvElB"
     direction="vertical"
+    id="timers"
     width="100%"
   >
-    <button
-      class="sc-AykKC guUPkS"
+    <div
+      class="sc-AykKH daWbBB"
+      direction="vertical"
       width="100%"
     >
-      View Timers
-    </button>
+      <button
+        class="sc-AykKC guUPkS"
+        width="100%"
+      >
+        View Timers
+      </button>
+    </div>
   </div>
 </div>
 `;

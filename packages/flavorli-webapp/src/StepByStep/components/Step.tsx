@@ -1,5 +1,11 @@
 import React from 'react';
-import {Stack, Text, Scroll, Button} from '@flavorli/elements';
+import {
+  Stack,
+  Text,
+  Scroll,
+  Button,
+  useFocusFirstDescendant,
+} from '@flavorli/elements';
 import {IStep} from '../types';
 import Timer from './Timer';
 import Links from './Links';
@@ -26,8 +32,13 @@ export default ({
   onClose,
   className,
 }: IStepProps) => {
+  const refEl = React.useRef<HTMLDivElement>(null);
+
+  useFocusFirstDescendant(refEl);
+
   return (
     <Stack
+      ref={refEl}
       className={className}
       width="100%"
       height="100%"

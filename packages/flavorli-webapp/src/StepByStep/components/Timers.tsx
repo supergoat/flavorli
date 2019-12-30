@@ -1,9 +1,10 @@
 import React from 'react';
-import {Stack, Button, Text} from '@flavorli/elements';
+import {Stack, Button, Text, useCloseOnEsc} from '@flavorli/elements';
 import {useTimersContext, useRunTimer} from '../helpers/timersContext';
 import {ITimer} from '../types';
 import Timer from './Timer';
 import {AnimatePresence} from 'framer-motion';
+import {useRestoreFocus} from '../../helpers/hooks';
 
 const RunTimer = ({timer}: {timer: ITimer}) => {
   useRunTimer(timer);
@@ -21,10 +22,13 @@ const RunTimers = ({timers}: {timers: ITimer[]}) => {
 };
 
 export const Timers = () => {
+  const refEl = React.useRef<HTMLButtonElement>(null);
   const [showTimers, setShowTimers] = React.useState(false);
   const context = useTimersContext();
-
   const timers = Object.values(context.timers);
+
+  useCloseOnEsc(() => setShowTimers(false));
+  useRestoreFocus(refEl, !showTimers);
 
   const variants = {
     visible: {height: 'auto'},
@@ -47,12 +51,12 @@ export const Timers = () => {
             animate={{translateY: 0}}
             exit={{translateY: '-100%'}}
             width="100%"
-            paddingBottom={8}
+            paddingBottom={16}
             paddingLeft={8}
             paddingRight={8}
           >
             <Stack
-              padding={8}
+              paddingTop={8}
               paddingLeft={16}
               paddingRight={16}
               background="secondary"
@@ -64,7 +68,7 @@ export const Timers = () => {
               <AnimatePresence>
                 {showTimers && (
                   <Stack
-                    gap={8}
+                    gap={4}
                     width="100%"
                     initial="hidden"
                     variants={variants}
@@ -99,13 +103,9 @@ export const Timers = () => {
                   </Stack>
                 )}
               </AnimatePresence>
-              <Stack
-                distribution="center"
-                width="100%"
-                padding={8}
-                paddingTop={16}
-              >
+              <Stack distribution="center" width="100%" padding={8}>
                 <Button
+                  ref={refEl}
                   intent="text"
                   width="100%"
                   onClick={() => setShowTimers(t => !t)}
@@ -119,7 +119,7 @@ export const Timers = () => {
       </AnimatePresence>
 
       {timers.length === 0 && (
-        <Stack height="66px">
+        <Stack height="54px">
           <div />
         </Stack>
       )}
