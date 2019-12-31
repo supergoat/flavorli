@@ -119,7 +119,7 @@ export const Timers = () => {
       </AnimatePresence>
 
       {timers.length === 0 && (
-        <Stack height="54px">
+        <Stack height="58px">
           <div />
         </Stack>
       )}

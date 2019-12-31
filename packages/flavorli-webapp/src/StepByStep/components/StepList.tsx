@@ -7,9 +7,8 @@ import {Stack} from '@flavorli/elements';
  */
 export interface IStepListProps {
   children: React.ReactNode;
-  currentStep: number;
 }
-const StepList = ({children, currentStep}: IStepListProps) => {
+const StepList = ({children}: IStepListProps) => {
   return (
     <Stack
       width="100%"
@@ -20,11 +19,7 @@ const StepList = ({children, currentStep}: IStepListProps) => {
       paddingLeft={8}
       paddingRight={8}
     >
-      {React.Children.map(children, (child, index: number) => {
-        const isCurrentSlide = index === currentStep - 1;
-
-        return isCurrentSlide && <>{child}</>;
-      })}
+      {children}
     </Stack>
   );
 };

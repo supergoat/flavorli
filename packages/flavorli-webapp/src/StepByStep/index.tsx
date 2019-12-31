@@ -1,12 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+import {useTrapFocus, useFocusFirstDescendant, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
 import Step from './components/Step';
 import {steps as STEPS} from './helpers/mockData';
 import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
-import {useTrapFocus, useFocusFirstDescendant, Stack} from '@flavorli/elements';
-import styled from 'styled-components';
 
 export default ({steps = STEPS}: {steps?: any[]}) => {
   const refEl = React.useRef<HTMLDivElement>(null);
@@ -40,19 +40,22 @@ export default ({steps = STEPS}: {steps?: any[]}) => {
             id="list-of-recipe-steps"
             style={{
               width: '100%',
-              height: 'calc(100% - 54px)',
+              height: 'calc(100% - 58px)',
             }}
           >
-            <StepList currentStep={currentStep}>
-              {steps.map(step => {
+            <StepList>
+              {steps.map((step, index) => {
+                const isCurrentStep = index === currentStep - 1;
                 return (
-                  <Step
-                    step={step}
-                    key={step.no}
-                    onChangeStep={onChangeStep}
-                    onViewStep={onViewStep}
-                    noOfSteps={steps.length}
-                  />
+                  isCurrentStep && (
+                    <Step
+                      step={step}
+                      key={step.no}
+                      onChangeStep={onChangeStep}
+                      onViewStep={onViewStep}
+                      noOfSteps={steps.length}
+                    />
+                  )
                 );
               })}
             </StepList>
