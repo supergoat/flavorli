@@ -11,7 +11,7 @@ const Tag = ({tag}: {tag: ITag}) => {
       paddingRight={24}
       paddingLeft={24}
       paddingBottom={4}
-      borderRadius={2}
+      borderRadius={4}
       background={tag.color}
     >
       <Text intent="textOnPrimary"> {tag.text}</Text>

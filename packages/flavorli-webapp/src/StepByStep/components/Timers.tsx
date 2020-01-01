@@ -45,7 +45,7 @@ export const Timers = () => {
       <RunTimers timers={timers} />
 
       <AnimatePresence>
-        {timers.length && (
+        {timers.length > 0 && (
           <Stack
             initial={{translateY: '-100%'}}
             animate={{translateY: 0}}
