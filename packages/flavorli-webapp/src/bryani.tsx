@@ -2,6 +2,7 @@ import {IStep} from './StepByStep/types';
 
 export const steps: IStep[] = [
   {
+    type: 'PREPARATION',
     no: 1,
     tag: {
       text: 'Biryani',
@@ -25,6 +26,7 @@ export const steps: IStep[] = [
     },
   },
   {
+    type: 'PREPARATION',
     no: 2,
     tag: {
       text: 'Biryani',
@@ -46,6 +48,7 @@ export const steps: IStep[] = [
     ],
   },
   {
+    type: 'PREPARATION',
     no: 3,
     tag: {
       text: 'Biryani',
@@ -62,6 +65,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
+    type: 'PREPARATION',
     no: 4,
     tag: {
       text: 'Biryani',
@@ -84,6 +88,7 @@ export const steps: IStep[] = [
     ],
   },
   {
+    type: 'PREPARATION',
     no: 5,
     tag: {
       text: 'Biryani',
@@ -130,6 +135,7 @@ export const steps: IStep[] = [
     kitchenware: [],
   },
   {
+    type: 'PREPARATION',
     no: 6,
     tag: {
       text: 'Biryani',
@@ -155,6 +161,7 @@ export const steps: IStep[] = [
       'Add the ginger to the frying pan along with the chickpeas and tomato puree and briefly stir',
   },
   {
+    type: 'PREPARATION',
     no: 7,
     tag: {
       text: 'Biryani',
@@ -182,6 +189,7 @@ export const steps: IStep[] = [
       'Peel and chop the potatoes. Cut the cauliflower into large pieces. Add the potatoes and the cauliflower florets to the frying pan along with soaked basmati rice. Stir until everything is well coated in spices.',
   },
   {
+    type: 'PREPARATION',
     no: 8,
     tag: {
       text: 'Biryani',
@@ -209,6 +217,7 @@ export const steps: IStep[] = [
     },
   },
   {
+    type: 'PREPARATION',
     no: 9,
     tag: {
       text: 'Mint Raita',
@@ -234,6 +243,7 @@ export const steps: IStep[] = [
       "Place all the ingredients into a blender and blend them altogether briefly until smooth. If you don't have a blender then finely chop",
   },
   {
+    type: 'PREPARATION',
     no: 10,
     tag: {
       text: 'Assembling',

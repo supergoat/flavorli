@@ -1,16 +1,4 @@
-interface IRecipe {
-  name: string;
-  image: string;
-  preparation: string;
-  cooking: string;
-  portions: string;
-  difficulty: string;
-  tasks: {
-    name: string;
-    ingredients: {qty: string; name: string}[];
-    steps: string[];
-  }[];
-}
+import {IRecipe} from '../types';
 
 export const recipe: IRecipe = {
   name: 'Greek Pastitsio',
@@ -25,8 +13,8 @@ export const recipe: IRecipe = {
       name: 'Sauce',
       ingredients: [
         {
-          qty: '1',
-          name: 'eggplans',
+          qty: '2',
+          name: 'eggplants',
         },
         {
           qty: '4-6 tbsps',

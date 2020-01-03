@@ -29,7 +29,13 @@ export interface IKitchenware {
   qty: string;
   name: string;
 }
+
+export interface IImage {
+  src: string;
+  alt: string;
+}
 export interface IStep {
+  type: 'PREPARATION' | 'MISE_EN_PLACE_STEP';
   no: number;
   description: string;
   tag: ITag;
@@ -37,4 +43,28 @@ export interface IStep {
   ingredients: IIngredient[];
   timer?: ITimer;
   kitchenware: IKitchenware[];
+  images?: IImage[];
+}
+
+export interface IItem {
+  qty: string;
+  name: string;
+}
+
+export interface IMiseEnPlaceStep {
+  no: number;
+  type: 'MISE_EN_PLACE';
+  heading: string;
+  image: string;
+  items: IItem[];
+}
+
+export interface IIntro {
+  type: 'INTRO';
+  name: string;
+  image: string;
+  preparation: string;
+  cooking: string;
+  portions: string;
+  difficulty: string;
 }

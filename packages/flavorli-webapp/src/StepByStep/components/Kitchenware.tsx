@@ -5,7 +5,7 @@ import {IKitchenware} from '../types';
 const Kitchenware = ({kitchenware}: {kitchenware: IKitchenware[]}) => {
   return !!kitchenware.length ? (
     <Stack gap={8} width="100%">
-      <H3>You will need</H3>
+      <H3 color="primary">You will need</H3>
 
       {kitchenware.map(item => (
         <Text key={item.name}>

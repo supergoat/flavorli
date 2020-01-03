@@ -17,7 +17,6 @@ const Links = ({links, onViewStep}: ILinksProps) => {
           <Stack
             key={link.name}
             borderRadius={2}
-            border="1px solid #e4e0ff"
             width="100%"
             background="secondary"
             paddingTop={8}

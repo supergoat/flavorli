@@ -59,7 +59,7 @@ export const Timers = () => {
               paddingTop={8}
               paddingLeft={16}
               paddingRight={16}
-              background="secondary"
+              background="secondaryLight"
               borderRadiusBottomLeft={24}
               borderRadiusBottomRight={24}
               width="100%"

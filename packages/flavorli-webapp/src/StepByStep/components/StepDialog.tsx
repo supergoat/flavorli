@@ -3,6 +3,7 @@ import {Dialog} from '@flavorli/elements';
 import Step from './Step';
 import {steps} from '../helpers/mockData';
 import styled from 'styled-components';
+import {IStep} from '../types';
 
 interface IStepDialogProps {
   stepNo: number;
@@ -20,7 +21,7 @@ const StepDialog = ({
     <DialogWrapper label="" describedbyID="step-description" onClose={onClose}>
       <Step
         isDialog={true}
-        step={steps[stepNo - 1]}
+        step={steps[stepNo - 1] as IStep}
         onChangeStep={() => {}}
         onViewStep={onViewStep}
         onClose={onClose}
