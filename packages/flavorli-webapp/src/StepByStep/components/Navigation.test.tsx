@@ -6,14 +6,16 @@ import userEvent from '@testing-library/user-event';
 
 const setup = ({
   nextButtonName,
-  previousButtonName,
+  backButtonName,
   hideNextStepButton = false,
-  hidePreviousStepButton = false,
+  hideBackButton = false,
+  varation,
 }: {
   nextButtonName?: string;
-  previousButtonName?: string;
+  backButtonName?: string;
   hideNextStepButton?: boolean;
-  hidePreviousStepButton?: boolean;
+  hideBackButton?: boolean;
+  varation?: 'onPrimary';
 } = {}) => {
   const mockOnNavigate = jest.fn();
 
@@ -24,10 +26,11 @@ const setup = ({
         <div id="recipe-steps" />
         <Navigation
           nextButtonName={nextButtonName}
-          previousButtonName={previousButtonName}
+          backButtonName={backButtonName}
           onNavigate={mockOnNavigate}
           hideNextStepButton={hideNextStepButton}
-          hidePreviousStepButton={hidePreviousStepButton}
+          hideBackButton={hideBackButton}
+          varation={varation}
         />
       </>,
     ),
@@ -44,23 +47,15 @@ describe('Navigation', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
-  it('should have a nextStep button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
+  it('should have a next button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
     const {getByText} = setup();
 
-    const nextStepButton = getByText(/Next Step/i);
+    const nextStepButton = getByText(/Next/i);
 
     expect(nextStepButton).toHaveAttribute('aria-controls', 'recipe-steps');
-  });
-
-  it('should have an accessible label on the nextStep button to inform assistive technology users that clicking the button takes them to the next step', () => {
-    const {getByText} = setup();
-
-    const nextStepButton = getByText(/Next Step/i);
-
-    expect(nextStepButton).toHaveAttribute('aria-label', 'Next Step');
   });
 
   it('should accept a custom name for the next button', () => {
@@ -72,7 +67,7 @@ describe('Navigation', () => {
   it('clicking the nextStep button calls onNavigate with 1', () => {
     const {getByText, mockOnNavigate} = setup();
 
-    const nextStepButton = getByText(/Next Step/i);
+    const nextStepButton = getByText(/Next/i);
 
     userEvent.click(nextStepButton);
 
@@ -81,44 +76,44 @@ describe('Navigation', () => {
 
   it('it should hide the nextStep button when hideNextStepButton is set to true', () => {
     const {queryByText} = setup({hideNextStepButton: true});
-    expect(queryByText('Next Step')).toBeNull();
+    expect(queryByText('Next')).toBeNull();
   });
 
-  it('should have a previous button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
+  it('should have a back button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
     const {getByText} = setup();
 
-    const previousStepButton = getByText(/Previous Step/i);
+    const backButton = getByText(/back/i);
 
-    expect(previousStepButton).toHaveAttribute('aria-controls', 'recipe-steps');
+    expect(backButton).toHaveAttribute('aria-controls', 'recipe-steps');
   });
 
-  it('should have an accessible label on the previous button to inform assistive technology users that clicking the button takes them to the previous step', () => {
-    const {getByText} = setup();
+  it('should accept a custom name for the back button', () => {
+    const {getByText} = setup({backButtonName: 'previous'});
 
-    const previousStepButton = getByText(/Previous Step/i);
-
-    expect(previousStepButton).toHaveAttribute('aria-label', 'Previous Step');
+    getByText(/previous/i);
   });
 
-  it('should accept a custom name for the previous button', () => {
-    const {getByText} = setup({previousButtonName: 'Back'});
-
-    getByText(/Back/i);
-  });
-
-  it('clicking the previous button calls onNavigate with -1', () => {
+  it('clicking the back button calls onNavigate with -1', () => {
     const {getByText, mockOnNavigate} = setup();
 
-    const previousStepButton = getByText(/Previous Step/i);
+    const backButton = getByText(/back/i);
 
-    userEvent.click(previousStepButton);
+    userEvent.click(backButton);
 
     expect(mockOnNavigate).toHaveBeenCalledWith(-1);
   });
 
-  it('it should hide the previous button when hidePreviousStepButton is set to true', () => {
-    const {getByText} = setup({hidePreviousStepButton: true});
-    expect(getByText(/Previous Step/i)).not.toBeVisible();
-    expect(getByText(/Previous Step/i)).toHaveAttribute('tabIndex', '-1');
+  it('it should hide the back button when hideBackButton is set to true', () => {
+    const {getByText} = setup({hideBackButton: true});
+    expect(getByText(/back/i)).not.toBeVisible();
+    expect(getByText(/back/i)).toHaveAttribute('tabIndex', '-1');
+  });
+
+  it('should render correctly when variation is onPrimary', () => {
+    const {container} = setup({
+      varation: 'onPrimary',
+    });
+
+    expect(container).toMatchSnapshot();
   });
 });

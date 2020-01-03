@@ -1,7 +1,8 @@
 import React from 'react';
-import {Stack, Scroll, Text, Button} from '@flavorli/elements';
+import {Stack, Scroll, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 import {IMiseEnPlaceStep} from '../types';
+import Navigation from './Navigation';
 
 const MiseEnPlace = ({
   step,
@@ -55,26 +56,14 @@ const MiseEnPlace = ({
             </Stack>
           </Stack>
         </Content>
-        <Stack direction="horizontal" gap={8} width="100%">
-          <PreviousButton
-            aria-label="Previous Step"
-            aria-controls="recipe-steps"
-            intent="secondary"
-            onClick={() => onChangeStep(-1)}
-          >
-            Previous
-          </PreviousButton>
 
-          <Button
-            aria-label="Next Step"
-            aria-controls="recipe-steps"
-            intent="secondary"
-            width="100%"
-            onClick={() => onChangeStep(1)}
-          >
-            Continue
-          </Button>
-        </Stack>
+        <Navigation
+          onNavigate={onChangeStep}
+          nextButtonName={
+            step.heading === 'Ingredients' ? 'Items' : 'Preparation'
+          }
+          variation="onPrimary"
+        />
       </Stack>
     </MiseEnPlaceWrapper>
   );
@@ -127,14 +116,4 @@ const ItemName = styled(Text)`
   font-size: ${p => p.theme.fontSizes[20]};
   color: ${p => p.theme.colors.white};
   font-weight: normal;
-`;
-
-const PreviousButton = styled(Button)`
-  background: transparent;
-  border: 1px solid white;
-  color: white;
-  box-shadow: none;
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
 `;

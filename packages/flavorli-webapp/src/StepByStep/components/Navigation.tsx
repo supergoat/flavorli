@@ -1,20 +1,23 @@
 import React from 'react';
 import {Button, Stack} from '@flavorli/elements';
-import styled from 'styled-components';
+import styled, {FlattenSimpleInterpolation} from 'styled-components';
+import ChevronRightWhite from '../icons/right_chevron_white.svg';
 
 interface INavigation {
   onNavigate: (direction: 1 | -1) => void;
   hideNextStepButton?: boolean;
-  hidePreviousStepButton?: boolean;
+  hideBackButton?: boolean;
   nextButtonName?: string;
-  previousButtonName?: string;
+  backButtonName?: string;
+  variation?: 'onPrimary';
 }
 const Navigation = ({
   onNavigate,
   hideNextStepButton = false,
-  hidePreviousStepButton = false,
+  hideBackButton = false,
   nextButtonName,
-  previousButtonName,
+  backButtonName,
+  variation,
 }: INavigation) => {
   const navigateToNextStep = () => {
     onNavigate(1);
@@ -27,24 +30,24 @@ const Navigation = ({
   return (
     <Stack direction="horizontal" gap={8} distribution="end" width="100%">
       <PreviousButton
-        hide={hidePreviousStepButton}
-        aria-label="Previous Step"
+        hide={hideBackButton}
         aria-controls="recipe-steps"
-        tabIndex={hidePreviousStepButton ? -1 : undefined}
+        tabIndex={hideBackButton ? -1 : undefined}
         onClick={navigateToPreviousStep}
-        intent="secondary"
+        intent={variation === 'onPrimary' ? 'secondaryOnPrimary' : 'secondary'}
       >
-        {previousButtonName || 'Previous Step'}
+        {backButtonName || 'back'}
       </PreviousButton>
 
       {!hideNextStepButton && (
         <Button
-          aria-label="Next Step"
           aria-controls="recipe-steps"
           width="100%"
           onClick={navigateToNextStep}
+          intent={variation === 'onPrimary' ? 'secondaryOnPrimary' : 'primary'}
         >
-          {nextButtonName || 'Next Step'}
+          {nextButtonName || 'Next'}
+          <ButtonIcon />
         </Button>
       )}
     </Stack>
@@ -53,6 +56,18 @@ const Navigation = ({
 
 export default Navigation;
 
-const PreviousButton = styled(Button)<{hide: boolean}>`
+const PreviousButton = styled(Button)<{
+  hide: boolean;
+  css?: FlattenSimpleInterpolation;
+}>`
+  ${p => p.css && p.css};
   visibility: ${p => (p.hide ? 'hidden' : 'visible')};
+`;
+
+const ButtonIcon = styled.img.attrs(() => ({
+  src: ChevronRightWhite,
+  alt: '',
+}))`
+  position: absolute;
+  right: 15px;
 `;

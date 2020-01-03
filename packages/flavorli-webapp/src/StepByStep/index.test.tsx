@@ -33,7 +33,7 @@ describe('StepByStep', () => {
     ).toBeInTheDocument();
   });
 
-  it('should have a continue button that when clicked hides the current step and brings the next step into view', () => {
+  it('should have a next button that when clicked hides the current step and brings the next step into view', () => {
     const step1 = steps[0];
     const step2 = steps[1];
     const {queryByLabelText, getByText} = setup();
@@ -41,9 +41,9 @@ describe('StepByStep', () => {
       queryByLabelText(`Step ${step1.no} of ${steps.length}`),
     ).toBeInTheDocument();
 
-    const continueButton = getByText(/continue/i);
+    const nextButton = getByText(/next/i);
 
-    userEvent.click(continueButton);
+    userEvent.click(nextButton);
 
     expect(
       queryByLabelText(`Step ${step2.no} of ${steps.length}`),
@@ -54,22 +54,22 @@ describe('StepByStep', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('should have a previous button that when clicked hides the current steps and brings the previous step into view', () => {
+  it('should have a back button that when clicked hides the current steps and brings the previous step into view', () => {
     const step1 = steps[0];
     const step2 = steps[1];
     const {queryByLabelText, getByText} = setup();
 
-    const continueButton = getByText(/continue/i);
+    const nextButton = getByText(/next/i);
 
-    userEvent.click(continueButton);
+    userEvent.click(nextButton);
 
     expect(
       queryByLabelText(`Step ${step2.no} of ${steps.length}`),
     ).toBeInTheDocument();
 
-    const previousButton = getByText(/previous/i);
+    const backButton = getByText(/back/i);
 
-    userEvent.click(previousButton);
+    userEvent.click(backButton);
 
     expect(
       queryByLabelText(`Step ${step1.no} of ${steps.length}`),
@@ -87,10 +87,10 @@ describe('StepByStep', () => {
 
     const {getByLabelText, getByText} = setup([step1, step7]);
 
-    const continueButton = getByText(/continue/i);
+    const nextButton = getByText(/next/i);
 
-    // Click continue button to go the second step to find view button
-    userEvent.click(continueButton);
+    // Click next button to go the second step to find view button
+    userEvent.click(nextButton);
 
     const viewStepButton = getByText('View Step');
 
@@ -99,17 +99,17 @@ describe('StepByStep', () => {
     getByLabelText('Step 1 of 2');
   });
 
-  it('close the dialog and return to previous step when clicking close button inside the dialog', () => {
+  it('close the dialog and return to back step when clicking close button inside the dialog', () => {
     const step1 = steps[0];
     // Step 8 has a link that points to step one
     const step8 = steps[7];
 
     const {getByLabelText, getByText} = setup([step1, step8]);
 
-    const continueButton = getByText(/continue/i);
+    const nextButton = getByText(/next/i);
 
-    // Click continue button to go the second step to find view button
-    userEvent.click(continueButton);
+    // Click next button to go the second step to find view button
+    userEvent.click(nextButton);
 
     const viewStepButton = getByText('View Step');
 
@@ -129,10 +129,10 @@ describe('StepByStep', () => {
 
   //   const {getByText} = setup([step1, step8]);
 
-  //   const continueButton = getByText(/continue/i);
+  //   const nextButton = getByText(/next/i);
 
-  //   // Click continue button to go the second step to find view button
-  //   userEvent.click(continueButton);
+  //   // Click next button to go the second step to find view button
+  //   userEvent.click(nextButton);
 
   //   const viewStepButton = getByText('View Step');
 

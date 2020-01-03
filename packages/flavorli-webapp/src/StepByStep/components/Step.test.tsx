@@ -66,15 +66,15 @@ describe('Step', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('it should hide the continue button when the current step is the last step', () => {
+  it('it should hide the next button when the current step is the last step', () => {
     const {queryByText} = setup({stepNo: steps.length});
-    expect(queryByText(/continue/i)).toBeNull();
+    expect(queryByText(/next/i)).toBeNull();
   });
 
-  it('should hide the previous and continue buttons when the step is a dialog', () => {
+  it('should hide the back and next buttons when the step is a dialog', () => {
     const {queryByText} = setup({isDialog: true});
-    expect(queryByText(/previous/i)).not.toBeInTheDocument();
-    expect(queryByText(/continue/i)).not.toBeInTheDocument();
+    expect(queryByText(/back/i)).not.toBeInTheDocument();
+    expect(queryByText(/next/i)).not.toBeInTheDocument();
   });
 
   it('should have a close button when the step is a dialog', () => {

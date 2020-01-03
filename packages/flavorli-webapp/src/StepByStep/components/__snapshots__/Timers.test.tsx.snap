@@ -2,9 +2,9 @@
 
 exports[`Timers should render a placeholder if there are no timers 1`] = `
 <div
-  class="sc-AykKH hsNCqR"
+  class="sc-AykKH jfBLCV"
   direction="vertical"
-  height="54px"
+  height="58px"
 >
   <div />
 </div>
@@ -29,7 +29,7 @@ exports[`Timers should render correctly 1`] = `
       width="100%"
     >
       <button
-        class="sc-AykKC guUPkS"
+        class="sc-AykKC eOVolE"
         width="100%"
       >
         View Timers

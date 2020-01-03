@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Stack,
-  Text,
-  Scroll,
-  Button,
-  useFocusFirstDescendant,
-} from '@flavorli/elements';
+import {Stack, Text, Scroll, Button} from '@flavorli/elements';
 import {IStep} from '../types';
 import Timer from './Timer';
 import Links from './Links';
@@ -37,17 +31,12 @@ export default ({
 }: IStepProps) => {
   const [currentImage, setCurrentImage] = React.useState(1);
 
-  const refEl = React.useRef<HTMLDivElement>(null);
-
-  useFocusFirstDescendant(refEl);
-
   const onChangeImage = (direction: 1 | -1) => {
     setCurrentImage(s => s + direction);
   };
 
   return (
     <Stack
-      ref={refEl}
       className={className}
       width="100%"
       height="100%"
@@ -115,12 +104,18 @@ export default ({
                     );
                   })}
                   {currentImage !== 1 && (
-                    <LeftArrowButton onClick={() => onChangeImage(-1)}>
+                    <LeftArrowButton
+                      aria-controls="step-images"
+                      onClick={() => onChangeImage(-1)}
+                    >
                       <img src={ChevronRight} alt="" />
                     </LeftArrowButton>
                   )}
                   {currentImage !== step?.images?.length && (
-                    <RightArrowButton onClick={() => onChangeImage(1)}>
+                    <RightArrowButton
+                      aria-controls="step-images"
+                      onClick={() => onChangeImage(1)}
+                    >
                       <img src={ChevronRight} alt="" />
                     </RightArrowButton>
                   )}
@@ -144,8 +139,6 @@ export default ({
           <Navigation
             onNavigate={onChangeStep}
             hideNextStepButton={step.no === noOfSteps}
-            nextButtonName="continue"
-            previousButtonName="previous"
           />
         )}
 

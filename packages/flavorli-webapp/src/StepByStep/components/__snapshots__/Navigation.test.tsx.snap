@@ -1,7 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navigation should render correctly 1`] = `
-<div
-  id="recipe-steps"
-/>
+<div>
+  <div
+    id="recipe-steps"
+  />
+  <div
+    class="sc-AykKH xCYCz"
+    direction="horizontal"
+    width="100%"
+  >
+    <button
+      aria-controls="recipe-steps"
+      class="sc-AykKC sc-fzXfLO darlLj"
+    >
+      back
+    </button>
+    <button
+      aria-controls="recipe-steps"
+      class="sc-AykKC eAmRjU"
+      width="100%"
+    >
+      Next
+      <img
+        alt=""
+        class="sc-fzXfLP jMHWmQ"
+        src="right_chevron_white.svg"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Navigation should render correctly when variation is onPrimary 1`] = `
+<div>
+  <div
+    id="recipe-steps"
+  />
+  <div
+    class="sc-AykKH xCYCz"
+    direction="horizontal"
+    width="100%"
+  >
+    <button
+      aria-controls="recipe-steps"
+      class="sc-AykKC sc-fzXfLO darlLj"
+    >
+      back
+    </button>
+    <button
+      aria-controls="recipe-steps"
+      class="sc-AykKC eAmRjU"
+      width="100%"
+    >
+      Next
+      <img
+        alt=""
+        class="sc-fzXfLP jMHWmQ"
+        src="right_chevron_white.svg"
+      />
+    </button>
+  </div>
+</div>
 `;

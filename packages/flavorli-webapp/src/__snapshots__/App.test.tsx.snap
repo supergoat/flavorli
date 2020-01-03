@@ -2,7 +2,7 @@
 
 exports[`App should render correctly 1`] = `
 <div
-  class="sc-fzXfNi kFrxWR"
+  class="sc-fzXfNh JIa-Dw"
 >
   <div
     class="sc-AykKH LDnPj sc-AykKI dTNugP"
@@ -652,7 +652,7 @@ exports[`App should render correctly 1`] = `
           </h2>
         </div>
         <button
-          class="sc-AykKC Wygxb"
+          class="sc-AykKC eAmRjU"
           width="100%"
         >
           Step By Step

@@ -7,7 +7,8 @@ exports[`Kitchenware should render correctly 1`] = `
   width="100%"
 >
   <h3
-    class="sc-AykKF WzKqo"
+    class="sc-AykKF fqdNMu"
+    color="primary"
   >
     You will need
   </h3>

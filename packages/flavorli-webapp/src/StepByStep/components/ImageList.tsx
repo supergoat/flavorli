@@ -13,8 +13,8 @@ const ImageList = ({children}: IImageListProps) => {
     <Stack
       width="100%"
       height="100%"
-      id="recipe-steps"
-      data-testid="recipe-steps"
+      id="step-images"
+      data-testid="step-images"
       aria-live="polite"
       paddingLeft={8}
       paddingRight={8}

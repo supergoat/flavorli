@@ -22,13 +22,13 @@ exports[`Timer should render correctly 1`] = `
   >
     <button
       aria-controls="timer-7"
-      class="sc-AykKC ipAPEz"
+      class="sc-AykKC hYfwNR"
       width="47px"
     >
       START
     </button>
     <button
-      class="sc-AykKC danRJn"
+      class="sc-AykKC dAUeMx"
       color="secondaryTextColor"
     >
       RESET
@@ -59,13 +59,13 @@ exports[`Timer should render correctly when type is notification 1`] = `
   >
     <button
       aria-controls="timer-7"
-      class="sc-AykKC ipAPEz"
+      class="sc-AykKC hYfwNR"
       width="47px"
     >
       START
     </button>
     <button
-      class="sc-AykKC danRJn"
+      class="sc-AykKC dAUeMx"
       color="secondaryTextColor"
     >
       RESET

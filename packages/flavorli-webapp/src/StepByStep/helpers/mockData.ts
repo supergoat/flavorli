@@ -819,6 +819,42 @@ export const steps: IStep[] = [
     type: 'PREPARATION',
     no: 9,
     tag: {
+      text: 'Sauce',
+      color: 'tagRed',
+    },
+    links: [
+      {
+        from: 7,
+        heading: 'From Step 7',
+        name: 'Pan with vegetables',
+        timerId: 7,
+      },
+      {
+        from: 8,
+        heading: 'From Step 8',
+        name: 'Macaroni',
+        timerId: 8,
+      },
+    ],
+    description:
+      'Drain the macaroni and transfer to the pan with the vegetables. Mix and set aside',
+    ingredients: [],
+    kitchenware: [{qty: '1', name: 'Colander'}],
+    images: [
+      {
+        src: require('../images/pasta_mixture_1.png'),
+        alt: 'Add the pasta to the vegetables',
+      },
+      {
+        src: require('../images/pasta_mixture_2.png'),
+        alt: 'Add the pasta to the vegetables',
+      },
+    ],
+  },
+  {
+    type: 'PREPARATION',
+    no: 10,
+    tag: {
       text: 'Assembling',
       color: 'tagPink',
     },
@@ -830,7 +866,7 @@ export const steps: IStep[] = [
   },
   {
     type: 'PREPARATION',
-    no: 10,
+    no: 11,
     tag: {
       text: 'Bechamel',
       color: 'tagOrange',
@@ -861,7 +897,7 @@ export const steps: IStep[] = [
   },
   {
     type: 'PREPARATION',
-    no: 11,
+    no: 12,
     tag: {
       text: 'Bechamel',
       color: 'tagOrange',
@@ -905,7 +941,7 @@ export const steps: IStep[] = [
   },
   {
     type: 'PREPARATION',
-    no: 12,
+    no: 13,
     tag: {
       text: 'Bechamel',
       color: 'tagOrange',
@@ -941,48 +977,15 @@ export const steps: IStep[] = [
   },
   {
     type: 'PREPARATION',
-    no: 13,
-    tag: {
-      text: 'Sauce',
-      color: 'tagRed',
-    },
-    links: [
-      {
-        from: 7,
-        heading: 'From Step 7',
-        name: 'Pan with vegetables',
-        timerId: 7,
-      },
-      {
-        from: 8,
-        heading: 'From Step 8',
-        name: 'Macaroni',
-        timerId: 8,
-      },
-    ],
-    description:
-      'Drain the macaroni and transfer to the pan with the vegetables. Mix and set aside',
-    ingredients: [],
-    kitchenware: [{qty: '1', name: 'Colander'}],
-    images: [
-      {
-        src: require('../images/pasta_mixture_1.png'),
-        alt: 'Add the pasta to the vegetables',
-      },
-      {
-        src: require('../images/pasta_mixture_2.png'),
-        alt: 'Add the pasta to the vegetables',
-      },
-    ],
-  },
-  {
-    type: 'PREPARATION',
     no: 14,
     tag: {
       text: 'Assembling',
       color: 'tagPink',
     },
-    links: [{from: 12, heading: 'From Step 12', name: 'Bechamel sauce'}],
+    links: [
+      {from: 9, heading: 'From Step 9', name: 'Pasta Mixture'},
+      {from: 13, heading: 'From Step 13', name: 'Bechamel sauce'},
+    ],
     description:
       'Add 100g of the bechamel into the pasta mixture, add oregano, mint, and mix well',
     ingredients: [
