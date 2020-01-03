@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import {useTrapFocus, useFocusFirstDescendant, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
 import Step from './components/Step';
-import {steps, miseEnPlace, intro, preparationSteps} from './helpers/mockData';
+import {
+  steps as STEPS,
+  miseEnPlace,
+  intro,
+  preparationSteps,
+} from './helpers/mockData';
 import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
@@ -11,7 +16,11 @@ import MiseEnPlace from './components/MiseEnPlace';
 import {IStep, IMiseEnPlaceStep, IIntro} from './types';
 import Intro from './components/Intro';
 
-export default () => {
+export default ({
+  steps = [intro, ...miseEnPlace, ...preparationSteps, ...STEPS],
+}: {
+  steps?: (IIntro | IMiseEnPlaceStep | IStep)[];
+}) => {
   const refEl = React.useRef<HTMLDivElement>(null);
   const [lastFocus, setLastFocus] = React.useState();
   const [currentStep, setCurrentStep] = React.useState(1);
@@ -48,36 +57,34 @@ export default () => {
           >
             <StepList>
               <>
-                {[intro, ...miseEnPlace, ...preparationSteps, ...steps].map(
-                  (step: IIntro | IMiseEnPlaceStep | IStep, index: number) => {
-                    const isCurrentStep = index === currentStep - 1;
-                    return (
-                      isCurrentStep && (
-                        <>
-                          {step.type === 'INTRO' && (
-                            <Intro step={step} onChangeStep={onChangeStep} />
-                          )}
-                          {step.type === 'MISE_EN_PLACE' && (
-                            <MiseEnPlace
-                              step={step}
-                              onChangeStep={onChangeStep}
-                            />
-                          )}
-                          {(step.type === 'MISE_EN_PLACE_STEP' ||
-                            step.type === 'PREPARATION') && (
-                            <Step
-                              step={step}
-                              key={step.no}
-                              onChangeStep={onChangeStep}
-                              onViewStep={onViewStep}
-                              noOfSteps={steps.length}
-                            />
-                          )}
-                        </>
-                      )
-                    );
-                  },
-                )}
+                {steps.map((step, index) => {
+                  const isCurrentStep = index === currentStep - 1;
+                  return (
+                    isCurrentStep && (
+                      <>
+                        {step.type === 'INTRO' && (
+                          <Intro step={step} onChangeStep={onChangeStep} />
+                        )}
+                        {step.type === 'MISE_EN_PLACE' && (
+                          <MiseEnPlace
+                            step={step}
+                            onChangeStep={onChangeStep}
+                          />
+                        )}
+                        {(step.type === 'MISE_EN_PLACE_STEP' ||
+                          step.type === 'PREPARATION') && (
+                          <Step
+                            step={step}
+                            key={step.no}
+                            onChangeStep={onChangeStep}
+                            onViewStep={onViewStep}
+                            noOfSteps={steps.length}
+                          />
+                        )}
+                      </>
+                    )
+                  );
+                })}
               </>
             </StepList>
           </section>

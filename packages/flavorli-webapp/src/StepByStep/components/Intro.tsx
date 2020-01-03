@@ -52,7 +52,8 @@ const Intro = ({
           width="100%"
           onClick={() => onChangeStep(1)}
         >
-          Ingredients <img src={ChevronRightWhite} alt="" />
+          Ingredients
+          <img src={ChevronRightWhite} alt="" />
         </NextButton>
       </Stack>
     </IntroWrapper>

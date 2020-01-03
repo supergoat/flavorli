@@ -13,7 +13,7 @@ const setup = ({
   const mockOnClose = jest.fn();
   const mockOnChangeStep = jest.fn();
   const step = stepNo ? steps[stepNo - 1] : steps[0];
-  const noOfSteps = steps.length + 1;
+  const noOfSteps = steps.length;
 
   const timers = step.timer
     ? {[step.timer.id]: {...step.timer, isPaused: true}}
@@ -22,7 +22,7 @@ const setup = ({
     ...render(
       <TimersProvider
         initialValues={{
-          timers,
+          ...timers,
         }}
       >
         {/* Add a div with id recipe-steps to be used by aria-controls */}
@@ -43,6 +43,7 @@ const setup = ({
     mockOnClose,
   };
 };
+
 describe('Step', () => {
   it('should not have any axe violations', async () => {
     const {container} = setup();
@@ -65,67 +66,9 @@ describe('Step', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should have a continue button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
-    const {getByText} = setup();
-
-    const continueButton = getByText(/continue/i);
-
-    expect(continueButton).toHaveAttribute('aria-controls', 'recipe-steps');
-  });
-
-  it('should have an accessible label on the continue button to inform assistive technology users that clicking the button takes them to the next step', () => {
-    const {getByText} = setup();
-
-    const continueButton = getByText(/continue/i);
-
-    expect(continueButton).toHaveAttribute('aria-label', 'Next Step');
-  });
-
-  it('clicking the continue button calls onChangeStep with 1 when clicked', () => {
-    const {getByText, mockOnChangeStep} = setup();
-
-    const continueButton = getByText(/continue/i);
-
-    userEvent.click(continueButton);
-
-    expect(mockOnChangeStep).toHaveBeenCalledWith(1);
-  });
-
   it('it should hide the continue button when the current step is the last step', () => {
     const {queryByText} = setup({stepNo: steps.length});
-    expect(queryByText('continue')).toBeNull();
-  });
-
-  it('should have a previous button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
-    const {getByText} = setup();
-
-    const previousButton = getByText(/previous/i);
-
-    expect(previousButton).toHaveAttribute('aria-controls', 'recipe-steps');
-  });
-
-  it('should have an accessible label on the previous button to inform assistive technology users that clicking the button takes them to the next step', () => {
-    const {getByText} = setup();
-
-    const previousButton = getByText(/previous/i);
-
-    expect(previousButton).toHaveAttribute('aria-label', 'Previous Step');
-  });
-
-  it('clicking the previous button that calls onChangeStep with -1 when clicked', () => {
-    const {getByText, mockOnChangeStep} = setup({stepNo: 2});
-
-    const previousButton = getByText(/previous/i);
-
-    userEvent.click(previousButton);
-
-    expect(mockOnChangeStep).toHaveBeenCalledWith(-1);
-  });
-
-  it('it should hide the previous button when the current step is the first step', () => {
-    const {getByText} = setup({stepNo: 1});
-    expect(getByText(/previous/i)).not.toBeVisible();
-    expect(getByText(/previous/i)).toHaveAttribute('tabIndex', '-1');
+    expect(queryByText(/continue/i)).toBeNull();
   });
 
   it('should hide the previous and continue buttons when the step is a dialog', () => {

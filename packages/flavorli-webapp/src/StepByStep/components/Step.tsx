@@ -15,6 +15,7 @@ import Ingredients from './Ingredients';
 import styled from 'styled-components';
 import ImageList from './ImageList';
 import ChevronRight from '../../images/right-chevron.svg';
+import Navigation from './Navigation';
 
 interface IStepProps {
   isDialog?: boolean;
@@ -140,29 +141,14 @@ export default ({
         paddingRight={48}
       >
         {!isDialog && (
-          <>
-            <Button
-              aria-label="Previous Step"
-              aria-controls="recipe-steps"
-              tabIndex={step.no === 1 ? -1 : undefined}
-              intent="secondary"
-              onClick={() => onChangeStep(-1)}
-            >
-              Previous
-            </Button>
-
-            {step.no !== noOfSteps && (
-              <Button
-                aria-label="Next Step"
-                aria-controls="recipe-steps"
-                onClick={() => onChangeStep(1)}
-                width="100%"
-              >
-                Continue
-              </Button>
-            )}
-          </>
+          <Navigation
+            onNavigate={onChangeStep}
+            hideNextStepButton={step.no === noOfSteps}
+            nextButtonName="continue"
+            previousButtonName="previous"
+          />
         )}
+
         {isDialog && (
           <Button width="100%" intent="secondary" onClick={onClose}>
             Close
