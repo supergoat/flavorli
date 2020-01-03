@@ -7,7 +7,7 @@ export const miseEnPlace: IMiseEnPlaceStep[] = [
     no: 1,
     type: 'MISE_EN_PLACE',
     heading: 'Ingredients',
-    image: require('../images/salad.svg'),
+    image: require('../icons/salad.svg'),
     items: [
       {
         qty: '2',
@@ -104,7 +104,7 @@ export const miseEnPlace: IMiseEnPlaceStep[] = [
     no: 2,
     type: 'MISE_EN_PLACE',
     heading: 'Items',
-    image: require('../images/box.svg'),
+    image: require('../icons/box.svg'),
     items: [
       {
         qty: '2',

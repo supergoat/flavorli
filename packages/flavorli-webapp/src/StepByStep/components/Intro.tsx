@@ -2,7 +2,7 @@ import React from 'react';
 import {Stack, Button, H1, H2} from '@flavorli/elements';
 import styled from 'styled-components';
 
-import ChevronRightWhite from '../images/right_chevron_white.svg';
+import ChevronRightWhite from '../icons/right_chevron_white.svg';
 import Info from './Info';
 import {IIntro} from '../types';
 
@@ -65,7 +65,7 @@ const IntroWrapper = styled(Stack)`
   position: relative;
   &::before {
     content: '';
-    background-image: url(${require('../images/notebook.svg')});
+    background-image: url(${require('../icons/notebook.svg')});
     background-size: 370px;
     background-repeat: no-repeat;
     opacity: 0.15;
