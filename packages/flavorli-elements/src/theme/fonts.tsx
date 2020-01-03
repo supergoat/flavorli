@@ -2,13 +2,20 @@ import WebFont from 'webfontloader';
 
 WebFont.load({
   google: {
-    families: ['Titillium Web:300,400,700', 'Lato:300,400,700'],
+    families: [
+      'Titillium Web:300,400,700',
+      'Lato:300,400,700',
+      'Pacifico',
+      'Patrick Hand',
+    ],
   },
 });
 
 export enum families {
   TitilliumWeb = 'Titillium Web',
   Lato = 'Lato',
+  PatrickHand = 'Patrick Hand',
+  Pacifico = 'Pacifico',
 }
 
 export const weights = {

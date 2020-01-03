@@ -12,6 +12,9 @@ export interface IButtonProps {
 }
 
 export const Button = styled.button<IButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   height: ${p =>
     p.height ? p.height : p.intent === 'text' ? 'auto' : DEFAULT_HEIGHT};

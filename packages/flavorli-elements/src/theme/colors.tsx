@@ -9,7 +9,8 @@ const COLORS = {
   GREY_500: '#EEE',
   GREY_700: '#6B6B6B',
   BLUE_100: '#EEFFFF',
-  BLUE_200: '#EEEEFF',
+  BLUE_200: ' #EBF9FF',
+  BLUE_300: '#E4E0FF',
   BLUE_700: '#273B7A',
   BLUE_900: '#18285c',
 
@@ -25,8 +26,9 @@ export const colors = {
   primary: COLORS.BLUE_700,
   primaryDark: COLORS.BLUE_900,
 
-  secondary: COLORS.BLUE_100,
-  secondaryDark: COLORS.BLUE_200,
+  secondaryLight: COLORS.BLUE_100,
+  secondary: COLORS.BLUE_200,
+  secondaryDark: COLORS.BLUE_300,
 
   background: COLORS.WHITE,
   surface: COLORS.WHITE,
