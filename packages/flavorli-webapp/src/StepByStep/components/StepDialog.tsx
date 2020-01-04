@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dialog} from '@flavorli/elements';
-import Step from './Step';
+import PreparationStep from './PreparationStep';
 import {steps} from '../helpers/mockData';
 import styled from 'styled-components';
 import {IStep} from '../types';
@@ -19,7 +19,7 @@ const StepDialog = ({
 }: IStepDialogProps) => {
   return (
     <DialogWrapper label="" describedbyID="step-description" onClose={onClose}>
-      <Step
+      <PreparationStep
         isDialog={true}
         step={steps[stepNo - 1] as IStep}
         onChangeStep={() => {}}

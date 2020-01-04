@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {useTrapFocus, useFocusFirstDescendant, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
-import Step from './components/Step';
+import PreparationStep from './components/PreparationStep';
 import {
   steps as STEPS,
   miseEnPlace,
@@ -73,7 +73,7 @@ export default ({
                         )}
                         {(step.type === 'MISE_EN_PLACE_STEP' ||
                           step.type === 'PREPARATION') && (
-                          <Step
+                          <PreparationStep
                             step={step}
                             key={step.no}
                             onChangeStep={onChangeStep}

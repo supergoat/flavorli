@@ -2,7 +2,7 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import {render} from '../../helpers/test-helpers';
-import Step from './Step';
+import PreparationStep from './PreparationStep';
 import {steps} from '../helpers/mockData';
 import {TimersProvider} from '../helpers/timersContext';
 
@@ -27,7 +27,7 @@ const setup = ({
       >
         {/* Add a div with id recipe-steps to be used by aria-controls */}
         <div id="recipe-steps" />
-        <Step
+        <PreparationStep
           isDialog={isDialog}
           step={step}
           onViewStep={jest.fn()}
@@ -44,7 +44,7 @@ const setup = ({
   };
 };
 
-describe('Step', () => {
+describe('PreparationStep', () => {
   it('should not have any axe violations', async () => {
     const {container} = setup();
     const results = await axe(container);
