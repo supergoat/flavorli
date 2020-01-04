@@ -39,7 +39,7 @@ const Links = ({links, onViewStep}: ILinksProps) => {
               </Stack>
               <Stack gap={4} alignment="end">
                 {link.timerId && (
-                  <Text color="primary">
+                  <Text color="primary" data-testid={`timerid-${link.timerId}`}>
                     {timers[link.timerId].minutes}m{' '}
                     {timers[link.timerId].seconds}s
                   </Text>

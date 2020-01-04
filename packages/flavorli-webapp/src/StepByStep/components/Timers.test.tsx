@@ -6,6 +6,7 @@ import Timers from './Timers';
 import {ITimer} from '../types';
 import {steps} from '../helpers/mockData';
 import userEvent from '@testing-library/user-event';
+import {act} from 'react-dom/test-utils';
 
 const setup = (timers?: {[timerId: number]: ITimer}) => {
   const stepWithTimer = steps[6];
@@ -60,11 +61,15 @@ describe('Timers', () => {
     const viewTimersButton = getByText(/View Timers/i);
 
     // Click View Timers to show Hide Timers Button
-    userEvent.click(viewTimersButton);
+    act(() => {
+      userEvent.click(viewTimersButton);
+    });
 
     const hideTimers = getByText(/Hide Timers/i);
 
-    userEvent.click(hideTimers);
+    act(() => {
+      userEvent.click(hideTimers);
+    });
 
     expect(queryByLabelText(timer.name)).toBeNull();
   });

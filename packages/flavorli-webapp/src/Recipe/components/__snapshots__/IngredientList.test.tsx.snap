@@ -21,12 +21,12 @@ exports[`IngredientList should render correctly 1`] = `
       class="sc-AykKG iIcCYk"
       width="25%"
     >
-      1
+      2
     </p>
     <p
       class="sc-AykKG fCXClx"
     >
-      eggplans
+      eggplants
     </p>
   </div>
   <div

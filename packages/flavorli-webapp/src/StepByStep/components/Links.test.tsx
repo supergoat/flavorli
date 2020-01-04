@@ -5,18 +5,33 @@ import Links from './Links';
 import {steps} from '../helpers/mockData';
 import {ILink} from '../types';
 import userEvent from '@testing-library/user-event';
+import {TimersProvider} from '../helpers/timersContext';
 
 const setup = (links?: ILink[]) => {
   const mockOnViewStep = jest.fn();
-  const stepWithOneLink = steps[7];
-  const stepLinks = links || stepWithOneLink.links;
+  const stepWithOneLinkWithTimerIds = steps[8];
+  const stepLinks = links || stepWithOneLinkWithTimerIds.links;
+
+  // The timerS that corresponds to the timers in stepWithOneLinkWithTimerIds
+  const timer1 = steps[6].timer;
+  const timer2 = steps[7].timer;
+
+  const timers =
+    timer1?.id && timer2?.id ? {[timer1.id]: timer1, [timer2.id]: timer2} : {};
 
   return {
-    ...render(<Links links={stepLinks} onViewStep={mockOnViewStep} />),
+    ...render(
+      <TimersProvider initialValues={{...timers}}>
+        <Links links={stepLinks} onViewStep={mockOnViewStep} />
+      </TimersProvider>,
+    ),
     links: stepLinks,
+    timer1,
+    timer2,
     mockOnViewStep,
   };
 };
+
 describe('Links', () => {
   it('should not have any axe violations', async () => {
     const {container} = setup();
@@ -30,10 +45,10 @@ describe('Links', () => {
   });
 
   it('should call onViewStep with link.from when the user clicks View Step', () => {
-    const {getByText, mockOnViewStep, links} = setup();
+    const {getAllByText, mockOnViewStep, links} = setup();
 
     const link = links[0];
-    const viewStepButton = getByText('View Step');
+    const viewStepButton = getAllByText('View Step')[0];
     userEvent.click(viewStepButton);
     expect(mockOnViewStep).toHaveBeenCalledWith(link.from);
   });
@@ -41,5 +56,23 @@ describe('Links', () => {
   it('should render an empty div if the links are an empty array', () => {
     const {container} = setup([]);
     expect(container.firstChild).toBeNull();
+  });
+
+  it('should display the time from the timers if the links have timerIds', () => {
+    const {getByTestId, timer1, timer2} = setup();
+
+    expect(getByTestId(`timerid-${timer1?.id}`)).toHaveTextContent(
+      `${timer1?.minutes}m ${timer1?.seconds}s`,
+    );
+    expect(getByTestId(`timerid-${timer2?.id}`)).toHaveTextContent(
+      `${timer2?.minutes}m ${timer2?.seconds}s`,
+    );
+  });
+
+  it('should not display the time if the links do not have timerIds', () => {
+    const stepWithLinkAndNoTimerId = steps[7];
+    const {queryByTestId} = setup(stepWithLinkAndNoTimerId.links);
+
+    expect(queryByTestId(/timerid-/i)).toBeNull();
   });
 });

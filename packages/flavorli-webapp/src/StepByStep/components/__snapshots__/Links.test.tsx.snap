@@ -8,7 +8,7 @@ exports[`Links should render correctly 1`] = `
   width="100%"
 >
   <div
-    class="sc-AykKH jJpMVI"
+    class="sc-AykKH dJfAhH"
     direction="vertical"
     width="100%"
   >
@@ -25,21 +25,82 @@ exports[`Links should render correctly 1`] = `
           class="sc-AykKG jJvoyz"
           font-size="14"
         >
-          From Step 1
+          From Step 7
         </p>
         <p
           class="sc-AykKG erRrXf"
           color="primary"
         >
-          Boiling water
+          Pan with vegetables
         </p>
       </div>
       <div
         class="sc-AykKH bVhbKf"
         direction="vertical"
       >
+        <p
+          class="sc-AykKG erRrXf"
+          color="primary"
+          data-testid="timerid-7"
+        >
+          10
+          m
+           
+          0
+          s
+        </p>
         <button
-          class="sc-AykKC hPXCfd"
+          class="sc-AykKC YLLlX"
+        >
+          View Step
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-AykKH dJfAhH"
+    direction="vertical"
+    width="100%"
+  >
+    <div
+      class="sc-AykKH ifuQoe"
+      direction="horizontal"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH kQGRhG"
+        direction="vertical"
+      >
+        <p
+          class="sc-AykKG jJvoyz"
+          font-size="14"
+        >
+          From Step 8
+        </p>
+        <p
+          class="sc-AykKG erRrXf"
+          color="primary"
+        >
+          Macaroni
+        </p>
+      </div>
+      <div
+        class="sc-AykKH bVhbKf"
+        direction="vertical"
+      >
+        <p
+          class="sc-AykKG erRrXf"
+          color="primary"
+          data-testid="timerid-8"
+        >
+          10
+          m
+           
+          0
+          s
+        </p>
+        <button
+          class="sc-AykKC YLLlX"
         >
           View Step
         </button>

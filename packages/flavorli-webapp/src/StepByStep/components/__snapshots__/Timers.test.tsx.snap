@@ -14,7 +14,6 @@ exports[`Timers should render correctly 1`] = `
 <div
   class="sc-AykKH bcqxzt"
   direction="vertical"
-  style="transform: translateY(-100%) translateZ(0);"
   width="100%"
 >
   <div

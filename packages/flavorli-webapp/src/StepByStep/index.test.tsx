@@ -8,7 +8,11 @@ import {steps} from './helpers/mockData';
 import {IStep} from './types';
 
 const setup = (customSteps?: IStep[]) => {
-  return render(<StepByStep steps={customSteps || steps} />);
+  const stepList = customSteps || steps;
+  return {
+    ...render(<StepByStep steps={stepList} />),
+    steps: stepList,
+  };
 };
 describe('StepByStep', () => {
   it('should not have any axe violations', async () => {
@@ -31,6 +35,16 @@ describe('StepByStep', () => {
     expect(
       queryByLabelText(`Step ${step1.no} of ${steps.length}`),
     ).toBeInTheDocument();
+  });
+
+  it('should display only one step at a time', async () => {
+    const {queryByText, steps} = setup();
+    const [step1, ...rest] = steps;
+    expect(queryByText(`${step1.no}`)).toBeInTheDocument();
+
+    rest.forEach(step =>
+      expect(queryByText(`${step.no}`)).not.toBeInTheDocument(),
+    );
   });
 
   it('should have a next button that when clicked hides the current step and brings the next step into view', () => {
