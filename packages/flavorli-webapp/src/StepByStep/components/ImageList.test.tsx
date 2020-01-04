@@ -2,12 +2,12 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import {render} from '../../helpers/test-helpers';
-import {steps} from '../helpers/mockData';
+import {recipeSteps} from '../helpers/mockData';
 import ImageList from './ImageList';
 import {IImage} from '../types';
 
 const setup = (customImages?: IImage[]) => {
-  const stepWithImages = steps[2];
+  const stepWithImages = recipeSteps[2];
   const images = customImages || (stepWithImages.images as IImage[]);
 
   return {

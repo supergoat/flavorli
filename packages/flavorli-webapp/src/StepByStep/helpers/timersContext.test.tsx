@@ -6,7 +6,7 @@ import {
   useAddTimerIfItDoesNotExist,
   useRunTimer,
 } from './timersContext';
-import {steps} from './mockData';
+import {recipeSteps} from './mockData';
 import {ITimer} from '../types';
 
 afterEach(() => {
@@ -39,7 +39,7 @@ describe('useTimersContext', () => {
   });
 
   it('should use custom timers', () => {
-    const stepWithTimer = steps[6];
+    const stepWithTimer = recipeSteps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
     const contextTimers = {[timer.id]: timer};
@@ -59,7 +59,7 @@ describe('useTimersContext', () => {
 
 describe('useAddTimerIfItDoesNotExist', () => {
   it('add timer if it doesn not exist in context', () => {
-    const stepWithTimer = steps[6];
+    const stepWithTimer = recipeSteps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
@@ -76,7 +76,7 @@ describe('useAddTimerIfItDoesNotExist', () => {
   });
 
   it('should return the timer if it is already in context', () => {
-    const stepWithTimer = steps[6];
+    const stepWithTimer = recipeSteps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
@@ -98,7 +98,7 @@ describe('useAddTimerIfItDoesNotExist', () => {
 describe('useRunTimer', () => {
   it('it should return the timer if the timer isPaused', async () => {
     jest.useFakeTimers();
-    const stepWithTimer = steps[6];
+    const stepWithTimer = recipeSteps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
@@ -123,7 +123,7 @@ describe('useRunTimer', () => {
   it('should pause the timer and return it if the timer is set to 0 minutes and 0 seconds', () => {
     jest.useFakeTimers();
 
-    const stepWithTimer = steps[6];
+    const stepWithTimer = recipeSteps[6];
     const timer = {
       ...stepWithTimer.timer,
       isPaused: false,
@@ -152,7 +152,7 @@ describe('useRunTimer', () => {
 
   it('should decrement the timer by one second', () => {
     jest.useFakeTimers();
-    const stepWithTimer = steps[6];
+    const stepWithTimer = recipeSteps[6];
     const timer = {
       ...stepWithTimer.timer,
       isPaused: false,

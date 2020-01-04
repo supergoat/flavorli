@@ -1,13 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PreparationStep should render correctly 1`] = `
-<div
-  id="recipe-steps"
-/>
-`;
-
 exports[`Step should render correctly 1`] = `
-<div
-  id="recipe-steps"
-/>
+<div>
+  <div
+    aria-label="Step 1 of 2"
+    class="sc-AykKH eQsNbe sc-fzXfLO kGSZWO"
+    direction="vertical"
+    height="100%"
+    overflow="hidden"
+    role="group"
+    width="100%"
+  >
+    <div
+      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      direction="vertical"
+      height="100%"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH cUKmt"
+        direction="vertical"
+        height="100%"
+        width="100%"
+      >
+        children
+      </div>
+    </div>
+  </div>
+</div>
 `;

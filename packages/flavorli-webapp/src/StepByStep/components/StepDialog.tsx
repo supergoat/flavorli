@@ -1,11 +1,11 @@
 import React from 'react';
 import {Dialog} from '@flavorli/elements';
-import PreparationStep from './PreparationStep';
-import {steps} from '../helpers/mockData';
+import RecipeStep from './RecipeStep';
+import {recipeSteps} from '../helpers/mockData';
 import styled from 'styled-components';
-import {IStep} from '../types';
+import {IRecipeStep} from '../types';
 
-interface IStepDialogProps {
+interface IPreparationStepDialogProps {
   stepNo: number;
   noOfSteps: number;
   onViewStep: (stepNo: number) => void;
@@ -16,16 +16,17 @@ const StepDialog = ({
   noOfSteps,
   onViewStep,
   onClose,
-}: IStepDialogProps) => {
+}: IPreparationStepDialogProps) => {
   return (
     <DialogWrapper label="" describedbyID="step-description" onClose={onClose}>
-      <PreparationStep
+      <RecipeStep
         isDialog={true}
-        step={steps[stepNo - 1] as IStep}
+        stepNo={stepNo}
+        noOfSteps={noOfSteps}
+        step={recipeSteps[stepNo - 1] as IRecipeStep}
         onChangeStep={() => {}}
         onViewStep={onViewStep}
         onClose={onClose}
-        noOfSteps={noOfSteps}
       />
     </DialogWrapper>
   );
@@ -42,4 +43,5 @@ const DialogWrapper = styled(Dialog)`
   width: 100%;
   height: 100%;
   z-index: 1;
+  background: ${p => p.theme.colors.backdropDark};
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Timer from './Timer';
-import {steps} from '../helpers/mockData';
+import {recipeSteps} from '../helpers/mockData';
 import {act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {ITimer} from '../types';
@@ -21,7 +21,7 @@ const setup = (
     isPaused?: boolean;
   } = {isPaused: true},
 ) => {
-  const stepWithTimer = steps[6];
+  const stepWithTimer = recipeSteps[6];
   const timer = {...stepWithTimer.timer, isPaused} as ITimer;
 
   return {

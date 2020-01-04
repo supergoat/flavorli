@@ -5,10 +5,10 @@ import {Stack} from '@flavorli/elements';
  * Implemented according to
  * @see https://w3c.github.io/aria-practices/#carousel
  */
-export interface IStepListProps {
+export interface IPreparationStepListProps {
   children: React.ReactNode;
 }
-const StepList = ({children}: IStepListProps) => {
+const StepList = ({children}: IPreparationStepListProps) => {
   return (
     <Stack
       width="100%"

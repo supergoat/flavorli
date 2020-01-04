@@ -2,32 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import {useTrapFocus, useFocusFirstDescendant, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
-import PreparationStep from './components/PreparationStep';
+import RecipeStep from './components/RecipeStep';
 import {
-  steps as STEPS,
-  miseEnPlace,
-  intro,
+  introStep,
+  ingredientsStep,
+  itemsStep,
   preparationSteps,
+  recipeSteps,
 } from './helpers/mockData';
 import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
-import MiseEnPlace from './components/MiseEnPlace';
-import {IStep, IMiseEnPlaceStep, IIntro} from './types';
-import Intro from './components/Intro';
 
-export default ({
-  steps = [intro, ...miseEnPlace, ...preparationSteps, ...STEPS],
-}: {
-  steps?: (IIntro | IMiseEnPlaceStep | IStep)[];
-}) => {
+import Intro from './components/Intro';
+import IngredientsStep from './components/IngredientsStep';
+import ItemsStep from './components/ItemsStep';
+import PreparationStep from './components/PreparationStep';
+
+export default () => {
   const refEl = React.useRef<HTMLDivElement>(null);
   const [lastFocus, setLastFocus] = React.useState();
   const [currentStep, setCurrentStep] = React.useState(1);
   const [openLink, setOpenLink] = React.useState();
 
-  useFocusFirstDescendant(refEl);
+  // useFocusFirstDescendant(refEl);
   useTrapFocus(refEl);
+
   const onChangeStep = (direction: 1 | -1) => {
     setCurrentStep(s => s + direction);
   };
@@ -42,6 +42,7 @@ export default ({
     lastFocus.focus();
   };
 
+  const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
   return (
     <DialogWrapper ref={refEl}>
       <TimersProvider>
@@ -57,31 +58,56 @@ export default ({
           >
             <StepList>
               <>
-                {steps.map((step, index) => {
-                  const isCurrentStep = index === currentStep - 1;
+                {currentStep === 1 && (
+                  <Intro
+                    stepNo={1}
+                    noOfSteps={noOfSteps}
+                    step={introStep}
+                    onChangeStep={onChangeStep}
+                  />
+                )}
+                {currentStep === 2 && (
+                  <IngredientsStep
+                    stepNo={2}
+                    noOfSteps={noOfSteps}
+                    ingredients={ingredientsStep.ingredients}
+                    onChangeStep={onChangeStep}
+                  />
+                )}
+                {currentStep === 3 && (
+                  <ItemsStep
+                    stepNo={3}
+                    noOfSteps={noOfSteps}
+                    items={itemsStep.items}
+                    onChangeStep={onChangeStep}
+                  />
+                )}
+                {preparationSteps.map((preparationStep, index) => {
+                  const isCurrentStep = index + 4 === currentStep;
                   return (
                     isCurrentStep && (
-                      <>
-                        {step.type === 'INTRO' && (
-                          <Intro step={step} onChangeStep={onChangeStep} />
-                        )}
-                        {step.type === 'MISE_EN_PLACE' && (
-                          <MiseEnPlace
-                            step={step}
-                            onChangeStep={onChangeStep}
-                          />
-                        )}
-                        {(step.type === 'MISE_EN_PLACE_STEP' ||
-                          step.type === 'PREPARATION') && (
-                          <PreparationStep
-                            step={step}
-                            key={step.no}
-                            onChangeStep={onChangeStep}
-                            onViewStep={onViewStep}
-                            noOfSteps={steps.length}
-                          />
-                        )}
-                      </>
+                      <PreparationStep
+                        stepNo={index + 4}
+                        noOfSteps={noOfSteps}
+                        step={preparationStep}
+                        onChangeStep={onChangeStep}
+                      />
+                    )
+                  );
+                })}
+                {recipeSteps.map((recipeStep, index) => {
+                  const isCurrentStep =
+                    index + 4 + preparationSteps.length === currentStep;
+
+                  return (
+                    isCurrentStep && (
+                      <RecipeStep
+                        stepNo={index + 4 + preparationSteps.length}
+                        noOfSteps={noOfSteps}
+                        step={recipeStep}
+                        onChangeStep={onChangeStep}
+                        onViewStep={onViewStep}
+                      />
                     )
                   );
                 })}
@@ -93,7 +119,7 @@ export default ({
         {openLink && (
           <StepDialog
             stepNo={openLink}
-            noOfSteps={steps.length}
+            noOfSteps={preparationSteps.length}
             onViewStep={onViewStep}
             onClose={() => onCloseDialog()}
           />

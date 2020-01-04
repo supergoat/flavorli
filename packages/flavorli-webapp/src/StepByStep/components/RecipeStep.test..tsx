@@ -2,8 +2,8 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import {render} from '../../helpers/test-helpers';
-import PreparationStep from './PreparationStep';
-import {steps} from '../helpers/mockData';
+import RecipeStep from './RecipeStep';
+import {recipeSteps} from '../helpers/mockData';
 import {TimersProvider} from '../helpers/timersContext';
 
 const setup = ({
@@ -12,8 +12,8 @@ const setup = ({
 }: {stepNo?: number; isDialog?: boolean} = {}) => {
   const mockOnClose = jest.fn();
   const mockOnChangeStep = jest.fn();
-  const step = stepNo ? steps[stepNo - 1] : steps[0];
-  const noOfSteps = steps.length;
+  const step = stepNo ? recipeSteps[stepNo - 1] : recipeSteps[0];
+  const noOfSteps = recipeSteps.length;
 
   const timers = step.timer
     ? {[step.timer.id]: {...step.timer, isPaused: true}}
@@ -27,7 +27,7 @@ const setup = ({
       >
         {/* Add a div with id recipe-steps to be used by aria-controls */}
         <div id="recipe-steps" />
-        <PreparationStep
+        <RecipeStep
           isDialog={isDialog}
           step={step}
           onViewStep={jest.fn()}
@@ -44,21 +44,11 @@ const setup = ({
   };
 };
 
-describe('PreparationStep', () => {
+describe('RecipeStep', () => {
   it('should not have any axe violations', async () => {
     const {container} = setup();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
-  });
-
-  it('should have a role of group to enable assistive technology users to preceive the boundaries of a step', () => {
-    const {getByRole} = setup();
-    getByRole('group');
-  });
-
-  it('should have an aria-label to indicate to assistive technology users the step they are on', () => {
-    const {getByLabelText, step, noOfSteps} = setup();
-    getByLabelText(`Step ${step.no} of ${noOfSteps}`);
   });
 
   it('should render correctly', () => {

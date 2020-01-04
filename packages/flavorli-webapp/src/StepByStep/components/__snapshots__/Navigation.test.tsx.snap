@@ -6,13 +6,13 @@ exports[`Navigation should render correctly 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH xCYCz"
+    class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
     direction="horizontal"
     width="100%"
   >
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLO darlLj"
+      class="sc-AykKC sc-fzXfLP cWHKgM"
     >
       back
     </button>
@@ -24,7 +24,7 @@ exports[`Navigation should render correctly 1`] = `
       Next
       <img
         alt=""
-        class="sc-fzXfLP jMHWmQ"
+        class="sc-fzXfLQ jNZvTh"
         src="right_chevron_white.svg"
       />
     </button>
@@ -38,13 +38,13 @@ exports[`Navigation should render correctly when variation is onPrimary 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH xCYCz"
+    class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
     direction="horizontal"
     width="100%"
   >
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLO darlLj"
+      class="sc-AykKC sc-fzXfLP cWHKgM"
     >
       back
     </button>
@@ -56,7 +56,7 @@ exports[`Navigation should render correctly when variation is onPrimary 1`] = `
       Next
       <img
         alt=""
-        class="sc-fzXfLP jMHWmQ"
+        class="sc-fzXfLQ jNZvTh"
         src="right_chevron_white.svg"
       />
     </button>

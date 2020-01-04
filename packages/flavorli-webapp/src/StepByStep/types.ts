@@ -34,8 +34,7 @@ export interface IImage {
   src: string;
   alt: string;
 }
-export interface IStep {
-  type: 'PREPARATION' | 'MISE_EN_PLACE_STEP';
+export interface IRecipeStep {
   no: number;
   description: string;
   tag: ITag;
@@ -51,16 +50,15 @@ export interface IItem {
   name: string;
 }
 
-export interface IMiseEnPlaceStep {
-  no: number;
-  type: 'MISE_EN_PLACE';
-  heading: string;
-  image: string;
-  items: IItem[];
+export interface IPreparationStep {
+  description: string;
+  tag: ITag;
+  ingredients: IIngredient[];
+  kitchenware: IKitchenware[];
+  images?: IImage[];
 }
 
 export interface IIntro {
-  type: 'INTRO';
   name: string;
   image: string;
   preparation: string;
@@ -68,3 +66,5 @@ export interface IIntro {
   portions: string;
   difficulty: string;
 }
+
+export type IStep = IIntro | IPreparationStep;

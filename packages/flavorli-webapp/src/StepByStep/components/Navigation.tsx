@@ -28,7 +28,13 @@ const Navigation = ({
   };
 
   return (
-    <Stack direction="horizontal" gap={8} distribution="end" width="100%">
+    <NavigationWrapper
+      direction="horizontal"
+      gap={8}
+      distribution="end"
+      width="100%"
+      paddingTop={16}
+    >
       <PreviousButton
         hide={hideBackButton}
         aria-controls="recipe-steps"
@@ -50,11 +56,15 @@ const Navigation = ({
           <ButtonIcon />
         </Button>
       )}
-    </Stack>
+    </NavigationWrapper>
   );
 };
 
 export default Navigation;
+
+const NavigationWrapper = styled(Stack)`
+  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.4);
+`;
 
 const PreviousButton = styled(Button)<{
   hide: boolean;

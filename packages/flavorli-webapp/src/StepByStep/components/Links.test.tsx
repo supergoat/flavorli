@@ -2,19 +2,19 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Links from './Links';
-import {steps} from '../helpers/mockData';
+import {recipeSteps} from '../helpers/mockData';
 import {ILink} from '../types';
 import userEvent from '@testing-library/user-event';
 import {TimersProvider} from '../helpers/timersContext';
 
 const setup = (links?: ILink[]) => {
   const mockOnViewStep = jest.fn();
-  const stepWithOneLinkWithTimerIds = steps[8];
+  const stepWithOneLinkWithTimerIds = recipeSteps[8];
   const stepLinks = links || stepWithOneLinkWithTimerIds.links;
 
   // The timerS that corresponds to the timers in stepWithOneLinkWithTimerIds
-  const timer1 = steps[6].timer;
-  const timer2 = steps[7].timer;
+  const timer1 = recipeSteps[6].timer;
+  const timer2 = recipeSteps[7].timer;
 
   const timers =
     timer1?.id && timer2?.id ? {[timer1.id]: timer1, [timer2.id]: timer2} : {};
@@ -70,7 +70,7 @@ describe('Links', () => {
   });
 
   it('should not display the time if the links do not have timerIds', () => {
-    const stepWithLinkAndNoTimerId = steps[7];
+    const stepWithLinkAndNoTimerId = recipeSteps[7];
     const {queryByTestId} = setup(stepWithLinkAndNoTimerId.links);
 
     expect(queryByTestId(/timerid-/i)).toBeNull();

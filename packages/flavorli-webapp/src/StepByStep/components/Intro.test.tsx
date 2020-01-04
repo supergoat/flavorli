@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Intro from './Intro';
-import {intro} from '../helpers/mockData';
+import {introStep} from '../helpers/mockData';
 
 const setup = () => {
   const mockOnChangeStep = jest.fn();
@@ -10,7 +10,7 @@ const setup = () => {
     <>
       {/* Add a div with id recipe-steps to be used by aria-controls */}
       <div id="recipe-steps" />
-      <Intro step={intro} onChangeStep={mockOnChangeStep} />
+      <Intro step={introStep} onChangeStep={mockOnChangeStep} />
     </>,
   );
 };

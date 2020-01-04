@@ -2,12 +2,12 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Kitchenware from './Kitchenware';
-import {steps} from '../helpers/mockData';
+import {recipeSteps} from '../helpers/mockData';
 
 describe('Kitchenware', () => {
   it('should not have any axe violations', async () => {
     const {container} = render(
-      <Kitchenware kitchenware={steps[0].kitchenware} />,
+      <Kitchenware kitchenware={recipeSteps[0].kitchenware} />,
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -15,7 +15,7 @@ describe('Kitchenware', () => {
 
   it('should render correctly', () => {
     const {container} = render(
-      <Kitchenware kitchenware={steps[0].kitchenware} />,
+      <Kitchenware kitchenware={recipeSteps[0].kitchenware} />,
     );
     expect(container.firstChild).toMatchSnapshot();
   });

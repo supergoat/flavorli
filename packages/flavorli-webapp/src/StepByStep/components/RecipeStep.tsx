@@ -1,39 +1,66 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack, Text, Button} from '@flavorli/elements';
+import Timer from './Timer';
+import Links from './Links';
 import Tag from './Tag';
 import Kitchenware from './Kitchenware';
 import Ingredients from './Ingredients';
 import ImageList from './ImageList';
 import Navigation from './Navigation';
-import {IPreparationStep} from '../types';
+import {IRecipeStep} from '../types';
 import Step from './Step';
 
 interface IPreparationStepProps {
+  isDialog?: boolean;
   stepNo: number;
   noOfSteps: number;
-  step: IPreparationStep;
+  step: IRecipeStep;
   onChangeStep: (direction: 1 | -1) => void;
+  onViewStep: (stepNo: number) => void;
+  onClose?: () => void;
+  className?: string;
 }
 export default ({
+  isDialog,
+  step,
   stepNo,
   noOfSteps,
-  step,
   onChangeStep,
+  onViewStep,
+  onClose,
 }: IPreparationStepProps) => {
   return (
     <Step
       stepNo={stepNo}
       noOfSteps={noOfSteps}
       background="surface"
-      navigation={<Navigation onNavigate={onChangeStep} />}
+      navigation={
+        <>
+          {!isDialog && (
+            <Navigation
+              onNavigate={onChangeStep}
+              hideNextStepButton={step.no === noOfSteps}
+            />
+          )}
+
+          {isDialog && (
+            <Stack paddingTop={16} width="100%">
+              <Button width="100%" intent="secondary" onClick={onClose}>
+                Close
+              </Button>
+            </Stack>
+          )}
+        </>
+      }
     >
-      <Stack width="100%" paddingBottom={16} gap={4}>
-        <Heading>Mise en place</Heading>
-        <SubHeading>Preparation</SubHeading>
+      <Stack width="100%" paddingBottom={32}>
+        <StepNo>{step.no}</StepNo>
       </Stack>
 
       <Tag tag={step.tag} />
+
+      <Links links={step.links} onViewStep={onViewStep} />
 
       <Kitchenware kitchenware={step.kitchenware} />
 
@@ -43,6 +70,8 @@ export default ({
         {step.description}
       </Text>
 
+      {step.timer && <Timer timer={step.timer} />}
+
       {step?.images && step?.images?.length > 0 && (
         <ImageList images={step?.images} />
       )}
@@ -50,16 +79,9 @@ export default ({
   );
 };
 
-const Heading = styled.h1`
+const StepNo = styled.p`
   font-family: ${p => p.theme.families.Pacifico};
-  font-size: ${p => p.theme.fontSizes[32]};
+  font-size: ${p => p.theme.fontSizes[48]};
   color: ${p => p.theme.colors.primary};
-  font-weight: normal;
-`;
-
-const SubHeading = styled.h2`
-  font-family: ${p => p.theme.families.PatrickHand};
-  font-size: ${p => p.theme.fontSizes[24]};
-  color: ${p => p.theme.colors.tagRed};
   font-weight: normal;
 `;

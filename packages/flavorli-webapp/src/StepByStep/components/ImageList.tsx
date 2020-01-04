@@ -19,73 +19,72 @@ const ImageList = ({images}: IImageListProps) => {
   };
 
   return (
-    <section aria-label="List of step images">
+    <Section aria-label="List of step images">
       <Stack
-        width="100%"
-        height="100%"
         id="step-images"
         data-testid="step-images"
         aria-live="polite"
-        paddingLeft={8}
-        paddingRight={8}
+        width="100%"
+        paddingBottom={24}
       >
-        <Stack
-          width="100%"
-          height="100%"
-          paddingBottom={24}
-          role="group"
-          aria-label={`Image ${currentImage} of ${images.length}`}
+        {images.map((image, index) => {
+          const isCurrentImage = index === currentImage - 1;
+          return (
+            isCurrentImage && (
+              <Stack
+                width="100%"
+                distribution="center"
+                alignment="center"
+                role="group"
+                aria-label={`Image ${currentImage} of ${images.length}`}
+              >
+                <Image src={image.src} alt={image.alt} />
+              </Stack>
+            )
+          );
+        })}
+
+        <LeftArrowButton
+          hide={currentImage === 1}
+          aria-label="Previous Image"
+          aria-controls="step-images"
+          onClick={() => onChangeImage(-1)}
         >
-          <ImageContainer>
-            {images.map((image, index) => {
-              const isCurrentImage = index === currentImage - 1;
-              return (
-                isCurrentImage && <Image src={image.src} alt={image.alt} />
-              );
-            })}
+          <img src={ChevronRight} alt="" />
+        </LeftArrowButton>
 
-            <LeftArrowButton
-              hide={currentImage === 1}
-              aria-label="Previous Image"
-              aria-controls="step-images"
-              onClick={() => onChangeImage(-1)}
-            >
-              <img src={ChevronRight} alt="" />
-            </LeftArrowButton>
-
-            <RightArrowButton
-              hide={currentImage === images.length}
-              aria-label="Next Image"
-              aria-controls="step-images"
-              onClick={() => onChangeImage(1)}
-            >
-              <img src={ChevronRight} alt="" />
-            </RightArrowButton>
-          </ImageContainer>
-        </Stack>
+        <RightArrowButton
+          hide={currentImage === images.length}
+          aria-label="Next Image"
+          aria-controls="step-images"
+          onClick={() => onChangeImage(1)}
+        >
+          <img src={ChevronRight} alt="" />
+        </RightArrowButton>
       </Stack>
-    </section>
+    </Section>
   );
 };
 
 export default ImageList;
 
-const ImageContainer = styled.div`
-  position: relative;
+const Section = styled.section`
+  width: 100%;
 `;
 
 const Image = styled.img`
-  width: 300px;
-
-  height: 300px;
-
-  border-radius: 16px;
+  width: 270px;
+  height: 270px;
+  border-radius: ${p => `${p.theme.spacings[16]}px`};
   object-fit: cover;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const ArrowButton = styled.button<{hide: boolean}>`
   visibility: ${p => (p.hide ? 'hidden' : 'visible')};
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,10 +102,7 @@ const ArrowButton = styled.button<{hide: boolean}>`
 `;
 
 const LeftArrowButton = styled(ArrowButton)`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -20px;
+  left: 0;
 
   img {
     transform: rotate(180deg);
@@ -114,8 +110,5 @@ const LeftArrowButton = styled(ArrowButton)`
 `;
 
 const RightArrowButton = styled(ArrowButton)`
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 0;
 `;

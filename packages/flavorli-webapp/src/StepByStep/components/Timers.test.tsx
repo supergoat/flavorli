@@ -4,12 +4,12 @@ import {render} from '../../helpers/test-helpers';
 import {TimersProvider} from '../helpers/timersContext';
 import Timers from './Timers';
 import {ITimer} from '../types';
-import {steps} from '../helpers/mockData';
+import {recipeSteps} from '../helpers/mockData';
 import userEvent from '@testing-library/user-event';
 import {act} from 'react-dom/test-utils';
 
 const setup = (timers?: {[timerId: number]: ITimer}) => {
-  const stepWithTimer = steps[6];
+  const stepWithTimer = recipeSteps[6];
   const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
   const contextTimers = timers || {[timer.id]: timer};
   return {
