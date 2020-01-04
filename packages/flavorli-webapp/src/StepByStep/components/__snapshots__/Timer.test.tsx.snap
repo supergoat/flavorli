@@ -14,7 +14,7 @@ exports[`Timer should render correctly 1`] = `
     id="timer-7"
     role="timer"
   >
-    10m 00s
+    10m 0s
   </p>
   <div
     class="sc-AykKH bhytJE"
@@ -51,7 +51,7 @@ exports[`Timer should render correctly when type is notification 1`] = `
     id="timer-7"
     role="timer"
   >
-    10m 00s
+    10m 0s
   </p>
   <div
     class="sc-AykKH bhytJE"

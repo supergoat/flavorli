@@ -1,9 +1,10 @@
 import React from 'react';
-import {Stack, Button, H1, H2} from '@flavorli/elements';
+import {Stack, H1, H2} from '@flavorli/elements';
 import styled from 'styled-components';
 import Info from './Info';
 import Navigation from './Navigation';
 import {IIntro} from '../types';
+import Notebook from '../icons/notebook.svg';
 
 const Intro = ({
   step,
@@ -62,7 +63,7 @@ const IntroWrapper = styled(Stack)`
   position: relative;
   &::before {
     content: '';
-    background-image: url(${require('../icons/notebook.svg')});
+    background-image: url(${Notebook});
     background-size: 370px;
     background-repeat: no-repeat;
     opacity: 0.15;

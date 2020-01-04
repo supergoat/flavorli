@@ -25,7 +25,9 @@ describe('useTimersContext', () => {
   });
 
   it('should expose the timers and setTimers function', () => {
-    const wrapper = ({children}) => <TimersProvider>{children}</TimersProvider>;
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
+      <TimersProvider>{children}</TimersProvider>
+    );
 
     const {result} = renderHook(() => useTimersContext(), {wrapper});
 
@@ -41,7 +43,7 @@ describe('useTimersContext', () => {
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
     const contextTimers = {[timer.id]: timer};
-    const wrapper = ({children}) => (
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={contextTimers}>{children}</TimersProvider>
     );
 
@@ -60,7 +62,9 @@ describe('useAddTimerIfItDoesNotExist', () => {
     const stepWithTimer = steps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
-    const wrapper = ({children}) => <TimersProvider>{children}</TimersProvider>;
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
+      <TimersProvider>{children}</TimersProvider>
+    );
 
     const {result} = renderHook(() => useAddTimerIfItDoesNotExist(timer), {
       wrapper,
@@ -75,7 +79,7 @@ describe('useAddTimerIfItDoesNotExist', () => {
     const stepWithTimer = steps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
-    const wrapper = ({children}) => (
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={{[timer.id]: timer}}>
         {children}
       </TimersProvider>
@@ -97,7 +101,7 @@ describe('useRunTimer', () => {
     const stepWithTimer = steps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
-    const wrapper = ({children}) => (
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={{[timer.id]: timer}}>
         {children}
       </TimersProvider>
@@ -127,7 +131,7 @@ describe('useRunTimer', () => {
       seconds: 0,
     } as ITimer;
 
-    const wrapper = ({children}) => (
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={{[timer.id]: timer}}>
         {children}
       </TimersProvider>
@@ -154,7 +158,7 @@ describe('useRunTimer', () => {
       isPaused: false,
     } as ITimer;
 
-    const wrapper = ({children}) => (
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={{[timer.id]: timer}}>
         {children}
       </TimersProvider>

@@ -405,23 +405,26 @@ export const preparationSteps: IStep[] = [
     images: [
       {
         src: require('../images/eggplant_1.png'),
-        alt: 'Cutting eggplant',
+        alt: 'Chef cutting the top of the eggplant off',
       },
       {
         src: require('../images/eggplant_2.png'),
-        alt: 'Cutting eggplant',
+        alt:
+          'Chef placing the eggplant vertically, with the cut top facing upward, cutting the eggplant into columns',
       },
       {
         src: require('../images/eggplant_3.png'),
-        alt: 'Cutting eggplant',
+        alt:
+          'Chef stacking half the eggplant columns horizontally and cutting the eggplant in columns',
       },
       {
         src: require('../images/eggplant_4.png'),
-        alt: 'Cutting eggplant',
+        alt: '',
       },
       {
         src: require('../images/eggplant_5.png'),
-        alt: 'Cutting eggplant',
+        alt:
+          'Chef putting the eggplant together and cutting into little squares',
       },
     ],
   },
@@ -449,15 +452,15 @@ export const preparationSteps: IStep[] = [
     images: [
       {
         src: require('../images/onion_1.png'),
-        alt: 'Cutting Onion',
+        alt: 'Cutting Onion 1',
       },
       {
         src: require('../images/onion_2.png'),
-        alt: 'Cutting Onion',
+        alt: 'Cutting Onion 2',
       },
       {
         src: require('../images/onion_3.png'),
-        alt: 'Cutting Onion',
+        alt: 'Cutting Onion 3',
       },
     ],
   },
@@ -485,7 +488,7 @@ export const preparationSteps: IStep[] = [
     images: [
       {
         src: require('../images/garlic.png'),
-        alt: 'Cutting Garlic',
+        alt: 'Cutting Garlic 1',
       },
     ],
   },
@@ -513,19 +516,19 @@ export const preparationSteps: IStep[] = [
     images: [
       {
         src: require('../images/zucchini_1.png'),
-        alt: 'Cutting Zucchini',
+        alt: 'Cutting Zucchini 1',
       },
       {
         src: require('../images/zucchini_2.png'),
-        alt: 'Cutting Zucchini',
+        alt: 'Cutting Zucchini  2',
       },
       {
         src: require('../images/zucchini_3.png'),
-        alt: 'Cutting Zucchini',
+        alt: 'Cutting Zucchini 3',
       },
       {
         src: require('../images/zucchini_4.png'),
-        alt: 'Cutting Zucchini',
+        alt: 'Cutting Zucchini 4',
       },
     ],
   },
@@ -558,7 +561,7 @@ export const preparationSteps: IStep[] = [
     images: [
       {
         src: require('../images/pepper.png'),
-        alt: 'Cutting the peppers',
+        alt: 'Cutting the peppers 1',
       },
     ],
   },
@@ -625,11 +628,11 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/add_eggplant_1.png'),
-        alt: 'Add Eggplant',
+        alt: 'Add eggplant 1',
       },
       {
         src: require('../images/add_eggplant_2.png'),
-        alt: 'Add Eggplant',
+        alt: 'Add eggplant 2',
       },
     ],
   },
@@ -657,11 +660,11 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/add_garlic_onion.png'),
-        alt: 'Add garlic and onion',
+        alt: 'Add garlic and onion 1',
       },
       {
         src: require('../images/add_garlic_onion_2.png'),
-        alt: 'Add garlic and onion',
+        alt: 'Add garlic and onion 2',
       },
     ],
   },
@@ -693,11 +696,11 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/zucchini_peppers.png'),
-        alt: 'Add zucchini and peppers',
+        alt: 'Add zucchini and peppers 1',
       },
       {
         src: require('../images/saute_sauce.png'),
-        alt: 'Saute',
+        alt: 'Saute 1',
       },
     ],
   },
@@ -745,7 +748,7 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/spices.png'),
-        alt: 'Add the spices',
+        alt: 'Add the spices 1',
       },
     ],
   },
@@ -774,15 +777,15 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/tomato.png'),
-        alt: 'Add the tomatoes',
+        alt: 'Add the tomatoes 1',
       },
       {
         src: require('../images/tomato_2.png'),
-        alt: 'Add the tomatoes',
+        alt: 'Add the tomatoes 2',
       },
       {
         src: require('../images/saute_sauce.png'),
-        alt: 'Saute Sauce',
+        alt: 'Saute Sauce 3',
       },
     ],
   },
@@ -843,11 +846,11 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/pasta_mixture_1.png'),
-        alt: 'Add the pasta to the vegetables',
+        alt: 'Add the pasta to the vegetables 1',
       },
       {
         src: require('../images/pasta_mixture_2.png'),
-        alt: 'Add the pasta to the vegetables',
+        alt: 'Add the pasta to the vegetables 2',
       },
     ],
   },
@@ -915,27 +918,27 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/bechamel_prep_2.png'),
-        alt: 'Add the milk',
+        alt: 'Add the milk 1',
       },
       {
         src: require('../images/bechamel_prep_3.png'),
-        alt: 'Add the milk',
+        alt: 'Add the milk 2',
       },
       {
         src: require('../images/bechamel_prep_4.png'),
-        alt: 'Add the milk',
+        alt: 'Add the milk 3',
       },
       {
         src: require('../images/bechamel_prep_5.png'),
-        alt: 'Add the milk',
+        alt: 'Add the milk 4',
       },
       {
         src: require('../images/bechamel_prep_6.png'),
-        alt: 'Add the milk',
+        alt: 'Add the milk 5',
       },
       {
         src: require('../images/bechamel_prep_7.png'),
-        alt: 'Add the milk',
+        alt: 'Add the milk 6',
       },
     ],
   },
@@ -967,11 +970,11 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/bechamel_prep_8.png'),
-        alt: 'Add the spices',
+        alt: 'Add the spices 2',
       },
       {
         src: require('../images/bechamel_prep_9.png'),
-        alt: 'Wait for bechamel to boil',
+        alt: 'Wait for bechamel to boil 1',
       },
     ],
   },
@@ -1002,11 +1005,11 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/pasta_mixture_3.png'),
-        alt: 'Add the bechamel to the pasta mixture',
+        alt: 'Add the bechamel to the pasta mixture 1',
       },
       {
         src: require('../images/pasta_mixture_4.png'),
-        alt: 'Add the bechamel to the pasta mixture',
+        alt: 'Add the bechamel to the pasta mixture 2',
       },
     ],
   },
@@ -1034,11 +1037,11 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/baking_dish_1.png'),
-        alt: 'Sprinkle breadcrumps',
+        alt: 'Sprinkle breadcrumps 1',
       },
       {
         src: require('../images/baking_dish_2.png'),
-        alt: 'Spread breadcrumps',
+        alt: 'Spread breadcrumps 2',
       },
     ],
   },
@@ -1074,23 +1077,23 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/baking_dish_3.png'),
-        alt: 'Add the pasta mixture',
+        alt: 'Add the pasta mixture 11',
       },
       {
         src: require('../images/assembling_1.png'),
-        alt: 'Assembling',
+        alt: 'Assembling 1',
       },
       {
         src: require('../images/assembling_3.png'),
-        alt: 'Assembling',
+        alt: 'Assembling 2',
       },
       {
         src: require('../images/assembling_4.png'),
-        alt: 'Assembling',
+        alt: 'Assembling 3',
       },
       {
         src: require('../images/assembling_5.png'),
-        alt: 'Assembling',
+        alt: 'Assembling 4',
       },
     ],
   },
@@ -1114,15 +1117,15 @@ export const steps: IStep[] = [
     images: [
       {
         src: require('../images/serve_1.png'),
-        alt: 'Assembling',
+        alt: 'Assembling 5',
       },
       {
         src: require('../images/serve_2.png'),
-        alt: 'Assembling',
+        alt: 'Assembling 6',
       },
       {
         src: require('../images/serve_3.png'),
-        alt: 'Assembling',
+        alt: 'Assembling 7',
       },
     ],
   },

@@ -8,7 +8,6 @@ import Kitchenware from './Kitchenware';
 import Ingredients from './Ingredients';
 import styled from 'styled-components';
 import ImageList from './ImageList';
-import ChevronRight from '../../images/right-chevron.svg';
 import Navigation from './Navigation';
 
 interface IStepProps {
@@ -29,12 +28,6 @@ export default ({
   onClose,
   className,
 }: IStepProps) => {
-  const [currentImage, setCurrentImage] = React.useState(1);
-
-  const onChangeImage = (direction: 1 | -1) => {
-    setCurrentImage(s => s + direction);
-  };
-
   return (
     <Stack
       className={className}
@@ -86,42 +79,7 @@ export default ({
           {step.timer && <Timer timer={step.timer} />}
 
           {step?.images && step?.images?.length > 0 && (
-            <ImageList>
-              <Stack
-                width="100%"
-                height="100%"
-                paddingBottom={24}
-                role="group"
-                aria-label={`Image ${step.no} of ${step?.images?.length}`}
-              >
-                <ImageContainer>
-                  {step.images.map((image, index) => {
-                    const isCurrentImage = index === currentImage - 1;
-                    return (
-                      isCurrentImage && (
-                        <Image src={image.src} alt={image.alt} />
-                      )
-                    );
-                  })}
-                  {currentImage !== 1 && (
-                    <LeftArrowButton
-                      aria-controls="step-images"
-                      onClick={() => onChangeImage(-1)}
-                    >
-                      <img src={ChevronRight} alt="" />
-                    </LeftArrowButton>
-                  )}
-                  {currentImage !== step?.images?.length && (
-                    <RightArrowButton
-                      aria-controls="step-images"
-                      onClick={() => onChangeImage(1)}
-                    >
-                      <img src={ChevronRight} alt="" />
-                    </RightArrowButton>
-                  )}
-                </ImageContainer>
-              </Stack>
-            </ImageList>
+            <ImageList images={step?.images} />
           )}
         </Stack>
       </Scroll>
@@ -171,53 +129,4 @@ const SubHeading = styled.h2`
   font-size: ${p => p.theme.fontSizes[24]};
   color: ${p => p.theme.colors.tagRed};
   font-weight: normal;
-`;
-
-const Image = styled.img`
-  width: 300px;
-
-  height: 300px;
-
-  border-radius: 16px;
-  object-fit: cover;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-`;
-
-const ArrowButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
-  background: rgb(255, 255, 255);
-
-  img {
-    margin-top: 3px;
-    width: 60%;
-  }
-`;
-
-const LeftArrowButton = styled(ArrowButton)`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -20px;
-
-  img {
-    transform: rotate(180deg);
-  }
-`;
-
-const RightArrowButton = styled(ArrowButton)`
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
 `;
