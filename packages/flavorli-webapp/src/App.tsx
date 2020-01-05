@@ -18,8 +18,5 @@ export default () => {
 };
 
 const App = styled.div`
-  position: relative;
-  width: 100vw;
-  max-width: 420px;
   height: 100vh;
 `;

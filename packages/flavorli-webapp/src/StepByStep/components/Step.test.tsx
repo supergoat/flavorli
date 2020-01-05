@@ -2,13 +2,18 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import Step from './Step';
+import {StepByStepProvider} from '../helpers/StepByStepContext';
 
 const setup = () => {
   return {
     ...render(
-      <Step stepNo={1} noOfSteps={2}>
-        children
-      </Step>,
+      <>
+        {/* Add a div with id recipe-steps to be used by aria-controls */}
+        <div id="recipe-steps" />
+        <StepByStepProvider initialValues={{noOfSteps: 10}}>
+          <Step>children</Step>
+        </StepByStepProvider>
+      </>,
     ),
   };
 };
@@ -18,16 +23,6 @@ describe('Step', () => {
     const {container} = setup();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
-  });
-
-  it('should have a role of group to enable assistive technology users to preceive the boundaries of a step', () => {
-    const {getByRole} = setup();
-    getByRole('group');
-  });
-
-  it('should have an aria-label to indicate to assistive technology users the step they are on', () => {
-    const {getByLabelText} = setup();
-    getByLabelText(`Step 1 of 2`);
   });
 
   it('should render correctly', () => {

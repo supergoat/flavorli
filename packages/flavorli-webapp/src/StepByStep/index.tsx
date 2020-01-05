@@ -4,7 +4,6 @@ import {useTrapFocus, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
 import RecipeStep from './components/RecipeStep';
 import {stepByStep as STEP_BY_STEP} from './helpers/mockData';
-import StepDialog from './components/StepDialog';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
 
@@ -48,7 +47,6 @@ const StepByStep = ({stepByStep = STEP_BY_STEP}: IStepByStepProps) => {
                   return <RecipeStep step={recipeStep} />;
                 })}
               </StepList>
-              <StepDialog />
             </Section>
           </Stack>
         </StepByStepProvider>

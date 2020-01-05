@@ -9,17 +9,16 @@ import Ingredients from './Ingredients';
 import ImageList from './ImageList';
 import {IRecipeStep} from '../types';
 import Step from './Step';
+import StepNo from './StepNo';
+import StepDescription from './StepDescription';
 
 interface IRecipeStepProps {
-  isDialog?: boolean;
   step: IRecipeStep;
 }
-const RecipeStep = ({isDialog, step}: IRecipeStepProps) => {
+const RecipeStep = ({step}: IRecipeStepProps) => {
   return (
-    <Step isDialog={isDialog} background="surface">
-      <Stack width="100%" paddingBottom={32}>
-        <StepNo>{step.no}</StepNo>
-      </Stack>
+    <Step background="surface">
+      <StepNo no={step.no} />
 
       <Tag tag={step.tag} />
 
@@ -29,9 +28,7 @@ const RecipeStep = ({isDialog, step}: IRecipeStepProps) => {
 
       <Ingredients ingredients={step.ingredients} />
 
-      <Text spacing={{line: '1.5'}} id="step-description">
-        {step.description}
-      </Text>
+      <StepDescription description={step.description} />
 
       <Timer timer={step.timer} />
 
@@ -41,8 +38,3 @@ const RecipeStep = ({isDialog, step}: IRecipeStepProps) => {
 };
 
 export default RecipeStep;
-
-const StepNo = styled.p`
-  font-size: ${p => p.theme.fontSizes[32]};
-  color: ${p => p.theme.colors.secondaryTextColor};
-`;

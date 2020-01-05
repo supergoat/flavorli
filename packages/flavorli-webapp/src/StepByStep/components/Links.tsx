@@ -1,5 +1,7 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
+import StepDialog from './StepDialog';
+
 import {ILink} from '../types';
 import {useTimersContext} from '../helpers/timersContext';
 import {useStepsContext} from '../helpers/StepByStepContext';
@@ -57,6 +59,7 @@ const Links = ({links}: ILinksProps) => {
           </Stack>
         );
       })}
+      <StepDialog />
     </Stack>
   ) : null;
 };

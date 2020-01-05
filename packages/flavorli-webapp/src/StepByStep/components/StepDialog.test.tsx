@@ -3,19 +3,15 @@ import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import StepDialog from './StepDialog';
 import {TimersProvider} from '../helpers/timersContext';
+import {StepByStepProvider} from '../helpers/StepByStepContext';
 
 const setup = () => {
   return {
     ...render(
       <TimersProvider>
-        {/* Add a div with id recipe-steps to be used by aria-controls */}
-        <div id="recipe-steps" />
-        <StepDialog
-          onClose={jest.fn()}
-          stepNo={1}
-          onViewStep={jest.fn()}
-          noOfSteps={1}
-        />
+        <StepByStepProvider initialValues={{noOfSteps: 10}}>
+          <StepDialog />
+        </StepByStepProvider>
       </TimersProvider>,
     ),
   };

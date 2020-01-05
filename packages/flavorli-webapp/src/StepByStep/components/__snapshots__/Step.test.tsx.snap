@@ -3,12 +3,13 @@
 exports[`Step should render correctly 1`] = `
 <div>
   <div
-    aria-label="Step 1 of 2"
-    class="sc-AykKH eQsNbe sc-fzXfLO kGSZWO"
+    id="recipe-steps"
+  />
+  <div
+    class="sc-AykKH eQsNbe sc-fzXfLR ittBmB"
     direction="vertical"
     height="100%"
     overflow="hidden"
-    role="group"
     width="100%"
   >
     <div
@@ -25,6 +26,31 @@ exports[`Step should render correctly 1`] = `
       >
         children
       </div>
+    </div>
+    <div
+      class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+      direction="horizontal"
+      width="100%"
+    >
+      <button
+        aria-controls="recipe-steps"
+        class="sc-AykKC sc-fzXfLP jsjRWT"
+        tabindex="-1"
+      >
+        back
+      </button>
+      <button
+        aria-controls="recipe-steps"
+        class="sc-AykKC jJKHJl"
+        width="100%"
+      >
+        Ingredients
+        <img
+          alt=""
+          class="sc-fzXfLQ jNZvTh"
+          src="right_chevron_white.svg"
+        />
+      </button>
     </div>
   </div>
 </div>
