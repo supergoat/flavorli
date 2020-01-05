@@ -1,0 +1,447 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IngredientsStep should render correctly 1`] = `
+<div>
+  <div
+    id="recipe-steps"
+  />
+  <div
+    class="sc-AykKH eveWrn sc-fzXfLR fMQZss"
+    direction="vertical"
+    height="100%"
+    overflow="hidden"
+    width="100%"
+  >
+    <div
+      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      direction="vertical"
+      height="100%"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH cUKmt"
+        direction="vertical"
+        height="100%"
+        width="100%"
+      >
+        <div
+          class="sc-AykKH jhhkKu"
+          direction="vertical"
+        >
+          <h1
+            class="sc-fzXfLS egRGPh"
+          >
+            Mise en place
+          </h1>
+          <h2
+            class="sc-fzXfLT cmAgSo"
+          >
+            Ingredients
+          </h2>
+        </div>
+        <div
+          class="sc-AykKH khQdtk"
+          direction="vertical"
+          width="100%"
+        >
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              2
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              eggplants
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              onion
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1 clove
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              garlic
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              2
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              zucchinis
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              red bell pepper
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              green bell pepper
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              2 teaspoon
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              oregano
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              2 tablespoon
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              thyme
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1 teaspoon
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              chilli flakes
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1 tablespoon
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              granulated sugar
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1 tablespoon
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              tomato paste
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              50 g
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              white wine
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              400 g
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              canned tomatoes
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              500 g
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              macaroni
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              80 g
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              all-purpose flour
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              80 g
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              olive oil
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              800 g
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              soy milk
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              50 g
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              dry breadcrumps
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1 tablespoon
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              mint
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            >
+              1
+            </p>
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              squeeze bottle olive oil
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            />
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              salt
+            </p>
+          </div>
+          <div
+            class="sc-AykKH bwhEDl"
+            direction="horizontal"
+            width="100%"
+          >
+            <p
+              class="sc-AykKG sc-fzXfLU bLrOds"
+              width="30%"
+            />
+            <p
+              class="sc-AykKG sc-fzXfLV hvUyQw"
+            >
+              pepper
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+      direction="horizontal"
+      width="100%"
+    >
+      <button
+        aria-controls="recipe-steps"
+        class="sc-AykKC sc-fzXfLP jsjRWT"
+        tabindex="-1"
+      >
+        back
+      </button>
+      <button
+        aria-controls="recipe-steps"
+        class="sc-AykKC jJKHJl"
+        width="100%"
+      >
+        Ingredients
+        <img
+          alt=""
+          class="sc-fzXfLQ jNZvTh"
+          src="right_chevron_white.svg"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
