@@ -14,7 +14,7 @@ const Intro = ({step}: IIntroProps) => {
     <Step background="primary" image={Notebook}>
       <Image src={step.image} alt="" />
       <Stack gap={4}>
-        <Heading color="white">Greek Pastitsio</Heading>
+        <Heading color="white">{step.name}</Heading>
         <Subheading color="secondaryDark">By Akis Petratzikis</Subheading>
       </Stack>
 

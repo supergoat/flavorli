@@ -6,12 +6,10 @@ exports[`Intro should render correctly 1`] = `
     id="recipe-steps"
   />
   <div
-    aria-label="Step undefined of undefined"
     class="sc-AykKH eveWrn sc-fzXfLT innsne"
     direction="vertical"
     height="100%"
     overflow="hidden"
-    role="group"
     width="100%"
   >
     <div
