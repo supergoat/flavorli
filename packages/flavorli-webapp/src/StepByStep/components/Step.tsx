@@ -28,23 +28,23 @@ const Step = ({
       height="100%"
       borderRadiusTopLeft={isDialog ? undefined : 24}
       borderRadiusTopRight={isDialog ? undefined : 24}
-      padding={48}
-      paddingBottom={24}
-      overflow="hidden"
+      paddingTop={48}
     >
-      <Scroll height="100%">
+      <Scroll>
         <Stack
           width="100%"
           gap={16}
           height="100%"
-          paddingLeft={4}
-          paddingRight={4}
+          paddingLeft={48}
+          paddingRight={48}
         >
           {children}
         </Stack>
       </Scroll>
 
-      <Navigation isDialog={isDialog} />
+      <Stack width="100%" paddingLeft={48} paddingRight={48} paddingBottom={24}>
+        <Navigation isDialog={isDialog} />
+      </Stack>
     </StepWrapper>
   );
 };

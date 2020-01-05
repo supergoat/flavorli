@@ -13,6 +13,7 @@ import ItemsStep from './components/ItemsStep';
 import PreparationStep from './components/PreparationStep';
 import {StepByStepProvider} from './helpers/StepByStepContext';
 import {IStepByStep} from './types';
+import StepDialog from './components/StepDialog';
 
 interface IStepByStepProps {
   stepByStep?: IStepByStep;
@@ -47,6 +48,7 @@ const StepByStep = ({stepByStep = STEP_BY_STEP}: IStepByStepProps) => {
                   return <RecipeStep step={recipeStep} />;
                 })}
               </StepList>
+              <StepDialog />
             </Section>
           </Stack>
         </StepByStepProvider>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Stack} from '@flavorli/elements';
-import ChevronRight from '../../images/right-chevron.svg';
+import ChevronRight from '../icons/right_chevron_primary.svg';
 import {IImage} from '../types';
 
 /**
@@ -23,10 +23,11 @@ const ImageList = ({images}: IImageListProps) => {
   return (
     <Section aria-label="List of step images">
       <Stack
+        width="300px"
+        height="300px"
         id="step-images"
         data-testid="step-images"
         aria-live="polite"
-        width="100%"
         paddingBottom={24}
       >
         {images.map((image, index) => {
@@ -34,8 +35,9 @@ const ImageList = ({images}: IImageListProps) => {
           return (
             isCurrentImage && (
               <Stack
-                key={image.alt}
                 width="100%"
+                height="100%"
+                key={image.alt}
                 distribution="center"
                 alignment="center"
                 role="group"
@@ -76,8 +78,8 @@ const Section = styled.section`
 `;
 
 const Image = styled.img`
-  width: 270px;
-  height: 270px;
+  width: 100%;
+  height: 100%;
   border-radius: ${p => `${p.theme.spacings[16]}px`};
   object-fit: cover;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
@@ -105,7 +107,7 @@ const ArrowButton = styled.button<{hide: boolean}>`
 `;
 
 const LeftArrowButton = styled(ArrowButton)`
-  left: 0;
+  left: -20px;
 
   img {
     transform: rotate(180deg);
@@ -113,5 +115,5 @@ const LeftArrowButton = styled(ArrowButton)`
 `;
 
 const RightArrowButton = styled(ArrowButton)`
-  right: 0;
+  right: -20px;
 `;

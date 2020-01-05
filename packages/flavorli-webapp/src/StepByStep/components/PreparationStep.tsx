@@ -7,6 +7,7 @@ import Ingredients from './Ingredients';
 import ImageList from './ImageList';
 import {IPreparationStep} from '../types';
 import Step from './Step';
+import StepDescription from './StepDescription';
 
 interface IPreparationStepProps {
   step: IPreparationStep;
@@ -25,13 +26,9 @@ export default ({step}: IPreparationStepProps) => {
 
       <Ingredients ingredients={step.ingredients} />
 
-      <Text spacing={{line: '1.5'}} id="step-description">
-        {step.description}
-      </Text>
+      <StepDescription description={step.description} />
 
-      {step?.images && step?.images?.length > 0 && (
-        <ImageList images={step?.images} />
-      )}
+      <ImageList images={step?.images} />
     </Step>
   );
 };
