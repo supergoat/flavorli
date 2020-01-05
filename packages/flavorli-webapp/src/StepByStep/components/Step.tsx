@@ -21,8 +21,6 @@ const Step = ({
   isDialog,
   children,
 }: IPreparationStepListProps) => {
-  const {currentStep, noOfSteps} = useStepsContext();
-
   return (
     <StepWrapper
       image={image}
@@ -33,8 +31,6 @@ const Step = ({
       borderRadiusTopRight={24}
       padding={48}
       paddingBottom={24}
-      role="group"
-      aria-label={`Step ${currentStep} of ${noOfSteps}`}
       overflow="hidden"
     >
       <Scroll height="100%">

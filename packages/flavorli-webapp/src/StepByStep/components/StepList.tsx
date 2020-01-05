@@ -22,7 +22,20 @@ const StepList = ({children}: IPreparationStepListProps) => {
       paddingRight={8}
     >
       {React.Children.map(children, (child, index) => {
-        return currentStep === index + 1 && child;
+        return (
+          currentStep === index + 1 && (
+            <Stack
+              width="100%"
+              height="100%"
+              role="group"
+              aria-label={`Step ${currentStep} of ${React.Children.count(
+                children,
+              )}`}
+            >
+              {child}
+            </Stack>
+          )
+        );
       })}
     </Stack>
   );
