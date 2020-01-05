@@ -4,7 +4,7 @@ import RecipeStep from './RecipeStep';
 import {recipeSteps} from '../helpers/mockData';
 import styled from 'styled-components';
 import {IRecipeStep} from '../types';
-import {useStepsContext} from '../helpers/StepByStepProvider';
+import {useStepsContext} from '../helpers/StepByStepContext';
 
 const StepDialog = () => {
   const {onCloseDialogStep, currentDialogStep} = useStepsContext();

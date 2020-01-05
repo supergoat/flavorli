@@ -2,7 +2,7 @@ import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 import {ILink} from '../types';
 import {useTimersContext} from '../helpers/timersContext';
-import {useStepsContext} from '../helpers/StepByStepProvider';
+import {useStepsContext} from '../helpers/StepByStepContext';
 
 interface ILinksProps {
   links: ILink[];
