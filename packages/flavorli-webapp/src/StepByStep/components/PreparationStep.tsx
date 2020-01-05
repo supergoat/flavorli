@@ -5,29 +5,15 @@ import Tag from './Tag';
 import Kitchenware from './Kitchenware';
 import Ingredients from './Ingredients';
 import ImageList from './ImageList';
-import Navigation from './Navigation';
 import {IPreparationStep} from '../types';
 import Step from './Step';
 
 interface IPreparationStepProps {
-  stepNo: number;
-  noOfSteps: number;
   step: IPreparationStep;
-  onChangeStep: (direction: 1 | -1) => void;
 }
-export default ({
-  stepNo,
-  noOfSteps,
-  step,
-  onChangeStep,
-}: IPreparationStepProps) => {
+export default ({step}: IPreparationStepProps) => {
   return (
-    <Step
-      stepNo={stepNo}
-      noOfSteps={noOfSteps}
-      background="surface"
-      navigation={<Navigation onNavigate={onChangeStep} />}
-    >
+    <Step background="surface">
       <Stack width="100%" paddingBottom={16} gap={4}>
         <Heading>Mise en place</Heading>
         <SubHeading>Preparation</SubHeading>

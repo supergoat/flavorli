@@ -5,9 +5,11 @@ import {ITimer} from '../types';
 
 interface ITimerProps {
   type?: 'notification';
-  timer: ITimer;
+  timer?: ITimer;
 }
 export default ({timer, type}: ITimerProps) => {
+  if (!timer) return null;
+
   const {timers, setTimers} = useAddTimerIfItDoesNotExist(timer);
 
   const initialisedTimer = timers[timer.id];

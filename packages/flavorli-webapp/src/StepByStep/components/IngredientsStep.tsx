@@ -2,36 +2,16 @@ import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 import {IIngredient} from '../types';
-import Navigation from './Navigation';
+
 import Step from './Step';
 import SaladSvg from '../icons/salad.svg';
 
 interface IIngredientsStepProps {
-  stepNo: number;
-  noOfSteps: number;
   ingredients: IIngredient[];
-  onChangeStep: (direction: 1 | -1) => void;
 }
-const IngredientsStep = ({
-  stepNo,
-  noOfSteps,
-  ingredients,
-  onChangeStep,
-}: IIngredientsStepProps) => {
+const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
   return (
-    <Step
-      stepNo={stepNo}
-      noOfSteps={noOfSteps}
-      background="primary"
-      image={SaladSvg}
-      navigation={
-        <Navigation
-          onNavigate={onChangeStep}
-          nextButtonName="Items"
-          variation="onPrimary"
-        />
-      }
-    >
+    <Step background="primary" image={SaladSvg}>
       <Stack gap={4} paddingBottom={8}>
         <Heading>Mise en place</Heading>
         <SubHeading>Ingredients</SubHeading>

@@ -9,7 +9,7 @@ import {IImage} from '../types';
  * @see https://w3c.github.io/aria-practices/#carousel
  */
 export interface IImageListProps {
-  images: IImage[];
+  images?: IImage[];
 }
 const ImageList = ({images}: IImageListProps) => {
   const [currentImage, setCurrentImage] = React.useState(1);
@@ -17,6 +17,8 @@ const ImageList = ({images}: IImageListProps) => {
   const onChangeImage = (direction: 1 | -1) => {
     setCurrentImage(s => s + direction);
   };
+
+  if (!images || images.length === 0) return null;
 
   return (
     <Section aria-label="List of step images">

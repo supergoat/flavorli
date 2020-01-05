@@ -2,27 +2,27 @@ import React from 'react';
 import {Stack, Scroll} from '@flavorli/elements';
 import {IColor} from '@flavorli/elements/lib/theme/colors';
 import styled, {css} from 'styled-components';
+import {useStepsContext} from '../helpers/StepsContext';
+import Navigation from './Navigation';
 
 /**
  * Implemented according to
  * @see https://w3c.github.io/aria-practices/#carousel
  */
 export interface IPreparationStepListProps {
-  stepNo: number;
-  noOfSteps: number;
-  navigation: React.ReactNode;
   children: React.ReactNode;
+  isDialog?: boolean;
   background?: IColor;
   image?: string;
 }
 const Step = ({
-  stepNo,
-  noOfSteps,
   background,
   image,
-  navigation,
+  isDialog,
   children,
 }: IPreparationStepListProps) => {
+  const {currentStep, noOfSteps} = useStepsContext();
+
   return (
     <StepWrapper
       image={image}
@@ -34,7 +34,7 @@ const Step = ({
       padding={48}
       paddingBottom={24}
       role="group"
-      aria-label={`Step ${stepNo} of ${noOfSteps}`}
+      aria-label={`Step ${currentStep} of ${noOfSteps}`}
       overflow="hidden"
     >
       <Scroll height="100%">
@@ -48,7 +48,8 @@ const Step = ({
           {children}
         </Stack>
       </Scroll>
-      {navigation}
+
+      <Navigation isDialog={isDialog} />
     </StepWrapper>
   );
 };

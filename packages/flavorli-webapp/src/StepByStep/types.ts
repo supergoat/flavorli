@@ -58,7 +58,7 @@ export interface IPreparationStep {
   images?: IImage[];
 }
 
-export interface IIntro {
+export interface IIntroStep {
   name: string;
   image: string;
   preparation: string;
@@ -67,4 +67,12 @@ export interface IIntro {
   difficulty: string;
 }
 
-export type IStep = IIntro | IPreparationStep;
+export type IStep = IIntroStep | IPreparationStep;
+
+export type IStepByStep = {
+  intro: IIntroStep;
+  ingredients: IIngredient[];
+  items: IItem[];
+  preparationSteps: IPreparationStep[];
+  recipeSteps: IRecipeStep[];
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Stack} from '@flavorli/elements';
+import {useStepsContext} from '../helpers/StepsContext';
 
 /**
  * Implemented according to
@@ -9,6 +10,7 @@ export interface IPreparationStepListProps {
   children: React.ReactNode;
 }
 const StepList = ({children}: IPreparationStepListProps) => {
+  const {currentStep} = useStepsContext();
   return (
     <Stack
       width="100%"
@@ -16,10 +18,10 @@ const StepList = ({children}: IPreparationStepListProps) => {
       id="recipe-steps"
       data-testid="recipe-steps"
       aria-live="polite"
-      paddingLeft={8}
-      paddingRight={8}
     >
-      {children}
+      {React.Children.map(children, (child, index) => {
+        return currentStep === index + 1 && child;
+      })}
     </Stack>
   );
 };

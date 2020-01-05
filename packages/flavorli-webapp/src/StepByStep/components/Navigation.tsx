@@ -2,30 +2,29 @@ import React from 'react';
 import {Button, Stack} from '@flavorli/elements';
 import styled, {FlattenSimpleInterpolation} from 'styled-components';
 import ChevronRightWhite from '../icons/right_chevron_white.svg';
+import {useStepsContext} from '../helpers/StepsContext';
 
-interface INavigation {
-  onNavigate: (direction: 1 | -1) => void;
-  hideNextStepButton?: boolean;
-  hideBackButton?: boolean;
-  nextButtonName?: string;
-  backButtonName?: string;
-  variation?: 'onPrimary';
+interface INavigationProps {
+  isDialog?: boolean;
 }
-const Navigation = ({
-  onNavigate,
-  hideNextStepButton = false,
-  hideBackButton = false,
-  nextButtonName,
-  backButtonName,
-  variation,
-}: INavigation) => {
+const Navigation = ({isDialog}: INavigationProps) => {
+  const {
+    onChangeStep,
+    onCloseViewStep,
+    currentStep,
+    noOfSteps,
+  } = useStepsContext();
+
   const navigateToNextStep = () => {
-    onNavigate(1);
+    onChangeStep(1);
   };
 
   const navigateToPreviousStep = () => {
-    onNavigate(-1);
+    onChangeStep(-1);
   };
+
+  const hideBackButton = currentStep === 1;
+  const hideNextButton = currentStep === noOfSteps;
 
   return (
     <NavigationWrapper
@@ -35,25 +34,37 @@ const Navigation = ({
       width="100%"
       paddingTop={16}
     >
-      <PreviousButton
-        hide={hideBackButton}
-        aria-controls="recipe-steps"
-        tabIndex={hideBackButton ? -1 : undefined}
-        onClick={navigateToPreviousStep}
-        intent={variation === 'onPrimary' ? 'secondaryOnPrimary' : 'secondary'}
-      >
-        {backButtonName || 'back'}
-      </PreviousButton>
+      {!isDialog && (
+        <>
+          <PreviousButton
+            hide={hideBackButton}
+            aria-controls="recipe-steps"
+            tabIndex={hideBackButton ? -1 : undefined}
+            onClick={navigateToPreviousStep}
+            intent={currentStep <= 3 ? 'secondaryOnPrimary' : 'secondary'}
+          >
+            back
+          </PreviousButton>
 
-      {!hideNextStepButton && (
-        <Button
-          aria-controls="recipe-steps"
-          width="100%"
-          onClick={navigateToNextStep}
-          intent={variation === 'onPrimary' ? 'secondaryOnPrimary' : 'primary'}
-        >
-          {nextButtonName || 'Next'}
-          <ButtonIcon />
+          {!hideNextButton && (
+            <Button
+              aria-controls="recipe-steps"
+              width="100%"
+              onClick={navigateToNextStep}
+              intent={currentStep <= 3 ? 'secondaryOnPrimary' : 'primary'}
+            >
+              {currentStep === 1 && 'Ingredients'}
+              {currentStep === 2 && 'Items'}
+              {currentStep === 3 && 'Preparation'}
+              {currentStep > 3 && 'Next'}
+              <ButtonIcon />
+            </Button>
+          )}
+        </>
+      )}
+      {isDialog && (
+        <Button width="100%" intent="secondary" onClick={onCloseViewStep}>
+          Close
         </Button>
       )}
     </NavigationWrapper>

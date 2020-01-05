@@ -2,36 +2,15 @@ import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 import {IItem} from '../types';
-import Navigation from './Navigation';
 import Step from './Step';
 import BoxSvg from '../icons/box.svg';
 
 interface IItemsStepProps {
-  stepNo: number;
-  noOfSteps: number;
   items: IItem[];
-  onChangeStep: (direction: 1 | -1) => void;
 }
-const ItemsStep = ({
-  stepNo,
-  noOfSteps,
-  items,
-  onChangeStep,
-}: IItemsStepProps) => {
+const ItemsStep = ({items}: IItemsStepProps) => {
   return (
-    <Step
-      stepNo={stepNo}
-      noOfSteps={noOfSteps}
-      background="primary"
-      image={BoxSvg}
-      navigation={
-        <Navigation
-          onNavigate={onChangeStep}
-          nextButtonName="Items"
-          variation="onPrimary"
-        />
-      }
-    >
+    <Step background="primary" image={BoxSvg}>
       <Stack gap={4} paddingBottom={8}>
         <Heading>Mise en place</Heading>
         <SubHeading>Items</SubHeading>

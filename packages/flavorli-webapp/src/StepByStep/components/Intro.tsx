@@ -2,33 +2,16 @@ import React from 'react';
 import {Stack, H1, H2} from '@flavorli/elements';
 import styled from 'styled-components';
 import Info from './Info';
-import Navigation from './Navigation';
-import {IIntro} from '../types';
+import {IIntroStep} from '../types';
 import Notebook from '../icons/notebook.svg';
 import Step from './Step';
 
 interface IIntroProps {
-  stepNo: number;
-  noOfSteps: number;
-  step: IIntro;
-  onChangeStep: (direction: 1 | -1) => void;
+  step: IIntroStep;
 }
-const Intro = ({stepNo, noOfSteps, step, onChangeStep}: IIntroProps) => {
+const Intro = ({step}: IIntroProps) => {
   return (
-    <Step
-      stepNo={stepNo}
-      noOfSteps={noOfSteps}
-      background="primary"
-      image={Notebook}
-      navigation={
-        <Navigation
-          onNavigate={onChangeStep}
-          hideBackButton={true}
-          nextButtonName="Ingredients"
-          variation="onPrimary"
-        />
-      }
-    >
+    <Step background="primary" image={Notebook}>
       <Image src={step.image} alt="" />
       <Stack gap={4}>
         <Heading color="white">Greek Pastitsio</Heading>

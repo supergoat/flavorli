@@ -4,32 +4,23 @@ import RecipeStep from './RecipeStep';
 import {recipeSteps} from '../helpers/mockData';
 import styled from 'styled-components';
 import {IRecipeStep} from '../types';
+import {useStepsContext} from '../helpers/StepsContext';
 
-interface IPreparationStepDialogProps {
-  stepNo: number;
-  noOfSteps: number;
-  onViewStep: (stepNo: number) => void;
-  onClose: () => void;
-}
-const StepDialog = ({
-  stepNo,
-  noOfSteps,
-  onViewStep,
-  onClose,
-}: IPreparationStepDialogProps) => {
-  return (
-    <DialogWrapper label="" describedbyID="step-description" onClose={onClose}>
+const StepDialog = () => {
+  const {onCloseViewStep, openLink} = useStepsContext();
+
+  return openLink ? (
+    <DialogWrapper
+      label=""
+      describedbyID="step-description"
+      onClose={onCloseViewStep}
+    >
       <RecipeStep
         isDialog={true}
-        stepNo={stepNo}
-        noOfSteps={noOfSteps}
-        step={recipeSteps[stepNo - 1] as IRecipeStep}
-        onChangeStep={() => {}}
-        onViewStep={onViewStep}
-        onClose={onClose}
+        step={recipeSteps[openLink - 1] as IRecipeStep}
       />
     </DialogWrapper>
-  );
+  ) : null;
 };
 
 export default StepDialog;
