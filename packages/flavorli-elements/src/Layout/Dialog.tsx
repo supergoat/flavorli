@@ -1,9 +1,11 @@
+import ReactDOM from 'react-dom';
 import React from 'react';
 import {
   useLockBodyScroll,
   useFocusFirstDescendant,
   useTrapFocus,
   useCloseOnEsc,
+  usePortal,
 } from '../hooks';
 import styled from 'styled-components';
 
@@ -31,7 +33,10 @@ export const Dialog = ({
   useTrapFocus(refEl);
   useCloseOnEsc(onClose);
 
-  return (
+  const el = document.createElement('div');
+  usePortal(el);
+
+  return ReactDOM.createPortal(
     <div
       className={className}
       ref={refEl}
@@ -42,7 +47,8 @@ export const Dialog = ({
       aria-describedby={describedbyID}
     >
       {children}
-    </div>
+    </div>,
+    el,
   );
 };
 

@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
 import styled from 'styled-components';
 import {Dialog} from '@flavorli/elements';
@@ -16,45 +15,31 @@ import {recipeSteps} from '../helpers/mockData';
 const StepDialog = () => {
   const {onCloseDialogStep, currentDialogStep} = useStepsContext();
 
-  const el = document.createElement('div');
-
-  React.useEffect(() => {
-    const modalRoot = document.getElementById('modal-root');
-    modalRoot?.appendChild(el);
-
-    return () => {
-      modalRoot?.removeChild(el);
-    };
-  }, [el]);
-
   const step = recipeSteps[currentDialogStep - 1];
 
-  return currentDialogStep
-    ? ReactDOM.createPortal(
-        <DialogWrapper
-          label=""
-          describedbyID="step-description"
-          onClose={onCloseDialogStep}
-        >
-          <Step isDialog={true} background="surface">
-            <StepNo no={step.no} />
+  return currentDialogStep ? (
+    <DialogWrapper
+      label={`Step ${step.no}`}
+      describedbyID="step-description"
+      onClose={onCloseDialogStep}
+    >
+      <Step isDialog={true} background="surface">
+        <StepNo no={step.no} />
 
-            <Tag tag={step.tag} />
+        <Tag tag={step.tag} />
 
-            <Kitchenware kitchenware={step.kitchenware} />
+        <Kitchenware kitchenware={step.kitchenware} />
 
-            <Ingredients ingredients={step.ingredients} />
+        <Ingredients ingredients={step.ingredients} />
 
-            <StepDescription description={step.description} />
+        <StepDescription description={step.description} />
 
-            <Timer timer={step.timer} />
+        <Timer timer={step.timer} />
 
-            <ImageList images={step?.images} />
-          </Step>
-        </DialogWrapper>,
-        el,
-      )
-    : null;
+        <ImageList images={step?.images} />
+      </Step>
+    </DialogWrapper>
+  ) : null;
 };
 
 export default StepDialog;

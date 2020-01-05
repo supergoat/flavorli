@@ -7,6 +7,7 @@ import {ILink} from '../types';
 import userEvent from '@testing-library/user-event';
 import {TimersProvider} from '../helpers/timersContext';
 import {StepByStepProvider} from '../helpers/StepByStepContext';
+import {act} from 'react-dom/test-utils';
 
 const setup = (links?: ILink[]) => {
   const stepWithOneLinkWithTimerIds = recipeSteps[8];
@@ -45,14 +46,18 @@ describe('Links', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  // it('should call onViewStep with link.from when the user clicks View Step', () => {
-  //   const {getAllByText , links} = setup();
+  it('should open step in a dialog when view step is clicked', () => {
+    const {getAllByText, getByLabelText, links} = setup();
 
-  //   const link = links[0];
-  //   const viewStepButton = getAllByText('View Step')[0];
-  //   userEvent.click(viewStepButton);
-  //   expect().toHaveBeenCalledWith(link.from);
-  // });
+    const link = links[0];
+    const viewStepButton = getAllByText('View Step')[0];
+
+    act(() => {
+      userEvent.click(viewStepButton);
+    });
+
+    getByLabelText(`Step ${link.from}`);
+  });
 
   it('should render an empty div if the links are an empty array', () => {
     const {container} = setup([]);

@@ -2,16 +2,20 @@ import React from 'react';
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 import {ThemeProvider} from 'styled-components';
-import {render as testRender} from '@testing-library/react';
+import {render as testRender, RenderOptions} from '@testing-library/react';
 import {theme} from '@flavorli/elements';
 
-export function render(ui: React.ReactNode) {
+export function render(
+  ui: React.ReactNode,
+  options?: Omit<RenderOptions, 'queries'>,
+) {
   const Wrapper = ({children}: {children: React.ReactNode}) => (
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
   );
 
   const utils = testRender(<ThemeProvider theme={theme}>{ui}</ThemeProvider>, {
     wrapper: Wrapper as React.ComponentType,
+    ...options,
   });
 
   return utils;
