@@ -1,9 +1,8 @@
 import React from 'react';
-import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
-import {IIngredient} from '../types';
-
+import {Stack, Text} from '@flavorli/elements';
 import Step from './Step';
+import {IIngredient} from '../types';
 import SaladSvg from '../icons/salad.svg';
 
 interface IIngredientsStepProps {
