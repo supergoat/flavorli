@@ -1,12 +1,12 @@
 import React from 'react';
 
 interface IStepsContext {
-  openLink: number;
+  currentDialogStep: number;
   currentStep: number;
   noOfSteps: number;
-  onViewStep: (stepNo: number) => void;
-  onCloseViewStep: () => void;
-  onChangeStep: (direction: 1 | -1) => void;
+  onOpenDialogStep: (stepNo: number) => void;
+  onCloseDialogStep: () => void;
+  onNavigate: (direction: 1 | -1) => void;
 }
 
 export const StepByStepContext = React.createContext<IStepsContext | null>(
@@ -26,20 +26,20 @@ export function StepByStepProvider({
   const [currentStep, setCurrentStep] = React.useState(
     initialValues?.currentStep || 1,
   );
-  const [openLink, setOpenLink] = React.useState();
+  const [currentDialogStep, setCurrentDialogStep] = React.useState();
   const [lastFocus, setLastFocus] = React.useState();
 
-  const onViewStep = (stepNo: number) => {
+  const onOpenDialogStep = (stepNo: number) => {
     setLastFocus(document.activeElement);
-    setOpenLink(stepNo);
+    setCurrentDialogStep(stepNo);
   };
 
-  const onCloseViewStep = () => {
-    setOpenLink(null);
+  const onCloseDialogStep = () => {
+    setCurrentDialogStep(null);
     lastFocus.focus();
   };
 
-  const onChangeStep = (direction: 1 | -1) => {
+  const onNavigate = (direction: 1 | -1) => {
     setCurrentStep(s => s + direction);
   };
 
@@ -47,10 +47,10 @@ export function StepByStepProvider({
     <StepByStepContext.Provider
       value={{
         currentStep,
-        openLink,
-        onViewStep,
-        onCloseViewStep,
-        onChangeStep,
+        currentDialogStep,
+        onOpenDialogStep,
+        onCloseDialogStep,
+        onNavigate,
         noOfSteps: initialValues.noOfSteps,
       }}
       {...props}

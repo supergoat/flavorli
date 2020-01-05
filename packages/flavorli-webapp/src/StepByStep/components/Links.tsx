@@ -2,14 +2,14 @@ import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 import {ILink} from '../types';
 import {useTimersContext} from '../helpers/timersContext';
-import {useStepsContext} from '../helpers/StepsContext';
+import {useStepsContext} from '../helpers/StepByStepProvider';
 
 interface ILinksProps {
   links: ILink[];
 }
 const Links = ({links}: ILinksProps) => {
   const {timers} = useTimersContext();
-  const {onViewStep} = useStepsContext();
+  const {onOpenDialogStep} = useStepsContext();
 
   return !!links.length ? (
     <Stack gap={8} alignment="start" width="100%" height="auto">
@@ -46,7 +46,10 @@ const Links = ({links}: ILinksProps) => {
                   </Text>
                 )}
 
-                <Button intent="text" onClick={() => onViewStep(link.from)}>
+                <Button
+                  intent="text"
+                  onClick={() => onOpenDialogStep(link.from)}
+                >
                   View Step
                 </Button>
               </Stack>

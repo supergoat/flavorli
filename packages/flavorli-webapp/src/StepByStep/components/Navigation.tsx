@@ -2,25 +2,25 @@ import React from 'react';
 import {Button, Stack} from '@flavorli/elements';
 import styled, {FlattenSimpleInterpolation} from 'styled-components';
 import ChevronRightWhite from '../icons/right_chevron_white.svg';
-import {useStepsContext} from '../helpers/StepsContext';
+import {useStepsContext} from '../helpers/StepByStepProvider';
 
 interface INavigationProps {
   isDialog?: boolean;
 }
 const Navigation = ({isDialog}: INavigationProps) => {
   const {
-    onChangeStep,
-    onCloseViewStep,
+    onNavigate,
+    onCloseDialogStep,
     currentStep,
     noOfSteps,
   } = useStepsContext();
 
   const navigateToNextStep = () => {
-    onChangeStep(1);
+    onNavigate(1);
   };
 
   const navigateToPreviousStep = () => {
-    onChangeStep(-1);
+    onNavigate(-1);
   };
 
   const hideBackButton = currentStep === 1;
@@ -63,7 +63,7 @@ const Navigation = ({isDialog}: INavigationProps) => {
         </>
       )}
       {isDialog && (
-        <Button width="100%" intent="secondary" onClick={onCloseViewStep}>
+        <Button width="100%" intent="secondary" onClick={onCloseDialogStep}>
           Close
         </Button>
       )}

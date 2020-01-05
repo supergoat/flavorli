@@ -4,20 +4,20 @@ import RecipeStep from './RecipeStep';
 import {recipeSteps} from '../helpers/mockData';
 import styled from 'styled-components';
 import {IRecipeStep} from '../types';
-import {useStepsContext} from '../helpers/StepsContext';
+import {useStepsContext} from '../helpers/StepByStepProvider';
 
 const StepDialog = () => {
-  const {onCloseViewStep, openLink} = useStepsContext();
+  const {onCloseDialogStep, currentDialogStep} = useStepsContext();
 
-  return openLink ? (
+  return currentDialogStep ? (
     <DialogWrapper
       label=""
       describedbyID="step-description"
-      onClose={onCloseViewStep}
+      onClose={onCloseDialogStep}
     >
       <RecipeStep
         isDialog={true}
-        step={recipeSteps[openLink - 1] as IRecipeStep}
+        step={recipeSteps[currentDialogStep - 1] as IRecipeStep}
       />
     </DialogWrapper>
   ) : null;
