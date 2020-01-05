@@ -41,6 +41,11 @@ describe('Step', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should render an empty div if images is an empty array', () => {
+    const {container} = setup([]);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should display only one image at a time', async () => {
     const {queryByAltText, images} = setup();
     const [image1, ...rest] = images;

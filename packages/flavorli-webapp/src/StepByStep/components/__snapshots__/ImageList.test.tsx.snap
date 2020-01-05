@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Step should render an empty div if images is an empty array 1`] = `
+<div>
+  <div
+    id="step-image"
+  />
+</div>
+`;
+
 exports[`Step should render correctly 1`] = `
 <div
   id="step-image"

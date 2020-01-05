@@ -34,6 +34,7 @@ const ImageList = ({images}: IImageListProps) => {
           return (
             isCurrentImage && (
               <Stack
+                key={image.alt}
                 width="100%"
                 distribution="center"
                 alignment="center"
