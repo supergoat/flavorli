@@ -1,24 +1,9 @@
 import React from 'react';
 import {Stack, Button, Text, useCloseOnEsc} from '@flavorli/elements';
-import {useTimersContext, useRunTimer} from '../helpers/timersContext';
+import {useTimersContext} from '../helpers/timersContext';
 import {ITimer} from '../types';
 import Timer from './Timer';
 import {useRestoreFocus} from '../../helpers/hooks';
-
-const RunTimer = ({timer}: {timer: ITimer}) => {
-  useRunTimer(timer);
-  return null;
-};
-
-const RunTimers = ({timers}: {timers: ITimer[]}) => {
-  return (
-    <>
-      {timers.map((timer: ITimer) => (
-        <RunTimer timer={timer} key={timer.id} />
-      ))}
-    </>
-  );
-};
 
 export const Timers = () => {
   const refEl = React.useRef<HTMLButtonElement>(null);
@@ -31,8 +16,6 @@ export const Timers = () => {
 
   return (
     <>
-      <RunTimers timers={timers} />
-
       {timers.length > 0 && (
         <Stack width="100%" paddingBottom={16} paddingLeft={8} paddingRight={8}>
           <Stack

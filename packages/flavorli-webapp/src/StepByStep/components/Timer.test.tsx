@@ -14,15 +14,19 @@ afterEach(() => {
 
 const setup = (
   {
+    isTimerUndefined,
     type,
     isPaused = true,
   }: {
+    isTimerUndefined?: boolean;
     type?: 'notification';
     isPaused?: boolean;
   } = {isPaused: true},
 ) => {
   const stepWithTimer = recipeSteps[6];
-  const timer = {...stepWithTimer.timer, isPaused} as ITimer;
+  const timer = isTimerUndefined
+    ? undefined
+    : ({...stepWithTimer.timer, isPaused} as ITimer);
 
   return {
     ...render(
@@ -48,7 +52,7 @@ describe('Timer', () => {
 
   it('should have an aria-label to provide the name of the timer', () => {
     const {getByLabelText, timer} = setup();
-    getByLabelText(timer.name);
+    getByLabelText(`${timer?.name}`);
   });
 
   it('should have a aria-atomic set to true to ensure the entirety of the time is announced in full to assistive technology users', () => {
@@ -58,19 +62,19 @@ describe('Timer', () => {
 
   it('should have an id that can be used by aria-controls to point to the timer', () => {
     const {getByRole, timer} = setup();
-    expect(getByRole('timer')).toHaveAttribute('id', `timer-${timer.id}`);
+    expect(getByRole('timer')).toHaveAttribute('id', `timer-${timer?.id}`);
   });
 
   it('should have aria-controls pointing to the timer on the start button to indicate that it controls the timer', () => {
     const {getByText, timer} = setup();
     const startButton = getByText('START');
-    expect(startButton).toHaveAttribute('aria-controls', `timer-${timer.id}`);
+    expect(startButton).toHaveAttribute('aria-controls', `timer-${timer?.id}`);
   });
 
   it('should have aria-controls pointing to the timer on the pause button to indicate that it controls the timer', () => {
     const {getByText, timer} = setup({isPaused: false});
     const pauseButton = getByText('PAUSE');
-    expect(pauseButton).toHaveAttribute('aria-controls', `timer-${timer.id}`);
+    expect(pauseButton).toHaveAttribute('aria-controls', `timer-${timer?.id}`);
   });
 
   it('should start the timer when the start button is pressed', () => {
@@ -111,5 +115,10 @@ describe('Timer', () => {
   it('should render correctly when type is notification', () => {
     const {container} = setup({type: 'notification'});
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render an empty div if the timer is undefined', () => {
+    const {container} = setup({isTimerUndefined: true});
+    expect(container).toMatchSnapshot();
   });
 });
