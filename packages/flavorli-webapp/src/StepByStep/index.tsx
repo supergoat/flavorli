@@ -44,11 +44,18 @@ const StepByStep = ({stepByStep = STEP_BY_STEP}: IStepByStepProps) => {
                 <IngredientsStep ingredients={ingredients} />
                 <ItemsStep items={items} />
 
-                {preparationSteps.map(preparationStep => {
-                  return <PreparationStep step={preparationStep} />;
+                {preparationSteps.map((preparationStep, index) => {
+                  return (
+                    <PreparationStep
+                      key={`${index}-preparationStep`}
+                      step={preparationStep}
+                    />
+                  );
                 })}
-                {recipeSteps.map(recipeStep => {
-                  return <RecipeStep step={recipeStep} />;
+                {recipeSteps.map((recipeStep, index) => {
+                  return (
+                    <RecipeStep key={`${index}-recipeStep`} step={recipeStep} />
+                  );
                 })}
               </StepList>
             </Section>

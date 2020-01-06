@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import {Stack, Text} from '@flavorli/elements';
 import Timer from './Timer';
 import Links from './Links';
 import Tag from './Tag';

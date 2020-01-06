@@ -25,6 +25,7 @@ const StepList = ({children}: IPreparationStepListProps) => {
         return (
           currentStep === index + 1 && (
             <Stack
+              key={index}
               width="100%"
               height="100%"
               role="group"

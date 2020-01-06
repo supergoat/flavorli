@@ -4,17 +4,15 @@ import {render} from '../helpers/test-helpers';
 import StepByStep from '.';
 import userEvent from '@testing-library/user-event';
 
-import {recipeSteps} from './helpers/mockData';
-import {IPreparationStep} from './types';
+import {stepByStep} from './helpers/mockData';
 
-const setup = (customSteps?: IPreparationStep[]) => {
-  const stepList = customSteps || recipeSteps;
+const setup = () => {
   return {
-    ...render(<StepByStep steps={stepList} />),
-    steps: stepList,
+    ...render(<StepByStep stepByStep={stepByStep} />),
+    stepByStep,
   };
 };
-describe.skip('StepByStep', () => {
+describe('StepByStep', () => {
   it('should not have any axe violations', async () => {
     const {container} = setup();
     const results = await axe(container);
@@ -29,112 +27,40 @@ describe.skip('StepByStep', () => {
   });
 
   it('should have a next button that when clicked hides the current step and brings the next step into view', () => {
-    const {queryByLabelText, getByText, steps} = setup();
-    const step1 = steps[0];
-    const step2 = steps[1];
-    expect(
-      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
-    ).toBeInTheDocument();
+    const {queryByLabelText, getByText, stepByStep} = setup();
+    const {preparationSteps, recipeSteps} = stepByStep;
 
-    const nextButton = getByText(/next/i);
+    const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
 
-    userEvent.click(nextButton);
+    expect(queryByLabelText(`Step 1 of ${noOfSteps}`)).not.toBeNull();
 
-    expect(
-      queryByLabelText(`Step ${step2.no} of ${steps.length}`),
-    ).toBeInTheDocument();
-
-    expect(
-      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
-    ).not.toBeInTheDocument();
-  });
-
-  it('should have a back button that when clicked hides the current steps and brings the previous step into view', () => {
-    const {queryByLabelText, getByText, steps} = setup();
-    const step1 = steps[0];
-    const step2 = steps[1];
-    const nextButton = getByText(/next/i);
+    const nextButton = getByText(/ingredients/i);
 
     userEvent.click(nextButton);
 
-    expect(
-      queryByLabelText(`Step ${step2.no} of ${steps.length}`),
-    ).toBeInTheDocument();
+    expect(queryByLabelText(`Step 2 of ${noOfSteps}`)).not.toBeNull();
 
-    const backButton = getByText(/back/i);
-
-    userEvent.click(backButton);
-
-    expect(
-      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
-    ).toBeInTheDocument();
-
-    expect(
-      queryByLabelText(`Step ${step2.no} of ${steps.length}`),
-    ).not.toBeInTheDocument();
+    expect(queryByLabelText(`Step 1 of ${noOfSteps}`)).toBeNull();
   });
 
-  it('should open Step from the step link in dialog when clicking View Step button', () => {
-    const step1 = recipeSteps[0];
-    // Step 7 has a link that points to step one
-    const step7 = recipeSteps[7];
+  it('should have a back button that when clicked hides the current step and brings the previous step into view', () => {
+    const {queryByLabelText, getByText, stepByStep} = setup();
+    const {preparationSteps, recipeSteps} = stepByStep;
 
-    const {getByLabelText, getByText} = setup([step1, step7]);
+    const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
 
-    const nextButton = getByText(/next/i);
-
-    // Click next button to go the second step to find view button
+    // Go to the second page, to enable us to test the back button
+    const nextButton = getByText(/ingredients/i);
     userEvent.click(nextButton);
 
-    const viewStepButton = getByText('View Step');
+    expect(queryByLabelText(`Step 2 of ${noOfSteps}`)).not.toBeNull();
 
-    userEvent.click(viewStepButton);
+    const goToIngredientsButton = getByText(/back/i);
 
-    getByLabelText('Step 1 of 2');
+    userEvent.click(goToIngredientsButton);
+
+    expect(queryByLabelText(`Step 1 of ${noOfSteps}`)).not.toBeNull();
+
+    expect(queryByLabelText(`Step 2 of ${noOfSteps}`)).toBeNull();
   });
-
-  it('close the dialog and return to back step when clicking close button inside the dialog', () => {
-    const step1 = recipeSteps[0];
-    // Step 8 has a link that points to step one
-    const step8 = recipeSteps[7];
-
-    const {getByLabelText, getByText} = setup([step1, step8]);
-
-    const nextButton = getByText(/next/i);
-
-    // Click next button to go the second step to find view button
-    userEvent.click(nextButton);
-
-    const viewStepButton = getByText('View Step');
-
-    userEvent.click(viewStepButton);
-
-    const closeButton = getByText(/close/i);
-
-    userEvent.click(closeButton);
-
-    getByLabelText('Step 8 of 2');
-  });
-
-  // it('closing the dialog should return focus to the element that opened the dialog', () => {
-  //   const step1 = steps[0];
-  //   // Step 8 has a link that points to step one
-  //   const step8 = steps[7];
-
-  //   const {getByText} = setup([step1, step8]);
-
-  //   const nextButton = getByText(/next/i);
-
-  //   // Click next button to go the second step to find view button
-  //   userEvent.click(nextButton);
-
-  //   const viewStepButton = getByText('View Step');
-
-  //   userEvent.click(viewStepButton);
-
-  //   const closeButton = getByText(/close/i);
-  //   userEvent.click(closeButton);
-
-  //   expect(getByText('View Step')).toHaveFocus();
-  // });
 });

@@ -53,4 +53,23 @@ describe('Links', () => {
 
     getByLabelText(`Step ${link.from}`);
   });
+
+  it('should close the open dialog when the close button is clicked', () => {
+    const {getAllByText, getByText, queryByLabelText, links} = setup();
+
+    const link = links[0];
+    const viewStepButton = getAllByText('View Step')[0];
+
+    act(() => {
+      userEvent.click(viewStepButton);
+    });
+
+    const closeButton = getByText(/close/i);
+
+    act(() => {
+      userEvent.click(closeButton);
+    });
+
+    expect(queryByLabelText(`Step ${link.from}`)).toBeNull();
+  });
 });
