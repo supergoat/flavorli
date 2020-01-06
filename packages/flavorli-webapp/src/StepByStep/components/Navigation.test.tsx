@@ -2,39 +2,31 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import Navigation from './Navigation';
+import * as StepByStepContext from '../helpers/StepByStepContext';
 import userEvent from '@testing-library/user-event';
 
-const setup = ({
-  nextButtonName,
-  backButtonName,
-  hideNextStepButton = false,
-  hideBackButton = false,
-  varation,
-}: {
-  nextButtonName?: string;
-  backButtonName?: string;
-  hideNextStepButton?: boolean;
-  hideBackButton?: boolean;
-  varation?: 'onPrimary';
-} = {}) => {
-  const mockOnNavigate = jest.fn();
+afterEach(() => {
+  jest.clearAllMocks();
+  jest.restoreAllMocks();
+});
 
+const setup = ({
+  customCurrentStep,
+  isDialog,
+}: {customCurrentStep?: number; isDialog?: boolean} = {}) => {
+  const currentStep = customCurrentStep || 1;
   return {
     ...render(
       <>
         {/* Add a div with id recipe-steps to be used by aria-controls */}
         <div id="recipe-steps" />
-        <Navigation
-          nextButtonName={nextButtonName}
-          backButtonName={backButtonName}
-          onNavigate={mockOnNavigate}
-          hideNextStepButton={hideNextStepButton}
-          hideBackButton={hideBackButton}
-          varation={varation}
-        />
+        <StepByStepContext.StepByStepProvider
+          initialValues={{noOfSteps: 10, currentStep}}
+        >
+          <Navigation isDialog={isDialog} />
+        </StepByStepContext.StepByStepProvider>
       </>,
     ),
-    mockOnNavigate,
   };
 };
 
@@ -45,37 +37,72 @@ describe('Navigation', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it('should render correctly', () => {
-    const {container} = setup();
+  it('should render correctly when the current step is 1', () => {
+    const {container} = setup({customCurrentStep: 1});
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render correctly when the current step is 2', () => {
+    const {container} = setup({customCurrentStep: 2});
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render correctly when the current step is 3', () => {
+    const {container} = setup({customCurrentStep: 3});
     expect(container).toMatchSnapshot();
   });
 
   it('should have a next button with aria-controls set to "recipe-steps" to inform assistive technology users that it controls which step is displayed', () => {
-    const {getByText} = setup();
+    const {getByText} = setup({customCurrentStep: 4});
 
     const nextStepButton = getByText(/Next/i);
 
     expect(nextStepButton).toHaveAttribute('aria-controls', 'recipe-steps');
   });
 
-  it('should accept a custom name for the next button', () => {
-    const {getByText} = setup({nextButtonName: 'Continue'});
+  it("should have a next button with the name 'Ingredients' when the currentStep is 1", () => {
+    const {getByText} = setup({customCurrentStep: 1});
 
-    getByText(/Continue/i);
+    getByText(/Ingredients/i);
+  });
+
+  it("should have a next button with the name 'Items' when the currentStep is 1", () => {
+    const {getByText} = setup({customCurrentStep: 2});
+
+    getByText(/Items/i);
+  });
+
+  it("should have a next button with the name 'Preparation' when the currentStep is 1", () => {
+    const {getByText} = setup({customCurrentStep: 3});
+
+    getByText(/Preparation/i);
   });
 
   it('clicking the nextStep button calls onNavigate with 1', () => {
-    const {getByText, mockOnNavigate} = setup();
+    const mockUseStepsContentReturnValue = {
+      currentDialogStep: 1,
+      currentStep: 4,
+      noOfSteps: 10,
+      onNavigate: jest.fn(),
+      onCloseDialogStep: jest.fn(),
+      onOpenDialogStep: jest.fn(),
+    };
+
+    jest
+      .spyOn(StepByStepContext, 'useStepsContext')
+      .mockImplementationOnce(() => mockUseStepsContentReturnValue);
+
+    const {getByText} = setup({customCurrentStep: 4});
 
     const nextStepButton = getByText(/Next/i);
 
     userEvent.click(nextStepButton);
 
-    expect(mockOnNavigate).toHaveBeenCalledWith(1);
+    expect(mockUseStepsContentReturnValue.onNavigate).toHaveBeenCalledWith(1);
   });
 
-  it('it should hide the nextStep button when hideNextStepButton is set to true', () => {
-    const {queryByText} = setup({hideNextStepButton: true});
+  it('it should hide the nextStep button when the current step is the last step ', () => {
+    const {queryByText} = setup({customCurrentStep: 10});
     expect(queryByText('Next')).toBeNull();
   });
 
@@ -87,33 +114,60 @@ describe('Navigation', () => {
     expect(backButton).toHaveAttribute('aria-controls', 'recipe-steps');
   });
 
-  it('should accept a custom name for the back button', () => {
-    const {getByText} = setup({backButtonName: 'previous'});
+  it('clicking the nextStep button calls onNavigate with -1', () => {
+    const mockUseStepsContentReturnValue = {
+      currentDialogStep: 1,
+      currentStep: 4,
+      noOfSteps: 10,
+      onNavigate: jest.fn(),
+      onCloseDialogStep: jest.fn(),
+      onOpenDialogStep: jest.fn(),
+    };
 
-    getByText(/previous/i);
-  });
+    jest
+      .spyOn(StepByStepContext, 'useStepsContext')
+      .mockImplementationOnce(() => mockUseStepsContentReturnValue);
 
-  it('clicking the back button calls onNavigate with -1', () => {
-    const {getByText, mockOnNavigate} = setup();
+    const {getByText} = setup({customCurrentStep: 4});
 
     const backButton = getByText(/back/i);
 
     userEvent.click(backButton);
 
-    expect(mockOnNavigate).toHaveBeenCalledWith(-1);
+    expect(mockUseStepsContentReturnValue.onNavigate).toHaveBeenCalledWith(-1);
   });
 
-  it('it should hide the back button when hideBackButton is set to true', () => {
-    const {getByText} = setup({hideBackButton: true});
+  it('it should hide the back button when the current step is the first', () => {
+    const {getByText} = setup();
     expect(getByText(/back/i)).not.toBeVisible();
     expect(getByText(/back/i)).toHaveAttribute('tabIndex', '-1');
   });
 
-  it('should render correctly when variation is onPrimary', () => {
-    const {container} = setup({
-      varation: 'onPrimary',
-    });
+  it('it should display a close button when isDialog is true', () => {
+    const {getByText} = setup({isDialog: true});
+    getByText(/close/i);
+  });
 
-    expect(container).toMatchSnapshot();
+  it('clicking the close button calls onCloseDialogStep', () => {
+    const mockUseStepsContentReturnValue = {
+      currentDialogStep: 1,
+      currentStep: 4,
+      noOfSteps: 10,
+      onNavigate: jest.fn(),
+      onCloseDialogStep: jest.fn(),
+      onOpenDialogStep: jest.fn(),
+    };
+
+    jest
+      .spyOn(StepByStepContext, 'useStepsContext')
+      .mockImplementationOnce(() => mockUseStepsContentReturnValue);
+
+    const {getByText} = setup({isDialog: true});
+
+    const closeButton = getByText(/close/i);
+
+    userEvent.click(closeButton);
+
+    expect(mockUseStepsContentReturnValue.onCloseDialogStep).toHaveBeenCalled();
   });
 });

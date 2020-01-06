@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation should render correctly 1`] = `
+exports[`Navigation should render correctly when the current step is 1 1`] = `
 <div>
   <div
     id="recipe-steps"
@@ -12,16 +12,17 @@ exports[`Navigation should render correctly 1`] = `
   >
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLP cWHKgM"
+      class="sc-AykKC sc-fzXfLP jsjRWT"
+      tabindex="-1"
     >
       back
     </button>
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC eAmRjU"
+      class="sc-AykKC jJKHJl"
       width="100%"
     >
-      Next
+      Ingredients
       <img
         alt=""
         class="sc-fzXfLQ jNZvTh"
@@ -32,7 +33,7 @@ exports[`Navigation should render correctly 1`] = `
 </div>
 `;
 
-exports[`Navigation should render correctly when variation is onPrimary 1`] = `
+exports[`Navigation should render correctly when the current step is 2 1`] = `
 <div>
   <div
     id="recipe-steps"
@@ -44,16 +45,48 @@ exports[`Navigation should render correctly when variation is onPrimary 1`] = `
   >
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLP cWHKgM"
+      class="sc-AykKC sc-fzXfLP hDlhqV"
     >
       back
     </button>
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC eAmRjU"
+      class="sc-AykKC jJKHJl"
       width="100%"
     >
-      Next
+      Items
+      <img
+        alt=""
+        class="sc-fzXfLQ jNZvTh"
+        src="right_chevron_white.svg"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Navigation should render correctly when the current step is 3 1`] = `
+<div>
+  <div
+    id="recipe-steps"
+  />
+  <div
+    class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+    direction="horizontal"
+    width="100%"
+  >
+    <button
+      aria-controls="recipe-steps"
+      class="sc-AykKC sc-fzXfLP hDlhqV"
+    >
+      back
+    </button>
+    <button
+      aria-controls="recipe-steps"
+      class="sc-AykKC jJKHJl"
+      width="100%"
+    >
+      Preparation
       <img
         alt=""
         class="sc-fzXfLQ jNZvTh"
