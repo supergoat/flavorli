@@ -4,10 +4,6 @@ import {IColor} from '@flavorli/elements/lib/theme/colors';
 import styled, {css} from 'styled-components';
 import Navigation from './Navigation';
 
-/**
- * Implemented according to
- * @see https://w3c.github.io/aria-practices/#carousel
- */
 export interface IPreparationStepListProps {
   children: React.ReactNode;
   isDialog?: boolean;

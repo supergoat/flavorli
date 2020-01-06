@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack} from '@flavorli/elements';
 import Tag from './Tag';
 import Kitchenware from './Kitchenware';
 import Ingredients from './Ingredients';

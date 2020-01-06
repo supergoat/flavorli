@@ -1,15 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Intro should render correctly 1`] = `
+exports[`IntroStep should render correctly 1`] = `
 <div>
   <div
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH eveWrn sc-fzXfLT innsne"
+    class="sc-AykKH ymdzJ sc-fzXfLT innsne"
     direction="vertical"
     height="100%"
-    overflow="hidden"
     width="100%"
   >
     <div
@@ -19,7 +18,7 @@ exports[`Intro should render correctly 1`] = `
       width="100%"
     >
       <div
-        class="sc-AykKH cUKmt"
+        class="sc-AykKH dqXULp"
         direction="vertical"
         height="100%"
         width="100%"
@@ -179,29 +178,35 @@ exports[`Intro should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="sc-AykKH hoxMSq sc-fzXfLQ jgXihG"
-      direction="horizontal"
+      class="sc-AykKH jAwBcM"
+      direction="vertical"
       width="100%"
     >
-      <button
-        aria-controls="recipe-steps"
-        class="sc-AykKC sc-fzXfLR jywAyF"
-        tabindex="-1"
-      >
-        back
-      </button>
-      <button
-        aria-controls="recipe-steps"
-        class="sc-AykKC jJKHJl"
+      <div
+        class="sc-AykKH hoxMSq sc-fzXfLQ jgXihG"
+        direction="horizontal"
         width="100%"
       >
-        Ingredients
-        <img
-          alt=""
-          class="sc-fzXfLS jQIvfP"
-          src="right_chevron_white.svg"
-        />
-      </button>
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC sc-fzXfLR fUkmkP"
+          tabindex="-1"
+        >
+          back
+        </button>
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC jJKHJl"
+          width="100%"
+        >
+          Ingredients
+          <img
+            alt=""
+            class="sc-fzXfLS jQIvfP"
+            src="right_chevron_white.svg"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </div>

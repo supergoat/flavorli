@@ -7,7 +7,7 @@ import {stepByStep as STEP_BY_STEP} from './helpers/mockData';
 import Timers from './components/Timers';
 import {TimersProvider} from './helpers/timersContext';
 
-import Intro from './components/Intro';
+import IntroStep from './components/IntroStep';
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
 import PreparationStep from './components/PreparationStep';
@@ -36,7 +36,7 @@ const StepByStep = ({stepByStep = STEP_BY_STEP}: IStepByStepProps) => {
               id="list-of-recipe-steps"
             >
               <StepList>
-                <Intro step={intro} />
+                <IntroStep step={intro} />
                 <IngredientsStep ingredients={ingredients} />
                 <ItemsStep items={items} />
 

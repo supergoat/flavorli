@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreparationStep should render correctly 1`] = `
+<div>
+  <div
+    id="recipe-steps"
+  />
+  <div
+    class="sc-AykKH bgZfnb sc-fzXfLX dSuDSb"
+    direction="vertical"
+    height="100%"
+    width="100%"
+  >
+    <div
+      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      direction="vertical"
+      height="100%"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH dqXULp"
+        direction="vertical"
+        height="100%"
+        width="100%"
+      >
+        <div
+          class="sc-AykKH cWcWMX"
+          direction="vertical"
+          width="100%"
+        >
+          <h1
+            class="sc-fzXfMv uTseH"
+          >
+            Mise en place
+          </h1>
+          <h2
+            class="sc-fzXfMw OCOes"
+          >
+            Preparation
+          </h2>
+        </div>
+        <div
+          class="sc-AykKH kFCvJH"
+          direction="vertical"
+          width="auto"
+        >
+          <p
+            class="sc-AykKG cSYcFR"
+          >
+             
+            Sauce
+          </p>
+        </div>
+        <div
+          class="sc-AykKH khQdtk"
+          direction="vertical"
+          width="100%"
+        >
+          <h3
+            class="sc-AykKF fqdNMu"
+            color="primary"
+          >
+            You will need
+          </h3>
+          <p
+            class="sc-AykKG fCXClx"
+          >
+            5
+             
+            Ramekins
+          </p>
+        </div>
+        <div
+          class="sc-AykKH khQdtk"
+          direction="vertical"
+          width="100%"
+        >
+          <h3
+            class="sc-AykKF fqdNMu"
+            color="primary"
+          >
+            Ingredients
+          </h3>
+          <div
+            class="sc-AykKH icGlyX"
+            direction="horizontal"
+          >
+            <div
+              class="sc-fzXfLO dugCgp"
+            />
+            <p
+              class="sc-AykKG fCXClx"
+            >
+              1 teaspoon
+               
+              oregano
+            </p>
+          </div>
+          <div
+            class="sc-AykKH icGlyX"
+            direction="horizontal"
+          >
+            <div
+              class="sc-fzXfLO dugCgp"
+            />
+            <p
+              class="sc-AykKG fCXClx"
+            >
+              1 tablespoon
+               
+              thyme
+            </p>
+          </div>
+          <div
+            class="sc-AykKH icGlyX"
+            direction="horizontal"
+          >
+            <div
+              class="sc-fzXfLO dugCgp"
+            />
+            <p
+              class="sc-AykKG fCXClx"
+            >
+              1 teaspoon
+               
+              chili flakes
+            </p>
+          </div>
+          <div
+            class="sc-AykKH icGlyX"
+            direction="horizontal"
+          >
+            <div
+              class="sc-fzXfLO dugCgp"
+            />
+            <p
+              class="sc-AykKG fCXClx"
+            >
+              1 tablespoon
+               
+              granulated sugar
+            </p>
+          </div>
+          <div
+            class="sc-AykKH icGlyX"
+            direction="horizontal"
+          >
+            <div
+              class="sc-fzXfLO dugCgp"
+            />
+            <p
+              class="sc-AykKG fCXClx"
+            >
+              1 tablespoon
+               
+              tomato paste
+            </p>
+          </div>
+        </div>
+        <p
+          class="sc-AykKG jhiDYp"
+          id="step-description"
+          spacing="[object Object]"
+        >
+          Add the oregano, thyme, chili flakes, sugar and tomato paste into ramekins and set aside
+        </p>
+      </div>
+    </div>
+    <div
+      class="sc-AykKH jAwBcM"
+      direction="vertical"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH hoxMSq sc-fzXfLU efUoeG"
+        direction="horizontal"
+        width="100%"
+      >
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC sc-fzXfLV bZVxET"
+          tabindex="-1"
+        >
+          back
+        </button>
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC jJKHJl"
+          width="100%"
+        >
+          Ingredients
+          <img
+            alt=""
+            class="sc-fzXfLW jWatFf"
+            src="right_chevron_white.svg"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

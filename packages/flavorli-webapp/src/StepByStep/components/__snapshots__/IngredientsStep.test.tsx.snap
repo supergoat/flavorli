@@ -6,10 +6,9 @@ exports[`IngredientsStep should render correctly 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH eveWrn sc-fzXfLR fMQZss"
+    class="sc-AykKH ymdzJ sc-fzXfLR fMQZss"
     direction="vertical"
     height="100%"
-    overflow="hidden"
     width="100%"
   >
     <div
@@ -19,7 +18,7 @@ exports[`IngredientsStep should render correctly 1`] = `
       width="100%"
     >
       <div
-        class="sc-AykKH cUKmt"
+        class="sc-AykKH dqXULp"
         direction="vertical"
         height="100%"
         width="100%"
@@ -418,29 +417,35 @@ exports[`IngredientsStep should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
-      direction="horizontal"
+      class="sc-AykKH jAwBcM"
+      direction="vertical"
       width="100%"
     >
-      <button
-        aria-controls="recipe-steps"
-        class="sc-AykKC sc-fzXfLP jsjRWT"
-        tabindex="-1"
-      >
-        back
-      </button>
-      <button
-        aria-controls="recipe-steps"
-        class="sc-AykKC jJKHJl"
+      <div
+        class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+        direction="horizontal"
         width="100%"
       >
-        Ingredients
-        <img
-          alt=""
-          class="sc-fzXfLQ jNZvTh"
-          src="right_chevron_white.svg"
-        />
-      </button>
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC sc-fzXfLP hRrGAN"
+          tabindex="-1"
+        >
+          back
+        </button>
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC jJKHJl"
+          width="100%"
+        >
+          Ingredients
+          <img
+            alt=""
+            class="sc-fzXfLQ jNZvTh"
+            src="right_chevron_white.svg"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </div>

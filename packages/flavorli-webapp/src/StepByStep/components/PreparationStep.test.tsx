@@ -1,23 +1,24 @@
 import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
-import IntroStep from './IntroStep';
-import {introStep} from '../helpers/mockData';
+import PreparationStep from './PreparationStep';
+import {preparationSteps} from '../helpers/mockData';
 import {StepByStepProvider} from '../helpers/StepByStepContext';
 
 const setup = () => {
+  const step = preparationSteps[0];
   return render(
     <>
       {/* Add a div with id recipe-steps to be used by aria-controls */}
       <div id="recipe-steps" />
       <StepByStepProvider initialValues={{noOfSteps: 10}}>
-        <IntroStep step={introStep} />
+        <PreparationStep step={step} />
       </StepByStepProvider>
     </>,
   );
 };
 
-describe('IntroStep', () => {
+describe('PreparationStep', () => {
   it('should not have any axe violations', async () => {
     const {container} = setup();
     const results = await axe(container);
