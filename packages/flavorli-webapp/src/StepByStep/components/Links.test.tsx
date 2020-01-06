@@ -9,28 +9,18 @@ import {TimersProvider} from '../helpers/timersContext';
 import {StepByStepProvider} from '../helpers/StepByStepContext';
 import {act} from 'react-dom/test-utils';
 
-const setup = (links?: ILink[]) => {
-  const stepWithOneLinkWithTimerIds = recipeSteps[8];
-  const stepLinks = links || stepWithOneLinkWithTimerIds.links;
-
-  // The timers that corresponds to the timers in stepWithOneLinkWithTimerIds
-  const timer1 = recipeSteps[6].timer;
-  const timer2 = recipeSteps[7].timer;
-
-  const timers =
-    timer1?.id && timer2?.id ? {[timer1.id]: timer1, [timer2.id]: timer2} : {};
+const setup = (customLinks?: ILink[]) => {
+  const links = customLinks || recipeSteps[7].links;
 
   return {
     ...render(
-      <TimersProvider initialValues={{...timers}}>
+      <TimersProvider>
         <StepByStepProvider initialValues={{noOfSteps: 10}}>
-          <Links links={stepLinks} />
+          <Links links={links} />
         </StepByStepProvider>
       </TimersProvider>,
     ),
-    links: stepLinks,
-    timer1,
-    timer2,
+    links,
   };
 };
 
@@ -46,6 +36,11 @@ describe('Links', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should render an empty div if the links are an empty array', () => {
+    const {container} = setup([]);
+    expect(container.firstChild).toBeNull();
+  });
+
   it('should open step in a dialog when view step is clicked', () => {
     const {getAllByText, getByLabelText, links} = setup();
 
@@ -57,28 +52,5 @@ describe('Links', () => {
     });
 
     getByLabelText(`Step ${link.from}`);
-  });
-
-  it('should render an empty div if the links are an empty array', () => {
-    const {container} = setup([]);
-    expect(container.firstChild).toBeNull();
-  });
-
-  it('should display the time from the timers if the links have timerIds', () => {
-    const {getByTestId, timer1, timer2} = setup();
-
-    expect(getByTestId(`timerid-${timer1?.id}`)).toHaveTextContent(
-      `${timer1?.minutes}m ${timer1?.seconds}s`,
-    );
-    expect(getByTestId(`timerid-${timer2?.id}`)).toHaveTextContent(
-      `${timer2?.minutes}m ${timer2?.seconds}s`,
-    );
-  });
-
-  it('should not display the time if the links do not have timerIds', () => {
-    const stepWithLinkAndNoTimerId = recipeSteps[7];
-    const {queryByTestId} = setup(stepWithLinkAndNoTimerId.links);
-
-    expect(queryByTestId(/timerid-/i)).toBeNull();
   });
 });
