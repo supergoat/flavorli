@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Stack} from '@flavorli/elements';
-import styled, {FlattenSimpleInterpolation} from 'styled-components';
+import styled from 'styled-components';
 import ChevronRightWhite from '../icons/right_chevron_white.svg';
 import {useStepsContext} from '../helpers/StepByStepContext';
 
@@ -79,9 +79,7 @@ const NavigationWrapper = styled(Stack)`
 
 const PreviousButton = styled(Button)<{
   hide: boolean;
-  css?: FlattenSimpleInterpolation;
 }>`
-  ${p => p.css && p.css};
   visibility: ${p => (p.hide ? 'hidden' : 'visible')};
 `;
 
