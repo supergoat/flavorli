@@ -28,25 +28,6 @@ describe.skip('StepByStep', () => {
     expect(section.tagName).toEqual('SECTION');
   });
 
-  it('should render the first step', () => {
-    const {queryByLabelText, steps} = setup();
-    const step1 = steps[0];
-
-    expect(
-      queryByLabelText(`Step ${step1.no} of ${steps.length}`),
-    ).toBeInTheDocument();
-  });
-
-  it('should display only one step at a time', async () => {
-    const {queryByText, steps} = setup();
-    const [step1, ...rest] = steps;
-    expect(queryByText(`${step1.no}`)).toBeInTheDocument();
-
-    rest.forEach(step =>
-      expect(queryByText(`${step.no}`)).not.toBeInTheDocument(),
-    );
-  });
-
   it('should have a next button that when clicked hides the current step and brings the next step into view', () => {
     const {queryByLabelText, getByText, steps} = setup();
     const step1 = steps[0];

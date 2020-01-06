@@ -12,7 +12,7 @@ exports[`Navigation should render correctly when the current step is 1 1`] = `
   >
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLP jsjRWT"
+      class="sc-AykKC sc-fzXfLP hRrGAN"
       tabindex="-1"
     >
       back
@@ -45,7 +45,7 @@ exports[`Navigation should render correctly when the current step is 2 1`] = `
   >
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLP hDlhqV"
+      class="sc-AykKC sc-fzXfLP cVkvtf"
     >
       back
     </button>
@@ -77,7 +77,7 @@ exports[`Navigation should render correctly when the current step is 3 1`] = `
   >
     <button
       aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLP hDlhqV"
+      class="sc-AykKC sc-fzXfLP cVkvtf"
     >
       back
     </button>
