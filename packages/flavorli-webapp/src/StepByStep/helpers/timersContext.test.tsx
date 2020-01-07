@@ -58,7 +58,7 @@ describe('useTimersContext', () => {
 });
 
 describe('useAddTimerIfItDoesNotExist', () => {
-  it('add timer if it doesn not exist in context', () => {
+  it('should add timer if it doesn not exist in context', () => {
     const stepWithTimer = recipeSteps[6];
     const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
 
