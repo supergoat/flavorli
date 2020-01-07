@@ -150,13 +150,16 @@ describe('useRunTimer', () => {
     expect(updatedTimer).toEqual({...timer, isPaused: true});
   });
 
-  it('should decrement the timer by one second', () => {
+  it('should decrement the timer by 1 minute and set the seconds to 59 if the timer seconds are 0', () => {
     jest.useFakeTimers();
-    const stepWithTimer = recipeSteps[6];
+
     const timer = {
-      ...stepWithTimer.timer,
+      id: 1,
+      name: 'Timer Name',
+      minutes: 10,
+      seconds: 0,
       isPaused: false,
-    } as ITimer;
+    };
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={{[timer.id]: timer}}>
@@ -175,5 +178,35 @@ describe('useRunTimer', () => {
     const updatedTimer = result.current;
 
     expect(updatedTimer).toEqual({...timer, minutes: 9, seconds: 59});
+  });
+
+  it('should decrement the seconds by 1 and leave the minutes as is if the timer seconds are greater than 0 ', () => {
+    jest.useFakeTimers();
+
+    const timer = {
+      id: 1,
+      name: 'Timer Name',
+      minutes: 9,
+      seconds: 59,
+      isPaused: false,
+    };
+
+    const wrapper = ({children}: {children?: React.ReactNode}) => (
+      <TimersProvider initialValues={{[timer.id]: timer}}>
+        {children}
+      </TimersProvider>
+    );
+
+    const {result} = renderHook(() => useRunTimer(timer), {
+      wrapper,
+    });
+
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    const updatedTimer = result.current;
+
+    expect(updatedTimer).toEqual({...timer, minutes: 9, seconds: 58});
   });
 });

@@ -35,7 +35,7 @@ describe('useStepByStepContext', () => {
     const onCloseDialogStep = result.current['onCloseDialogStep'];
     const onNavigate = result.current['onNavigate'];
 
-    expect(currentDialogStep).toEqual(null);
+    expect(currentDialogStep).toEqual(undefined);
     expect(currentStep).toEqual(1);
     expect(noOfSteps).toEqual(10);
     expect(typeof onOpenDialogStep).toBe('function');
