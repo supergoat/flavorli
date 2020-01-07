@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IStepsContext {
-  currentDialogStep: number;
+  currentDialogStep: number | null;
   currentStep: number;
   noOfSteps: number;
   onOpenDialogStep: (stepNo: number) => void;
@@ -26,7 +26,10 @@ export function StepByStepProvider({
   const [currentStep, setCurrentStep] = React.useState(
     initialValues?.currentStep || 1,
   );
-  const [currentDialogStep, setCurrentDialogStep] = React.useState();
+  const [currentDialogStep, setCurrentDialogStep] = React.useState<
+    number | null
+  >(null);
+
   const [lastFocus, setLastFocus] = React.useState();
 
   const onOpenDialogStep = (stepNo: number) => {
@@ -58,11 +61,13 @@ export function StepByStepProvider({
   );
 }
 
-export function useStepsContext() {
+export function useStepByStepContext() {
   const context = React.useContext(StepByStepContext);
 
   if (!context) {
-    throw new Error('useStepsContext must be used within a StepsProvider');
+    throw new Error(
+      'useStepByStepContext must be used within a StepByStepProvider',
+    );
   }
   return context;
 }

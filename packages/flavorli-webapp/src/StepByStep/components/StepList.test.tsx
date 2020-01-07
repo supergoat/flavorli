@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import StepList from './StepList';
-import {StepByStepProvider} from '../helpers/StepByStepContext';
+import {StepByStepProvider} from '../helpers/stepByStepContext';
 import {recipeSteps} from '../helpers/mockData';
 
 const setup = () => {

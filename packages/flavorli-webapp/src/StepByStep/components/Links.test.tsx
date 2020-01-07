@@ -6,7 +6,7 @@ import {recipeSteps} from '../helpers/mockData';
 import {ILink} from '../types';
 import userEvent from '@testing-library/user-event';
 import {TimersProvider} from '../helpers/timersContext';
-import {StepByStepProvider} from '../helpers/StepByStepContext';
+import {StepByStepProvider} from '../helpers/stepByStepContext';
 import {act} from 'react-dom/test-utils';
 
 const setup = (customLinks?: ILink[]) => {

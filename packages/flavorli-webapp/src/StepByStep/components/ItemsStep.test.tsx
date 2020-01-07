@@ -3,7 +3,7 @@ import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import ItemsStep from './ItemsStep';
 import {items} from '../helpers/mockData';
-import {StepByStepProvider} from '../helpers/StepByStepContext';
+import {StepByStepProvider} from '../helpers/stepByStepContext';
 
 const setup = () => {
   return render(

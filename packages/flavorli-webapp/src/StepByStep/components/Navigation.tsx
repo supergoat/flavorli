@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Stack} from '@flavorli/elements';
 import styled from 'styled-components';
 import ChevronRightWhite from '../icons/right_chevron_white.svg';
-import {useStepsContext} from '../helpers/StepByStepContext';
+import {useStepByStepContext} from '../helpers/stepByStepContext';
 
 interface INavigationProps {
   isDialog?: boolean;
@@ -13,7 +13,7 @@ const Navigation = ({isDialog}: INavigationProps) => {
     onCloseDialogStep,
     currentStep,
     noOfSteps,
-  } = useStepsContext();
+  } = useStepByStepContext();
 
   const navigateToNextStep = () => {
     onNavigate(1);

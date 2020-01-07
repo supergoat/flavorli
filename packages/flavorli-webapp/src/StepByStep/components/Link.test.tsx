@@ -4,7 +4,7 @@ import {axe} from 'jest-axe';
 import Link from './Link';
 import {ILink} from '../types';
 import {TimersProvider} from '../helpers/timersContext';
-import {StepByStepProvider} from '../helpers/StepByStepContext';
+import {StepByStepProvider} from '../helpers/stepByStepContext';
 
 const setup = (customLink?: ILink) => {
   const link = customLink || {

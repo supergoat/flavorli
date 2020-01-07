@@ -3,14 +3,14 @@ import {Stack, Text, Button} from '@flavorli/elements';
 
 import {ILink} from '../types';
 import {useTimersContext} from '../helpers/timersContext';
-import {useStepsContext} from '../helpers/StepByStepContext';
+import {useStepByStepContext} from '../helpers/stepByStepContext';
 
 interface ILinkProps {
   link: ILink;
 }
 const Link = ({link}: ILinkProps) => {
   const {timers} = useTimersContext();
-  const {onOpenDialogStep} = useStepsContext();
+  const {onOpenDialogStep} = useStepByStepContext();
 
   return (
     <Stack

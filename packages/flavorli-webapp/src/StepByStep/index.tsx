@@ -12,7 +12,7 @@ import IntroStep from './components/IntroStep';
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
 import PreparationStep from './components/PreparationStep';
-import {StepByStepProvider} from './helpers/StepByStepContext';
+import {StepByStepProvider} from './helpers/stepByStepContext';
 import {IStepByStep} from './types';
 
 interface IStepByStepProps {

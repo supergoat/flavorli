@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack} from '@flavorli/elements';
-import {useStepsContext} from '../helpers/StepByStepContext';
+import {useStepByStepContext} from '../helpers/stepByStepContext';
 
 /**
  * Implemented according to
@@ -10,7 +10,7 @@ export interface IPreparationStepListProps {
   children: React.ReactNode;
 }
 const StepList = ({children}: IPreparationStepListProps) => {
-  const {currentStep} = useStepsContext();
+  const {currentStep} = useStepByStepContext();
   return (
     <Stack
       width="100%"

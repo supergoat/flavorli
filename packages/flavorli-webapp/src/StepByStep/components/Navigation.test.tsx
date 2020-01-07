@@ -2,7 +2,7 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import Navigation from './Navigation';
-import * as StepByStepContext from '../helpers/StepByStepContext';
+import * as StepByStepContext from '../helpers/stepByStepContext';
 import userEvent from '@testing-library/user-event';
 
 afterEach(() => {
@@ -89,7 +89,7 @@ describe('Navigation', () => {
     };
 
     jest
-      .spyOn(StepByStepContext, 'useStepsContext')
+      .spyOn(StepByStepContext, 'useStepByStepContext')
       .mockImplementationOnce(() => mockUseStepsContentReturnValue);
 
     const {getByText} = setup({customCurrentStep: 4});
@@ -125,7 +125,7 @@ describe('Navigation', () => {
     };
 
     jest
-      .spyOn(StepByStepContext, 'useStepsContext')
+      .spyOn(StepByStepContext, 'useStepByStepContext')
       .mockImplementationOnce(() => mockUseStepsContentReturnValue);
 
     const {getByText} = setup({customCurrentStep: 4});
@@ -159,7 +159,7 @@ describe('Navigation', () => {
     };
 
     jest
-      .spyOn(StepByStepContext, 'useStepsContext')
+      .spyOn(StepByStepContext, 'useStepByStepContext')
       .mockImplementationOnce(() => mockUseStepsContentReturnValue);
 
     const {getByText} = setup({isDialog: true});
