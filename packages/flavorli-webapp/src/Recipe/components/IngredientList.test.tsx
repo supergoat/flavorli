@@ -2,9 +2,10 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import IngredientList from './IngredientList';
-import {recipe} from '../helpers/mockData';
+import {recipes} from '../mockData';
 
 const setup = () => {
+  const recipe = recipes[0];
   return render(
     <IngredientList
       taskName={recipe.tasks[0].name}
@@ -22,6 +23,6 @@ describe('IngredientList', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

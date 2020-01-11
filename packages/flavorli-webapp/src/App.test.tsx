@@ -12,6 +12,6 @@ describe('App', () => {
 
   it('should render correctly', () => {
     const {container} = renderWithRouter(<App />);
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

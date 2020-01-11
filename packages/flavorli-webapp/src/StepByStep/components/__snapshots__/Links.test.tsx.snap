@@ -1,48 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Links should render correctly 1`] = `
-<div
-  class="sc-AykKH bocnpZ"
-  direction="vertical"
-  height="auto"
-  width="100%"
->
+<div>
   <div
-    class="sc-AykKH jJpMVI"
+    class="sc-AykKH bocnpZ"
     direction="vertical"
+    height="auto"
     width="100%"
   >
     <div
-      class="sc-AykKH ifuQoe"
-      direction="horizontal"
+      class="sc-AykKH dJfAhH"
+      direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH kQGRhG"
-        direction="vertical"
+        class="sc-AykKH ifuQoe"
+        direction="horizontal"
+        width="100%"
       >
-        <p
-          class="sc-AykKG jJvoyz"
-          font-size="14"
+        <div
+          class="sc-AykKH kQGRhG"
+          direction="vertical"
         >
-          From Step 1
-        </p>
-        <p
-          class="sc-AykKG erRrXf"
-          color="primary"
+          <p
+            class="sc-AykKG jJvoyz"
+            font-size="14"
+          >
+            From Step 1
+          </p>
+          <p
+            class="sc-AykKG erRrXf"
+            color="primary"
+          >
+            Thicken Sauce
+          </p>
+        </div>
+        <div
+          class="sc-AykKH bVhbKf"
+          direction="vertical"
         >
-          Boiling water
-        </p>
-      </div>
-      <div
-        class="sc-AykKH bVhbKf"
-        direction="vertical"
-      >
-        <button
-          class="sc-AykKC hPXCfd"
-        >
-          View Step
-        </button>
+          <button
+            class="sc-AykKC YLLlX"
+          >
+            View Step
+          </button>
+        </div>
       </div>
     </div>
   </div>

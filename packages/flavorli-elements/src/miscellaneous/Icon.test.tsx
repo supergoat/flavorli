@@ -11,10 +11,10 @@ it('should not have any axe violations', async () => {
 
 it('should display the icon that matches the icon name', () => {
   const {container} = render(<Icon name="difficulty" />);
-  expect(container.firstChild).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });
 
 it('should change the icon size to the desired size', () => {
   const {container} = render(<Icon name="difficulty" size="40px" />);
-  expect(container.firstChild).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });

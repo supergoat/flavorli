@@ -8,8 +8,8 @@ const Tag = ({tag}: {tag: ITag}) => {
       distribution="center"
       width="auto"
       paddingTop={4}
-      paddingRight={24}
-      paddingLeft={24}
+      paddingRight={16}
+      paddingLeft={16}
       paddingBottom={4}
       borderRadius={4}
       background={tag.color}

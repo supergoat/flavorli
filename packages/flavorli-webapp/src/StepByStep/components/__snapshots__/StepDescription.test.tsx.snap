@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepDescription should render correctly 1`] = `
+<div>
+  <p
+    class="sc-AykKG jhiDYp"
+    id="step-description"
+    spacing="[object Object]"
+  >
+    description
+  </p>
+</div>
+`;

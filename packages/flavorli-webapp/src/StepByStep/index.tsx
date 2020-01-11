@@ -1,79 +1,73 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useTrapFocus, useFocusFirstDescendant, Stack} from '@flavorli/elements';
+import {useTrapFocus, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
-import Step from './components/Step';
-import {steps as STEPS} from './helpers/mockData';
-import StepDialog from './components/StepDialog';
+import RecipeStep from './components/RecipeStep';
 import Timers from './components/Timers';
-import {TimersProvider} from './helpers/timersContext';
+import {TimersProvider} from './timersContext';
 
-export default ({steps = STEPS}: {steps?: any[]}) => {
+import RunTimers from './components/RunTimers';
+import IntroStep from './components/IntroStep';
+import IngredientsStep from './components/IngredientsStep';
+import ItemsStep from './components/ItemsStep';
+import PreparationStep from './components/PreparationStep';
+import {StepByStepProvider} from './stepByStepContext';
+import useFetchStepByStepRecipe from './useFetchStepByStepRecipe';
+
+const StepByStep = () => {
   const refEl = React.useRef<HTMLDivElement>(null);
-  const [lastFocus, setLastFocus] = React.useState();
-  const [currentStep, setCurrentStep] = React.useState(1);
-  const [openLink, setOpenLink] = React.useState();
-
-  useFocusFirstDescendant(refEl);
   useTrapFocus(refEl);
-  const onChangeStep = (direction: 1 | -1) => {
-    setCurrentStep(s => s + direction);
-  };
 
-  const onViewStep = (stepNo: number) => {
-    setLastFocus(document.activeElement);
-    setOpenLink(stepNo);
-  };
+  const {
+    intro,
+    ingredients,
+    items,
+    preparationSteps,
+    recipeSteps,
+  } = useFetchStepByStepRecipe();
 
-  const onCloseDialog = () => {
-    setOpenLink(null);
-    lastFocus.focus();
-  };
+  const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
 
   return (
     <DialogWrapper ref={refEl}>
       <TimersProvider>
-        <Stack width="100%" height="100%">
-          <Timers />
-          <section
-            aria-label="List of recipe steps"
-            id="list-of-recipe-steps"
-            style={{
-              width: '100%',
-              height: 'calc(100% - 58px)',
-            }}
-          >
-            <StepList>
-              {steps.map((step, index) => {
-                const isCurrentStep = index === currentStep - 1;
-                return (
-                  isCurrentStep && (
-                    <Step
-                      step={step}
-                      key={step.no}
-                      onChangeStep={onChangeStep}
-                      onViewStep={onViewStep}
-                      noOfSteps={steps.length}
-                    />
-                  )
-                );
-              })}
-            </StepList>
-          </section>
-        </Stack>
+        <RunTimers />
 
-        {openLink && (
-          <StepDialog
-            stepNo={openLink}
-            noOfSteps={steps.length}
-            onViewStep={onViewStep}
-            onClose={() => onCloseDialog()}
-          />
-        )}
+        <StepByStepProvider initialValues={{noOfSteps}}>
+          <Stack width="100%" height="100%">
+            <Timers />
+            <Section
+              aria-label="List of recipe steps"
+              id="list-of-recipe-steps"
+            >
+              <StepList>
+                <IntroStep step={intro} />
+                <IngredientsStep ingredients={ingredients} />
+                <ItemsStep items={items} />
+
+                {preparationSteps.map((preparationStep, index) => {
+                  return (
+                    <PreparationStep
+                      key={`${index}-preparationStep`}
+                      step={preparationStep}
+                    />
+                  );
+                })}
+                {recipeSteps.map((recipeStep, index) => {
+                  return (
+                    <RecipeStep key={`${index}-recipeStep`} step={recipeStep} />
+                  );
+                })}
+              </StepList>
+            </Section>
+          </Stack>
+        </StepByStepProvider>
       </TimersProvider>
     </DialogWrapper>
   );
 };
+
+export default StepByStep;
 
 const DialogWrapper = styled.div`
   position: absolute;
@@ -85,4 +79,9 @@ const DialogWrapper = styled.div`
   overflow: hidden;
   width: 100%;
   height: 100%;
+`;
+
+const Section = styled.section`
+  width: 100%;
+  height: calc(100% - 58px);
 `;

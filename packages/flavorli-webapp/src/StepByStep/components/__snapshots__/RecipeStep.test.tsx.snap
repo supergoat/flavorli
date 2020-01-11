@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeStep should render correctly 1`] = `
+<div>
+  <div
+    id="recipe-steps"
+  />
+  <div
+    class="sc-AykKH bgZfnb sc-fzXfLR ittBmB"
+    direction="vertical"
+    height="100%"
+    width="100%"
+  >
+    <div
+      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      direction="vertical"
+      height="100%"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH dqXULp"
+        direction="vertical"
+        height="100%"
+        width="100%"
+      >
+        <div
+          class="sc-AykKH eUunkT"
+          direction="vertical"
+          width="100%"
+        >
+          <p
+            class="sc-AykKG kSNvMr"
+            color="secondaryTextColor"
+            font-size="32"
+          >
+            1
+          </p>
+        </div>
+        <div
+          class="sc-AykKH kFCvJH"
+          direction="vertical"
+          width="auto"
+        >
+          <p
+            class="sc-AykKG cSYcFR"
+          >
+             
+            Sauce
+          </p>
+        </div>
+        <div
+          class="sc-AykKH khQdtk"
+          direction="vertical"
+          width="100%"
+        >
+          <h3
+            class="sc-AykKF fqdNMu"
+            color="primary"
+          >
+            You will need
+          </h3>
+          <p
+            class="sc-AykKG fCXClx"
+          >
+            1
+             
+            Small Pot
+          </p>
+        </div>
+        <div
+          class="sc-AykKH khQdtk"
+          direction="vertical"
+          width="100%"
+        >
+          <h3
+            class="sc-AykKF fqdNMu"
+            color="primary"
+          >
+            Ingredients
+          </h3>
+          <div
+            class="sc-AykKH icGlyX"
+            direction="horizontal"
+          >
+            <div
+              class="sc-fzXfLS jzxYdp"
+            />
+            <p
+              class="sc-AykKG fCXClx"
+            >
+              2 tbsps
+               
+              coconut oil
+            </p>
+          </div>
+        </div>
+        <p
+          class="sc-AykKG jhiDYp"
+          id="step-description"
+          spacing="[object Object]"
+        >
+          Heat the coconut oil in a small pot on low heat
+        </p>
+      </div>
+    </div>
+    <div
+      class="sc-AykKH jAwBcM"
+      direction="vertical"
+      width="100%"
+    >
+      <div
+        class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+        direction="horizontal"
+        width="100%"
+      >
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC sc-fzXfLP hRrGAN"
+          tabindex="-1"
+        >
+          back
+        </button>
+        <button
+          aria-controls="recipe-steps"
+          class="sc-AykKC jJKHJl"
+          width="100%"
+        >
+          Ingredients
+          <img
+            alt=""
+            class="sc-fzXfLQ jNZvTh"
+            src="right_chevron_white.svg"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

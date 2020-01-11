@@ -2,18 +2,21 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import StepDialog from './StepDialog';
+import {TimersProvider} from '../timersContext';
+import {StepByStepProvider} from '../stepByStepContext';
 
 const setup = () => {
   return {
     ...render(
-      <>
-        {/* Add a div with id recipe-steps to be used by aria-controls */}
-        <div id="recipe-steps" />
-        <StepDialog onClose={jest.fn()} stepNo={1} />
-      </>,
+      <TimersProvider>
+        <StepByStepProvider initialValues={{noOfSteps: 10}}>
+          <StepDialog />
+        </StepByStepProvider>
+      </TimersProvider>,
     ),
   };
 };
+
 describe('StepDialog', () => {
   it('should not have any axe violations', async () => {
     const {container} = setup();
@@ -23,6 +26,6 @@ describe('StepDialog', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

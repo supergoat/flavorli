@@ -10,6 +10,11 @@ describe('Routes', () => {
     expect(results).toHaveNoViolations();
   });
 
+  it('should render the home page', () => {
+    const {history} = renderWithRouter(<Routes />, '/');
+    expect(history.location.pathname).toMatch('/');
+  });
+
   it('should render the recipe page', () => {
     const {history} = renderWithRouter(<Routes />, '/recipe');
     expect(history.location.pathname).toMatch('/recipe');

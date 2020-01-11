@@ -27,12 +27,12 @@ describe('Recipe', () => {
     const stepByStepButton = getByText('Step By Step');
     userEvent.click(stepByStepButton);
 
-    expect(history.push).toHaveBeenCalledWith('/step-by-step');
-    expect(history.location.pathname).toEqual('/step-by-step');
+    expect(history.push).toHaveBeenCalledWith('/step-by-step/1');
+    expect(history.location.pathname).toEqual('/step-by-step/1');
   });
 
   it('should render correctly', () => {
     const {container} = renderWithRouter(<Recipe />);
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

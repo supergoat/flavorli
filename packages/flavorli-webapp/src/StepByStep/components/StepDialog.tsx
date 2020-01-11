@@ -1,33 +1,45 @@
 import React from 'react';
+import styled from 'styled-components';
 import {Dialog} from '@flavorli/elements';
 import Step from './Step';
-import {steps} from '../helpers/mockData';
-import styled from 'styled-components';
+import StepNo from './StepNo';
+import Tag from './Tag';
+import Kitchenware from './Kitchenware';
+import Ingredients from './Ingredients';
+import StepDescription from './StepDescription';
+import Timer from './Timer';
+import ImageList from './ImageList';
+import {useStepByStepContext} from '../stepByStepContext';
+import {stepByStepRecipes} from '../../__mockData__';
 
-interface IStepDialogProps {
-  stepNo: number;
-  noOfSteps: number;
-  onViewStep: (stepNo: number) => void;
-  onClose: () => void;
-}
-const StepDialog = ({
-  stepNo,
-  noOfSteps,
-  onViewStep,
-  onClose,
-}: IStepDialogProps) => {
-  return (
-    <DialogWrapper label="" describedbyID="step-description" onClose={onClose}>
-      <Step
-        isDialog={true}
-        step={steps[stepNo - 1]}
-        onChangeStep={() => {}}
-        onViewStep={onViewStep}
-        onClose={onClose}
-        noOfSteps={noOfSteps}
-      />
+const StepDialog = () => {
+  const {onCloseDialogStep, currentDialogStep} = useStepByStepContext();
+
+  const step = stepByStepRecipes[0].recipeSteps[currentDialogStep - 1];
+
+  return currentDialogStep ? (
+    <DialogWrapper
+      label={`Step ${step.no}`}
+      describedbyID="step-description"
+      onClose={onCloseDialogStep}
+    >
+      <Step isDialog={true} background="surface">
+        <StepNo no={step.no} />
+
+        <Tag tag={step.tag} />
+
+        <Kitchenware kitchenware={step.kitchenware} />
+
+        <Ingredients ingredients={step.ingredients} />
+
+        <StepDescription description={step.description} />
+
+        <Timer timer={step.timer} />
+
+        <ImageList images={step?.images} />
+      </Step>
     </DialogWrapper>
-  );
+  ) : null;
 };
 
 export default StepDialog;

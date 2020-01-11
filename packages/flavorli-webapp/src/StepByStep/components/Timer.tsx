@@ -1,13 +1,15 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
-import {useAddTimerIfItDoesNotExist} from '../helpers/timersContext';
+import {useAddTimerIfItDoesNotExist} from '../timersContext';
 import {ITimer} from '../types';
 
 interface ITimerProps {
   type?: 'notification';
-  timer: ITimer;
+  timer?: ITimer;
 }
 export default ({timer, type}: ITimerProps) => {
+  if (!timer) return null;
+
   const {timers, setTimers} = useAddTimerIfItDoesNotExist(timer);
 
   const initialisedTimer = timers[timer.id];
@@ -38,11 +40,7 @@ export default ({timer, type}: ITimerProps) => {
         aria-atomic={true}
         fontSize={type === 'notification' ? 24 : 32}
       >
-        {`${initialisedTimer.minutes}m ${
-          initialisedTimer.seconds < 10
-            ? `0${initialisedTimer.seconds}`
-            : initialisedTimer.seconds
-        }s`}
+        {`${initialisedTimer.minutes}m ${initialisedTimer.seconds}s`}
       </Text>
 
       <Stack direction="horizontal" gap={8}>

@@ -68,3 +68,16 @@ export function useCloseOnEsc(onClose: () => void) {
     };
   }, []);
 }
+
+export function usePortal(el: HTMLDivElement) {
+  React.useEffect(() => {
+    const portalRoot = document.createElement('div');
+    portalRoot?.setAttribute('id', 'portal-root');
+    document.body.appendChild(portalRoot);
+    portalRoot?.appendChild(el);
+
+    return () => {
+      portalRoot?.removeChild(el);
+    };
+  }, [el]);
+}

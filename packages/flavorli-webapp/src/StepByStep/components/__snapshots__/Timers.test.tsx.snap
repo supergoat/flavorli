@@ -1,39 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Timers should render a placeholder if there are no timers 1`] = `
-<div
-  class="sc-AykKH hsNCqR"
-  direction="vertical"
-  height="54px"
->
-  <div />
+<div>
+  <div
+    class="sc-AykKH jfBLCV"
+    direction="vertical"
+    height="58px"
+  >
+    <div />
+  </div>
 </div>
 `;
 
 exports[`Timers should render correctly 1`] = `
-<div
-  class="sc-AykKH bcqxzt"
-  direction="vertical"
-  style="transform: translateY(-100%) translateZ(0);"
-  width="100%"
->
+<div>
   <div
-    class="sc-AykKH WvElB"
+    class="sc-AykKH bcqxzt"
     direction="vertical"
-    id="timers"
     width="100%"
   >
     <div
-      class="sc-AykKH daWbBB"
+      class="sc-AykKH WvElB"
       direction="vertical"
+      id="timers"
       width="100%"
     >
-      <button
-        class="sc-AykKC guUPkS"
+      <div
+        class="sc-AykKH daWbBB"
+        direction="vertical"
         width="100%"
       >
-        View Timers
-      </button>
+        <button
+          class="sc-AykKC eOVolE"
+          width="100%"
+        >
+          View Timers
+        </button>
+      </div>
     </div>
   </div>
 </div>

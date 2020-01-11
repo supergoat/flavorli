@@ -1,129 +1,68 @@
 import React from 'react';
-import {
-  Stack,
-  Text,
-  Scroll,
-  Button,
-  useFocusFirstDescendant,
-} from '@flavorli/elements';
-import {IStep} from '../types';
-import Timer from './Timer';
-import Links from './Links';
-import Tag from './Tag';
-import Kitchenware from './Kitchenware';
-import Ingredients from './Ingredients';
-import styled from 'styled-components';
+import {Stack, Scroll} from '@flavorli/elements';
+import {IColor} from '@flavorli/elements/lib/theme/colors';
+import styled, {css} from 'styled-components';
+import Navigation from './Navigation';
 
-interface IStepProps {
+export interface IPreparationStepListProps {
+  children: React.ReactNode;
   isDialog?: boolean;
-  step: IStep;
-  noOfSteps: number;
-  onChangeStep: (direction: 1 | -1) => void;
-  onViewStep: (stepNo: number) => void;
-  onClose?: () => void;
-  className?: string;
+  background?: IColor;
+  image?: string;
 }
-export default ({
+const Step = ({
+  background,
+  image,
   isDialog,
-  step,
-  noOfSteps,
-  onChangeStep,
-  onViewStep,
-  onClose,
-  className,
-}: IStepProps) => {
-  const refEl = React.useRef<HTMLDivElement>(null);
-
-  useFocusFirstDescendant(refEl);
-
+  children,
+}: IPreparationStepListProps) => {
   return (
-    <Stack
-      ref={refEl}
-      className={className}
+    <StepWrapper
+      image={image}
+      background={background}
       width="100%"
       height="100%"
-      background="surface"
       borderRadiusTopLeft={isDialog ? undefined : 24}
       borderRadiusTopRight={isDialog ? undefined : 24}
-      paddingBottom={24}
-      role="group"
-      aria-label={`Step ${step.no} of ${noOfSteps}`}
+      paddingTop={48}
     >
-      <Stack paddingLeft={24} paddingTop={24} width="100%">
-        <Text fontSize={32} intent="secondary">
-          {step.no}
-        </Text>
-      </Stack>
-
       <Scroll>
         <Stack
-          paddingTop={48}
-          paddingRight={48}
-          paddingLeft={48}
+          width="100%"
           gap={16}
           height="100%"
-          width="100%"
+          paddingLeft={48}
+          paddingRight={48}
         >
-          <Tag tag={step.tag} />
-
-          <Links links={step.links} onViewStep={onViewStep} />
-
-          <Kitchenware kitchenware={step.kitchenware} />
-
-          <Ingredients ingredients={step.ingredients} />
-
-          <Text spacing={{line: '1.5'}} id="step-description">
-            {step.description}
-          </Text>
-
-          {step.timer && <Timer timer={step.timer} />}
+          {children}
         </Stack>
       </Scroll>
 
-      <Stack
-        direction="horizontal"
-        gap={8}
-        distribution="end"
-        width="100%"
-        paddingTop={16}
-        paddingLeft={48}
-        paddingRight={48}
-      >
-        {!isDialog && (
-          <>
-            <PreviousButton
-              aria-label="Previous Step"
-              aria-controls="recipe-steps"
-              hide={step.no === 1}
-              tabIndex={step.no === 1 ? -1 : undefined}
-              intent="secondary"
-              onClick={() => onChangeStep(-1)}
-            >
-              Previous
-            </PreviousButton>
-
-            {step.no !== noOfSteps && (
-              <Button
-                aria-label="Next Step"
-                aria-controls="recipe-steps"
-                onClick={() => onChangeStep(1)}
-                width="100%"
-              >
-                Continue
-              </Button>
-            )}
-          </>
-        )}
-        {isDialog && (
-          <Button width="100%" intent="secondary" onClick={onClose}>
-            Close
-          </Button>
-        )}
+      <Stack width="100%" paddingLeft={48} paddingRight={48} paddingBottom={24}>
+        <Navigation isDialog={isDialog} />
       </Stack>
-    </Stack>
+    </StepWrapper>
   );
 };
 
-const PreviousButton = styled(Button)<{hide: boolean}>`
-  visibility: ${p => (p.hide ? 'hidden' : 'visible')};
+export default Step;
+
+const StepWrapper = styled(Stack)<{image?: string}>`
+  position: relative;
+  ${p =>
+    p.image &&
+    css`
+      &::before {
+        content: '';
+        background-image: url(${p.image});
+        background-size: 550px;
+        background-repeat: no-repeat;
+        opacity: 0.1;
+        top: 100px;
+        left: 50px;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+    `}
 `;

@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import {IColor} from '../theme/colors';
 
 interface IH2 {
   width?: string;
   align?: 'left' | 'center' | 'right';
+  color?: IColor;
 }
 export const H2 = styled.h2<IH2>`
-  font-family: ${props => props.theme.families.TitilliumWeb};
-  color: ${props => props.theme.colors.textColor};
+  font-family: ${p => p.theme.families.TitilliumWeb};
+  color: ${p => (p.color ? p.theme.colors[p.color] : p.theme.colors.textColor)};
   font-size: ${p => p.theme.fontSizes[24]};
-  font-weight: ${props => props.theme.weights.TitilliumWeb.REGULAR};
-  width: ${props => props.width};
-  text-align: ${props => props.align};
+  font-weight: ${p => p.theme.weights.TitilliumWeb.REGULAR};
+  width: ${p => p.width};
+  text-align: ${p => p.align};
 `;

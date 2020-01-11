@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {fontSizes} from '../theme/fonts';
+import {fontSizes, families, weights} from '../theme/fonts';
 import {motion, MotionProps} from 'framer-motion';
 import {IColor} from '../theme/colors';
 
