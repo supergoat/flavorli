@@ -1,5 +1,5 @@
 import React from 'react';
-import {useRunTimer, useTimersContext} from '../helpers/timersContext';
+import {useRunTimer, useTimersContext} from '../timersContext';
 import {IStepByStep, ITimer} from '../types';
 
 interface IStepByStepProps {

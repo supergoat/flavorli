@@ -2,15 +2,15 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Links from './Links';
-import {recipeSteps} from '../helpers/mockData';
 import {ILink} from '../types';
 import userEvent from '@testing-library/user-event';
-import {TimersProvider} from '../helpers/timersContext';
-import {StepByStepProvider} from '../helpers/stepByStepContext';
+import {TimersProvider} from '../timersContext';
+import {StepByStepProvider} from '../stepByStepContext';
 import {act} from 'react-dom/test-utils';
+import {link} from '../mockData';
 
 const setup = (customLinks?: ILink[]) => {
-  const links = customLinks || recipeSteps[7].links;
+  const links = customLinks || [link];
 
   return {
     ...render(
@@ -33,7 +33,7 @@ describe('Links', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render an empty div if the links are an empty array', () => {

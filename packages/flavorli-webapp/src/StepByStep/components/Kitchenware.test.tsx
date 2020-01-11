@@ -2,22 +2,21 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Kitchenware from './Kitchenware';
-import {recipeSteps} from '../helpers/mockData';
+import {kitchenware} from '../mockData';
 
+const setup = () => {
+  return render(<Kitchenware kitchenware={kitchenware} />);
+};
 describe('Kitchenware', () => {
   it('should not have any axe violations', async () => {
-    const {container} = render(
-      <Kitchenware kitchenware={recipeSteps[0].kitchenware} />,
-    );
+    const {container} = setup();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
   it('should render correctly', () => {
-    const {container} = render(
-      <Kitchenware kitchenware={recipeSteps[0].kitchenware} />,
-    );
-    expect(container.firstChild).toMatchSnapshot();
+    const {container} = setup();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render an empty div if the kitchenware are an empty array', () => {

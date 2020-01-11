@@ -2,7 +2,7 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import Navigation from './Navigation';
-import * as StepByStepContext from '../helpers/stepByStepContext';
+import * as StepByStepContext from '../stepByStepContext';
 import userEvent from '@testing-library/user-event';
 
 afterEach(() => {

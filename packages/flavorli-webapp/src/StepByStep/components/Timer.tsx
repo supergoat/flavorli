@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
-import {useAddTimerIfItDoesNotExist} from '../helpers/timersContext';
+import {useAddTimerIfItDoesNotExist} from '../timersContext';
 import {ITimer} from '../types';
 
 interface ITimerProps {

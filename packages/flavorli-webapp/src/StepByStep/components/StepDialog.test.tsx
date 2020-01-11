@@ -2,8 +2,8 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import StepDialog from './StepDialog';
-import {TimersProvider} from '../helpers/timersContext';
-import {StepByStepProvider} from '../helpers/stepByStepContext';
+import {TimersProvider} from '../timersContext';
+import {StepByStepProvider} from '../stepByStepContext';
 
 const setup = () => {
   return {

@@ -18,6 +18,6 @@ describe('StepDescription', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

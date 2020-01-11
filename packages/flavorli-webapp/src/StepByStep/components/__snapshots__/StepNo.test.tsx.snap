@@ -1,17 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StepNo should render correctly 1`] = `
-<div
-  class="sc-AykKH eUunkT"
-  direction="vertical"
-  width="100%"
->
-  <p
-    class="sc-AykKG kSNvMr"
-    color="secondaryTextColor"
-    font-size="32"
+<div>
+  <div
+    class="sc-AykKH eUunkT"
+    direction="vertical"
+    width="100%"
   >
-    1
-  </p>
+    <p
+      class="sc-AykKG kSNvMr"
+      color="secondaryTextColor"
+      font-size="32"
+    >
+      1
+    </p>
+  </div>
 </div>
 `;

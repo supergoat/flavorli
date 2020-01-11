@@ -2,16 +2,21 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import RunTimers from './RunTimers';
-import * as TimersContext from '../helpers/timersContext';
-import {recipeSteps} from '../helpers/mockData';
-import {ITimer} from '../types';
+import * as TimersContext from '../timersContext';
 
 afterEach(() => {
   jest.restoreAllMocks();
 });
+
 const setup = () => {
-  const stepWithTimer = recipeSteps[6];
-  const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
+  const timer = {
+    id: 1,
+    name: 'Thicken Sauce',
+    minutes: 1,
+    seconds: 0,
+    isPaused: true,
+  };
+
   const timers = {[timer.id]: timer};
   return render(
     <TimersContext.TimersProvider initialValues={{...timers}}>

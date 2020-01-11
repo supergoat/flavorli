@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack, Button, Text, useCloseOnEsc} from '@flavorli/elements';
-import {useTimersContext} from '../helpers/timersContext';
+import {useTimersContext} from '../timersContext';
 import {ITimer} from '../types';
 import Timer from './Timer';
 import {useRestoreFocus} from '../../helpers/hooks';

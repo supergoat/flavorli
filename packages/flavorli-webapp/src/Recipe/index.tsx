@@ -1,16 +1,16 @@
 import React from 'react';
 import {Stack, H1, Button, Scroll} from '@flavorli/elements';
 import {motion} from 'framer-motion';
-import {useHistory} from 'react-router-dom';
 import SectionHeading from './components/SectionHeading';
 import Info from './components/Info';
 import IngredientList from './components/IngredientList';
 import PreparationStepList from './components/PreparationStepList';
-
-import {recipe} from './helpers/mockData';
+import useFetchRecipe from './useFetchRecipe';
+import {useHistory} from 'react-router';
 
 export default () => {
-  let history = useHistory();
+  const history = useHistory();
+  const recipe = useFetchRecipe();
 
   return (
     <Scroll background="surface">
@@ -23,11 +23,15 @@ export default () => {
           <Stack direction="horizontal" width="100%">
             <Info
               name="Preparation"
-              value={recipe.preparation}
+              value={`${recipe.preparation}'`}
               icon="preparationTime"
             />
 
-            <Info name="Cooking" value={recipe.cooking} icon="cookingTime" />
+            <Info
+              name="Cooking"
+              value={`${recipe.cooking}'`}
+              icon="cookingTime"
+            />
 
             <Info name="Portions" value={recipe.portions} icon="serves" />
 
@@ -52,7 +56,10 @@ export default () => {
 
           <SectionHeading icon="preparation">Preparation</SectionHeading>
 
-          <Button width="100%" onClick={() => history.push('/step-by-step')}>
+          <Button
+            width="100%"
+            onClick={() => history.push(`/step-by-step/${recipe.id}`)}
+          >
             Step By Step
           </Button>
 

@@ -9,7 +9,58 @@ exports[`Step should render an empty div if images is an empty array 1`] = `
 `;
 
 exports[`Step should render correctly 1`] = `
-<div
-  id="step-image"
-/>
+<div>
+  <div
+    id="step-image"
+  />
+  <section
+    aria-label="List of step images"
+    class="sc-fzXfLO VjJSW"
+  >
+    <div
+      aria-live="polite"
+      class="sc-AykKH kSMEZQ"
+      data-testid="step-images"
+      direction="vertical"
+      height="300px"
+      id="step-images"
+      width="300px"
+    >
+      <div
+        aria-label="Image 1 of 2"
+        class="sc-AykKH csfDLG"
+        direction="vertical"
+        height="100%"
+        role="group"
+        width="100%"
+      >
+        <img
+          alt="image 1"
+          class="sc-fzXfLP iPnlFu"
+          src=""
+        />
+      </div>
+      <button
+        aria-controls="step-images"
+        aria-label="Previous Image"
+        class="sc-fzXfLQ sc-fzXfLR hrlKtg"
+      >
+        <img
+          alt=""
+          src="right_chevron_primary.svg"
+        />
+      </button>
+      <button
+        aria-controls="step-images"
+        aria-label="Next Image"
+        class="sc-fzXfLQ sc-fzXfLS GOLfT"
+      >
+        <img
+          alt=""
+          src="right_chevron_primary.svg"
+        />
+      </button>
+    </div>
+  </section>
+</div>
 `;

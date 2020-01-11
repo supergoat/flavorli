@@ -64,15 +64,42 @@ exports[`RecipeStep should render correctly 1`] = `
           >
             1
              
-            Pot
+            Small Pot
           </p>
+        </div>
+        <div
+          class="sc-AykKH khQdtk"
+          direction="vertical"
+          width="100%"
+        >
+          <h3
+            class="sc-AykKF fqdNMu"
+            color="primary"
+          >
+            Ingredients
+          </h3>
+          <div
+            class="sc-AykKH icGlyX"
+            direction="horizontal"
+          >
+            <div
+              class="sc-fzXfLS jzxYdp"
+            />
+            <p
+              class="sc-AykKG fCXClx"
+            >
+              2 tbsps
+               
+              coconut oil
+            </p>
+          </div>
         </div>
         <p
           class="sc-AykKG jhiDYp"
           id="step-description"
           spacing="[object Object]"
         >
-          Place a pot of water on medium heat and set aside to boil
+          Heat the coconut oil in a small pot on low heat
         </p>
       </div>
     </div>

@@ -1,16 +1,14 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
-import {TimersProvider} from '../helpers/timersContext';
+import {TimersProvider} from '../timersContext';
 import Timers from './Timers';
 import {ITimer} from '../types';
-import {recipeSteps} from '../helpers/mockData';
-import userEvent from '@testing-library/user-event';
 import {act} from 'react-dom/test-utils';
+import {timer} from '../mockData';
 
 const setup = (timers?: {[timerId: number]: ITimer}) => {
-  const stepWithTimer = recipeSteps[6];
-  const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
   const contextTimers = timers || {[timer.id]: timer};
   return {
     ...render(
@@ -31,12 +29,12 @@ describe('Timers', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render a placeholder if there are no timers', () => {
     const {container} = setup({});
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should hide the timers by default', () => {

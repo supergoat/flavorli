@@ -1,14 +1,14 @@
 import React from 'react';
 import {axe} from 'jest-axe';
-import {render} from '../helpers/test-helpers';
+import {renderWithRouter} from '../helpers/test-helpers';
 import StepByStep from '.';
 import userEvent from '@testing-library/user-event';
 
-import {stepByStep} from './helpers/mockData';
+import {stepByStep} from './mockData';
 
 const setup = () => {
   return {
-    ...render(<StepByStep stepByStep={stepByStep} />),
+    ...renderWithRouter(<StepByStep />),
     stepByStep,
   };
 };

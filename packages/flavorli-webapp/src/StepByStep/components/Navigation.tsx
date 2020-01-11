@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Stack} from '@flavorli/elements';
 import styled from 'styled-components';
 import ChevronRightWhite from '../icons/right_chevron_white.svg';
-import {useStepByStepContext} from '../helpers/stepByStepContext';
+import {useStepByStepContext} from '../stepByStepContext';
 
 interface INavigationProps {
   isDialog?: boolean;

@@ -1,6 +1,6 @@
 import React from 'react';
-import {ITimer} from '../types';
-import {useInterval} from '../../helpers/hooks';
+import {ITimer} from './types';
+import {useInterval} from '../helpers/hooks';
 
 interface ITimersContext {
   timers: {[timerId: number]: ITimer};

@@ -1,20 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PreparationStep should render correctly 1`] = `
-<div
-  class="sc-AykKH bwhEDl"
-  direction="horizontal"
-  width="100%"
->
-  <p
-    class="sc-AykKG fCXClx"
+<div>
+  <div
+    class="sc-AykKH bwhEDl"
+    direction="horizontal"
+    width="100%"
   >
-    1
-  </p>
-  <p
-    class="sc-AykKG fCXClx"
-  >
-    Place a frying pan over high heat and add the olive oil
-  </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      1
+    </p>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      Place a frying pan over high heat and add the olive oil
+    </p>
+  </div>
 </div>
 `;

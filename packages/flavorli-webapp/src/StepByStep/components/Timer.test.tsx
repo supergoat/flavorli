@@ -2,11 +2,10 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Timer from './Timer';
-import {recipeSteps} from '../helpers/mockData';
 import {act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {ITimer} from '../types';
-import {TimersProvider} from '../helpers/timersContext';
+import {TimersProvider} from '../timersContext';
+import {timer} from '../mockData';
 
 afterEach(() => {
   jest.useRealTimers();
@@ -23,15 +22,13 @@ const setup = (
     isPaused?: boolean;
   } = {isPaused: true},
 ) => {
-  const stepWithTimer = recipeSteps[6];
-  const timer = isTimerUndefined
-    ? undefined
-    : ({...stepWithTimer.timer, isPaused} as ITimer);
-
   return {
     ...render(
       <TimersProvider>
-        <Timer timer={timer} type={type} />
+        <Timer
+          timer={(!isTimerUndefined && {...timer, isPaused}) || undefined}
+          type={type}
+        />
       </TimersProvider>,
     ),
     timer,
@@ -109,12 +106,12 @@ describe('Timer', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render correctly when type is notification', () => {
     const {container} = setup({type: 'notification'});
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render an empty div if the timer is undefined', () => {

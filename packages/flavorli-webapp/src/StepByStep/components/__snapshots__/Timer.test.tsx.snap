@@ -3,75 +3,79 @@
 exports[`Timer should render an empty div if the timer is undefined 1`] = `<div />`;
 
 exports[`Timer should render correctly 1`] = `
-<div
-  class="sc-AykKH bWlsaY"
-  direction="vertical"
-  width="100%"
->
-  <p
-    aria-atomic="true"
-    aria-label="Step 7: Simmer Sauce"
-    class="sc-AykKG jBmvtL"
-    font-size="32"
-    id="timer-7"
-    role="timer"
-  >
-    10m 0s
-  </p>
+<div>
   <div
-    class="sc-AykKH bhytJE"
-    direction="horizontal"
+    class="sc-AykKH bWlsaY"
+    direction="vertical"
+    width="100%"
   >
-    <button
-      aria-controls="timer-7"
-      class="sc-AykKC hYfwNR"
-      width="47px"
+    <p
+      aria-atomic="true"
+      aria-label="Thicken Sauce"
+      class="sc-AykKG jBmvtL"
+      font-size="32"
+      id="timer-1"
+      role="timer"
     >
-      START
-    </button>
-    <button
-      class="sc-AykKC dAUeMx"
-      color="secondaryTextColor"
+      10m 0s
+    </p>
+    <div
+      class="sc-AykKH bhytJE"
+      direction="horizontal"
     >
-      RESET
-    </button>
+      <button
+        aria-controls="timer-1"
+        class="sc-AykKC hYfwNR"
+        width="47px"
+      >
+        START
+      </button>
+      <button
+        class="sc-AykKC dAUeMx"
+        color="secondaryTextColor"
+      >
+        RESET
+      </button>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Timer should render correctly when type is notification 1`] = `
-<div
-  class="sc-AykKH bdJbtG"
-  direction="horizontal"
-  width="100%"
->
-  <p
-    aria-atomic="true"
-    aria-label="Step 7: Simmer Sauce"
-    class="sc-AykKG hCeYPE"
-    font-size="24"
-    id="timer-7"
-    role="timer"
-  >
-    10m 0s
-  </p>
+<div>
   <div
-    class="sc-AykKH bhytJE"
+    class="sc-AykKH bdJbtG"
     direction="horizontal"
+    width="100%"
   >
-    <button
-      aria-controls="timer-7"
-      class="sc-AykKC hYfwNR"
-      width="47px"
+    <p
+      aria-atomic="true"
+      aria-label="Thicken Sauce"
+      class="sc-AykKG hCeYPE"
+      font-size="24"
+      id="timer-1"
+      role="timer"
     >
-      START
-    </button>
-    <button
-      class="sc-AykKC dAUeMx"
-      color="secondaryTextColor"
+      10m 0s
+    </p>
+    <div
+      class="sc-AykKH bhytJE"
+      direction="horizontal"
     >
-      RESET
-    </button>
+      <button
+        aria-controls="timer-1"
+        class="sc-AykKC hYfwNR"
+        width="47px"
+      >
+        START
+      </button>
+      <button
+        class="sc-AykKC dAUeMx"
+        color="secondaryTextColor"
+      >
+        RESET
+      </button>
+    </div>
   </div>
 </div>
 `;

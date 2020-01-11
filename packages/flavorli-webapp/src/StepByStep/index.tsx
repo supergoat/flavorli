@@ -3,27 +3,28 @@ import styled from 'styled-components';
 import {useTrapFocus, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
 import RecipeStep from './components/RecipeStep';
-import {stepByStep as STEP_BY_STEP} from './helpers/mockData';
 import Timers from './components/Timers';
-import {TimersProvider} from './helpers/timersContext';
+import {TimersProvider} from './timersContext';
 
 import RunTimers from './components/RunTimers';
 import IntroStep from './components/IntroStep';
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
 import PreparationStep from './components/PreparationStep';
-import {StepByStepProvider} from './helpers/stepByStepContext';
-import {IStepByStep} from './types';
+import {StepByStepProvider} from './stepByStepContext';
+import useFetchStepByStepRecipe from './useFetchStepByStepRecipe';
 
-interface IStepByStepProps {
-  stepByStep?: IStepByStep;
-}
-
-const StepByStep = ({stepByStep = STEP_BY_STEP}: IStepByStepProps) => {
+const StepByStep = () => {
   const refEl = React.useRef<HTMLDivElement>(null);
   useTrapFocus(refEl);
 
-  const {intro, ingredients, items, preparationSteps, recipeSteps} = stepByStep;
+  const {
+    intro,
+    ingredients,
+    items,
+    preparationSteps,
+    recipeSteps,
+  } = useFetchStepByStepRecipe();
 
   const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
 

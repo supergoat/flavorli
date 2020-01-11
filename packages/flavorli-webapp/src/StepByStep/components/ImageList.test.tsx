@@ -2,20 +2,18 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import {render} from '../../helpers/test-helpers';
-import {recipeSteps} from '../helpers/mockData';
 import ImageList from './ImageList';
 import {IImage} from '../types';
 
-const setup = (customImages?: IImage[]) => {
-  const stepWithImages = recipeSteps[2];
-  const images = customImages || (stepWithImages.images as IImage[]);
+import {images} from '../mockData';
 
+const setup = (customImages?: IImage[]) => {
   return {
     ...render(
       <>
         {/* Add a div with id step-images to be used by aria-controls */}
         <div id="step-image" />
-        <ImageList images={images} />
+        <ImageList images={customImages || images} />
       </>,
     ),
     images,
@@ -38,7 +36,7 @@ describe('Step', () => {
 
   it('should render correctly', () => {
     const {container} = setup();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render an empty div if images is an empty array', () => {

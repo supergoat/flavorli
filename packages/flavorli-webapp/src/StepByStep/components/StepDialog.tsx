@@ -9,13 +9,13 @@ import Ingredients from './Ingredients';
 import StepDescription from './StepDescription';
 import Timer from './Timer';
 import ImageList from './ImageList';
-import {useStepByStepContext} from '../helpers/stepByStepContext';
-import {recipeSteps} from '../helpers/mockData';
+import {useStepByStepContext} from '../stepByStepContext';
+import {stepByStepRecipes} from '../../__mockData__';
 
 const StepDialog = () => {
   const {onCloseDialogStep, currentDialogStep} = useStepByStepContext();
 
-  const step = recipeSteps[currentDialogStep - 1];
+  const step = stepByStepRecipes[0].recipeSteps[currentDialogStep - 1];
 
   return currentDialogStep ? (
     <DialogWrapper

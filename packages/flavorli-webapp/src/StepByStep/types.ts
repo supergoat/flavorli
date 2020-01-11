@@ -59,6 +59,7 @@ export interface IPreparationStep {
 }
 
 export interface IIntroStep {
+  author: string;
   name: string;
   image: string;
   preparation: string;

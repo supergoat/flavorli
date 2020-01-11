@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack} from '@flavorli/elements';
-import {useStepByStepContext} from '../helpers/stepByStepContext';
+import {useStepByStepContext} from '../stepByStepContext';
 
 /**
  * Implemented according to

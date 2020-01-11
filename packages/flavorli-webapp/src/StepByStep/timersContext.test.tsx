@@ -6,8 +6,7 @@ import {
   useAddTimerIfItDoesNotExist,
   useRunTimer,
 } from './timersContext';
-import {recipeSteps} from './mockData';
-import {ITimer} from '../types';
+import {timer} from './mockData';
 
 afterEach(() => {
   jest.restoreAllMocks();
@@ -39,9 +38,6 @@ describe('useTimersContext', () => {
   });
 
   it('should use custom timers', () => {
-    const stepWithTimer = recipeSteps[6];
-    const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
-
     const contextTimers = {[timer.id]: timer};
     const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={contextTimers}>{children}</TimersProvider>
@@ -59,9 +55,6 @@ describe('useTimersContext', () => {
 
 describe('useAddTimerIfItDoesNotExist', () => {
   it('should add timer if it doesn not exist in context', () => {
-    const stepWithTimer = recipeSteps[6];
-    const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
-
     const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider>{children}</TimersProvider>
     );
@@ -76,9 +69,6 @@ describe('useAddTimerIfItDoesNotExist', () => {
   });
 
   it('should return the timer if it is already in context', () => {
-    const stepWithTimer = recipeSteps[6];
-    const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
-
     const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={{[timer.id]: timer}}>
         {children}
@@ -98,16 +88,16 @@ describe('useAddTimerIfItDoesNotExist', () => {
 describe('useRunTimer', () => {
   it('it should return the timer if the timer isPaused', async () => {
     jest.useFakeTimers();
-    const stepWithTimer = recipeSteps[6];
-    const timer = {...stepWithTimer.timer, isPaused: true} as ITimer;
+
+    const pausedTimer = {...timer, isPaused: true};
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={{[timer.id]: timer}}>
+      <TimersProvider initialValues={{[pausedTimer.id]: pausedTimer}}>
         {children}
       </TimersProvider>
     );
 
-    const {result} = renderHook(() => useRunTimer(timer), {
+    const {result} = renderHook(() => useRunTimer(pausedTimer), {
       wrapper,
     });
 
@@ -117,27 +107,21 @@ describe('useRunTimer', () => {
 
     const updatedTimer = result.current;
 
-    expect(timer).toEqual(updatedTimer);
+    expect(pausedTimer).toEqual(updatedTimer);
   });
 
   it('should pause the timer and return it if the timer is set to 0 minutes and 0 seconds', () => {
     jest.useFakeTimers();
 
-    const stepWithTimer = recipeSteps[6];
-    const timer = {
-      ...stepWithTimer.timer,
-      isPaused: false,
-      minutes: 0,
-      seconds: 0,
-    } as ITimer;
+    const zeroTimer = {...timer, isPaused: false, minutes: 0, seconds: 0};
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={{[timer.id]: timer}}>
+      <TimersProvider initialValues={{[zeroTimer.id]: zeroTimer}}>
         {children}
       </TimersProvider>
     );
 
-    const {result} = renderHook(() => useRunTimer(timer), {
+    const {result} = renderHook(() => useRunTimer(zeroTimer), {
       wrapper,
     });
 
@@ -147,19 +131,11 @@ describe('useRunTimer', () => {
 
     const updatedTimer = result.current;
 
-    expect(updatedTimer).toEqual({...timer, isPaused: true});
+    expect(updatedTimer).toEqual({...zeroTimer, isPaused: true});
   });
 
   it('should decrement the timer by 1 minute and set the seconds to 59 if the timer seconds are 0', () => {
     jest.useFakeTimers();
-
-    const timer = {
-      id: 1,
-      name: 'Timer Name',
-      minutes: 10,
-      seconds: 0,
-      isPaused: false,
-    };
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
       <TimersProvider initialValues={{[timer.id]: timer}}>

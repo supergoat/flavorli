@@ -2,7 +2,7 @@ import React from 'react';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
 import Step from './Step';
-import {StepByStepProvider} from '../helpers/stepByStepContext';
+import {StepByStepProvider} from '../stepByStepContext';
 import {IColor} from '@flavorli/elements/lib/theme/colors';
 import Notebook from '../icons/notebook.svg';
 

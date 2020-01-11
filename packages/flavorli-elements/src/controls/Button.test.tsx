@@ -11,5 +11,5 @@ it('should not have any axe violations', async () => {
 
 it('should have display the default button', () => {
   const {container} = render(<Button>Hello World</Button>);
-  expect(container.firstChild).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });

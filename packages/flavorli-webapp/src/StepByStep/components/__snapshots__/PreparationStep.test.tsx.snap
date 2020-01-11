@@ -65,9 +65,9 @@ exports[`PreparationStep should render correctly 1`] = `
           <p
             class="sc-AykKG fCXClx"
           >
-            5
+            1
              
-            Ramekins
+            Ramekin
           </p>
         </div>
         <div
@@ -91,69 +91,9 @@ exports[`PreparationStep should render correctly 1`] = `
             <p
               class="sc-AykKG fCXClx"
             >
-              1 teaspoon
+              2 tbsps
                
-              oregano
-            </p>
-          </div>
-          <div
-            class="sc-AykKH icGlyX"
-            direction="horizontal"
-          >
-            <div
-              class="sc-fzXfLO dugCgp"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              1 tablespoon
-               
-              thyme
-            </p>
-          </div>
-          <div
-            class="sc-AykKH icGlyX"
-            direction="horizontal"
-          >
-            <div
-              class="sc-fzXfLO dugCgp"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              1 teaspoon
-               
-              chili flakes
-            </p>
-          </div>
-          <div
-            class="sc-AykKH icGlyX"
-            direction="horizontal"
-          >
-            <div
-              class="sc-fzXfLO dugCgp"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              1 tablespoon
-               
-              granulated sugar
-            </p>
-          </div>
-          <div
-            class="sc-AykKH icGlyX"
-            direction="horizontal"
-          >
-            <div
-              class="sc-fzXfLO dugCgp"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              1 tablespoon
-               
-              tomato paste
+              coconut oil
             </p>
           </div>
         </div>
@@ -162,7 +102,7 @@ exports[`PreparationStep should render correctly 1`] = `
           id="step-description"
           spacing="[object Object]"
         >
-          Add the oregano, thyme, chili flakes, sugar and tomato paste into ramekins and set aside
+          Add the coconul oil in a ramekin and place it first in order
         </p>
       </div>
     </div>

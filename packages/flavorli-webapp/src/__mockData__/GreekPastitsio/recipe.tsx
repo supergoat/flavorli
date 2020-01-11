@@ -1,11 +1,12 @@
-import {IRecipe} from '../types';
+import {IRecipeWithTasks} from '../../types';
 
-export const recipe: IRecipe = {
+export const greekPastitsioRecipe: IRecipeWithTasks = {
+  id: '1',
+  author: 'Akis Petratzikis',
   name: 'Greek Pastitsio',
-  image:
-    'https://akispetretzikis.com/system/uploads/medium/data/14955/recipe_main_vegan-pastitsio.jpg',
-  preparation: "25'",
-  cooking: "40'",
+  image: require('./images/greek_pastitsio.jpg'),
+  preparation: 25,
+  cooking: 40,
   portions: '8-10',
   difficulty: '2',
   tasks: [

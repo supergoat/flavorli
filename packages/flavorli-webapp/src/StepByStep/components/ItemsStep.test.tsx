@@ -2,8 +2,8 @@ import React from 'react';
 import {render} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import ItemsStep from './ItemsStep';
-import {items} from '../helpers/mockData';
-import {StepByStepProvider} from '../helpers/stepByStepContext';
+import {items} from '../mockData';
+import {StepByStepProvider} from '../stepByStepContext';
 
 const setup = () => {
   return render(

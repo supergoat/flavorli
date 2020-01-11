@@ -1,16 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tag should render correctly 1`] = `
-<div
-  class="sc-AykKH uwokO"
-  direction="vertical"
-  width="auto"
->
-  <p
-    class="sc-AykKG cSYcFR"
+<div>
+  <div
+    class="sc-AykKH kFCvJH"
+    direction="vertical"
+    width="auto"
   >
-     
-    Tag text
-  </p>
+    <p
+      class="sc-AykKG cSYcFR"
+    >
+       
+      Tag text
+    </p>
+  </div>
 </div>
 `;
