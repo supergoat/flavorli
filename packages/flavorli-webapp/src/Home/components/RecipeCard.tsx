@@ -21,8 +21,8 @@ const RecipeCard = ({recipe}: IRecipeCardProps) => {
         </Stack>
       </Stack>
       <Info
-        cookingTime={recipe.cooking}
-        preparationTime={recipe.preparation}
+        cookingTime={recipe.cookingTime}
+        preparationTime={recipe.preparationTime}
         portions={recipe.portions}
       />
     </Stack>

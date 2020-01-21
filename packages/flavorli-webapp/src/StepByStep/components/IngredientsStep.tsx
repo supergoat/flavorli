@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Stack, Text} from '@flavorli/elements';
 import Step from './Step';
-import {IIngredient} from '../types';
+import {IIngredient} from '../../types';
 import SaladSvg from '../icons/salad.svg';
 
 interface IIngredientsStepProps {
@@ -15,6 +15,12 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
         <Heading>Mise en place</Heading>
         <SubHeading>Ingredients</SubHeading>
       </Stack>
+
+      <Text color="textOnPrimary">
+        Here is a list of all the ingredients you will need. Check to make sure
+        you are not missing anything before you begin
+      </Text>
+
       <Stack gap={8} width="100%">
         {ingredients.map(ingredient => {
           return (
@@ -27,7 +33,7 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
               <ItemQty width="30%" align="right">
                 {ingredient.qty}
               </ItemQty>
-              <ItemName>{ingredient.name}</ItemName>
+              <ItemName width="70%">{ingredient.name}</ItemName>
             </Stack>
           );
         })}

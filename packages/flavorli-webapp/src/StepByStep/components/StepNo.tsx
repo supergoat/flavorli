@@ -1,16 +1,14 @@
 import React from 'react';
-import {Stack, Text} from '@flavorli/elements';
+import {Text} from '@flavorli/elements';
 
-interface IStepNo {
-  no: number;
+interface IStepNoProps {
+  no?: number;
 }
-const StepNo = ({no}: IStepNo) => {
+const StepNo = ({no}: IStepNoProps) => {
   return (
-    <Stack width="100%" paddingBottom={32}>
-      <Text color="secondaryTextColor" fontSize={32}>
-        {no}
-      </Text>
-    </Stack>
+    <Text color="secondaryTextColor" fontSize={32}>
+      {no}
+    </Text>
   );
 };
 

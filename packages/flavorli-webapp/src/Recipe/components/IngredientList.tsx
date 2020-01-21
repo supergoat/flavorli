@@ -1,17 +1,15 @@
 import React from 'react';
-import {Stack, H3} from '@flavorli/elements';
-import {IIngredient} from '../../StepByStep/types';
+import {Stack} from '@flavorli/elements';
+import {IIngredient} from '../../types';
 import Ingredient from './Ingredient';
 
 interface IIngredientListProps {
-  taskName: string;
   ingredients: IIngredient[];
 }
-const IngredientList = ({taskName, ingredients}: IIngredientListProps) => {
+const IngredientList = ({ingredients}: IIngredientListProps) => {
   return (
     <Stack gap={8} alignment="center" width="100%">
-      <H3 width="100%">{taskName}</H3>
-      {ingredients.map((ingredient, index2) => {
+      {ingredients.map(ingredient => {
         return <Ingredient ingredient={ingredient} key={ingredient.name} />;
       })}
     </Stack>

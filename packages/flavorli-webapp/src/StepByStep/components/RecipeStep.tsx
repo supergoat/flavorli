@@ -2,31 +2,47 @@ import React from 'react';
 import Timer from './Timer';
 import Links from './Links';
 import Tag from './Tag';
-import Kitchenware from './Kitchenware';
+import Items from './Items';
 import Ingredients from './Ingredients';
 import ImageList from './ImageList';
-import {IRecipeStep} from '../types';
+import {IStep} from '../../types';
 import Step from './Step';
 import StepNo from './StepNo';
-import StepDescription from './StepDescription';
+import StepTasks from './StepTasks';
+import {Stack, Text} from '@flavorli/elements';
+import styled from 'styled-components';
 
 interface IRecipeStepProps {
-  step: IRecipeStep;
+  step: IStep;
 }
 const RecipeStep = ({step}: IRecipeStepProps) => {
   return (
     <Step background="surface">
-      <StepNo no={step.no} />
+      <Stack
+        width="100%"
+        paddingBottom={32}
+        direction="horizontal"
+        distribution="space-between"
+        alignment="center"
+      >
+        <StepNo no={step.no} />
+
+        {step.type === 'MISE_EN_PLACE' && (
+          <Heading color="secondaryTextColor" fontSize={20}>
+            Mise en place
+          </Heading>
+        )}
+      </Stack>
 
       <Tag tag={step.tag} />
 
       <Links links={step.links} />
 
-      <Kitchenware kitchenware={step.kitchenware} />
+      <Items items={step.items} />
 
       <Ingredients ingredients={step.ingredients} />
 
-      <StepDescription description={step.description} />
+      <StepTasks tasks={step.tasks} />
 
       <Timer timer={step.timer} />
 
@@ -36,3 +52,7 @@ const RecipeStep = ({step}: IRecipeStepProps) => {
 };
 
 export default RecipeStep;
+
+const Heading = styled(Text)`
+  font-family: ${p => p.theme.families.Pacifico};
+`;

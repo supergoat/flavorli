@@ -4,35 +4,42 @@ import {Dialog} from '@flavorli/elements';
 import Step from './Step';
 import StepNo from './StepNo';
 import Tag from './Tag';
-import Kitchenware from './Kitchenware';
+import Items from './Items';
 import Ingredients from './Ingredients';
-import StepDescription from './StepDescription';
+import StepTasks from './StepTasks';
 import Timer from './Timer';
 import ImageList from './ImageList';
 import {useStepByStepContext} from '../stepByStepContext';
-import {stepByStepRecipes} from '../../__mockData__';
+import useFetchStepByStepRecipe from '../useFetchStepByStepRecipe';
 
 const StepDialog = () => {
   const {onCloseDialogStep, currentDialogStep} = useStepByStepContext();
 
-  const step = stepByStepRecipes[0].recipeSteps[currentDialogStep - 1];
+  const {loading, error, recipe} = useFetchStepByStepRecipe();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  const step = recipe?.steps[currentDialogStep - 1];
+
+  if (!step) return null;
 
   return currentDialogStep ? (
     <DialogWrapper
       label={`Step ${step.no}`}
-      describedbyID="step-description"
+      describedbyID="step-tasks"
       onClose={onCloseDialogStep}
     >
       <Step isDialog={true} background="surface">
-        <StepNo no={step.no} />
+        <StepNo no={step?.no} />
 
         <Tag tag={step.tag} />
 
-        <Kitchenware kitchenware={step.kitchenware} />
+        <Items items={step.items} />
 
         <Ingredients ingredients={step.ingredients} />
 
-        <StepDescription description={step.description} />
+        <StepTasks tasks={step.tasks} />
 
         <Timer timer={step.timer} />
 

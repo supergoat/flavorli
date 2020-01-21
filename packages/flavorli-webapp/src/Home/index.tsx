@@ -1,14 +1,16 @@
 import React from 'react';
 import {Stack, Scroll, H1} from '@flavorli/elements';
 import RecipeCard from './components/RecipeCard';
-import {recipes as RECIPES} from '../__mockData__';
-import {IRecipe} from '../types';
+import useFetchRecipeList from './useFetchRecipeList';
 
-interface IHomeProps {
-  recipes?: IRecipe[];
-}
+const Home = () => {
+  const {recipes, loading, error} = useFetchRecipeList();
 
-const Home = ({recipes = RECIPES}: IHomeProps) => {
+  if (error) return <div>{error}</div>;
+
+  if (loading) return <div>Loading...</div>;
+
+  if (!recipes || !recipes.length) return null;
   return (
     <Scroll background="surface">
       <Stack padding={16} gap={16} width="100%" role="main">

@@ -1,9 +1,9 @@
 import React from 'react';
 import {useRunTimer, useTimersContext} from '../timersContext';
-import {IStepByStep, ITimer} from '../types';
+import {IRecipe, ITimer} from '../../types';
 
 interface IStepByStepProps {
-  stepByStep?: IStepByStep;
+  stepByStep?: IRecipe;
 }
 
 const RunTimer = ({timer}: {timer: ITimer}) => {

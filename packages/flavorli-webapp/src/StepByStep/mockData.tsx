@@ -1,13 +1,7 @@
-import {
-  IRecipeStep,
-  IPreparationStep,
-  ITimer,
-  ILink,
-  IStepByStep,
-} from './types';
-import {stepByStepRecipes} from '../__mockData__';
+import {IStep, ITimer, ILink, IRecipe} from '../types';
+import {recipes} from '../__mockData__';
 
-export const stepByStep: IStepByStep = stepByStepRecipes[0];
+export const stepByStep: IRecipe = recipes[0];
 
 export const timer: ITimer = {
   id: 1,
@@ -30,26 +24,27 @@ export const linkWithTimer: ILink = {
   timerId: 1,
 };
 
-export const kitchenware = [
+export const items = [
   {
     qty: '1',
     name: 'Pot',
   },
 ];
 
-export const preparationStep: IPreparationStep = {
+export const preparationStep: IStep = {
+  type: 'MISE_EN_PLACE',
   tag: {
     text: 'Sauce',
     color: 'tagRed',
   },
-  description: 'Add the coconul oil in a ramekin and place it first in order',
+  tasks: ['Add the coconul oil in a ramekin and place it first in order'],
   ingredients: [
     {
       qty: '2 tbsps',
       name: 'coconut oil',
     },
   ],
-  kitchenware: [
+  items: [
     {
       qty: '1',
       name: 'Ramekin',
@@ -58,21 +53,22 @@ export const preparationStep: IPreparationStep = {
   images: [],
 };
 
-export const recipeStep: IRecipeStep = {
+export const recipeStep: IStep = {
+  type: 'PREPARATION',
   no: 1,
   tag: {
     text: 'Sauce',
     color: 'tagRed',
   },
   links: [],
-  description: 'Heat the coconut oil in a small pot on low heat',
+  tasks: ['Heat the coconut oil in a small pot on low heat'],
   ingredients: [
     {
       qty: '2 tbsps',
       name: 'coconut oil',
     },
   ],
-  kitchenware: [
+  items: [
     {
       qty: '1',
       name: 'Small Pot',
@@ -94,13 +90,6 @@ export const introStep = {
 };
 
 export const ingredients = [{qty: '1', name: 'Onion'}];
-
-export const items = [
-  {
-    qty: '1',
-    name: 'Bowl',
-  },
-];
 
 export const images = [
   {

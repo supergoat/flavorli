@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Scroll} from '@flavorli/elements';
+import {Stack} from '@flavorli/elements';
 import {IColor} from '@flavorli/elements/lib/theme/colors';
 import styled, {css} from 'styled-components';
 import Navigation from './Navigation';
@@ -26,17 +26,17 @@ const Step = ({
       borderRadiusTopRight={isDialog ? undefined : 24}
       paddingTop={48}
     >
-      <Scroll>
-        <Stack
-          width="100%"
-          gap={16}
-          height="100%"
-          paddingLeft={48}
-          paddingRight={48}
-        >
-          {children}
-        </Stack>
-      </Scroll>
+      <Stack
+        width="100%"
+        gap={16}
+        height="100%"
+        paddingLeft={48}
+        paddingRight={48}
+        paddingBottom={16}
+        overflow="scroll"
+      >
+        {children}
+      </Stack>
 
       <Stack width="100%" paddingLeft={48} paddingRight={48} paddingBottom={24}>
         <Navigation isDialog={isDialog} />

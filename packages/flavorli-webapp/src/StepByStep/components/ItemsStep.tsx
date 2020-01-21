@@ -1,7 +1,7 @@
 import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
-import {IItem} from '../types';
+import {IItem} from '../../types';
 import Step from './Step';
 import BoxSvg from '../icons/box.svg';
 
@@ -15,6 +15,10 @@ const ItemsStep = ({items}: IItemsStepProps) => {
         <Heading>Mise en place</Heading>
         <SubHeading>Items</SubHeading>
       </Stack>
+
+      <Text color="textOnPrimary">
+        Make sure that you have all of your equipment ready and available to use
+      </Text>
 
       <Stack gap={8} width="100%">
         {items.map(item => {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Stack} from '@flavorli/elements';
 import ChevronRight from '../icons/right_chevron_primary.svg';
-import {IImage} from '../types';
+import {IImage} from '../../types';
 
 /**
  * Implemented according to

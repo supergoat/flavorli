@@ -1,18 +1,62 @@
-export interface IRecipe {
+import {IColor} from '@flavorli/elements/lib/theme/colors';
+
+export type IRecipe = {
   id: string;
   author: string;
   name: string;
   image: string;
-  preparation: number;
-  cooking: number;
+  preparationTime: number;
+  cookingTime: number;
   portions: string;
   difficulty: string;
+  ingredients: IIngredient[];
+  items: IItem[];
+  steps: IStep[];
+};
+
+export interface IIngredient {
+  qty: string;
+  name: string;
 }
 
-export interface IRecipeWithTasks extends IRecipe {
-  tasks: {
-    name: string;
-    ingredients: {qty: string; name: string}[];
-    steps: string[];
-  }[];
+export interface IItem {
+  qty: string;
+  name: string;
+}
+
+export interface IStep {
+  type: 'MISE_EN_PLACE' | 'PREPARATION';
+  no?: number;
+  tag: ITag;
+  links?: ILink[];
+  items?: IItem[];
+  ingredients?: IIngredient[];
+  tasks: string[];
+  timer?: ITimer;
+  images?: IImage[];
+}
+
+export interface ITag {
+  text: string;
+  color: IColor;
+}
+
+export interface ITimer {
+  id: number;
+  name: string;
+  minutes: number;
+  seconds: number;
+  isPaused?: boolean;
+}
+
+export interface IImage {
+  src: string;
+  alt: string;
+}
+
+export interface ILink {
+  heading: string;
+  name: string;
+  from: number;
+  timerId?: number;
 }

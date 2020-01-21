@@ -1,14 +1,15 @@
 import React from 'react';
 import {Stack} from '@flavorli/elements';
 import Link from './Link';
-import {ILink} from '../types';
+import {ILink} from '../../types';
 import StepDialog from './StepDialog';
 
 interface ILinksProps {
-  links: ILink[];
+  links?: ILink[];
 }
-const Links = ({links}: ILinksProps) => {
-  return !!links.length ? (
+const Links = ({links = []}: ILinksProps) => {
+  if (!links || !links.length) return null;
+  return (
     <>
       <Stack gap={8} alignment="start" width="100%" height="auto">
         {links.map(link => (
@@ -17,7 +18,7 @@ const Links = ({links}: ILinksProps) => {
       </Stack>
       <StepDialog />
     </>
-  ) : null;
+  );
 };
 
 export default Links;

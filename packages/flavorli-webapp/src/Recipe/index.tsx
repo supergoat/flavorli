@@ -4,13 +4,19 @@ import {motion} from 'framer-motion';
 import SectionHeading from './components/SectionHeading';
 import Info from './components/Info';
 import IngredientList from './components/IngredientList';
-import PreparationStepList from './components/PreparationStepList';
+// import PreparationStepList from './components/PreparationStepList';
 import useFetchRecipe from './useFetchRecipe';
 import {useHistory} from 'react-router';
 
-export default () => {
+const Recipe = () => {
   const history = useHistory();
-  const recipe = useFetchRecipe();
+  const {recipe, loading, error} = useFetchRecipe();
+
+  if (loading) return <div>Loading...</div>;
+
+  if (error) return <div>{error}</div>;
+
+  if (!recipe) return null;
 
   return (
     <Scroll background="surface">
@@ -23,13 +29,13 @@ export default () => {
           <Stack direction="horizontal" width="100%">
             <Info
               name="Preparation"
-              value={`${recipe.preparation}'`}
+              value={`${recipe.preparationTime}'`}
               icon="preparationTime"
             />
 
             <Info
               name="Cooking"
-              value={`${recipe.cooking}'`}
+              value={`${recipe.cookingTime}'`}
               icon="cookingTime"
             />
 
@@ -44,15 +50,7 @@ export default () => {
 
           <SectionHeading icon="ingredients">Ingredients</SectionHeading>
 
-          {recipe.tasks.map(task => {
-            return (
-              <IngredientList
-                key={task.name + 'ingredients'}
-                taskName={task.name}
-                ingredients={task.ingredients}
-              />
-            );
-          })}
+          <IngredientList ingredients={recipe.ingredients} />
 
           <SectionHeading icon="preparation">Preparation</SectionHeading>
 
@@ -62,18 +60,10 @@ export default () => {
           >
             Step By Step
           </Button>
-
-          {recipe.tasks.map(task => {
-            return (
-              <PreparationStepList
-                taskName={task.name}
-                steps={task.steps}
-                key={task.name + 'preparation'}
-              />
-            );
-          })}
         </Stack>
       </article>
     </Scroll>
   );
 };
+
+export default Recipe;

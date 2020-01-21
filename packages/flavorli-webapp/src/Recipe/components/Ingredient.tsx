@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
-import {IIngredient} from '../../StepByStep/types';
+import {IIngredient} from '../../types';
 
 interface IIngredientProps {
   ingredient: IIngredient;
@@ -8,10 +8,16 @@ interface IIngredientProps {
 const Ingredient = ({ingredient}: IIngredientProps) => {
   return (
     <Stack direction="horizontal" gap={8} width="100%">
-      <Text width="25%" align="right">
+      <Text
+        width="28%"
+        align="right"
+        intent="highlight"
+        color="black"
+        fontSize={16}
+      >
         {ingredient.qty}
       </Text>
-      <Text>{ingredient.name}</Text>
+      <Text width="72%">{ingredient.name}</Text>
     </Stack>
   );
 };

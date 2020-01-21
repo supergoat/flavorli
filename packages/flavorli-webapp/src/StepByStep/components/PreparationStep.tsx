@@ -1,34 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Stack} from '@flavorli/elements';
-import Tag from './Tag';
-import Kitchenware from './Kitchenware';
-import Ingredients from './Ingredients';
-import ImageList from './ImageList';
-import {IPreparationStep} from '../types';
-import Step from './Step';
-import StepDescription from './StepDescription';
 
-interface IPreparationStepProps {
-  step: IPreparationStep;
-}
-export default ({step}: IPreparationStepProps) => {
+import Step from './Step';
+
+interface IPreparationStepProps {}
+export default () => {
   return (
     <Step background="surface">
       <Stack width="100%" paddingBottom={16} gap={4}>
         <Heading>Mise en place</Heading>
-        <SubHeading>Preparation</SubHeading>
+        <SubHeading>Everything in its place</SubHeading>
       </Stack>
-
-      <Tag tag={step.tag} />
-
-      <Kitchenware kitchenware={step.kitchenware} />
-
-      <Ingredients ingredients={step.ingredients} />
-
-      <StepDescription description={step.description} />
-
-      <ImageList images={step?.images} />
     </Step>
   );
 };

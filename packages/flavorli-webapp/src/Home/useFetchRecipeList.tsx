@@ -1,11 +1,10 @@
-import {useParams} from 'react-router-dom';
 import {useQuery} from 'relay-hooks';
 import graphql from 'babel-plugin-relay/macro';
 import {IRecipe} from '../types';
 
-const useFetchRecipeQuery = graphql`
-  query useFetchRecipeQuery($id: String!) {
-    recipe(id: $id) {
+const useFetchRecipeListQuery = graphql`
+  query useFetchRecipeListQuery {
+    recipes {
       id
       author
       name
@@ -14,19 +13,14 @@ const useFetchRecipeQuery = graphql`
       cookingTime
       portions
       difficulty
-      ingredients {
-        qty
-        name
-      }
     }
   }
 `;
 
-function useFetchRecipe() {
-  const {recipeId} = useParams();
+function useFetchRecipeList() {
   const data = useQuery(
-    useFetchRecipeQuery,
-    {id: recipeId},
+    useFetchRecipeListQuery,
+    {},
     {
       fetchPolicy: 'store-or-network', //default
       networkCacheConfig: undefined,
@@ -34,20 +28,21 @@ function useFetchRecipe() {
   );
 
   const error = data.error;
-  const props = data.props as {recipe: IRecipe};
+  const props = data.props as {recipes: IRecipe[]};
 
+  console.log(props);
   let result = {
     loading: false,
-    recipe: null,
+    recipes: null,
     error: null,
   };
 
-  const recipe = props?.recipe;
+  const recipes = props?.recipes;
 
-  if (recipe) {
+  if (recipes) {
     return {
       ...result,
-      recipe,
+      recipes,
     };
   } else if (error) {
     return {
@@ -61,4 +56,4 @@ function useFetchRecipe() {
   };
 }
 
-export default useFetchRecipe;
+export default useFetchRecipeList;

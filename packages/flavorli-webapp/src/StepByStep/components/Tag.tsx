@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
-import {ITag} from '../types';
+import {ITag} from '../../types';
 
 const Tag = ({tag}: {tag: ITag}) => {
   return (

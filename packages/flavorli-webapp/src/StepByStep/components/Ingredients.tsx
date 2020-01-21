@@ -1,8 +1,8 @@
 import React from 'react';
 import {Stack, Text, H3} from '@flavorli/elements';
-import {IIngredient} from '../types';
+import {IIngredient} from '../../types';
 import styled from 'styled-components';
-const Ingredients = ({ingredients}: {ingredients: IIngredient[]}) => {
+const Ingredients = ({ingredients = []}: {ingredients?: IIngredient[]}) => {
   return !!ingredients.length ? (
     <Stack gap={8} width="100%">
       <H3 color="primary">Ingredients</H3>
@@ -15,10 +15,8 @@ const Ingredients = ({ingredients}: {ingredients: IIngredient[]}) => {
             gap={8}
             key={ingredient.name}
           >
-            <FakeCheckBox />
-            <Text>
-              {ingredient.qty} {ingredient.name}
-            </Text>
+            <Text>{ingredient.qty}</Text>
+            <Text>{ingredient.name}</Text>
           </Stack>
         );
       })}
@@ -27,12 +25,3 @@ const Ingredients = ({ingredients}: {ingredients: IIngredient[]}) => {
 };
 
 export default Ingredients;
-
-const FakeCheckBox = styled.div`
-  width: 15px;
-  height: 15px;
-  /* border: ${p => `1px solid ${p.theme.colors.primary}`}; */
-
-  border-radius: ${p => `${p.theme.spacings[2]}px`};
-  box-shadow: inset 0px 0px 2px 0px var(--Primary, #273b7a);
-`;

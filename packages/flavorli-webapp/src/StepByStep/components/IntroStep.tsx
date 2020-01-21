@@ -2,40 +2,58 @@ import React from 'react';
 import {Stack, H1, H2} from '@flavorli/elements';
 import styled from 'styled-components';
 import Info from './Info';
-import {IIntroStep} from '../types';
 import Notebook from '../icons/notebook.svg';
 import Step from './Step';
 
-interface IIntroProps {
-  step: IIntroStep;
-}
-const Intro = ({step}: IIntroProps) => {
+const Intro = ({
+  author,
+  name,
+  image,
+  preparationTime,
+  cookingTime,
+  portions,
+  difficulty,
+}: IIntroProps) => {
   return (
     <Step background="primary" image={Notebook}>
-      <Image src={step.image} alt="" />
+      <Image src={image} alt="" />
       <Stack gap={4}>
-        <Heading color="white">{step.name}</Heading>
-        <Subheading color="secondaryDark">By Akis Petratzikis</Subheading>
+        <Heading color="white">{name}</Heading>
+        <Subheading color="secondaryDark">By {author}</Subheading>
       </Stack>
 
       <Stack width="100%" gap={24} paddingBottom={24}>
         <Info
           name="Preparation"
-          value={step.preparation}
+          value={`${preparationTime} minutes`}
           icon="preparationTime"
         />
 
-        <Info name="Cooking" value={step.cooking} icon="cookingTime" />
+        <Info
+          name="Cooking"
+          value={`${cookingTime} minutes`}
+          icon="cookingTime"
+        />
 
-        <Info name="Portions" value={step.portions} icon="serves" />
+        <Info name="Portions" value={portions} icon="serves" />
 
-        <Info name="Difficulty" value={step.difficulty} icon="difficulty" />
+        <Info name="Difficulty" value={difficulty} icon="difficulty" />
       </Stack>
     </Step>
   );
 };
 
 export default Intro;
+
+interface IIntroProps {
+  author: string;
+  name: string;
+  image: string;
+  preparationTime: number;
+  cookingTime: number;
+  portions: string;
+  difficulty: string;
+}
 
 const Image = styled.img`
   width: 100%;

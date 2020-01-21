@@ -1,7 +1,7 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 
-import {ILink} from '../types';
+import {ILink} from '../../types';
 import {useTimersContext} from '../timersContext';
 import {useStepByStepContext} from '../stepByStepContext';
 

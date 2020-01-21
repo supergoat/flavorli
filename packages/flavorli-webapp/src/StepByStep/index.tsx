@@ -8,9 +8,9 @@ import {TimersProvider} from './timersContext';
 
 import RunTimers from './components/RunTimers';
 import IntroStep from './components/IntroStep';
+import MiseEnPlace from './components/MiseEnPlace';
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
-import PreparationStep from './components/PreparationStep';
 import {StepByStepProvider} from './stepByStepContext';
 import useFetchStepByStepRecipe from './useFetchStepByStepRecipe';
 
@@ -18,51 +18,52 @@ const StepByStep = () => {
   const refEl = React.useRef<HTMLDivElement>(null);
   useTrapFocus(refEl);
 
-  const {
-    intro,
-    ingredients,
-    items,
-    preparationSteps,
-    recipeSteps,
-  } = useFetchStepByStepRecipe();
-
-  const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
+  const {loading, error, recipe} = useFetchStepByStepRecipe();
 
   return (
     <DialogWrapper ref={refEl}>
-      <TimersProvider>
-        <RunTimers />
+      {loading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
 
-        <StepByStepProvider initialValues={{noOfSteps}}>
-          <Stack width="100%" height="100%">
-            <Timers />
-            <Section
-              aria-label="List of recipe steps"
-              id="list-of-recipe-steps"
-            >
-              <StepList>
-                <IntroStep step={intro} />
-                <IngredientsStep ingredients={ingredients} />
-                <ItemsStep items={items} />
+      {recipe && (
+        <TimersProvider>
+          <RunTimers />
 
-                {preparationSteps.map((preparationStep, index) => {
-                  return (
-                    <PreparationStep
-                      key={`${index}-preparationStep`}
-                      step={preparationStep}
-                    />
-                  );
-                })}
-                {recipeSteps.map((recipeStep, index) => {
-                  return (
-                    <RecipeStep key={`${index}-recipeStep`} step={recipeStep} />
-                  );
-                })}
-              </StepList>
-            </Section>
-          </Stack>
-        </StepByStepProvider>
-      </TimersProvider>
+          <StepByStepProvider
+            initialValues={{
+              noOfSteps: 4 + recipe.steps.length,
+            }}
+          >
+            <Stack width="100%" height="100%">
+              <Timers />
+              <Section
+                aria-label="List of recipe steps"
+                id="list-of-recipe-steps"
+              >
+                <StepList>
+                  <IntroStep
+                    author={recipe.author}
+                    name={recipe.name}
+                    image={recipe.image}
+                    preparationTime={recipe.preparationTime}
+                    cookingTime={recipe.cookingTime}
+                    portions={recipe.portions}
+                    difficulty={recipe.difficulty}
+                  />
+                  <MiseEnPlace />
+
+                  <IngredientsStep ingredients={recipe.ingredients} />
+                  <ItemsStep items={recipe.items} />
+
+                  {recipe.steps.map((step, index) => {
+                    return <RecipeStep key={`${index}-step`} step={step} />;
+                  })}
+                </StepList>
+              </Section>
+            </Stack>
+          </StepByStepProvider>
+        </TimersProvider>
+      )}
     </DialogWrapper>
   );
 };

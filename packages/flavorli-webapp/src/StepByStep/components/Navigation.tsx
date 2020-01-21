@@ -41,7 +41,7 @@ const Navigation = ({isDialog}: INavigationProps) => {
             aria-controls="recipe-steps"
             tabIndex={hideBackButton ? -1 : undefined}
             onClick={navigateToPreviousStep}
-            intent={currentStep <= 3 ? 'secondaryOnPrimary' : 'secondary'}
+            intent={currentStep <= 4 ? 'secondaryOnPrimary' : 'secondary'}
           >
             back
           </PreviousButton>
@@ -51,12 +51,13 @@ const Navigation = ({isDialog}: INavigationProps) => {
               aria-controls="recipe-steps"
               width="100%"
               onClick={navigateToNextStep}
-              intent={currentStep <= 3 ? 'secondaryOnPrimary' : 'primary'}
+              intent={currentStep <= 4 ? 'secondaryOnPrimary' : 'primary'}
             >
-              {currentStep === 1 && 'Ingredients'}
-              {currentStep === 2 && 'Items'}
-              {currentStep === 3 && 'Preparation'}
-              {currentStep > 3 && 'Next'}
+              {currentStep === 1 && 'Next'}
+              {currentStep === 2 && 'Ingredients'}
+              {currentStep === 3 && 'Items'}
+              {currentStep === 4 && 'Preparation'}
+              {currentStep > 4 && 'Next'}
               <ButtonIcon />
             </Button>
           )}
