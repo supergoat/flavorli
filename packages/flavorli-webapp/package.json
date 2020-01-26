@@ -2,6 +2,7 @@
   "name": "flavorli-webapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/",
   "dependencies": {
     "@flavorli/elements": "1.0.0",
     "cloudinary-react": "^1.3.0",
@@ -46,7 +47,8 @@
     "schema": "get-graphql-schema http://localhost:4000/dev/graphql > schema.graphql",
     "test:watch": "react-scripts test",
     "test": "CI=true react-scripts test --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "NODE_ENV=production yarn build && aws s3 sync ./build s3://flavorli-bucket"
   },
   "eslintConfig": {
     "extends": "react-app"

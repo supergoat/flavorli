@@ -22,9 +22,7 @@ const ImageList = ({images}: IImageListProps) => {
 
   return (
     <Section aria-label="List of step images">
-      <Stack
-        width="300px"
-        height="300px"
+      <ImageListContainer
         id="step-images"
         data-testid="step-images"
         aria-live="polite"
@@ -66,7 +64,7 @@ const ImageList = ({images}: IImageListProps) => {
         >
           <img src={ChevronRight} alt="" />
         </RightArrowButton>
-      </Stack>
+      </ImageListContainer>
     </Section>
   );
 };
@@ -99,8 +97,10 @@ const ArrowButton = styled.button<{hide: boolean}>`
   border-radius: 20px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   background: rgb(255, 255, 255);
+  flex-shrink: 0;
 
   img {
+    flex-shrink: 0;
     margin-top: 3px;
     width: 60%;
   }
@@ -116,4 +116,10 @@ const LeftArrowButton = styled(ArrowButton)`
 
 const RightArrowButton = styled(ArrowButton)`
   right: -20px;
+`;
+
+const ImageListContainer = styled(Stack)`
+  max-width: 100%;
+  width: calc(100vw - 48px);
+  height: calc(100vw - 48px);
 `;

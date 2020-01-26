@@ -2,6 +2,7 @@ import React from 'react';
 import {Stack, Scroll, H1} from '@flavorli/elements';
 import RecipeCard from './components/RecipeCard';
 import useFetchRecipeList from './useFetchRecipeList';
+import styled from 'styled-components';
 
 const Home = () => {
   const {recipes, loading, error} = useFetchRecipeList();
@@ -12,8 +13,14 @@ const Home = () => {
 
   if (!recipes || !recipes.length) return null;
   return (
-    <Scroll background="surface">
-      <Stack padding={16} gap={16} width="100%" role="main">
+    <Stack overflow="scroll" height="100%">
+      <Stack
+        padding={16}
+        gap={16}
+        width="100%"
+        role="main"
+        background="surface"
+      >
         <H1 color="primary">Recipes</H1>
         <Stack gap={32} width="100%">
           {recipes.map(recipe => {
@@ -21,7 +28,7 @@ const Home = () => {
           })}
         </Stack>
       </Stack>
-    </Scroll>
+    </Stack>
   );
 };
 

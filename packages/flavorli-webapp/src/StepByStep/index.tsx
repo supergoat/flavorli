@@ -84,5 +84,5 @@ const DialogWrapper = styled.div`
 
 const Section = styled.section`
   width: 100%;
-  height: calc(100% - 58px);
+  height: calc(100% - 46px);
 `;

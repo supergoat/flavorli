@@ -33,7 +33,7 @@ export interface IStackProps extends React.HTMLAttributes<HTMLDivElement> {
   shadow?: keyof typeof shadows;
   className?: string;
   border?: string;
-  overflow?: 'hidden' | 'visible';
+  overflow?: 'hidden' | 'visible' | 'scroll';
 }
 
 const ForwardRefStack = (
@@ -116,4 +116,6 @@ export const StackWrapper = styled(motion.div)<IStackProps>`
   }};
 
   box-shadow: ${p => p.shadow && p.theme.shadows[p.shadow]};
+
+  flex-shrink: 0;
 `;

@@ -18,8 +18,8 @@ const StepList = ({children}: IPreparationStepListProps) => {
       id="recipe-steps"
       data-testid="recipe-steps"
       aria-live="polite"
-      paddingLeft={8}
-      paddingRight={8}
+      paddingLeft={4}
+      paddingRight={4}
     >
       {React.Children.map(children, (child, index) => {
         return (

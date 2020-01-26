@@ -1,7 +1,7 @@
 import React from 'react';
 import {Stack, Text, H3} from '@flavorli/elements';
 import {IIngredient} from '../../types';
-import styled from 'styled-components';
+
 const Ingredients = ({ingredients = []}: {ingredients?: IIngredient[]}) => {
   return !!ingredients.length ? (
     <Stack gap={8} width="100%">
@@ -10,13 +10,17 @@ const Ingredients = ({ingredients = []}: {ingredients?: IIngredient[]}) => {
       {ingredients.map(ingredient => {
         return (
           <Stack
+            width="100%"
             direction="horizontal"
-            alignment="center"
+            // alignment="center"
             gap={8}
             key={ingredient.name}
           >
-            <Text>{ingredient.qty}</Text>
-            <Text>{ingredient.name}</Text>
+            {/* <Text width="25%">{ingredient.qty}</Text>
+            <Text width="75%">{ingredient.name}</Text> */}
+            <Text>
+              <b>{ingredient.qty}</b> {ingredient.name}
+            </Text>
           </Stack>
         );
       })}

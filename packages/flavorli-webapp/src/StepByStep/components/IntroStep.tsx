@@ -22,7 +22,7 @@ const Intro = ({
         <Subheading color="secondaryDark">By {author}</Subheading>
       </Stack>
 
-      <Stack width="100%" gap={24} paddingBottom={24}>
+      <Stack gap={24} paddingBottom={24}>
         <Info
           name="Preparation"
           value={`${preparationTime} minutes`}

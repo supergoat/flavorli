@@ -65,18 +65,6 @@ const MiseEnPlace = () => {
         >
           There is also more time to clean between steps!
         </Text>
-
-        {/* <Text
-          spacing={{
-            line: '1.5',
-          }}
-          color="textOnPrimary"
-          style={{
-            fontWeight: 'bold',
-          }}
-        >
-          Follow the next steps that help take advantage of this technique
-        </Text> */}
       </Stack>
     </Step>
   );

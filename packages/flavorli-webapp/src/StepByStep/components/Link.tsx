@@ -29,13 +29,13 @@ const Link = ({link}: ILinkProps) => {
         alignment="end"
         width="100%"
       >
-        <Stack gap={4}>
+        <Stack gap={4} width="72%">
           <Text intent="secondary" fontSize={14}>
             {link.heading}
           </Text>
           <Text color="primary">{link.name}</Text>
         </Stack>
-        <Stack gap={4} alignment="end">
+        <Stack gap={4} alignment="end" width="28%">
           {link.timerId && (
             <Text color="primary" data-testid={`timerid-${link.timerId}`}>
               {timers[link.timerId].minutes}m {timers[link.timerId].seconds}s

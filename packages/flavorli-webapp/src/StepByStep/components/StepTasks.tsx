@@ -13,7 +13,7 @@ const Tasks = ({tasks}: IStepTasks) => {
         return (
           <Stack direction="horizontal" alignment="start" gap={8}>
             <Label>
-              <input type="checkbox" />
+              <CheckBox />
               <Text>{task}</Text>
             </Label>
           </Stack>
@@ -25,19 +25,13 @@ const Tasks = ({tasks}: IStepTasks) => {
 
 export default Tasks;
 
-// const FakeCheckBox = styled.div`
-//   width: 15px;
-//   height: 15px;
-//   flex-shrink: 0;
-//   /* border: ${p => `1px solid ${p.theme.colors.primary}`}; */
-
-//   border-radius: ${p => `${p.theme.spacings[2]}px`};
-//   box-shadow: inset 0px 0px 2px 0px var(--Primary, #273b7a);
-// `;
+const CheckBox = styled.input.attrs(() => ({
+  type: 'checkbox',
+}))`
+  flex-shrink: 0;
+  margin-right: 8px;
+`;
 
 const Label = styled.label`
   display: flex;
-  input {
-    margin-right: 8px;
-  }
 `;

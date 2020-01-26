@@ -1,5 +1,6 @@
 import {IStep, ITimer, ILink, IRecipe} from '../types';
-import {recipes} from '../__mockData__';
+
+export const recipes = [];
 
 export const stepByStep: IRecipe = recipes[0];
 
