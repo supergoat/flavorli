@@ -1,29 +1,36 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
-import {useAddTimerIfItDoesNotExist} from '../timersContext';
+import {
+  useAddTimerIfItDoesNotExist,
+  useTimer,
+  convertMillisecondsToMinutesAndSeconds,
+  useToggleTimer,
+  useResetTimer,
+} from '../timersContext';
 import {ITimer} from '../../types';
 
 interface ITimerProps {
   type?: 'notification';
   timer?: ITimer;
 }
+
 export default ({timer, type}: ITimerProps) => {
   if (!timer) return null;
 
-  const {timers, setTimers} = useAddTimerIfItDoesNotExist(timer);
+  const savedTimer = useAddTimerIfItDoesNotExist(timer);
 
-  const initialisedTimer = timers[timer.id];
+  const remainingTimerInMs = useTimer(
+    savedTimer.updatedAt,
+    savedTimer.remainingTime,
+    savedTimer.isPaused,
+  );
 
-  if (!initialisedTimer) return null;
+  const {minutes, seconds} = convertMillisecondsToMinutesAndSeconds(
+    remainingTimerInMs,
+  );
 
-  const toggleTimer = () => {
-    setTimers({
-      [initialisedTimer.id]: {
-        ...initialisedTimer,
-        isPaused: !initialisedTimer.isPaused,
-      },
-    });
-  };
+  const toggleTimer = useToggleTimer(savedTimer, remainingTimerInMs);
+  const resetTimer = useResetTimer(timer);
 
   return (
     <Stack
@@ -34,25 +41,27 @@ export default ({timer, type}: ITimerProps) => {
       alignment={type === 'notification' ? 'center' : 'start'}
     >
       <Text
-        id={`timer-${initialisedTimer.id}`}
+        id={`timer-${savedTimer.id}`}
         role="timer"
-        aria-label={initialisedTimer.name}
+        aria-label={savedTimer.name}
         aria-atomic={true}
         fontSize={type === 'notification' ? 24 : 32}
       >
-        {`${initialisedTimer.minutes}m ${initialisedTimer.seconds}s`}
+        {minutes}m {seconds}s
       </Text>
 
       <Stack direction="horizontal" gap={8}>
-        <Button
-          intent="text"
-          width="47px"
-          onClick={toggleTimer}
-          aria-controls={`timer-${initialisedTimer.id}`}
-        >
-          {initialisedTimer.isPaused ? 'START' : 'PAUSE'}
-        </Button>
-        <Button intent="text" color="secondaryTextColor">
+        {(minutes > 0 || seconds > 0) && (
+          <Button
+            intent="text"
+            width="47px"
+            onClick={toggleTimer}
+            aria-controls={`timer-${savedTimer.id}`}
+          >
+            {savedTimer.isPaused ? 'START' : 'PAUSE'}
+          </Button>
+        )}
+        <Button intent="text" color="secondaryTextColor" onClick={resetTimer}>
           RESET
         </Button>
       </Stack>

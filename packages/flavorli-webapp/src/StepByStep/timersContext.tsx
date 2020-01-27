@@ -1,11 +1,87 @@
 import React from 'react';
-import {ITimer} from '../types';
-import {useInterval} from '../helpers/hooks';
+import {ITimer, IContextITimer} from '../types';
+
+export function useToggleTimer(timer: IContextITimer, remainingTime: number) {
+  const {setTimers} = useTimersContext();
+
+  return () => {
+    const updatedTimer = {
+      ...timer,
+      remainingTime,
+      updatedAt: new Date().toISOString(),
+      isPaused: !timer.isPaused,
+    };
+
+    setTimers({[timer.id]: updatedTimer});
+    updatedTimerInLocalStorage(updatedTimer);
+  };
+}
+
+export function useResetTimer(timer: ITimer) {
+  const {setTimers} = useTimersContext();
+
+  return () => {
+    const updatedTimer = {
+      ...timer,
+      remainingTime: (timer.minutes * 60 + timer.seconds) * 1000,
+      updatedAt: new Date().toISOString(),
+      isPaused: true,
+    };
+
+    setTimers({[timer.id]: updatedTimer});
+    updatedTimerInLocalStorage(updatedTimer);
+  };
+}
+
+export function convertMillisecondsToMinutesAndSeconds(ms: number) {
+  ms = 1000 * Math.round(ms / 1000); // round to nearest second
+  var d = new Date(ms);
+  return {minutes: d.getUTCMinutes(), seconds: d.getUTCSeconds()};
+}
+
+export function useAddTimerIfItDoesNotExist(timer: ITimer) {
+  const {setTimers, timers} = useTimersContext();
+
+  // Return timer if it exists in localStorage
+  if (timers[timer.id]) return timers[timer.id];
+
+  const newTimer = createNewTimer(timer);
+
+  // Update the timers context with the new timer
+  setTimers({[newTimer.id]: newTimer});
+
+  return newTimer;
+}
+
+function createNewTimer(timer: ITimer) {
+  const newTimer = {
+    ...timer,
+    isPaused: true,
+    updatedAt: new Date().toISOString(),
+    remainingTime: (timer.minutes * 60 + timer.seconds) * 1000,
+  };
+
+  updatedTimerInLocalStorage(newTimer);
+
+  return newTimer;
+}
+
+function updatedTimerInLocalStorage(updatedTimer: IContextITimer) {
+  const savedTimers = getSavedTimersFromLocalStorage();
+  const updatedTimers = {...savedTimers, [updatedTimer.id]: updatedTimer};
+  localStorage.setItem('__timers__', JSON.stringify(updatedTimers));
+
+  return updatedTimer;
+}
+
+function getSavedTimersFromLocalStorage() {
+  return JSON.parse(localStorage.getItem('__timers__') || '{}');
+}
 
 interface ITimersContext {
-  timers: {[timerId: number]: ITimer};
+  timers: {[timerId: number]: IContextITimer};
   setTimers: React.Dispatch<{
-    [timerId: number]: ITimer;
+    [timerId: number]: IContextITimer;
   }>;
 }
 
@@ -15,14 +91,16 @@ export function TimersProvider({
   initialValues,
   ...props
 }: {
-  initialValues?: {[timerId: number]: ITimer};
+  initialValues?: {[timerId: number]: IContextITimer};
   children: React.ReactNode;
 }) {
-  const [initState] = React.useState(initialValues || {});
+  const [initState] = React.useState(
+    initialValues || getSavedTimersFromLocalStorage(),
+  );
   const [timers, setTimers] = React.useReducer(
     (
-      state: {[timerId: number]: ITimer},
-      action: {[timerId: number]: ITimer},
+      state: {[timerId: number]: IContextITimer},
+      action: {[timerId: number]: IContextITimer},
     ) => ({
       ...state,
       ...action,
@@ -42,47 +120,40 @@ export function useTimersContext() {
   return context;
 }
 
-export function useAddTimerIfItDoesNotExist(timer: ITimer) {
-  const context = useTimersContext();
+export function useTimer(
+  updatedAt: string,
+  duration: number,
+  isPaused: boolean,
+) {
+  const [remainingTime, setRemainingTime] = React.useState(duration);
 
-  if (context.timers[timer.id]) return context;
-  context.setTimers({
-    [timer.id]: {...timer, isPaused: timer.isPaused ?? true},
-  });
+  const end = useCalculateEndTime(updatedAt, duration);
 
-  return context;
+  React.useEffect(() => {
+    setRemainingTime(duration);
+
+    const interval = setInterval(() => {
+      const newRemainingTime = end.current - new Date().getTime();
+      if (isPaused) {
+        clearInterval(interval);
+      } else if (newRemainingTime <= 0) {
+        setRemainingTime(0);
+      } else {
+        setRemainingTime(newRemainingTime);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [duration, end, isPaused]);
+
+  return remainingTime;
 }
 
-function decrementTimer(timer: ITimer) {
-  if (timer.isPaused) return timer;
+function useCalculateEndTime(updatedAt: string, duration: number) {
+  const end = React.useRef(0);
 
-  if (timer.minutes === 0 && timer.seconds === 0) {
-    return {...timer, isPaused: true};
-  }
+  React.useEffect(() => {
+    end.current = new Date(updatedAt).getTime() + duration;
+  }, [duration, updatedAt]);
 
-  if (timer.seconds > 0) {
-    return {...timer, seconds: timer.seconds - 1};
-  }
-
-  return {
-    ...timer,
-    minutes: timer.minutes - 1,
-    seconds: 59,
-  };
-}
-
-export function useRunTimer(timer: ITimer) {
-  const {setTimers} = useTimersContext();
-
-  let updatedTimer = decrementTimer(timer);
-
-  useInterval(
-    () => setTimers({[updatedTimer.id]: updatedTimer}),
-    updatedTimer.isPaused ||
-      (updatedTimer.minutes === 0 && updatedTimer.seconds === 0)
-      ? null
-      : 1000,
-  );
-
-  return updatedTimer;
+  return end;
 }

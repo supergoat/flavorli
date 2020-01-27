@@ -6,7 +6,6 @@ import RecipeStep from './components/RecipeStep';
 import Timers from './components/Timers';
 import {TimersProvider} from './timersContext';
 
-import RunTimers from './components/RunTimers';
 import IntroStep from './components/IntroStep';
 import MiseEnPlace from './components/MiseEnPlace';
 import IngredientsStep from './components/IngredientsStep';
@@ -27,8 +26,6 @@ const StepByStep = () => {
 
       {recipe && (
         <TimersProvider>
-          <RunTimers />
-
           <StepByStepProvider
             initialValues={{
               noOfSteps: 4 + recipe.steps.length,

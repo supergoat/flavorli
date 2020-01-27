@@ -46,7 +46,16 @@ export interface ITimer {
   name: string;
   minutes: number;
   seconds: number;
-  isPaused?: boolean;
+}
+
+export interface IContextITimer {
+  id: number;
+  name: string;
+  minutes: number;
+  seconds: number;
+  isPaused: boolean;
+  updatedAt: string;
+  remainingTime: number;
 }
 
 export interface IImage {

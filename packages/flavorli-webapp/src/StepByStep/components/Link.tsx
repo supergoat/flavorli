@@ -1,9 +1,13 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 
-import {ILink} from '../../types';
-import {useTimersContext} from '../timersContext';
+import {ILink, IContextITimer} from '../../types';
 import {useStepByStepContext} from '../stepByStepContext';
+import {
+  useTimer,
+  useTimersContext,
+  convertMillisecondsToMinutesAndSeconds,
+} from '../timersContext';
 
 interface ILinkProps {
   link: ILink;
@@ -36,11 +40,7 @@ const Link = ({link}: ILinkProps) => {
           <Text color="primary">{link.name}</Text>
         </Stack>
         <Stack gap={4} alignment="end" width="28%">
-          {link.timerId && (
-            <Text color="primary" data-testid={`timerid-${link.timerId}`}>
-              {timers[link.timerId].minutes}m {timers[link.timerId].seconds}s
-            </Text>
-          )}
+          {link.timerId && <RemainingTime timer={timers[link.timerId]} />}
 
           <Button intent="text" onClick={() => onOpenDialogStep(link.from)}>
             View Step
@@ -52,3 +52,15 @@ const Link = ({link}: ILinkProps) => {
 };
 
 export default Link;
+
+const RemainingTime = ({timer}: {timer: IContextITimer}) => {
+  const ms = useTimer(timer.updatedAt, timer.remainingTime, timer.isPaused);
+
+  const {minutes, seconds} = convertMillisecondsToMinutesAndSeconds(ms);
+
+  return (
+    <Text color="primary" data-testid={`timerid-${timer.id}`}>
+      {minutes}m {seconds}s
+    </Text>
+  );
+};

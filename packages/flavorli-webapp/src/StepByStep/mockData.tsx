@@ -1,15 +1,17 @@
-import {IStep, ITimer, ILink, IRecipe} from '../types';
+import {IStep, IContextITimer, ILink, IRecipe} from '../types';
 
 export const recipes = [];
 
 export const stepByStep: IRecipe = recipes[0];
 
-export const timer: ITimer = {
+export const timer: IContextITimer = {
   id: 1,
   name: 'Thicken Sauce',
   minutes: 10,
   seconds: 0,
   isPaused: false,
+  updatedAt: '2020-01-26T15:15:06.689Z',
+  remainingTime: 60000,
 };
 
 export const link: ILink = {

@@ -1,30 +1,30 @@
 import React from 'react';
 import {Stack, Button, Text, useCloseOnEsc} from '@flavorli/elements';
-import {useTimersContext} from '../timersContext';
 import {ITimer} from '../../types';
 import Timer from './Timer';
 import {useRestoreFocus} from '../../helpers/hooks';
+import {useTimersContext} from '../timersContext';
 
 export const Timers = () => {
   const refEl = React.useRef<HTMLButtonElement>(null);
   const [showTimers, setShowTimers] = React.useState(false);
-  const context = useTimersContext();
-  const timers = Object.values(context.timers);
-
   useCloseOnEsc(() => setShowTimers(false));
   useRestoreFocus(refEl, !showTimers);
+
+  const context = useTimersContext();
+  const timers = Object.values(context.timers);
 
   return (
     <>
       {timers.length > 0 && (
-        <Stack width="100%" paddingBottom={16} paddingLeft={8} paddingRight={8}>
+        <Stack width="100%" paddingBottom={4} paddingLeft={4} paddingRight={4}>
           <Stack
             paddingTop={8}
-            paddingLeft={16}
-            paddingRight={16}
+            paddingLeft={8}
+            paddingRight={8}
             background="secondaryLight"
-            borderRadiusBottomLeft={24}
-            borderRadiusBottomRight={24}
+            borderRadiusBottomLeft={8}
+            borderRadiusBottomRight={8}
             width="100%"
             id="timers"
           >
@@ -68,7 +68,7 @@ export const Timers = () => {
       )}
 
       {timers.length === 0 && (
-        <Stack height="58px">
+        <Stack height="46px">
           <div />
         </Stack>
       )}

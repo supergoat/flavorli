@@ -9,9 +9,14 @@ interface IStepTasks {
 const Tasks = ({tasks}: IStepTasks) => {
   return (
     <Stack gap={8} id="step-tasks">
-      {tasks.map(task => {
+      {tasks.map((task, index) => {
         return (
-          <Stack direction="horizontal" alignment="start" gap={8}>
+          <Stack
+            direction="horizontal"
+            alignment="start"
+            gap={8}
+            key={`task-${index}`}
+          >
             <Label>
               <CheckBox />
               <Text>{task}</Text>
