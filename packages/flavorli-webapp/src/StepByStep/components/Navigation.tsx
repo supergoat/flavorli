@@ -3,11 +3,13 @@ import {Button, Stack} from '@flavorli/elements';
 import styled from 'styled-components';
 import ChevronRightWhite from '../icons/right_chevron_white.svg';
 import {useStepByStepContext} from '../stepByStepContext';
+import {useHistory} from 'react-router';
 
 interface INavigationProps {
   isDialog?: boolean;
 }
 const Navigation = ({isDialog}: INavigationProps) => {
+  const history = useHistory();
   const {
     onNavigate,
     onCloseDialogStep,
@@ -23,8 +25,18 @@ const Navigation = ({isDialog}: INavigationProps) => {
     onNavigate(-1);
   };
 
-  const hideBackButton = currentStep === 1;
-  const hideNextButton = currentStep === noOfSteps;
+  const navigateToRecipe = () => {
+    // Remove all timers from local storage
+    localStorage.removeItem('__timers__');
+    // For now we can go back in history once but this might change in the future
+    history.goBack();
+  };
+
+  const isFirstStep = currentStep === 1;
+  const isLastStep = currentStep === noOfSteps;
+
+  const hideBackButton = isFirstStep;
+  const hideNextButton = isLastStep;
 
   return (
     <NavigationWrapper
@@ -59,6 +71,17 @@ const Navigation = ({isDialog}: INavigationProps) => {
               {currentStep === 4 && 'Preparation'}
               {currentStep > 4 && 'Next'}
               <ButtonIcon />
+            </Button>
+          )}
+
+          {isLastStep && (
+            <Button
+              aria-controls="recipe-steps"
+              width="100%"
+              onClick={navigateToRecipe}
+              intent="primary"
+            >
+              Done
             </Button>
           )}
         </>
