@@ -30,7 +30,6 @@ function useFetchRecipeList() {
   const error = data.error;
   const props = data.props as {recipes: IRecipe[]};
 
-  console.log(props);
   let result = {
     loading: false,
     recipes: null,

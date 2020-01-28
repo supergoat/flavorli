@@ -1,8 +1,7 @@
 import React from 'react';
-import {Stack, Scroll, H1} from '@flavorli/elements';
+import {Stack, H1} from '@flavorli/elements';
 import RecipeCard from './components/RecipeCard';
 import useFetchRecipeList from './useFetchRecipeList';
-import styled from 'styled-components';
 
 const Home = () => {
   const {recipes, loading, error} = useFetchRecipeList();

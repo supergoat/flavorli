@@ -2,7 +2,6 @@ import React, {FC, Children} from 'react';
 import styled from 'styled-components';
 import {spacings} from '../theme/spacings';
 import {IColor} from '../theme/colors';
-import {motion, MotionProps} from 'framer-motion';
 import {shadows} from '../theme/shadows';
 
 export interface IStackProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -43,7 +42,7 @@ const ForwardRefStack = (
     distribution = 'start',
     alignment = 'start',
     ...rest
-  }: IStackProps & MotionProps,
+  }: IStackProps,
   ref?: React.Ref<HTMLDivElement> | null | undefined,
 ) => {
   return (
@@ -61,10 +60,10 @@ const ForwardRefStack = (
 
 export const Stack = React.forwardRef<
   HTMLDivElement,
-  React.PropsWithChildren<IStackProps & MotionProps>
+  React.PropsWithChildren<IStackProps>
 >(ForwardRefStack);
 
-export const StackWrapper = styled(motion.div)<IStackProps>`
+export const StackWrapper = styled.div<IStackProps>`
   /* Select all direct children */
   > * {
     margin-bottom: ${p => p.direction === 'vertical' && `${p.gap}px`};

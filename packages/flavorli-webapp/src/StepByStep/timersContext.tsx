@@ -1,8 +1,48 @@
 import React from 'react';
 import {ITimer, IContextITimer} from '../types';
 
+export function useTimer(
+  updatedAt: string,
+  duration: number,
+  isPaused: boolean,
+) {
+  const [remainingTime, setRemainingTime] = React.useState(duration);
+
+  const end = useCalculateEndTime(updatedAt, duration);
+
+  React.useEffect(() => {
+    setRemainingTime(duration);
+  }, [duration, end, isPaused]);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const newRemainingTime = end.current - new Date().getTime();
+      if (isPaused) {
+        clearInterval(interval);
+      } else if (newRemainingTime <= 0) {
+        setRemainingTime(0);
+      } else {
+        setRemainingTime(newRemainingTime);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [end, isPaused]);
+
+  return remainingTime;
+}
+
+function useCalculateEndTime(updatedAt: string, duration: number) {
+  const end = React.useRef(0);
+
+  React.useEffect(() => {
+    end.current = new Date(updatedAt).getTime() + duration;
+  }, [duration, updatedAt]);
+
+  return end;
+}
+
 export function useToggleTimer(timer: IContextITimer, remainingTime: number) {
-  const {setTimers} = useTimersContext();
+  const {setTimers, recipeId} = useTimersContext();
 
   return () => {
     const updatedTimer = {
@@ -13,12 +53,12 @@ export function useToggleTimer(timer: IContextITimer, remainingTime: number) {
     };
 
     setTimers({[timer.id]: updatedTimer});
-    updatedTimerInLocalStorage(updatedTimer);
+    updatedTimerInLocalStorage(updatedTimer, recipeId);
   };
 }
 
 export function useResetTimer(timer: ITimer) {
-  const {setTimers} = useTimersContext();
+  const {setTimers, recipeId} = useTimersContext();
 
   return () => {
     const updatedTimer = {
@@ -29,7 +69,7 @@ export function useResetTimer(timer: ITimer) {
     };
 
     setTimers({[timer.id]: updatedTimer});
-    updatedTimerInLocalStorage(updatedTimer);
+    updatedTimerInLocalStorage(updatedTimer, recipeId);
   };
 }
 
@@ -40,12 +80,13 @@ export function convertMillisecondsToMinutesAndSeconds(ms: number) {
 }
 
 export function useAddTimerIfItDoesNotExist(timer: ITimer) {
-  const {setTimers, timers} = useTimersContext();
+  const {setTimers, timers, recipeId} = useTimersContext();
 
   // Return timer if it exists in localStorage
   if (timers[timer.id]) return timers[timer.id];
 
   const newTimer = createNewTimer(timer);
+  updatedTimerInLocalStorage(newTimer, recipeId);
 
   // Update the timers context with the new timer
   setTimers({[newTimer.id]: newTimer});
@@ -61,14 +102,23 @@ function createNewTimer(timer: ITimer) {
     remainingTime: (timer.minutes * 60 + timer.seconds) * 1000,
   };
 
-  updatedTimerInLocalStorage(newTimer);
-
   return newTimer;
 }
 
-function updatedTimerInLocalStorage(updatedTimer: IContextITimer) {
-  const savedTimers = getSavedTimersFromLocalStorage();
-  const updatedTimers = {...savedTimers, [updatedTimer.id]: updatedTimer};
+function updatedTimerInLocalStorage(
+  updatedTimer: IContextITimer,
+  recipeId: string,
+) {
+  const allSavedTimers = getSavedTimersFromLocalStorage();
+
+  const updatedTimers = {
+    ...allSavedTimers,
+    [recipeId]: {
+      ...allSavedTimers?.[recipeId],
+      [updatedTimer.id]: updatedTimer,
+    },
+  };
+
   localStorage.setItem('__timers__', JSON.stringify(updatedTimers));
 
   return updatedTimer;
@@ -79,6 +129,7 @@ function getSavedTimersFromLocalStorage() {
 }
 
 interface ITimersContext {
+  recipeId: string;
   timers: {[timerId: number]: IContextITimer};
   setTimers: React.Dispatch<{
     [timerId: number]: IContextITimer;
@@ -88,15 +139,18 @@ interface ITimersContext {
 export const TimersContext = React.createContext<ITimersContext | null>(null);
 
 export function TimersProvider({
+  recipeId,
   initialValues,
   ...props
 }: {
+  recipeId: string;
   initialValues?: {[timerId: number]: IContextITimer};
   children: React.ReactNode;
 }) {
   const [initState] = React.useState(
-    initialValues || getSavedTimersFromLocalStorage(),
+    initialValues || getSavedTimersFromLocalStorage()[recipeId] || {},
   );
+
   const [timers, setTimers] = React.useReducer(
     (
       state: {[timerId: number]: IContextITimer},
@@ -108,7 +162,9 @@ export function TimersProvider({
     initState,
   );
 
-  return <TimersContext.Provider value={{timers, setTimers}} {...props} />;
+  return (
+    <TimersContext.Provider value={{timers, setTimers, recipeId}} {...props} />
+  );
 }
 
 export function useTimersContext() {
@@ -118,42 +174,4 @@ export function useTimersContext() {
     throw new Error('useTimersContext must be used within a TimersProvider');
   }
   return context;
-}
-
-export function useTimer(
-  updatedAt: string,
-  duration: number,
-  isPaused: boolean,
-) {
-  const [remainingTime, setRemainingTime] = React.useState(duration);
-
-  const end = useCalculateEndTime(updatedAt, duration);
-
-  React.useEffect(() => {
-    setRemainingTime(duration);
-
-    const interval = setInterval(() => {
-      const newRemainingTime = end.current - new Date().getTime();
-      if (isPaused) {
-        clearInterval(interval);
-      } else if (newRemainingTime <= 0) {
-        setRemainingTime(0);
-      } else {
-        setRemainingTime(newRemainingTime);
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [duration, end, isPaused]);
-
-  return remainingTime;
-}
-
-function useCalculateEndTime(updatedAt: string, duration: number) {
-  const end = React.useRef(0);
-
-  React.useEffect(() => {
-    end.current = new Date(updatedAt).getTime() + duration;
-  }, [duration, updatedAt]);
-
-  return end;
 }

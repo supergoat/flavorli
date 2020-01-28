@@ -25,7 +25,7 @@ const StepByStep = () => {
       {error && <div>{error}</div>}
 
       {recipe && (
-        <TimersProvider>
+        <TimersProvider recipeId={recipe.id}>
           <StepByStepProvider
             initialValues={{
               noOfSteps: 4 + recipe.steps.length,
