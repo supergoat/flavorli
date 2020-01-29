@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 4e4aff145b908368f17883eba59b8638 */
+/* @relayHash 6ebf85badd366d8eb33bc6ee362620f7 */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type StepType = 'MISE_EN_PLACE' | 'PREPARATION' | '%future added value';
@@ -32,7 +32,7 @@ export type useFetchStepByStepRecipeQueryResponse = {
         readonly heading: string;
         readonly name: string;
         readonly from: string;
-        readonly timerId: number | null;
+        readonly timerId: string | null;
       } | null> | null;
       readonly tag: {
         readonly color: string;

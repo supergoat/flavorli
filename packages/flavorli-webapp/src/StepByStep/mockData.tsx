@@ -5,7 +5,7 @@ export const recipes = [];
 export const stepByStep: IRecipe = recipes[0];
 
 export const timer: IContextITimer = {
-  id: 1,
+  id: '1',
   name: 'Thicken Sauce',
   minutes: 10,
   seconds: 0,
@@ -24,7 +24,7 @@ export const linkWithTimer: ILink = {
   from: 1,
   heading: 'From Step 1',
   name: 'Thicken Sauce',
-  timerId: 1,
+  timerId: '1',
 };
 
 export const items = [

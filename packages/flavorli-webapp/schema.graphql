@@ -27,7 +27,7 @@ type Link {
   heading: String!
   name: String!
   from: String!
-  timerId: Int
+  timerId: String
 }
 
 type Query {

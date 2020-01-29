@@ -42,14 +42,14 @@ export interface ITag {
 }
 
 export interface ITimer {
-  id: number;
+  id: string;
   name: string;
   minutes: number;
   seconds: number;
 }
 
 export interface IContextITimer {
-  id: number;
+  id: string;
   name: string;
   minutes: number;
   seconds: number;
@@ -67,5 +67,5 @@ export interface ILink {
   heading: string;
   name: string;
   from: number;
-  timerId?: number;
+  timerId?: string;
 }

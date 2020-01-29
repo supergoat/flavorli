@@ -89,7 +89,9 @@ export function useResetTimer(timer: ITimer) {
 export function convertMillisecondsToMinutesAndSeconds(ms: number) {
   ms = 1000 * Math.round(ms / 1000); // round to nearest second
   var d = new Date(ms);
-  return {minutes: d.getUTCMinutes(), seconds: d.getUTCSeconds()};
+  const hours = d.getUTCHours();
+  const minutes = d.getUTCMinutes() + hours * 60;
+  return {minutes, seconds: d.getUTCSeconds()};
 }
 
 export function useAddTimerIfItDoesNotExist(timer: ITimer) {
@@ -143,9 +145,9 @@ function getSavedTimersFromLocalStorage() {
 
 interface ITimersContext {
   recipeId: string;
-  timers: {[timerId: number]: IContextITimer};
+  timers: {[timerId: string]: IContextITimer};
   setTimers: React.Dispatch<{
-    [timerId: number]: IContextITimer;
+    [timerId: string]: IContextITimer;
   }>;
 }
 
@@ -157,7 +159,7 @@ export function TimersProvider({
   ...props
 }: {
   recipeId: string;
-  initialValues?: {[timerId: number]: IContextITimer};
+  initialValues?: {[timerId: string]: IContextITimer};
   children: React.ReactNode;
 }) {
   const [initState] = React.useState(
@@ -166,8 +168,8 @@ export function TimersProvider({
 
   const [timers, setTimers] = React.useReducer(
     (
-      state: {[timerId: number]: IContextITimer},
-      action: {[timerId: number]: IContextITimer},
+      state: {[timerId: string]: IContextITimer},
+      action: {[timerId: string]: IContextITimer},
     ) => ({
       ...state,
       ...action,
