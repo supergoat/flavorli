@@ -11,12 +11,21 @@ export function useTimer(
   const end = useCalculateEndTime(updatedAt, duration);
 
   React.useEffect(() => {
-    setRemainingTime(duration);
-  }, [duration, end, isPaused]);
+    const newRemainingTime = getRemainingTime(end.current);
+
+    if (isPaused) {
+      // do nothing
+      setRemainingTime(duration);
+    } else if (newRemainingTime <= 0) {
+      setRemainingTime(0);
+    } else {
+      setRemainingTime(newRemainingTime);
+    }
+  }, [end, isPaused, duration]);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      const newRemainingTime = end.current - new Date().getTime();
+      const newRemainingTime = getRemainingTime(end.current);
       if (isPaused) {
         clearInterval(interval);
       } else if (newRemainingTime <= 0) {
@@ -29,6 +38,10 @@ export function useTimer(
   }, [end, isPaused]);
 
   return remainingTime;
+}
+
+function getRemainingTime(duration: number) {
+  return duration - new Date().getTime();
 }
 
 function useCalculateEndTime(updatedAt: string, duration: number) {
