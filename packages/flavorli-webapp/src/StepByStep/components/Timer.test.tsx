@@ -4,7 +4,7 @@ import {axe} from 'jest-axe';
 import Timer from './Timer';
 import {act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {TimersProvider} from '../timersContext';
+import {RecipeTimersProvider} from '../timersContext';
 import {timer} from '../mockData';
 
 afterEach(() => {
@@ -24,12 +24,12 @@ const setup = (
 ) => {
   return {
     ...render(
-      <TimersProvider>
+      <RecipeTimersProvider>
         <Timer
           timer={(!isTimerUndefined && {...timer, isPaused}) || undefined}
           type={type}
         />
-      </TimersProvider>,
+      </RecipeTimersProvider>,
     ),
     timer,
   };

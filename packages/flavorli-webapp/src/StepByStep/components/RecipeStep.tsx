@@ -44,7 +44,7 @@ const RecipeStep = ({step}: IRecipeStepProps) => {
 
       <StepTasks tasks={step.tasks} />
 
-      <Timer timer={step.timer} />
+      {step.timer && <Timer timerInfo={step.timer} />}
 
       <ImageList images={step?.images} />
     </Step>

@@ -3,20 +3,20 @@ import {Stack, Button, Text, useCloseOnEsc} from '@flavorli/elements';
 import {ITimer} from '../../types';
 import Timer from './Timer';
 import {useRestoreFocus} from '../../helpers/hooks';
-import {useTimersContext} from '../timersContext';
+import {useRecipeTimersContext} from '../timersContext';
 
 export const Timers = () => {
   const refEl = React.useRef<HTMLButtonElement>(null);
-  const [showTimers, setShowTimers] = React.useState(false);
-  useCloseOnEsc(() => setShowTimers(false));
-  useRestoreFocus(refEl, !showTimers);
+  const [showRecipeTimers, setShowRecipeTimers] = React.useState(false);
+  useCloseOnEsc(() => setShowRecipeTimers(false));
+  useRestoreFocus(refEl, !showRecipeTimers);
 
-  const context = useTimersContext();
-  const timers = Object.values(context.timers);
+  const context = useRecipeTimersContext();
+  const recipeTimers = Object.values(context.recipeTimers);
 
   return (
     <>
-      {timers.length > 0 && (
+      {recipeTimers.length > 0 && (
         <Stack width="100%" paddingBottom={4} paddingLeft={4} paddingRight={4}>
           <Stack
             paddingTop={8}
@@ -28,9 +28,9 @@ export const Timers = () => {
             width="100%"
             id="timers"
           >
-            {showTimers && (
+            {showRecipeTimers && (
               <Stack gap={4} width="100%">
-                {timers.map((timer: ITimer) => {
+                {recipeTimers.map((timer: ITimer) => {
                   return (
                     <Stack
                       key={timer.id}
@@ -46,7 +46,7 @@ export const Timers = () => {
                       <Text fontSize={14} color="primary">
                         {timer.name}
                       </Text>
-                      <Timer timer={timer} type="notification" />
+                      {timer && <Timer timerInfo={timer} type="notification" />}
                     </Stack>
                   );
                 })}
@@ -58,16 +58,16 @@ export const Timers = () => {
                 ref={refEl}
                 intent="text"
                 width="100%"
-                onClick={() => setShowTimers(t => !t)}
+                onClick={() => setShowRecipeTimers(t => !t)}
               >
-                {!showTimers ? 'View Timers' : 'Hide Timers'}
+                {!showRecipeTimers ? 'View Timers' : 'Hide Timers'}
               </Button>
             </Stack>
           </Stack>
         </Stack>
       )}
 
-      {timers.length === 0 && (
+      {recipeTimers.length === 0 && (
         <Stack height="46px">
           <div />
         </Stack>

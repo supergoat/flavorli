@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepTasks should render correctly 1`] = `
+<div>
+  <div
+    class="sc-AykKH bETEva"
+    direction="vertical"
+    id="step-tasks"
+  >
+    <div
+      class="sc-AykKH cRsFPk"
+      direction="horizontal"
+    >
+      <label
+        class="sc-fzXfLP dCiVki"
+      >
+        <input
+          class="sc-fzXfLO iPBdyT"
+          type="checkbox"
+        />
+        <p
+          class="sc-AykKG fCXClx"
+        >
+          Task 1
+        </p>
+      </label>
+    </div>
+    <div
+      class="sc-AykKH cRsFPk"
+      direction="horizontal"
+    >
+      <label
+        class="sc-fzXfLP dCiVki"
+      >
+        <input
+          class="sc-fzXfLO iPBdyT"
+          type="checkbox"
+        />
+        <p
+          class="sc-AykKG fCXClx"
+        >
+          Task 2
+        </p>
+      </label>
+    </div>
+  </div>
+</div>
+`;

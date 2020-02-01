@@ -4,7 +4,7 @@ import {axe} from 'jest-axe';
 import Links from './Links';
 import {ILink} from '../types';
 import userEvent from '@testing-library/user-event';
-import {TimersProvider} from '../timersContext';
+import {RecipeTimersProvider} from '../timersContext';
 import {StepByStepProvider} from '../stepByStepContext';
 import {act} from 'react-dom/test-utils';
 import {link} from '../mockData';
@@ -14,11 +14,11 @@ const setup = (customLinks?: ILink[]) => {
 
   return {
     ...render(
-      <TimersProvider>
+      <RecipeTimersProvider>
         <StepByStepProvider initialValues={{noOfSteps: 10}}>
           <Links links={links} />
         </StepByStepProvider>
-      </TimersProvider>,
+      </RecipeTimersProvider>,
     ),
     links,
   };

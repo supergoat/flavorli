@@ -3,17 +3,14 @@ import {Stack, Text, Button} from '@flavorli/elements';
 
 import {ILink, IContextITimer} from '../../types';
 import {useStepByStepContext} from '../stepByStepContext';
-import {
-  useTimer,
-  useTimersContext,
-  convertMillisecondsToMinutesAndSeconds,
-} from '../timersContext';
+import {useRecipeTimersContext} from '../timersContext';
+import {useRecipeTimer, convertMsToMinsAndSecs} from '../useTimer';
 
 interface ILinkProps {
   link: ILink;
 }
 const Link = ({link}: ILinkProps) => {
-  const {timers} = useTimersContext();
+  const {recipeTimers} = useRecipeTimersContext();
   const {onOpenDialogStep} = useStepByStepContext();
 
   return (
@@ -40,7 +37,9 @@ const Link = ({link}: ILinkProps) => {
           <Text color="primary">{link.name}</Text>
         </Stack>
         <Stack gap={4} alignment="end" width="28%">
-          {link.timerId && <RemainingTime timer={timers[link.timerId]} />}
+          {link.timerId && (
+            <RemainingTime recipeTimer={recipeTimers[link.timerId]} />
+          )}
 
           <Button intent="text" onClick={() => onOpenDialogStep(link.from)}>
             View Step
@@ -53,13 +52,17 @@ const Link = ({link}: ILinkProps) => {
 
 export default Link;
 
-const RemainingTime = ({timer}: {timer: IContextITimer}) => {
-  const ms = useTimer(timer.updatedAt, timer.remainingTime, timer.isPaused);
+const RemainingTime = ({recipeTimer}: {recipeTimer: IContextITimer}) => {
+  const ms = useRecipeTimer(
+    recipeTimer.updatedAt,
+    recipeTimer.remainingTime,
+    recipeTimer.isPaused,
+  );
 
-  const {minutes, seconds} = convertMillisecondsToMinutesAndSeconds(ms);
+  const {minutes, seconds} = convertMsToMinsAndSecs(ms);
 
   return (
-    <Text color="primary" data-testid={`timerid-${timer.id}`}>
+    <Text color="primary" data-testid={`timerid-${recipeTimer.id}`}>
       {minutes}m {seconds}s
     </Text>
   );

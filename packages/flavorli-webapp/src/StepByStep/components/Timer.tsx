@@ -1,36 +1,32 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 import {
-  useAddTimerIfItDoesNotExist,
-  useTimer,
-  convertMillisecondsToMinutesAndSeconds,
+  useAddRecipeTimerIfItDoesNotExist,
+  useRecipeTimer,
+  convertMsToMinsAndSecs,
   useToggleTimer,
   useResetTimer,
-} from '../timersContext';
+} from '../useTimer';
 import {ITimer} from '../../types';
 
 interface ITimerProps {
   type?: 'notification';
-  timer?: ITimer;
+  timerInfo: ITimer;
 }
 
-export default ({timer, type}: ITimerProps) => {
-  if (!timer) return null;
+const Timer = ({timerInfo, type}: ITimerProps) => {
+  const timer = useAddRecipeTimerIfItDoesNotExist(timerInfo);
 
-  const savedTimer = useAddTimerIfItDoesNotExist(timer);
-
-  const remainingTimerInMs = useTimer(
-    savedTimer.updatedAt,
-    savedTimer.remainingTime,
-    savedTimer.isPaused,
+  const remainingTimerInMs = useRecipeTimer(
+    timer.updatedAt,
+    timer.remainingTime,
+    timer.isPaused,
   );
 
-  const {minutes, seconds} = convertMillisecondsToMinutesAndSeconds(
-    remainingTimerInMs,
-  );
+  const {minutes, seconds} = convertMsToMinsAndSecs(remainingTimerInMs);
 
-  const toggleTimer = useToggleTimer(savedTimer, remainingTimerInMs);
-  const resetTimer = useResetTimer(timer);
+  const toggleTimer = useToggleTimer(timer, remainingTimerInMs);
+  const resetTimer = useResetTimer(timerInfo);
 
   return (
     <Stack
@@ -41,9 +37,9 @@ export default ({timer, type}: ITimerProps) => {
       alignment={type === 'notification' ? 'center' : 'start'}
     >
       <Text
-        id={`timer-${savedTimer.id}`}
+        id={`timer-${timer.id}`}
         role="timer"
-        aria-label={savedTimer.name}
+        aria-label={timer.name}
         aria-atomic={true}
         fontSize={type === 'notification' ? 24 : 32}
       >
@@ -56,9 +52,9 @@ export default ({timer, type}: ITimerProps) => {
             intent="text"
             width="47px"
             onClick={toggleTimer}
-            aria-controls={`timer-${savedTimer.id}`}
+            aria-controls={`timer-${timer.id}`}
           >
-            {savedTimer.isPaused ? 'START' : 'PAUSE'}
+            {timer.isPaused ? 'START' : 'PAUSE'}
           </Button>
         )}
         <Button intent="text" color="secondaryTextColor" onClick={resetTimer}>
@@ -68,3 +64,5 @@ export default ({timer, type}: ITimerProps) => {
     </Stack>
   );
 };
+
+export default Timer;

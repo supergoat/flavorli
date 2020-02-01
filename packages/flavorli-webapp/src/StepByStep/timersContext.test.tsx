@@ -1,11 +1,7 @@
 import React from 'react';
 import {renderHook, act} from '@testing-library/react-hooks';
-import {
-  useTimersContext,
-  TimersProvider,
-  useAddTimerIfItDoesNotExist,
-  useRunTimer,
-} from './timersContext';
+import {useRecipeTimersContext, RecipeTimersProvider} from './timersContext';
+import {useAddTimerIfItDoesNotExist, useRunTimer} from './useTimer';
 import {timer} from './mockData';
 
 afterEach(() => {
@@ -16,72 +12,74 @@ afterEach(() => {
 
 describe('useTimersContext', () => {
   it('should throw an error when useTimersContext is not used within a TimersProvider', () => {
-    const {result} = renderHook(() => useTimersContext());
+    const {result} = renderHook(() => useRecipeTimersContext());
 
     expect(() => {
       expect(result.current).not.toBe(undefined);
     }).toThrow(Error('useTimersContext must be used within a TimersProvider'));
   });
 
-  it('should expose the timers and setTimers function', () => {
+  it('should expose the recipeTimers and setRecipeTimers function', () => {
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider>{children}</TimersProvider>
+      <RecipeTimersProvider>{children}</RecipeTimersProvider>
     );
 
-    const {result} = renderHook(() => useTimersContext(), {wrapper});
+    const {result} = renderHook(() => useRecipeTimersContext(), {wrapper});
 
-    const timers = result.current['timers'];
-    const setTimers = result.current['setTimers'];
+    const recipeTimers = result.current['recipeTimers'];
+    const setRecipeTimers = result.current['setRecipeTimers'];
 
-    expect(timers).toEqual({});
-    expect(typeof setTimers).toBe('function');
+    expect(recipeTimers).toEqual({});
+    expect(typeof setRecipeTimers).toBe('function');
   });
 
-  it('should use custom timers', () => {
+  it('should use custom recipeTimers', () => {
     const contextTimers = {[timer.id]: timer};
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={contextTimers}>{children}</TimersProvider>
+      <RecipeTimersProvider initialValues={contextTimers}>
+        {children}
+      </RecipeTimersProvider>
     );
 
-    const {result} = renderHook(() => useTimersContext(), {wrapper});
+    const {result} = renderHook(() => useRecipeTimersContext(), {wrapper});
 
-    const timers = result.current['timers'];
-    const setTimers = result.current['setTimers'];
+    const recipeTimers = result.current['recipeTimers'];
+    const setRecipeTimers = result.current['setRecipeTimers'];
 
-    expect(timers).toEqual(contextTimers);
-    expect(typeof setTimers).toBe('function');
+    expect(recipeTimers).toEqual(contextTimers);
+    expect(typeof setRecipeTimers).toBe('function');
   });
 });
 
 describe('useAddTimerIfItDoesNotExist', () => {
   it('should add timer if it doesn not exist in context', () => {
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider>{children}</TimersProvider>
+      <RecipeTimersProvider>{children}</RecipeTimersProvider>
     );
 
     const {result} = renderHook(() => useAddTimerIfItDoesNotExist(timer), {
       wrapper,
     });
 
-    const timers = result.current['timers'];
+    const recipeTimers = result.current['recipeTimers'];
 
-    expect(timers).toEqual({[timer.id]: timer});
+    expect(recipeTimers).toEqual({[timer.id]: timer});
   });
 
   it('should return the timer if it is already in context', () => {
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={{[timer.id]: timer}}>
+      <RecipeTimersProvider initialValues={{[timer.id]: timer}}>
         {children}
-      </TimersProvider>
+      </RecipeTimersProvider>
     );
 
     const {result} = renderHook(() => useAddTimerIfItDoesNotExist(timer), {
       wrapper,
     });
 
-    const timers = result.current['timers'];
+    const recipeTimers = result.current['recipeTimers'];
 
-    expect(timers).toEqual({[timer.id]: timer});
+    expect(recipeTimers).toEqual({[timer.id]: timer});
   });
 });
 
@@ -92,9 +90,9 @@ describe('useRunTimer', () => {
     const pausedTimer = {...timer, isPaused: true};
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={{[pausedTimer.id]: pausedTimer}}>
+      <RecipeTimersProvider initialValues={{[pausedTimer.id]: pausedTimer}}>
         {children}
-      </TimersProvider>
+      </RecipeTimersProvider>
     );
 
     const {result} = renderHook(() => useRunTimer(pausedTimer), {
@@ -116,9 +114,9 @@ describe('useRunTimer', () => {
     const zeroTimer = {...timer, isPaused: false, minutes: 0, seconds: 0};
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={{[zeroTimer.id]: zeroTimer}}>
+      <RecipeTimersProvider initialValues={{[zeroTimer.id]: zeroTimer}}>
         {children}
-      </TimersProvider>
+      </RecipeTimersProvider>
     );
 
     const {result} = renderHook(() => useRunTimer(zeroTimer), {
@@ -138,9 +136,9 @@ describe('useRunTimer', () => {
     jest.useFakeTimers();
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={{[timer.id]: timer}}>
+      <RecipeTimersProvider initialValues={{[timer.id]: timer}}>
         {children}
-      </TimersProvider>
+      </RecipeTimersProvider>
     );
 
     const {result} = renderHook(() => useRunTimer(timer), {
@@ -168,9 +166,9 @@ describe('useRunTimer', () => {
     };
 
     const wrapper = ({children}: {children?: React.ReactNode}) => (
-      <TimersProvider initialValues={{[timer.id]: timer}}>
+      <RecipeTimersProvider initialValues={{[timer.id]: timer}}>
         {children}
-      </TimersProvider>
+      </RecipeTimersProvider>
     );
 
     const {result} = renderHook(() => useRunTimer(timer), {

@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import {axe} from 'jest-axe';
 import {render} from '../../helpers/test-helpers';
-import {TimersProvider} from '../timersContext';
+import {RecipeTimersProvider} from '../timersContext';
 import Timers from './Timers';
 import {ITimer} from '../types';
 import {act} from 'react-dom/test-utils';
@@ -12,9 +12,9 @@ const setup = (timers?: {[timerId: number]: ITimer}) => {
   const contextTimers = timers || {[timer.id]: timer};
   return {
     ...render(
-      <TimersProvider initialValues={contextTimers}>
+      <RecipeTimersProvider initialValues={contextTimers}>
         <Timers />
-      </TimersProvider>,
+      </RecipeTimersProvider>,
     ),
     timer,
   };

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Items should render correctly 1`] = `
+<div>
+  <div
+    class="sc-AykKH fckMuk"
+    direction="vertical"
+    width="100%"
+  >
+    <h3
+      class="sc-AykKF fqdNMu"
+      color="primary"
+    >
+      You will need
+    </h3>
+    <p
+      class="sc-AykKG fCXClx"
+    >
+      1
+       
+      Pot
+    </p>
+  </div>
+</div>
+`;

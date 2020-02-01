@@ -4,7 +4,7 @@ import {useTrapFocus, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
 import RecipeStep from './components/RecipeStep';
 import Timers from './components/Timers';
-import {TimersProvider} from './timersContext';
+import {RecipeTimersProvider} from './timersContext';
 
 import IntroStep from './components/IntroStep';
 import MiseEnPlace from './components/MiseEnPlace';
@@ -25,7 +25,7 @@ const StepByStep = () => {
       {error && <div>{error}</div>}
 
       {recipe && (
-        <TimersProvider recipeId={recipe.id}>
+        <RecipeTimersProvider recipeId={recipe.id}>
           <StepByStepProvider
             initialValues={{
               noOfSteps: 4 + recipe.steps.length,
@@ -59,7 +59,7 @@ const StepByStep = () => {
               </Section>
             </Stack>
           </StepByStepProvider>
-        </TimersProvider>
+        </RecipeTimersProvider>
       )}
     </DialogWrapper>
   );
