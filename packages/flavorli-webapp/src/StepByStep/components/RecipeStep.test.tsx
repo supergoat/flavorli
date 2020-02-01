@@ -1,12 +1,12 @@
 import React from 'react';
-import {render} from '../../helpers/test-helpers';
+import {renderWithRouter} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import RecipeStep from './RecipeStep';
 import {recipeStep} from '../mockData';
 import {StepByStepProvider} from '../stepByStepContext';
 
 const setup = () => {
-  return render(
+  return renderWithRouter(
     <>
       {/* Add a div with id recipe-steps to be used by aria-controls */}
       <div id="recipe-steps" />

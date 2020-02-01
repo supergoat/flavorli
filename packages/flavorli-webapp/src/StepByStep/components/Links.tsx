@@ -9,6 +9,7 @@ interface ILinksProps {
 }
 const Links = ({links = []}: ILinksProps) => {
   if (!links || !links.length) return null;
+
   return (
     <>
       <Stack gap={8} alignment="start" width="100%" height="auto">

@@ -17,10 +17,10 @@ const Tasks = ({tasks}: IStepTasks) => {
             gap={8}
             key={`task-${index}`}
           >
-            <Label>
-              <CheckBox />
-              <Text>{task}</Text>
-            </Label>
+            <Task>
+              <CheckBox id={`task-${task}`} />
+              <label htmlFor={`task-${task}`}>{task}</label>
+            </Task>
           </Stack>
         );
       })}
@@ -37,6 +37,6 @@ const CheckBox = styled.input.attrs(() => ({
   margin-right: 8px;
 `;
 
-const Label = styled.label`
+const Task = styled.div`
   display: flex;
 `;

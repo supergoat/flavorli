@@ -3,18 +3,21 @@
 exports[`Ingredient should render correctly 1`] = `
 <div>
   <div
-    class="sc-AykKH dujSYy"
+    class="sc-AykKH CGQJO"
     direction="horizontal"
     width="100%"
   >
     <p
-      class="sc-AykKG iIcCYk"
-      width="25%"
+      class="sc-AykKG fQzzwq"
+      color="black"
+      font-size="16"
+      width="28%"
     >
       1 cup
     </p>
     <p
-      class="sc-AykKG fCXClx"
+      class="sc-AykKG dLapKH"
+      width="72%"
     >
       flour
     </p>

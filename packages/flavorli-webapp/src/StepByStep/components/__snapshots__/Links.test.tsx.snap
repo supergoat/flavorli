@@ -3,24 +3,25 @@
 exports[`Links should render correctly 1`] = `
 <div>
   <div
-    class="sc-AykKH bocnpZ"
+    class="sc-AykKH bGyhUl"
     direction="vertical"
     height="auto"
     width="100%"
   >
     <div
-      class="sc-AykKH dJfAhH"
+      class="sc-AykKH iBrhnD"
       direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH ifuQoe"
+        class="sc-AykKH cnRNyq"
         direction="horizontal"
         width="100%"
       >
         <div
-          class="sc-AykKH kQGRhG"
+          class="sc-AykKH VnuYM"
           direction="vertical"
+          width="72%"
         >
           <p
             class="sc-AykKG jJvoyz"
@@ -36,8 +37,9 @@ exports[`Links should render correctly 1`] = `
           </p>
         </div>
         <div
-          class="sc-AykKH bVhbKf"
+          class="sc-AykKH gydwvu"
           direction="vertical"
+          width="28%"
         >
           <button
             class="sc-AykKC YLLlX"

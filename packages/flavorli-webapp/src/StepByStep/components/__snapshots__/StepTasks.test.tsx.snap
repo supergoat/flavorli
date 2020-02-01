@@ -11,37 +11,39 @@ exports[`StepTasks should render correctly 1`] = `
       class="sc-AykKH cRsFPk"
       direction="horizontal"
     >
-      <label
+      <div
         class="sc-fzXfLP dCiVki"
       >
         <input
           class="sc-fzXfLO iPBdyT"
+          id="task-Task 1"
           type="checkbox"
         />
-        <p
-          class="sc-AykKG fCXClx"
+        <label
+          for="task-Task 1"
         >
           Task 1
-        </p>
-      </label>
+        </label>
+      </div>
     </div>
     <div
       class="sc-AykKH cRsFPk"
       direction="horizontal"
     >
-      <label
+      <div
         class="sc-fzXfLP dCiVki"
       >
         <input
           class="sc-fzXfLO iPBdyT"
+          id="task-Task 2"
           type="checkbox"
         />
-        <p
-          class="sc-AykKG fCXClx"
+        <label
+          for="task-Task 2"
         >
           Task 2
-        </p>
-      </label>
+        </label>
+      </div>
     </div>
   </div>
 </div>

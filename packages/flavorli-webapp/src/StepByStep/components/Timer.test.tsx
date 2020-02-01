@@ -6,29 +6,19 @@ import {act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {RecipeTimersProvider} from '../timersContext';
 import {timer} from '../mockData';
+import {ITimer} from '../../types';
+import * as useRecipeTimer from '../useRecipeTimer';
 
 afterEach(() => {
+  jest.restoreAllMocks();
   jest.useRealTimers();
 });
 
-const setup = (
-  {
-    isTimerUndefined,
-    type,
-    isPaused = true,
-  }: {
-    isTimerUndefined?: boolean;
-    type?: 'notification';
-    isPaused?: boolean;
-  } = {isPaused: true},
-) => {
+const setup = ({type}: {type?: 'notification'} = {}) => {
   return {
     ...render(
-      <RecipeTimersProvider>
-        <Timer
-          timer={(!isTimerUndefined && {...timer, isPaused}) || undefined}
-          type={type}
-        />
+      <RecipeTimersProvider recipeId="1">
+        <Timer timerInfo={timer} type={type} />
       </RecipeTimersProvider>,
     ),
     timer,
@@ -69,7 +59,16 @@ describe('Timer', () => {
   });
 
   it('should have aria-controls pointing to the timer on the pause button to indicate that it controls the timer', () => {
-    const {getByText, timer} = setup({isPaused: false});
+    jest
+      .spyOn(useRecipeTimer, 'useAddRecipeTimerIfItDoesNotExist')
+      .mockImplementation((timer: ITimer) => ({
+        ...timer,
+        isPaused: false,
+        updatedAt: new Date().toISOString(),
+        remainingTime: 600000,
+      }));
+
+    const {getByText, timer} = setup();
     const pauseButton = getByText('PAUSE');
     expect(pauseButton).toHaveAttribute('aria-controls', `timer-${timer?.id}`);
   });
@@ -90,7 +89,7 @@ describe('Timer', () => {
   });
 
   it('should pause the timer when the pause button is pressed', () => {
-    const {getByText, queryByText} = setup({isPaused: false});
+    const {getByText, queryByText} = setup();
 
     expect(queryByText('START')).toBeNull();
     const pauseButton = getByText('PAUSE');
@@ -111,11 +110,6 @@ describe('Timer', () => {
 
   it('should render correctly when type is notification', () => {
     const {container} = setup({type: 'notification'});
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render an empty div if the timer is undefined', () => {
-    const {container} = setup({isTimerUndefined: true});
     expect(container).toMatchSnapshot();
   });
 });

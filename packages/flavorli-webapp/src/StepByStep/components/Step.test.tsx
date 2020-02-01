@@ -1,6 +1,6 @@
 import React from 'react';
 import {axe} from 'jest-axe';
-import {render} from '../../helpers/test-helpers';
+import {renderWithRouter} from '../../helpers/test-helpers';
 import Step from './Step';
 import {StepByStepProvider} from '../stepByStepContext';
 import {IColor} from '@flavorli/elements/lib/theme/colors';
@@ -16,7 +16,7 @@ const setup = ({
   image?: string;
 } = {}) => {
   return {
-    ...render(
+    ...renderWithRouter(
       <>
         {/* Add a div with id recipe-steps to be used by aria-controls */}
         <div id="recipe-steps" />

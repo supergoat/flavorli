@@ -1,5 +1,5 @@
 import React from 'react';
-import {ITimer, IContextITimer} from '../types';
+import {ITimer, IRecipeTimer} from '../types';
 import {useRecipeTimersContext} from './timersContext';
 
 /**
@@ -41,10 +41,10 @@ export function useRecipeTimer(
 ) {
   const [remainingTime, setRemainingTime] = React.useState(duration);
 
-  const end = useCalculateEndTime(updatedAt, duration);
+  const endTime = useCalculateEndTime(updatedAt, duration);
 
   React.useEffect(() => {
-    const newRemainingTime = getRemainingTime(end.current);
+    const newRemainingTime = getRemainingTime(endTime.current);
 
     if (isPaused) {
       setRemainingTime(duration);
@@ -53,11 +53,11 @@ export function useRecipeTimer(
     } else {
       setRemainingTime(newRemainingTime);
     }
-  }, [end, isPaused, duration]);
+  }, [endTime, isPaused, duration]);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      const newRemainingTime = getRemainingTime(end.current);
+      const newRemainingTime = getRemainingTime(endTime.current);
       if (isPaused) {
         clearInterval(interval);
       } else if (newRemainingTime <= 0) {
@@ -67,13 +67,13 @@ export function useRecipeTimer(
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [end, isPaused]);
+  }, [endTime, isPaused]);
 
   return remainingTime;
 }
 
-function getRemainingTime(duration: number) {
-  return duration - new Date().getTime();
+function getRemainingTime(endTime: number) {
+  return endTime - new Date().getTime();
 }
 
 function useCalculateEndTime(updatedAt: string, duration: number) {
@@ -86,7 +86,7 @@ function useCalculateEndTime(updatedAt: string, duration: number) {
   return end;
 }
 
-export function useToggleTimer(timer: IContextITimer, remainingTime: number) {
+export function useToggleTimer(timer: IRecipeTimer, remainingTime: number) {
   const {setRecipeTimers, recipeId} = useRecipeTimersContext();
 
   return () => {
@@ -127,7 +127,7 @@ export function convertMsToMinsAndSecs(ms: number) {
 }
 
 function updatedRecipeTimerInLocalStorage(
-  updatedTimer: IContextITimer,
+  updatedTimer: IRecipeTimer,
   recipeId: string,
 ) {
   const allSavedTimers = getSavedTimersFromLocalStorage();

@@ -3,299 +3,148 @@
 exports[`IngredientList should render correctly 1`] = `
 <div>
   <div
-    class="sc-AykKH bFnGQL"
+    class="sc-AykKH eSIVGb"
     direction="vertical"
     width="100%"
   >
-    <h3
-      class="sc-AykKF lfwwnG"
-      width="100%"
-    >
-      Sauce
-    </h3>
     <div
-      class="sc-AykKH dujSYy"
+      class="sc-AykKH CGQJO"
       direction="horizontal"
       width="100%"
     >
       <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
+        class="sc-AykKG fQzzwq"
+        color="black"
+        font-size="16"
+        width="28%"
       >
-        2
+        1 cup/100 g
       </p>
       <p
-        class="sc-AykKG fCXClx"
+        class="sc-AykKG dLapKH"
+        width="72%"
       >
-        eggplants
+        Frozen Blueberries
       </p>
     </div>
     <div
-      class="sc-AykKH dujSYy"
+      class="sc-AykKH CGQJO"
       direction="horizontal"
       width="100%"
     >
       <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
+        class="sc-AykKG fQzzwq"
+        color="black"
+        font-size="16"
+        width="28%"
       >
-        4-6 tbsps
+        1/2 cup/110 g
       </p>
       <p
-        class="sc-AykKG fCXClx"
+        class="sc-AykKG dLapKH"
+        width="72%"
       >
-        olive oil
+        fresh or frozen pitted cherries
       </p>
     </div>
     <div
-      class="sc-AykKH dujSYy"
+      class="sc-AykKH CGQJO"
       direction="horizontal"
       width="100%"
     >
       <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
+        class="sc-AykKG fQzzwq"
+        color="black"
+        font-size="16"
+        width="28%"
       >
         1
       </p>
       <p
-        class="sc-AykKG fCXClx"
+        class="sc-AykKG dLapKH"
+        width="72%"
       >
-        onion
+        frozen ripe banana, cut into chunks before freezing
       </p>
     </div>
     <div
-      class="sc-AykKH dujSYy"
+      class="sc-AykKH CGQJO"
       direction="horizontal"
       width="100%"
     >
       <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        1 clove
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        garlic
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        2
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        zucchinis
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        1
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        red bell pepper
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        1
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        green bell pepper
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        1 tsp
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        oregano
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
+        class="sc-AykKG fQzzwq"
+        color="black"
+        font-size="16"
+        width="28%"
       >
         1 tbsp
       </p>
       <p
-        class="sc-AykKG fCXClx"
+        class="sc-AykKG dLapKH"
+        width="72%"
       >
-        thyme
+        ground flaxseeds (or linseeds)
       </p>
     </div>
     <div
-      class="sc-AykKH dujSYy"
+      class="sc-AykKH CGQJO"
       direction="horizontal"
       width="100%"
     >
       <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        1 tsp
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        chilli flakes
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
+        class="sc-AykKG fQzzwq"
+        color="black"
+        font-size="16"
+        width="28%"
       >
         1 tbsp
       </p>
       <p
-        class="sc-AykKG fCXClx"
+        class="sc-AykKG dLapKH"
+        width="72%"
       >
-        granulated sugar
+        almond butter (or peanut butter)
       </p>
     </div>
     <div
-      class="sc-AykKH dujSYy"
+      class="sc-AykKH CGQJO"
       direction="horizontal"
       width="100%"
     >
       <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
+        class="sc-AykKG fQzzwq"
+        color="black"
+        font-size="16"
+        width="28%"
       >
-        1 tbsp
+        1 cup/22.5 g
       </p>
       <p
-        class="sc-AykKG fCXClx"
+        class="sc-AykKG dLapKH"
+        width="72%"
       >
-        tomato paste
+        raw spinach leaves
       </p>
     </div>
     <div
-      class="sc-AykKH dujSYy"
+      class="sc-AykKH CGQJO"
       direction="horizontal"
       width="100%"
     >
       <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
+        class="sc-AykKG fQzzwq"
+        color="black"
+        font-size="16"
+        width="28%"
       >
-        50 g
+        1 1/2 cup (360 ml)
       </p>
       <p
-        class="sc-AykKG fCXClx"
+        class="sc-AykKG dLapKH"
+        width="72%"
       >
-        white wine
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        400 g
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        canned tomatoes
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      >
-        500 g
-      </p>
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        macaroni
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      />
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        salt
-      </p>
-    </div>
-    <div
-      class="sc-AykKH dujSYy"
-      direction="horizontal"
-      width="100%"
-    >
-      <p
-        class="sc-AykKG iIcCYk"
-        width="25%"
-      />
-      <p
-        class="sc-AykKG fCXClx"
-      >
-        pepper
+        water
       </p>
     </div>
   </div>

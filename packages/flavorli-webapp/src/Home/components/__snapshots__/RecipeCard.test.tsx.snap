@@ -3,7 +3,7 @@
 exports[`RecipeCard should render correctly 1`] = `
 <div>
   <div
-    class="sc-AykKH cLXuev"
+    class="sc-AykKH dcXhVT"
     direction="vertical"
     overflow="hidden"
     width="100%"
@@ -11,15 +11,15 @@ exports[`RecipeCard should render correctly 1`] = `
     <img
       alt=""
       class="sc-fzXfLP dmblcH"
-      src="greek_pastitsio.jpg"
+      src="https://flavorli-bucket-2.s3.eu-west-2.amazonaws.com/CherryBerrySmoothie.jpeg"
     />
     <div
-      class="sc-AykKH XZwtf"
+      class="sc-AykKH gUBzbb"
       direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH khQdtk"
+        class="sc-AykKH fckMuk"
         direction="vertical"
         width="100%"
       >
@@ -31,11 +31,11 @@ exports[`RecipeCard should render correctly 1`] = `
             color="primary"
             font-size="24"
           >
-            Greek Pastitsio
+            Cherry Berry Smoothie
           </p>
         </button>
         <div
-          class="sc-AykKH icGlyX"
+          class="sc-AykKH cYYHfX"
           direction="horizontal"
         >
           <div
@@ -44,19 +44,19 @@ exports[`RecipeCard should render correctly 1`] = `
           <p
             class="sc-AykKG gUyCEd"
           >
-            Akis Petratzikis
+            Robin Robertson
           </p>
         </div>
       </div>
     </div>
     <div
-      class="sc-AykKH eKIPKB"
+      class="sc-AykKH knTDOp"
       direction="horizontal"
       width="100%"
     >
       <div
         aria-label="Preparation Time"
-        class="sc-AykKH jesFWz"
+        class="sc-AykKH bvxPoL"
         direction="horizontal"
         title="Preparation Time"
         width="30%"
@@ -70,13 +70,13 @@ exports[`RecipeCard should render correctly 1`] = `
           class="sc-AykKG fCXClx"
           font-size="16"
         >
-          25
+          7
            mins
         </p>
       </div>
       <div
         aria-label="Cooking Time"
-        class="sc-AykKH jesFWz"
+        class="sc-AykKH bvxPoL"
         direction="horizontal"
         title="Cooking Time"
         width="30%"
@@ -90,13 +90,13 @@ exports[`RecipeCard should render correctly 1`] = `
           class="sc-AykKG fCXClx"
           font-size="16"
         >
-          40
+          0
            mins
         </p>
       </div>
       <div
         aria-label="Portions"
-        class="sc-AykKH hwIZDw"
+        class="sc-AykKH cnGGGo"
         direction="horizontal"
         title="Portions"
         width="40%"
@@ -110,7 +110,7 @@ exports[`RecipeCard should render correctly 1`] = `
           class="sc-AykKG fCXClx"
           font-size="16"
         >
-          8-10
+          1
            people
         </p>
       </div>

@@ -3,7 +3,7 @@
 exports[`Recipe should render correctly 1`] = `
 <div>
   <div
-    class="sc-AykKH LDnPj sc-AykKI dTNugP"
+    class="sc-AykKH iUSULn sc-AykKI dTNugP"
     direction="vertical"
     height="100%"
     width="100%"
@@ -13,11 +13,11 @@ exports[`Recipe should render correctly 1`] = `
     >
       <img
         alt=""
-        src="greek_pastitsio.jpg"
+        src="https://flavorli-bucket-2.s3.eu-west-2.amazonaws.com/CherryBerrySmoothie.jpeg"
         width="100%"
       />
       <div
-        class="sc-AykKH XZwtf"
+        class="sc-AykKH gUBzbb"
         direction="vertical"
         role="main"
         width="100%"
@@ -25,15 +25,15 @@ exports[`Recipe should render correctly 1`] = `
         <h1
           class="sc-AykKD bLwmoN"
         >
-          Greek Pastitsio
+          Cherry Berry Smoothie
         </h1>
         <div
-          class="sc-AykKH bSYavw"
+          class="sc-AykKH bXvPRY"
           direction="horizontal"
           width="100%"
         >
           <div
-            class="sc-AykKH ewQWco"
+            class="sc-AykKH fhqGjg"
             direction="vertical"
             width="25%"
           >
@@ -45,7 +45,7 @@ exports[`Recipe should render correctly 1`] = `
             <p
               class="sc-AykKG keBmAI"
             >
-              25'
+              7'
             </p>
             <p
               class="sc-AykKG gUyCEd"
@@ -54,7 +54,7 @@ exports[`Recipe should render correctly 1`] = `
             </p>
           </div>
           <div
-            class="sc-AykKH ewQWco"
+            class="sc-AykKH fhqGjg"
             direction="vertical"
             width="25%"
           >
@@ -66,7 +66,7 @@ exports[`Recipe should render correctly 1`] = `
             <p
               class="sc-AykKG keBmAI"
             >
-              40'
+              0'
             </p>
             <p
               class="sc-AykKG gUyCEd"
@@ -75,7 +75,7 @@ exports[`Recipe should render correctly 1`] = `
             </p>
           </div>
           <div
-            class="sc-AykKH ewQWco"
+            class="sc-AykKH fhqGjg"
             direction="vertical"
             width="25%"
           >
@@ -87,7 +87,7 @@ exports[`Recipe should render correctly 1`] = `
             <p
               class="sc-AykKG keBmAI"
             >
-              8-10
+              1
             </p>
             <p
               class="sc-AykKG gUyCEd"
@@ -96,7 +96,7 @@ exports[`Recipe should render correctly 1`] = `
             </p>
           </div>
           <div
-            class="sc-AykKH ewQWco"
+            class="sc-AykKH fhqGjg"
             direction="vertical"
             width="25%"
           >
@@ -108,7 +108,7 @@ exports[`Recipe should render correctly 1`] = `
             <p
               class="sc-AykKG keBmAI"
             >
-              2
+              1
             </p>
             <p
               class="sc-AykKG gUyCEd"
@@ -118,7 +118,7 @@ exports[`Recipe should render correctly 1`] = `
           </div>
         </div>
         <div
-          class="sc-AykKH icGlyX"
+          class="sc-AykKH cYYHfX"
           direction="horizontal"
         >
           <img
@@ -133,509 +133,153 @@ exports[`Recipe should render correctly 1`] = `
           </h2>
         </div>
         <div
-          class="sc-AykKH bFnGQL"
+          class="sc-AykKH eSIVGb"
           direction="vertical"
           width="100%"
         >
-          <h3
-            class="sc-AykKF lfwwnG"
-            width="100%"
-          >
-            Sauce
-          </h3>
           <div
-            class="sc-AykKH dujSYy"
+            class="sc-AykKH CGQJO"
             direction="horizontal"
             width="100%"
           >
             <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
+              class="sc-AykKG fQzzwq"
+              color="black"
+              font-size="16"
+              width="28%"
             >
-              2
+              1 cup/100 g
             </p>
             <p
-              class="sc-AykKG fCXClx"
+              class="sc-AykKG dLapKH"
+              width="72%"
             >
-              eggplants
+              Frozen Blueberries
             </p>
           </div>
           <div
-            class="sc-AykKH dujSYy"
+            class="sc-AykKH CGQJO"
             direction="horizontal"
             width="100%"
           >
             <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
+              class="sc-AykKG fQzzwq"
+              color="black"
+              font-size="16"
+              width="28%"
             >
-              4-6 tbsps
+              1/2 cup/110 g
             </p>
             <p
-              class="sc-AykKG fCXClx"
+              class="sc-AykKG dLapKH"
+              width="72%"
             >
-              olive oil
+              fresh or frozen pitted cherries
             </p>
           </div>
           <div
-            class="sc-AykKH dujSYy"
+            class="sc-AykKH CGQJO"
             direction="horizontal"
             width="100%"
           >
             <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
+              class="sc-AykKG fQzzwq"
+              color="black"
+              font-size="16"
+              width="28%"
             >
               1
             </p>
             <p
-              class="sc-AykKG fCXClx"
+              class="sc-AykKG dLapKH"
+              width="72%"
             >
-              onion
+              frozen ripe banana, cut into chunks before freezing
             </p>
           </div>
           <div
-            class="sc-AykKH dujSYy"
+            class="sc-AykKH CGQJO"
             direction="horizontal"
             width="100%"
           >
             <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1 clove
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              garlic
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              2
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              zucchinis
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              red bell pepper
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              green bell pepper
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1 tsp
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              oregano
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
+              class="sc-AykKG fQzzwq"
+              color="black"
+              font-size="16"
+              width="28%"
             >
               1 tbsp
             </p>
             <p
-              class="sc-AykKG fCXClx"
+              class="sc-AykKG dLapKH"
+              width="72%"
             >
-              thyme
+              ground flaxseeds (or linseeds)
             </p>
           </div>
           <div
-            class="sc-AykKH dujSYy"
+            class="sc-AykKH CGQJO"
             direction="horizontal"
             width="100%"
           >
             <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1 tsp
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              chilli flakes
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
+              class="sc-AykKG fQzzwq"
+              color="black"
+              font-size="16"
+              width="28%"
             >
               1 tbsp
             </p>
             <p
-              class="sc-AykKG fCXClx"
+              class="sc-AykKG dLapKH"
+              width="72%"
             >
-              granulated sugar
+              almond butter (or peanut butter)
             </p>
           </div>
           <div
-            class="sc-AykKH dujSYy"
+            class="sc-AykKH CGQJO"
             direction="horizontal"
             width="100%"
           >
             <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
+              class="sc-AykKG fQzzwq"
+              color="black"
+              font-size="16"
+              width="28%"
             >
-              1 tbsp
+              1 cup/22.5 g
             </p>
             <p
-              class="sc-AykKG fCXClx"
+              class="sc-AykKG dLapKH"
+              width="72%"
             >
-              tomato paste
+              raw spinach leaves
             </p>
           </div>
           <div
-            class="sc-AykKH dujSYy"
+            class="sc-AykKH CGQJO"
             direction="horizontal"
             width="100%"
           >
             <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
+              class="sc-AykKG fQzzwq"
+              color="black"
+              font-size="16"
+              width="28%"
             >
-              50 g
+              1 1/2 cup (360 ml)
             </p>
             <p
-              class="sc-AykKG fCXClx"
+              class="sc-AykKG dLapKH"
+              width="72%"
             >
-              white wine
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              400 g
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              canned tomatoes
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              500 g
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              macaroni
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              salt
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              pepper
+              water
             </p>
           </div>
         </div>
         <div
-          class="sc-AykKH bFnGQL"
-          direction="vertical"
-          width="100%"
-        >
-          <h3
-            class="sc-AykKF lfwwnG"
-            width="100%"
-          >
-            Bechamel Sauce
-          </h3>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              80g
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              olive oil
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              80g
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              all-purpose flour
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              800g
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              soy milk
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              salt
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              pepper
-            </p>
-          </div>
-        </div>
-        <div
-          class="sc-AykKH bFnGQL"
-          direction="vertical"
-          width="100%"
-        >
-          <h3
-            class="sc-AykKF lfwwnG"
-            width="100%"
-          >
-            Assembling
-          </h3>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1 tsp
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              oregano
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1 tbsp
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              mint
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              2 tbsps
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              olive oil
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              50 g
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              dry breadcrumps
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            >
-              1 tbsp
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              thyme
-            </p>
-          </div>
-          <div
-            class="sc-AykKH dujSYy"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG iIcCYk"
-              width="25%"
-            />
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              pepper
-            </p>
-          </div>
-        </div>
-        <div
-          class="sc-AykKH icGlyX"
+          class="sc-AykKH cYYHfX"
           direction="horizontal"
         >
           <img
@@ -655,298 +299,6 @@ exports[`Recipe should render correctly 1`] = `
         >
           Step By Step
         </button>
-        <div
-          class="sc-AykKH bFnGQL"
-          direction="vertical"
-          width="100%"
-        >
-          <h3
-            class="sc-AykKF lfwwnG"
-            width="100%"
-          >
-            Sauce
-          </h3>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              1
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Place a frying pan over high heat and add the olive oil
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              2
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Cut the eggplan into 1 cm cubes. Add it to the pan and sauté for 1-2 minutes
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              3
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Finely chop the onion, add it to the pan and sauté for 1-2 minutes
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              4
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Cut the zucchinis and the peppers into small cubes and add them to the pan. Sauté for 4-5 minutes. until the vegetables are ready
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              5
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Add the salt, pepper, oregano, thyme, chili flakes, sugar and tomato paste and sauté
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              6
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Add the wine and canned tomatoes and simmer at medium-low heat for 10 minutes. Remove and set aside
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              7
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              At the same time, in a pot with boiling water, add salt along with the macaroni, and boil for ten minutes
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              8
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Drain the macaroni and transfer to the pan with the vegetables. Mix and set aside
-            </p>
-          </div>
-        </div>
-        <div
-          class="sc-AykKH bFnGQL"
-          direction="vertical"
-          width="100%"
-        >
-          <h3
-            class="sc-AykKF lfwwnG"
-            width="100%"
-          >
-            Bechamel Sauce
-          </h3>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              1
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Place a pot over medium heat. Add the olive oil and flour and mix well until all of the flour is absorbed
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              2
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Add the soy milk in 7-8 batches, stirring constantly with a hand whisk
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              3
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Season with salt and pepper and as soon as it thickens and comes to boil, remove from the heat
-            </p>
-          </div>
-        </div>
-        <div
-          class="sc-AykKH bFnGQL"
-          direction="vertical"
-          width="100%"
-        >
-          <h3
-            class="sc-AykKF lfwwnG"
-            width="100%"
-          >
-            Assembling
-          </h3>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              1
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Preheat the oven at 180 C set to fan
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              2
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Add 100 g of the bechamel into the pasta mixture, add oregano, mint, and mix well
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              3
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Grease a 40 cm ovenproof baking dish with 1 tablespoon olive oil and sprinkle half of the breadcumps
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              4
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Add the pasta mixture, spread the bechamel sauce, and sprinkle with the remaining breadcrumps, 1 table spoon olive oil, thyme and pepper
-            </p>
-          </div>
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
-          >
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              5
-            </p>
-            <p
-              class="sc-AykKG fCXClx"
-            >
-              Bake for 25 -30 minutes. Remove and let it cool
-            </p>
-          </div>
-        </div>
       </div>
     </article>
   </div>

@@ -6,33 +6,27 @@ exports[`Step should render correctly 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH jcMVeo sc-fzXfLR ittBmB"
+    class="sc-AykKH hDonXm sc-fzXfLR ittBmB"
     direction="vertical"
     height="100%"
     width="100%"
   >
     <div
-      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      class="sc-AykKH QDGwA"
       direction="vertical"
-      height="100%"
+      height="calc(100% - 71px)"
+      overflow="scroll"
       width="100%"
     >
-      <div
-        class="sc-AykKH dqXULp"
-        direction="vertical"
-        height="100%"
-        width="100%"
-      >
-        children
-      </div>
+      children
     </div>
     <div
-      class="sc-AykKH jAwBcM"
+      class="sc-AykKH dEVnXs"
       direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+        class="sc-AykKH gsVXKK sc-fzXfLO fZNNwI"
         direction="horizontal"
         width="100%"
       >
@@ -48,7 +42,7 @@ exports[`Step should render correctly 1`] = `
           class="sc-AykKC jJKHJl"
           width="100%"
         >
-          Ingredients
+          Next
           <img
             alt=""
             class="sc-fzXfLQ jNZvTh"
@@ -67,33 +61,27 @@ exports[`Step should render correctly when a background is provided 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH hrScjp sc-fzXfLR ittBmB"
+    class="sc-AykKH fAxPAn sc-fzXfLR ittBmB"
     direction="vertical"
     height="100%"
     width="100%"
   >
     <div
-      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      class="sc-AykKH QDGwA"
       direction="vertical"
-      height="100%"
+      height="calc(100% - 71px)"
+      overflow="scroll"
       width="100%"
     >
-      <div
-        class="sc-AykKH dqXULp"
-        direction="vertical"
-        height="100%"
-        width="100%"
-      >
-        children
-      </div>
+      children
     </div>
     <div
-      class="sc-AykKH jAwBcM"
+      class="sc-AykKH dEVnXs"
       direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+        class="sc-AykKH gsVXKK sc-fzXfLO fZNNwI"
         direction="horizontal"
         width="100%"
       >
@@ -109,7 +97,7 @@ exports[`Step should render correctly when a background is provided 1`] = `
           class="sc-AykKC jJKHJl"
           width="100%"
         >
-          Ingredients
+          Next
           <img
             alt=""
             class="sc-fzXfLQ jNZvTh"
@@ -128,33 +116,27 @@ exports[`Step should render correctly when an image is provided 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH jcMVeo sc-fzXfLR iFIAzs"
+    class="sc-AykKH hDonXm sc-fzXfLR iFIAzs"
     direction="vertical"
     height="100%"
     width="100%"
   >
     <div
-      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      class="sc-AykKH QDGwA"
       direction="vertical"
-      height="100%"
+      height="calc(100% - 71px)"
+      overflow="scroll"
       width="100%"
     >
-      <div
-        class="sc-AykKH dqXULp"
-        direction="vertical"
-        height="100%"
-        width="100%"
-      >
-        children
-      </div>
+      children
     </div>
     <div
-      class="sc-AykKH jAwBcM"
+      class="sc-AykKH dEVnXs"
       direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+        class="sc-AykKH gsVXKK sc-fzXfLO fZNNwI"
         direction="horizontal"
         width="100%"
       >
@@ -170,7 +152,7 @@ exports[`Step should render correctly when an image is provided 1`] = `
           class="sc-AykKC jJKHJl"
           width="100%"
         >
-          Ingredients
+          Next
           <img
             alt=""
             class="sc-fzXfLQ jNZvTh"
@@ -189,33 +171,27 @@ exports[`Step should render correctly when is dialog is true 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH jUacIA sc-fzXfLR ittBmB"
+    class="sc-AykKH blaGdK sc-fzXfLR ittBmB"
     direction="vertical"
     height="100%"
     width="100%"
   >
     <div
-      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      class="sc-AykKH QDGwA"
       direction="vertical"
-      height="100%"
+      height="calc(100% - 71px)"
+      overflow="scroll"
       width="100%"
     >
-      <div
-        class="sc-AykKH dqXULp"
-        direction="vertical"
-        height="100%"
-        width="100%"
-      >
-        children
-      </div>
+      children
     </div>
     <div
-      class="sc-AykKH jAwBcM"
+      class="sc-AykKH dEVnXs"
       direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+        class="sc-AykKH gsVXKK sc-fzXfLO fZNNwI"
         direction="horizontal"
         width="100%"
       >

@@ -9,16 +9,10 @@ const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/recipe/:recipeId">
-          <Recipe />
-        </Route>
+        <Route path="/" exact component={Home} />
+        <Route path="/recipe/:recipeId" component={Recipe} />
       </Switch>
-      <Route path="/step-by-step/:recipeId">
-        <StepByStep />
-      </Route>
+      <Route path="/step-by-step/:recipeId" component={StepByStep} />
     </Router>
   );
 };

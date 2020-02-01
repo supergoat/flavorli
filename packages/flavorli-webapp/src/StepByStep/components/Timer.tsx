@@ -6,7 +6,7 @@ import {
   convertMsToMinsAndSecs,
   useToggleTimer,
   useResetTimer,
-} from '../useTimer';
+} from '../useRecipeTimer';
 import {ITimer} from '../../types';
 
 interface ITimerProps {

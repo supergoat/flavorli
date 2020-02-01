@@ -9,6 +9,7 @@ export type IRecipe = {
   cookingTime: number;
   portions: string;
   difficulty: string;
+  createdAt: string;
   ingredients: IIngredient[];
   items: IItem[];
   steps: IStep[];
@@ -48,7 +49,7 @@ export interface ITimer {
   seconds: number;
 }
 
-export interface IContextITimer {
+export interface IRecipeTimer {
   id: string;
   name: string;
   minutes: number;

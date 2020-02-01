@@ -6,70 +6,70 @@ exports[`ItemsStep should render correctly 1`] = `
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH ymdzJ sc-fzXfLR jtdkeE"
+    class="sc-AykKH jOGbuP sc-fzXfLR jtdkeE"
     direction="vertical"
     height="100%"
     width="100%"
   >
     <div
-      class="sc-AykKH eixNXI sc-AykKI dTNugP"
+      class="sc-AykKH QDGwA"
       direction="vertical"
-      height="100%"
+      height="calc(100% - 71px)"
+      overflow="scroll"
       width="100%"
     >
       <div
-        class="sc-AykKH dqXULp"
+        class="sc-AykKH nShSi"
         direction="vertical"
-        height="100%"
+      >
+        <h1
+          class="sc-fzXfLS egRGPh"
+        >
+          Mise en place
+        </h1>
+        <h2
+          class="sc-fzXfLT cmAgSo"
+        >
+          Items
+        </h2>
+      </div>
+      <p
+        class="sc-AykKG cSYcFR"
+        color="textOnPrimary"
+      >
+        Make sure that you have all of your equipment ready and available to use
+      </p>
+      <div
+        class="sc-AykKH fckMuk"
+        direction="vertical"
         width="100%"
       >
         <div
-          class="sc-AykKH jhhkKu"
-          direction="vertical"
-        >
-          <h1
-            class="sc-fzXfLS egRGPh"
-          >
-            Mise en place
-          </h1>
-          <h2
-            class="sc-fzXfLT cmAgSo"
-          >
-            Items
-          </h2>
-        </div>
-        <div
-          class="sc-AykKH khQdtk"
-          direction="vertical"
+          class="sc-AykKH iLhxfF"
+          direction="horizontal"
           width="100%"
         >
-          <div
-            class="sc-AykKH bwhEDl"
-            direction="horizontal"
-            width="100%"
+          <p
+            class="sc-AykKG sc-fzXfLU ghmBpK"
+            width="5%"
           >
-            <p
-              class="sc-AykKG sc-fzXfLU ghmBpK"
-              width="5%"
-            >
-              1
-            </p>
-            <p
-              class="sc-AykKG sc-fzXfLV hvUyQw"
-            >
-              Bowl
-            </p>
-          </div>
+            1
+          </p>
+          <p
+            class="sc-AykKG sc-fzXfLV hvUyQw"
+          >
+            Pot
+          </p>
         </div>
       </div>
     </div>
     <div
-      class="sc-AykKH jAwBcM"
+      class="sc-AykKH dEVnXs"
       direction="vertical"
       width="100%"
     >
       <div
-        class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+        class="sc-AykKH gsVXKK sc-fzXfLO fZNNwI"
         direction="horizontal"
         width="100%"
       >
@@ -85,7 +85,7 @@ exports[`ItemsStep should render correctly 1`] = `
           class="sc-AykKC jJKHJl"
           width="100%"
         >
-          Ingredients
+          Next
           <img
             alt=""
             class="sc-fzXfLQ jNZvTh"

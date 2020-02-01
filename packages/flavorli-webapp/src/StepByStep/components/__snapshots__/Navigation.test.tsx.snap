@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation should render correctly when the current step is 1 1`] = `
+exports[`Navigation should render correctly 1`] = `
 <div>
   <div
     id="recipe-steps"
   />
   <div
-    class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
+    class="sc-AykKH gsVXKK sc-fzXfLO fZNNwI"
     direction="horizontal"
     width="100%"
   >
@@ -22,71 +22,7 @@ exports[`Navigation should render correctly when the current step is 1 1`] = `
       class="sc-AykKC jJKHJl"
       width="100%"
     >
-      Ingredients
-      <img
-        alt=""
-        class="sc-fzXfLQ jNZvTh"
-        src="right_chevron_white.svg"
-      />
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Navigation should render correctly when the current step is 2 1`] = `
-<div>
-  <div
-    id="recipe-steps"
-  />
-  <div
-    class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
-    direction="horizontal"
-    width="100%"
-  >
-    <button
-      aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLP cVkvtf"
-    >
-      back
-    </button>
-    <button
-      aria-controls="recipe-steps"
-      class="sc-AykKC jJKHJl"
-      width="100%"
-    >
-      Items
-      <img
-        alt=""
-        class="sc-fzXfLQ jNZvTh"
-        src="right_chevron_white.svg"
-      />
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Navigation should render correctly when the current step is 3 1`] = `
-<div>
-  <div
-    id="recipe-steps"
-  />
-  <div
-    class="sc-AykKH hoxMSq sc-fzXfLO fZNNwI"
-    direction="horizontal"
-    width="100%"
-  >
-    <button
-      aria-controls="recipe-steps"
-      class="sc-AykKC sc-fzXfLP cVkvtf"
-    >
-      back
-    </button>
-    <button
-      aria-controls="recipe-steps"
-      class="sc-AykKC jJKHJl"
-      width="100%"
-    >
-      Preparation
+      Next
       <img
         alt=""
         class="sc-fzXfLQ jNZvTh"

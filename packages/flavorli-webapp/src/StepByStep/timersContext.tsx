@@ -1,12 +1,12 @@
 import React from 'react';
-import {IContextITimer} from '../types';
-import {getSavedTimersFromLocalStorage} from './useTimer';
+import {IRecipeTimer} from '../types';
+import {getSavedTimersFromLocalStorage} from './useRecipeTimer';
 
 interface IRecipeTimersContext {
   recipeId: string;
-  recipeTimers: {[timerId: string]: IContextITimer};
+  recipeTimers: {[timerId: string]: IRecipeTimer};
   setRecipeTimers: React.Dispatch<{
-    [timerId: string]: IContextITimer;
+    [timerId: string]: IRecipeTimer;
   }>;
 }
 
@@ -20,7 +20,7 @@ export function RecipeTimersProvider({
   ...props
 }: {
   recipeId: string;
-  initialValues?: {[timerId: string]: IContextITimer};
+  initialValues?: {[timerId: string]: IRecipeTimer};
   children: React.ReactNode;
 }) {
   const [initState] = React.useState(
@@ -29,8 +29,8 @@ export function RecipeTimersProvider({
 
   const [recipeTimers, setRecipeTimers] = React.useReducer(
     (
-      state: {[timerId: string]: IContextITimer},
-      action: {[timerId: string]: IContextITimer},
+      state: {[timerId: string]: IRecipeTimer},
+      action: {[timerId: string]: IRecipeTimer},
     ) => ({
       ...state,
       ...action,

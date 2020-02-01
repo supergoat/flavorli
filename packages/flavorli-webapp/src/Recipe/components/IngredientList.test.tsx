@@ -6,12 +6,7 @@ import {recipes} from '../mockData';
 
 const setup = () => {
   const recipe = recipes[0];
-  return render(
-    <IngredientList
-      taskName={recipe.tasks[0].name}
-      ingredients={recipe.tasks[0].ingredients}
-    />,
-  );
+  return render(<IngredientList ingredients={recipe.ingredients} />);
 };
 
 describe('IngredientList', () => {

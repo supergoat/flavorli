@@ -19,16 +19,14 @@ exports[`Step should render correctly 1`] = `
   >
     <div
       aria-live="polite"
-      class="sc-AykKH kSMEZQ"
+      class="sc-AykKH ibnrOK sc-fzXfLT ducvdz"
       data-testid="step-images"
       direction="vertical"
-      height="300px"
       id="step-images"
-      width="300px"
     >
       <div
         aria-label="Image 1 of 2"
-        class="sc-AykKH csfDLG"
+        class="sc-AykKH debzfe"
         direction="vertical"
         height="100%"
         role="group"
@@ -43,7 +41,7 @@ exports[`Step should render correctly 1`] = `
       <button
         aria-controls="step-images"
         aria-label="Previous Image"
-        class="sc-fzXfLQ sc-fzXfLR hrlKtg"
+        class="sc-fzXfLQ sc-fzXfLR fWsEkU"
       >
         <img
           alt=""
@@ -53,7 +51,7 @@ exports[`Step should render correctly 1`] = `
       <button
         aria-controls="step-images"
         aria-label="Next Image"
-        class="sc-fzXfLQ sc-fzXfLS GOLfT"
+        class="sc-fzXfLQ sc-fzXfLS htCsKf"
       >
         <img
           alt=""

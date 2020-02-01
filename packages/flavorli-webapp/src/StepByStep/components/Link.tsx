@@ -1,10 +1,10 @@
 import React from 'react';
 import {Stack, Text, Button} from '@flavorli/elements';
 
-import {ILink, IContextITimer} from '../../types';
+import {ILink, IRecipeTimer} from '../../types';
 import {useStepByStepContext} from '../stepByStepContext';
 import {useRecipeTimersContext} from '../timersContext';
-import {useRecipeTimer, convertMsToMinsAndSecs} from '../useTimer';
+import {useRecipeTimer, convertMsToMinsAndSecs} from '../useRecipeTimer';
 
 interface ILinkProps {
   link: ILink;
@@ -52,7 +52,7 @@ const Link = ({link}: ILinkProps) => {
 
 export default Link;
 
-const RemainingTime = ({recipeTimer}: {recipeTimer: IContextITimer}) => {
+const RemainingTime = ({recipeTimer}: {recipeTimer: IRecipeTimer}) => {
   const ms = useRecipeTimer(
     recipeTimer.updatedAt,
     recipeTimer.remainingTime,

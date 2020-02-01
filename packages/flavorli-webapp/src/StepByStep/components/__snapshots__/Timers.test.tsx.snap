@@ -3,9 +3,9 @@
 exports[`Timers should render a placeholder if there are no timers 1`] = `
 <div>
   <div
-    class="sc-AykKH jfBLCV"
+    class="sc-AykKH iUUBBK"
     direction="vertical"
-    height="58px"
+    height="46px"
   >
     <div />
   </div>
@@ -15,18 +15,18 @@ exports[`Timers should render a placeholder if there are no timers 1`] = `
 exports[`Timers should render correctly 1`] = `
 <div>
   <div
-    class="sc-AykKH bcqxzt"
+    class="sc-AykKH bHPzgy"
     direction="vertical"
     width="100%"
   >
     <div
-      class="sc-AykKH WvElB"
+      class="sc-AykKH fJioDD"
       direction="vertical"
       id="timers"
       width="100%"
     >
       <div
-        class="sc-AykKH daWbBB"
+        class="sc-AykKH dOLdKR"
         direction="vertical"
         width="100%"
       >

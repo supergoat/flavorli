@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Timer should render an empty div if the timer is undefined 1`] = `<div />`;
-
 exports[`Timer should render correctly 1`] = `
 <div>
   <div
-    class="sc-AykKH bWlsaY"
+    class="sc-AykKH lkPDtk"
     direction="vertical"
     width="100%"
   >
@@ -17,10 +15,13 @@ exports[`Timer should render correctly 1`] = `
       id="timer-1"
       role="timer"
     >
-      10m 0s
+      10
+      m 
+      0
+      s
     </p>
     <div
-      class="sc-AykKH bhytJE"
+      class="sc-AykKH cRsFPk"
       direction="horizontal"
     >
       <button
@@ -44,7 +45,7 @@ exports[`Timer should render correctly 1`] = `
 exports[`Timer should render correctly when type is notification 1`] = `
 <div>
   <div
-    class="sc-AykKH bdJbtG"
+    class="sc-AykKH cKRlwi"
     direction="horizontal"
     width="100%"
   >
@@ -56,10 +57,13 @@ exports[`Timer should render correctly when type is notification 1`] = `
       id="timer-1"
       role="timer"
     >
-      10m 0s
+      10
+      m 
+      0
+      s
     </p>
     <div
-      class="sc-AykKH bhytJE"
+      class="sc-AykKH cRsFPk"
       direction="horizontal"
     >
       <button

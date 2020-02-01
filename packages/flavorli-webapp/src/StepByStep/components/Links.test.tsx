@@ -1,20 +1,30 @@
 import React from 'react';
-import {render} from '../../helpers/test-helpers';
+import {renderWithRelayAndRouter} from '../../helpers/test-helpers';
 import {axe} from 'jest-axe';
 import Links from './Links';
-import {ILink} from '../types';
+import {ILink} from '../../types';
 import userEvent from '@testing-library/user-event';
 import {RecipeTimersProvider} from '../timersContext';
 import {StepByStepProvider} from '../stepByStepContext';
 import {act} from 'react-dom/test-utils';
 import {link} from '../mockData';
 
+jest.mock('../useFetchStepByStepRecipe', () => {
+  const {recipes} = require('../mockData');
+
+  return () => ({
+    loading: false,
+    error: '',
+    recipe: recipes[0],
+  });
+});
+
 const setup = (customLinks?: ILink[]) => {
   const links = customLinks || [link];
 
   return {
-    ...render(
-      <RecipeTimersProvider>
+    ...renderWithRelayAndRouter(
+      <RecipeTimersProvider recipeId="1">
         <StepByStepProvider initialValues={{noOfSteps: 10}}>
           <Links links={links} />
         </StepByStepProvider>

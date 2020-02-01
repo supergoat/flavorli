@@ -1,16 +1,22 @@
 import React from 'react';
 import {axe} from 'jest-axe';
-import {renderWithRouter} from '../helpers/test-helpers';
+import {renderWithRelayAndRouter} from '../helpers/test-helpers';
 import StepByStep from '.';
 import userEvent from '@testing-library/user-event';
+import {recipes} from './mockData';
 
-import {stepByStep} from './mockData';
+jest.mock('./useFetchStepByStepRecipe', () => {
+  const {recipes} = require('./mockData');
+
+  return () => ({
+    loading: false,
+    error: '',
+    recipe: recipes[0],
+  });
+});
 
 const setup = () => {
-  return {
-    ...renderWithRouter(<StepByStep />),
-    stepByStep,
-  };
+  return renderWithRelayAndRouter(<StepByStep />);
 };
 describe('StepByStep', () => {
   it('should not have any axe violations', async () => {
@@ -27,14 +33,14 @@ describe('StepByStep', () => {
   });
 
   it('should have a next button that when clicked hides the current step and brings the next step into view', () => {
-    const {queryByLabelText, getByText, stepByStep} = setup();
-    const {preparationSteps, recipeSteps} = stepByStep;
+    const {queryByLabelText, getByText} = setup();
+    const {steps} = recipes[0];
 
-    const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
+    const noOfSteps = 4 + steps.length;
 
     expect(queryByLabelText(`Step 1 of ${noOfSteps}`)).not.toBeNull();
 
-    const nextButton = getByText(/ingredients/i);
+    const nextButton = getByText(/next/i);
 
     userEvent.click(nextButton);
 
@@ -44,13 +50,13 @@ describe('StepByStep', () => {
   });
 
   it('should have a back button that when clicked hides the current step and brings the previous step into view', () => {
-    const {queryByLabelText, getByText, stepByStep} = setup();
-    const {preparationSteps, recipeSteps} = stepByStep;
+    const {queryByLabelText, getByText} = setup();
+    const {steps} = recipes[0];
 
-    const noOfSteps = 3 + preparationSteps.length + recipeSteps.length;
+    const noOfSteps = 4 + steps.length;
 
     // Go to the second page, to enable us to test the back button
-    const nextButton = getByText(/ingredients/i);
+    const nextButton = getByText(/next/i);
     userEvent.click(nextButton);
 
     expect(queryByLabelText(`Step 2 of ${noOfSteps}`)).not.toBeNull();
