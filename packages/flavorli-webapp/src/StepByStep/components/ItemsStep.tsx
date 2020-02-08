@@ -10,24 +10,24 @@ interface IItemsStepProps {
 }
 const ItemsStep = ({items}: IItemsStepProps) => {
   return (
-    <Step background="primary" image={BoxSvg}>
+    <Step>
       <Stack gap={4} paddingBottom={8}>
         <Heading>Mise en place</Heading>
         <SubHeading>Items</SubHeading>
       </Stack>
 
-      <Text color="textOnPrimary">
+      <Text>
         Make sure that you have all of your equipment ready and available to use
       </Text>
 
       <Stack gap={8} width="100%">
-        {items.map(item => {
+        {items.map((item, index) => {
           return (
-            <Stack direction="horizontal" gap={16} width="100%" key={item.name}>
-              <ItemQty width="5%" align="right">
-                {item.qty}
-              </ItemQty>
-              <ItemName>{item.name}</ItemName>
+            <Stack direction="horizontal" gap={8} key={`item-${index}`}>
+              <CheckBox id={`item-${item.name}`} />
+              <label htmlFor={`item-${item.name}`}>
+                {item.qty} {item.name}
+              </label>
             </Stack>
           );
         })}
@@ -41,27 +41,20 @@ export default ItemsStep;
 const Heading = styled.h1`
   font-family: ${p => p.theme.families.Pacifico};
   font-size: ${p => p.theme.fontSizes[32]};
-  color: ${p => p.theme.colors.white};
+  color: ${p => p.theme.colors.primary};
   font-weight: normal;
 `;
 
 const SubHeading = styled.h2`
   font-family: ${p => p.theme.families.PatrickHand};
   font-size: ${p => p.theme.fontSizes[24]};
-  color: ${p => p.theme.colors.secondaryDark};
+  color: ${p => p.theme.colors.primary};
   font-weight: normal;
 `;
 
-const ItemQty = styled(Text)`
-  font-family: ${p => p.theme.families.PatrickHand};
-  font-size: ${p => p.theme.fontSizes[20]};
-  color: ${p => p.theme.colors.secondaryDark};
-  font-weight: normal;
-`;
-
-const ItemName = styled(Text)`
-  font-family: ${p => p.theme.families.PatrickHand};
-  font-size: ${p => p.theme.fontSizes[20]};
-  color: ${p => p.theme.colors.white};
-  font-weight: normal;
+const CheckBox = styled.input.attrs(() => ({
+  type: 'checkbox',
+}))`
+  flex-shrink: 0;
+  margin-right: 8px;
 `;

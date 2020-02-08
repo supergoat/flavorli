@@ -30,7 +30,7 @@ const StepDialog = () => {
       describedbyID="step-tasks"
       onClose={onCloseDialogStep}
     >
-      <Step isDialog={true} background="surface">
+      <Step isDialog={true}>
         <StepNo no={step?.no} />
 
         <Tag tag={step.tag} />

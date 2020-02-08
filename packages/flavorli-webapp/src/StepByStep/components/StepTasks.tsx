@@ -11,16 +11,9 @@ const Tasks = ({tasks}: IStepTasks) => {
     <Stack gap={8} id="step-tasks">
       {tasks.map((task, index) => {
         return (
-          <Stack
-            direction="horizontal"
-            alignment="start"
-            gap={8}
-            key={`task-${index}`}
-          >
-            <Task>
-              <CheckBox id={`task-${task}`} />
-              <label htmlFor={`task-${task}`}>{task}</label>
-            </Task>
+          <Stack direction="horizontal" gap={8} key={`task-${index}`}>
+            <CheckBox id={`task-${task}`} />
+            <label htmlFor={`task-${task}`}>{task}</label>
           </Stack>
         );
       })}
@@ -35,8 +28,4 @@ const CheckBox = styled.input.attrs(() => ({
 }))`
   flex-shrink: 0;
   margin-right: 8px;
-`;
-
-const Task = styled.div`
-  display: flex;
 `;

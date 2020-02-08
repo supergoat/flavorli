@@ -32,7 +32,8 @@ export interface IStackProps extends React.HTMLAttributes<HTMLDivElement> {
   shadow?: keyof typeof shadows;
   className?: string;
   border?: string;
-  overflow?: 'hidden' | 'visible' | 'scroll';
+  overflowY?: boolean;
+  overflowX?: boolean;
 }
 
 const ForwardRefStack = (
@@ -99,7 +100,8 @@ export const StackWrapper = styled.div<IStackProps>`
   width: ${p => p.width};
   height: ${p => p.height};
   border: ${p => p.border};
-  overflow: ${p => p.overflow};
+  overflow-y: ${p => (p.overflowY ? 'scroll' : 'initial')};
+  overflow-x: ${p => (p.overflowX ? 'scroll' : 'initial')};
 
   background: ${p => p.background && p.theme.colors[p.background]};
 

@@ -12,7 +12,7 @@ interface IRecipeCardProps {
 }
 const RecipeCard = ({recipe}: IRecipeCardProps) => {
   return (
-    <Stack width="100%" shadow="LIGHT" borderRadius={16} overflow="hidden">
+    <Stack width="100%" shadow="LIGHT" borderRadius={16} overflowX overflowY>
       <Image src={recipe.image} alt="" />
       <Stack width="100%" gap={16} padding={16}>
         <Stack width="100%" gap={8}>

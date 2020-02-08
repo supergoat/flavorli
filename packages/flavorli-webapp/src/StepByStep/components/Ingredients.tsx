@@ -18,9 +18,7 @@ const Ingredients = ({ingredients = []}: {ingredients?: IIngredient[]}) => {
           >
             {/* <Text width="25%">{ingredient.qty}</Text>
             <Text width="75%">{ingredient.name}</Text> */}
-            <Text>
-              <b>{ingredient.qty}</b> {ingredient.name}
-            </Text>
+            <Text>{ingredient.name}</Text>
           </Stack>
         );
       })}

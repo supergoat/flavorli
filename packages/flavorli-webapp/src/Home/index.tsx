@@ -12,7 +12,7 @@ const Home = () => {
 
   if (!recipes || !recipes.length) return null;
   return (
-    <Stack overflow="scroll" height="100%">
+    <Stack overflowY overflowX height="100%">
       <Stack
         padding={16}
         gap={16}

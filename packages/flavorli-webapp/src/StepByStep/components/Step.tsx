@@ -8,19 +8,11 @@ const NAVIGATION_COMPONENT_HEIGHT = '71px';
 export interface IPreparationStepListProps {
   children: React.ReactNode;
   isDialog?: boolean;
-  background?: IColor;
-  image?: string;
 }
-const Step = ({
-  background,
-  image,
-  isDialog,
-  children,
-}: IPreparationStepListProps) => {
+const Step = ({isDialog, children}: IPreparationStepListProps) => {
   return (
-    <StepWrapper
-      image={image}
-      background={background}
+    <Stack
+      background="surface"
       width="100%"
       height="100%"
       borderRadiusTopLeft={isDialog ? undefined : 8}
@@ -34,7 +26,7 @@ const Step = ({
         paddingLeft={24}
         paddingRight={24}
         paddingBottom={16}
-        overflow="scroll"
+        overflowY
       >
         {children}
       </Stack>
@@ -42,28 +34,8 @@ const Step = ({
       <Stack width="100%" paddingLeft={24} paddingRight={24} paddingBottom={24}>
         <Navigation isDialog={isDialog} />
       </Stack>
-    </StepWrapper>
+    </Stack>
   );
 };
 
 export default Step;
-
-const StepWrapper = styled(Stack)<{image?: string}>`
-  position: relative;
-  ${p =>
-    p.image &&
-    css`
-      &::before {
-        content: '';
-        background-image: url(${p.image});
-        background-size: 550px;
-        background-repeat: no-repeat;
-        opacity: 0.1;
-        top: 100px;
-        left: 50px;
-        bottom: 0;
-        right: 0;
-        position: absolute;
-      }
-    `}
-`;

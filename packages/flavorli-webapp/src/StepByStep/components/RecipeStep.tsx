@@ -17,7 +17,7 @@ interface IRecipeStepProps {
 }
 const RecipeStep = ({step}: IRecipeStepProps) => {
   return (
-    <Step background="surface">
+    <Step>
       <Stack
         width="100%"
         paddingBottom={32}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useTrapFocus, Stack} from '@flavorli/elements';
+import {useTrapFocus, Stack, Button, H3, Text} from '@flavorli/elements';
 import StepList from './components/StepList';
 import RecipeStep from './components/RecipeStep';
 import Timers from './components/Timers';
@@ -8,6 +8,8 @@ import {RecipeTimersProvider} from './timersContext';
 
 import IntroStep from './components/IntroStep';
 import MiseEnPlace from './components/MiseEnPlace';
+import NextUp from './components/NextUp';
+
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
 import {StepByStepProvider} from './stepByStepContext';
@@ -19,6 +21,17 @@ const StepByStep = () => {
 
   const {loading, error, recipe} = useFetchStepByStepRecipe();
 
+  let miseEnPlaceSteps: React.ReactElement[] = [];
+  let preparationSteps: React.ReactElement[] = [];
+
+  recipe?.steps.map((step, index) => {
+    if (step.type === 'MISE_EN_PLACE') {
+      miseEnPlaceSteps.push(<RecipeStep key={`${index}-step`} step={step} />);
+    } else {
+      preparationSteps.push(<RecipeStep key={`${index}-step`} step={step} />);
+    }
+  });
+
   return (
     <DialogWrapper ref={refEl}>
       {loading && <div>Loading...</div>}
@@ -28,7 +41,7 @@ const StepByStep = () => {
         <RecipeTimersProvider recipeId={recipe.id}>
           <StepByStepProvider
             initialValues={{
-              noOfSteps: 4 + recipe.steps.length,
+              noOfSteps: 5 + recipe.steps.length,
             }}
           >
             <Stack width="100%" height="100%">
@@ -47,14 +60,19 @@ const StepByStep = () => {
                     portions={recipe.portions}
                     difficulty={recipe.difficulty}
                   />
-                  <MiseEnPlace />
+
+                  <NextUp heading="Mise En Place">
+                    <MiseEnPlace />
+                  </NextUp>
 
                   <IngredientsStep ingredients={recipe.ingredients} />
                   <ItemsStep items={recipe.items} />
 
-                  {recipe.steps.map((step, index) => {
-                    return <RecipeStep key={`${index}-step`} step={step} />;
-                  })}
+                  {miseEnPlaceSteps}
+
+                  <NextUp heading="Preparation" />
+
+                  {preparationSteps}
                 </StepList>
               </Section>
             </Stack>

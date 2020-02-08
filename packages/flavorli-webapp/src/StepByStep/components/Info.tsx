@@ -13,12 +13,8 @@ const Info = ({name, icon, value}: InfoProps) => {
     <Stack gap={16} direction="horizontal" alignment="center" width="100%">
       <Icon name={icon} />
       <Stack gap={4} width="100%">
-        <Heading fontSize={20} color="secondaryDark">
-          {name}
-        </Heading>
-        <SubHeading fontSize={16} color="textOnPrimary">
-          {value}
-        </SubHeading>
+        <Heading fontSize={20}>{name}</Heading>
+        <SubHeading fontSize={16}>{value}</SubHeading>
       </Stack>
     </Stack>
   );

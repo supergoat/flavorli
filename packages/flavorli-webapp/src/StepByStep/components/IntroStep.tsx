@@ -15,11 +15,11 @@ const Intro = ({
   difficulty,
 }: IIntroProps) => {
   return (
-    <Step background="primary" image={Notebook}>
+    <Step>
       <Image src={image} alt="" />
       <Stack gap={4}>
-        <Heading color="white">{name}</Heading>
-        <Subheading color="secondaryDark">By {author}</Subheading>
+        <Heading>{name}</Heading>
+        <Subheading>By {author}</Subheading>
       </Stack>
 
       <Stack gap={24} paddingBottom={24}>

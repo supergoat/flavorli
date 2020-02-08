@@ -14,7 +14,7 @@ const Tag = ({tag}: {tag: ITag}) => {
       borderRadius={4}
       background={tag.color}
     >
-      <Text intent="textOnPrimary"> {tag.text}</Text>
+      <Text intent="textOnPrimary">{tag.text}</Text>
     </Stack>
   );
 };

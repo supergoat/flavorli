@@ -10,13 +10,13 @@ interface IIngredientsStepProps {
 }
 const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
   return (
-    <Step background="primary" image={SaladSvg}>
+    <Step>
       <Stack gap={4} paddingBottom={8}>
         <Heading>Mise en place</Heading>
         <SubHeading>Ingredients</SubHeading>
       </Stack>
 
-      <Text color="textOnPrimary">
+      <Text>
         Here is a list of all the ingredients you will need. Check to make sure
         you are not missing anything before you begin
       </Text>
@@ -30,10 +30,10 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
               width="100%"
               key={ingredient.name}
             >
-              <ItemQty width="30%" align="right">
-                {ingredient.qty}
-              </ItemQty>
-              <ItemName width="70%">{ingredient.name}</ItemName>
+              <CheckBox id={`ingredient-${ingredient.name}`} />
+              <label htmlFor={`ingredient-${ingredient.name}`}>
+                {ingredient.qty} {ingredient.name}
+              </label>
             </Stack>
           );
         })}
@@ -47,27 +47,20 @@ export default IngredientsStep;
 const Heading = styled.h1`
   font-family: ${p => p.theme.families.Pacifico};
   font-size: ${p => p.theme.fontSizes[32]};
-  color: ${p => p.theme.colors.white};
+  color: ${p => p.theme.colors.primary};
   font-weight: normal;
 `;
 
 const SubHeading = styled.h2`
   font-family: ${p => p.theme.families.PatrickHand};
   font-size: ${p => p.theme.fontSizes[24]};
-  color: ${p => p.theme.colors.secondaryDark};
+  color: ${p => p.theme.colors.primary};
   font-weight: normal;
 `;
 
-const ItemQty = styled(Text)`
-  font-family: ${p => p.theme.families.PatrickHand};
-  font-size: ${p => p.theme.fontSizes[20]};
-  color: ${p => p.theme.colors.secondaryDark};
-  font-weight: normal;
-`;
-
-const ItemName = styled(Text)`
-  font-family: ${p => p.theme.families.PatrickHand};
-  font-size: ${p => p.theme.fontSizes[20]};
-  color: ${p => p.theme.colors.white};
-  font-weight: normal;
+const CheckBox = styled.input.attrs(() => ({
+  type: 'checkbox',
+}))`
+  flex-shrink: 0;
+  margin-right: 8px;
 `;
