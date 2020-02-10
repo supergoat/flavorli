@@ -30,8 +30,12 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
               width="100%"
               key={ingredient.name}
             >
-              <CheckBox id={`ingredient-${ingredient.name}`} />
-              <label htmlFor={`ingredient-${ingredient.name}`}>
+              <CheckBox
+                id={`ingredient-${ingredient.name}-${ingredient.qty}`}
+              />
+              <label
+                htmlFor={`ingredient-${ingredient.name}-${ingredient.qty}`}
+              >
                 {ingredient.qty} {ingredient.name}
               </label>
             </Stack>

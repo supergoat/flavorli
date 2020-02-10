@@ -12,20 +12,21 @@ const Home = () => {
 
   if (!recipes || !recipes.length) return null;
   return (
-    <Stack overflowY overflowX height="100%">
-      <Stack
-        padding={16}
-        gap={16}
-        width="100%"
-        role="main"
-        background="surface"
-      >
-        <H1 color="primary">Recipes</H1>
-        <Stack gap={32} width="100%">
-          {recipes.map(recipe => {
-            return <RecipeCard key={recipe.name} recipe={recipe} />;
-          })}
-        </Stack>
+    <Stack
+      overflowY
+      overflowX
+      padding={16}
+      gap={16}
+      width="100%"
+      height="100%"
+      role="main"
+      background="surface"
+    >
+      <H1 color="primary">Recipes</H1>
+      <Stack gap={32} width="100%">
+        {recipes.map(recipe => {
+          return <RecipeCard key={recipe.name} recipe={recipe} />;
+        })}
       </Stack>
     </Stack>
   );

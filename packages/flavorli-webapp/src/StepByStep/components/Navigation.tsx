@@ -26,8 +26,6 @@ const Navigation = ({isDialog}: INavigationProps) => {
   };
 
   const navigateToRecipe = () => {
-    // Remove all timers from local storage
-    localStorage.removeItem('__timers__');
     // For now we can go back in history once but this might change in the future
     history.goBack();
   };
