@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack} from '@flavorli/elements';
 import styled from 'styled-components';
 
 interface IStepTasks {

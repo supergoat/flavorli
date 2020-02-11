@@ -1,6 +1,6 @@
 import React from 'react';
 import Step from './Step';
-import {Stack, Text, H1} from '@flavorli/elements';
+import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 
 const NextUp = ({

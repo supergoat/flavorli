@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Text, H3, Button, usePortal, Dialog} from '@flavorli/elements';
+import {Stack, Text, H3, Button, Dialog} from '@flavorli/elements';
 import styled from 'styled-components';
 
 const MiseEnPlace = () => {

@@ -1,7 +1,5 @@
 import React from 'react';
 import {Stack} from '@flavorli/elements';
-import {IColor} from '@flavorli/elements/lib/theme/colors';
-import styled, {css} from 'styled-components';
 import Navigation from './Navigation';
 
 const NAVIGATION_COMPONENT_HEIGHT = '71px';

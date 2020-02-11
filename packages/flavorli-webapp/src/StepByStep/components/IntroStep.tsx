@@ -2,7 +2,6 @@ import React from 'react';
 import {Stack, H1, H2} from '@flavorli/elements';
 import styled from 'styled-components';
 import Info from './Info';
-import Notebook from '../icons/notebook.svg';
 import Step from './Step';
 
 const Intro = ({

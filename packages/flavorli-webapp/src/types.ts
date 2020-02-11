@@ -18,6 +18,8 @@ export type IRecipe = {
 export interface IIngredient {
   qty: string;
   name: string;
+  notes?: string;
+  link?: string;
 }
 
 export interface IItem {

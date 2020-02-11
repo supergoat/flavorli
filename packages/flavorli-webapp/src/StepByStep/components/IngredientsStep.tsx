@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {Stack, Text} from '@flavorli/elements';
 import Step from './Step';
 import {IIngredient} from '../../types';
-import SaladSvg from '../icons/salad.svg';
 
 interface IIngredientsStepProps {
   ingredients: IIngredient[];
@@ -33,11 +32,22 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
               <CheckBox
                 id={`ingredient-${ingredient.name}-${ingredient.qty}`}
               />
-              <label
-                htmlFor={`ingredient-${ingredient.name}-${ingredient.qty}`}
-              >
-                {ingredient.qty} {ingredient.name}
-              </label>
+              <Stack gap={4}>
+                <label
+                  htmlFor={`ingredient-${ingredient.name}-${ingredient.qty}`}
+                >
+                  {ingredient.link ? (
+                    <Link target="_blank" href={ingredient.link}>
+                      {ingredient.qty} {ingredient.name}
+                    </Link>
+                  ) : (
+                    <>
+                      {ingredient.qty} {ingredient.name}
+                    </>
+                  )}
+                </label>
+                <Text intent="secondary">{ingredient?.notes}</Text>
+              </Stack>
             </Stack>
           );
         })}
@@ -67,4 +77,8 @@ const CheckBox = styled.input.attrs(() => ({
 }))`
   flex-shrink: 0;
   margin-right: 8px;
+`;
+
+const Link = styled.a`
+  color: ${p => p.theme.colors.primary};
 `;

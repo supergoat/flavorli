@@ -1,19 +1,19 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 7040e0195c7ba52087ca6f25d1a26463 */
+/* @relayHash 89f99c426640739d4390cce9ce5d5ff4 */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type useFetchRecipeListQueryVariables = {};
 export type useFetchRecipeListQueryResponse = {
   readonly recipes: ReadonlyArray<{
-    readonly id: string;
-    readonly author: string;
-    readonly name: string;
-    readonly image: string;
-    readonly preparationTime: number;
-    readonly cookingTime: number;
-    readonly portions: string;
-    readonly difficulty: string;
+    readonly id: string | null;
+    readonly author: string | null;
+    readonly name: string | null;
+    readonly image: string | null;
+    readonly preparationTime: number | null;
+    readonly cookingTime: number | null;
+    readonly portions: string | null;
+    readonly difficulty: string | null;
   }>;
 };
 export type useFetchRecipeListQuery = {

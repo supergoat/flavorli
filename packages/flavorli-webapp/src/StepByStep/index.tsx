@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useTrapFocus, Stack, Button, H3, Text} from '@flavorli/elements';
+import {useTrapFocus, Stack} from '@flavorli/elements';
 import StepList from './components/StepList';
 import RecipeStep from './components/RecipeStep';
 import Timers from './components/Timers';

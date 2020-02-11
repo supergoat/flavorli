@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 512cdfb7a9c18c0f59ca50ea54b4c6f6 */
+/* @relayHash 62d16a1da2115df19184e61026e322bb */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type useFetchRecipeQueryVariables = {
@@ -8,18 +8,18 @@ export type useFetchRecipeQueryVariables = {
 };
 export type useFetchRecipeQueryResponse = {
   readonly recipe: {
-    readonly id: string;
-    readonly author: string;
-    readonly name: string;
-    readonly image: string;
-    readonly preparationTime: number;
-    readonly cookingTime: number;
-    readonly portions: string;
-    readonly difficulty: string;
+    readonly id: string | null;
+    readonly author: string | null;
+    readonly name: string | null;
+    readonly image: string | null;
+    readonly preparationTime: number | null;
+    readonly cookingTime: number | null;
+    readonly portions: string | null;
+    readonly difficulty: string | null;
     readonly ingredients: ReadonlyArray<{
-      readonly qty: string;
-      readonly name: string;
-    }>;
+      readonly qty: string | null;
+      readonly name: string | null;
+    } | null> | null;
   };
 };
 export type useFetchRecipeQuery = {

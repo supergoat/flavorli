@@ -3,7 +3,6 @@ import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 import {IItem} from '../../types';
 import Step from './Step';
-import BoxSvg from '../icons/box.svg';
 
 interface IItemsStepProps {
   items: IItem[];

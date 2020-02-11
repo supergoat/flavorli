@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 6ebf85badd366d8eb33bc6ee362620f7 */
+/* @relayHash 539b146d32acfedccc4218f206d47210 */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type StepType = 'MISE_EN_PLACE' | 'PREPARATION' | '%future added value';
@@ -9,27 +9,29 @@ export type useFetchStepByStepRecipeQueryVariables = {
 };
 export type useFetchStepByStepRecipeQueryResponse = {
   readonly recipe: {
-    readonly id: string;
-    readonly author: string;
-    readonly name: string;
-    readonly image: string;
-    readonly preparationTime: number;
-    readonly cookingTime: number;
-    readonly portions: string;
-    readonly difficulty: string;
+    readonly id: string | null;
+    readonly author: string | null;
+    readonly name: string | null;
+    readonly image: string | null;
+    readonly preparationTime: number | null;
+    readonly cookingTime: number | null;
+    readonly portions: string | null;
+    readonly difficulty: string | null;
     readonly ingredients: ReadonlyArray<{
-      readonly name: string;
-      readonly qty: string;
-    }>;
+      readonly name: string | null;
+      readonly qty: string | null;
+      readonly notes: string | null;
+      readonly link: string | null;
+    } | null> | null;
     readonly items: ReadonlyArray<{
-      readonly name: string;
-      readonly qty: string;
-    }>;
+      readonly name: string | null;
+      readonly qty: string | null;
+    } | null> | null;
     readonly steps: ReadonlyArray<{
-      readonly no: number;
-      readonly type: StepType;
+      readonly no: number | null;
+      readonly type: StepType | null;
       readonly links: ReadonlyArray<{
-        readonly heading: string;
+        readonly heading: string | null;
         readonly name: string;
         readonly from: string;
         readonly timerId: string | null;
@@ -37,16 +39,16 @@ export type useFetchStepByStepRecipeQueryResponse = {
       readonly tag: {
         readonly color: string;
         readonly text: string;
-      };
+      } | null;
       readonly ingredients: ReadonlyArray<{
-        readonly qty: string;
-        readonly name: string;
+        readonly qty: string | null;
+        readonly name: string | null;
       } | null> | null;
       readonly items: ReadonlyArray<{
-        readonly name: string;
-        readonly qty: string;
+        readonly name: string | null;
+        readonly qty: string | null;
       } | null> | null;
-      readonly tasks: ReadonlyArray<string>;
+      readonly tasks: ReadonlyArray<string | null> | null;
       readonly timer: {
         readonly id: string;
         readonly name: string;
@@ -57,7 +59,7 @@ export type useFetchStepByStepRecipeQueryResponse = {
         readonly src: string;
         readonly alt: string | null;
       } | null> | null;
-    }>;
+    } | null> | null;
   };
 };
 export type useFetchStepByStepRecipeQuery = {
@@ -81,6 +83,8 @@ query useFetchStepByStepRecipeQuery(
     ingredients {
       name
       qty
+      notes
+      link
     }
     items {
       name
@@ -153,8 +157,7 @@ const node: ConcreteRequest = (function() {
       args: null,
       storageKey: null,
     },
-    v4 = [v2 /*: any*/, v3 /*: any*/],
-    v5 = {
+    v4 = {
       kind: 'LinkedField',
       alias: null,
       name: 'items',
@@ -162,9 +165,9 @@ const node: ConcreteRequest = (function() {
       args: null,
       concreteType: 'Item',
       plural: true,
-      selections: v4 /*: any*/,
+      selections: [v2 /*: any*/, v3 /*: any*/],
     },
-    v6 = [
+    v5 = [
       {
         kind: 'LinkedField',
         alias: null,
@@ -232,9 +235,26 @@ const node: ConcreteRequest = (function() {
             args: null,
             concreteType: 'Ingredient',
             plural: true,
-            selections: v4 /*: any*/,
+            selections: [
+              v2 /*: any*/,
+              v3 /*: any*/,
+              {
+                kind: 'ScalarField',
+                alias: null,
+                name: 'notes',
+                args: null,
+                storageKey: null,
+              },
+              {
+                kind: 'ScalarField',
+                alias: null,
+                name: 'link',
+                args: null,
+                storageKey: null,
+              },
+            ],
           },
-          v5 /*: any*/,
+          v4 /*: any*/,
           {
             kind: 'LinkedField',
             alias: null,
@@ -326,7 +346,7 @@ const node: ConcreteRequest = (function() {
                 plural: true,
                 selections: [v3 /*: any*/, v2 /*: any*/],
               },
-              v5 /*: any*/,
+              v4 /*: any*/,
               {
                 kind: 'ScalarField',
                 alias: null,
@@ -399,23 +419,23 @@ const node: ConcreteRequest = (function() {
       type: 'Query',
       metadata: null,
       argumentDefinitions: v0 /*: any*/,
-      selections: v6 /*: any*/,
+      selections: v5 /*: any*/,
     },
     operation: {
       kind: 'Operation',
       name: 'useFetchStepByStepRecipeQuery',
       argumentDefinitions: v0 /*: any*/,
-      selections: v6 /*: any*/,
+      selections: v5 /*: any*/,
     },
     params: {
       operationKind: 'query',
       name: 'useFetchStepByStepRecipeQuery',
       id: null,
       text:
-        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    ingredients {\n      name\n      qty\n    }\n    items {\n      name\n      qty\n    }\n    steps {\n      no\n      type\n      links {\n        heading\n        name\n        from\n        timerId\n      }\n      tag {\n        color\n        text\n      }\n      ingredients {\n        qty\n        name\n      }\n      items {\n        name\n        qty\n      }\n      tasks\n      timer {\n        id\n        name\n        minutes\n        seconds\n      }\n      images {\n        src\n        alt\n      }\n    }\n  }\n}\n',
+        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n    }\n    steps {\n      no\n      type\n      links {\n        heading\n        name\n        from\n        timerId\n      }\n      tag {\n        color\n        text\n      }\n      ingredients {\n        qty\n        name\n      }\n      items {\n        name\n        qty\n      }\n      tasks\n      timer {\n        id\n        name\n        minutes\n        seconds\n      }\n      images {\n        src\n        alt\n      }\n    }\n  }\n}\n',
       metadata: {},
     },
   };
 })();
-(node as any).hash = '86696d85c5c18d2bba410b5f34c4e02d';
+(node as any).hash = 'd74a0860521fad521e3f5ed5b32ced94';
 export default node;
