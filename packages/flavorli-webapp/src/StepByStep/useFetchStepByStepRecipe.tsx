@@ -23,6 +23,8 @@ const useFetchStepByStepRecipeQuery = graphql`
       items {
         name
         qty
+        notes
+        link
       }
       steps {
         no

@@ -11,7 +11,7 @@
     "react-relay": "^8.0.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.3.1",
     "relay-config": "^8.0.0",
     "relay-hooks": "^3.0.0-rc.1",
     "relay-runtime": "^8.0.0",
@@ -45,14 +45,11 @@
     "start": "yarn relay && react-scripts start",
     "build": "yarn relay && react-scripts build",
     "relay": "yarn schema && yarn relay-compiler --schema schema.graphql  --language typescript --src ./src/ --watchman false $@",
-    "schema": "get-graphql-schema http://localhost:4000/dev/graphql > schema.graphql",
+    "schema": "get-graphql-schema https://ajilir8bg6.execute-api.eu-west-2.amazonaws.com/prod/graphql > schema.graphql",
     "test:watch": "react-scripts test",
     "test": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "deploy": "NODE_ENV=production yarn build && aws s3 sync ./build s3://flavorli-bucket"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "deploy": "NODE_ENV=production yarn build && aws s3 sync ./build s3://flavorli-eu-west-2-prod-bucket"
   },
   "browserslist": {
     "production": [

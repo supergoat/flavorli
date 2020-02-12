@@ -29,16 +29,21 @@ input IngredientInput {
   qty: String!
   name: String!
   notes: String
+  link: String
 }
 
 type Item {
   qty: String
   name: String
+  notes: String
+  link: String
 }
 
 input ItemInput {
   qty: String!
   name: String!
+  notes: String
+  link: String
 }
 
 type Link {

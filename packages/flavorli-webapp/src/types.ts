@@ -25,6 +25,8 @@ export interface IIngredient {
 export interface IItem {
   qty: string;
   name: string;
+  notes?: string;
+  link?: string;
 }
 
 export interface IStep {

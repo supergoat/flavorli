@@ -24,9 +24,20 @@ const ItemsStep = ({items}: IItemsStepProps) => {
           return (
             <Stack direction="horizontal" gap={8} key={`item-${index}`}>
               <CheckBox id={`item-${item.name}`} />
-              <label htmlFor={`item-${item.name}`}>
-                {item.qty} {item.name}
-              </label>
+              <Stack gap={4} width="100%">
+                <label htmlFor={`item-${item.name}-${item.qty}`}>
+                  {item.link ? (
+                    <Link target="_blank" href={item.link}>
+                      {item.qty} {item.name}
+                    </Link>
+                  ) : (
+                    <>
+                      {item.qty} {item.name}
+                    </>
+                  )}
+                </label>
+                <Text intent="secondary">{item?.notes}</Text>
+              </Stack>
             </Stack>
           );
         })}
@@ -56,4 +67,8 @@ const CheckBox = styled.input.attrs(() => ({
 }))`
   flex-shrink: 0;
   margin-right: 8px;
+`;
+
+const Link = styled.a`
+  color: ${p => p.theme.colors.primary};
 `;
