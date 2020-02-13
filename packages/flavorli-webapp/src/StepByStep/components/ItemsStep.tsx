@@ -19,26 +19,26 @@ const ItemsStep = ({items}: IItemsStepProps) => {
         Make sure that you have all of your equipment ready and available to use
       </Text>
 
-      <Stack gap={8} width="100%">
+      <Stack>
         {items.map((item, index) => {
           return (
-            <Stack direction="horizontal" gap={8} key={`item-${index}`}>
-              <CheckBox id={`item-${item.name}`} />
-              <Stack gap={4} width="100%">
-                <label htmlFor={`item-${item.name}-${item.qty}`}>
-                  {item.link ? (
-                    <Link target="_blank" href={item.link}>
-                      {item.qty} {item.name}
-                    </Link>
-                  ) : (
-                    <>
-                      {item.qty} {item.name}
-                    </>
-                  )}
-                </label>
-                <Text intent="secondary">{item?.notes}</Text>
-              </Stack>
-            </Stack>
+            <Label
+              htmlFor={`item-${item.name}-${item.qty}`}
+              key={`item-${item.name}-${item.qty}`}
+            >
+              <CheckBox id={`item-${item.name}-${item.qty}`} />
+
+              {item.link ? (
+                <Link target="_blank" href={item.link}>
+                  {item.qty} {item.name}
+                </Link>
+              ) : (
+                <>
+                  {item.qty} {item.name}
+                </>
+              )}
+              <Text intent="secondary">{item?.notes}</Text>
+            </Label>
           );
         })}
       </Stack>
@@ -71,4 +71,9 @@ const CheckBox = styled.input.attrs(() => ({
 
 const Link = styled.a`
   color: ${p => p.theme.colors.primary};
+`;
+
+const Label = styled.label`
+  width: 100%;
+  padding: 8px 0;
 `;

@@ -22,7 +22,11 @@ const Navigation = ({isDialog}: INavigationProps) => {
   };
 
   const navigateToPreviousStep = () => {
-    onNavigate(-1);
+    if (currentStep === 1) {
+      history.goBack();
+    } else {
+      onNavigate(-1);
+    }
   };
 
   const navigateToRecipe = () => {
@@ -47,7 +51,6 @@ const Navigation = ({isDialog}: INavigationProps) => {
       {!isDialog && (
         <>
           <PreviousButton
-            hide={hideBackButton}
             aria-controls="recipe-steps"
             tabIndex={hideBackButton ? -1 : undefined}
             onClick={navigateToPreviousStep}
@@ -63,11 +66,7 @@ const Navigation = ({isDialog}: INavigationProps) => {
               onClick={navigateToNextStep}
               intent="primary"
             >
-              {currentStep === 1 && 'Next'}
-              {currentStep === 2 && 'Ingredients'}
-              {currentStep === 3 && 'Items'}
-              {currentStep === 4 && 'Preparation'}
-              {currentStep > 4 && 'Next'}
+              Next
               <ButtonIcon />
             </Button>
           )}
@@ -99,11 +98,7 @@ const NavigationWrapper = styled(Stack)`
   box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.4);
 `;
 
-const PreviousButton = styled(Button)<{
-  hide: boolean;
-}>`
-  visibility: ${p => (p.hide ? 'hidden' : 'visible')};
-`;
+const PreviousButton = styled(Button)``;
 
 const ButtonIcon = styled.img.attrs(() => ({
   src: ChevronRightWhite,

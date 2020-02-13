@@ -6,17 +6,30 @@ import Author from './Author';
 import Info from './Info';
 
 import {IRecipe} from '../../types';
+import {useHistory} from 'react-router';
 
 interface IRecipeCardProps {
   recipe: IRecipe;
 }
 const RecipeCard = ({recipe}: IRecipeCardProps) => {
+  const history = useHistory();
+
+  const onNavigateToRecipe = () => {
+    history.push(`/recipe/${recipe.id}`);
+  };
   return (
-    <Stack width="100%" shadow="LIGHT" borderRadius={16} overflowX overflowY>
+    <Stack
+      width="100%"
+      shadow="LIGHT"
+      borderRadius={16}
+      overflowX
+      overflowY
+      onClick={onNavigateToRecipe}
+    >
       <Image src={recipe.image} alt="" />
       <Stack width="100%" gap={16} padding={16}>
         <Stack width="100%" gap={8}>
-          <Name id={recipe.id} name={recipe.name} />
+          <Name name={recipe.name} />
           <Author name={recipe.author} />
         </Stack>
       </Stack>
@@ -24,6 +37,7 @@ const RecipeCard = ({recipe}: IRecipeCardProps) => {
         cookingTime={recipe.cookingTime}
         preparationTime={recipe.preparationTime}
         portions={recipe.portions}
+        difficulty={recipe.difficulty}
       />
     </Stack>
   );

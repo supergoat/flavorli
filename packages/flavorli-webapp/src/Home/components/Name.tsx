@@ -1,21 +1,13 @@
 import React from 'react';
 import {Text, Button} from '@flavorli/elements';
-import {useHistory} from 'react-router';
 
 interface INameProps {
-  id: string;
   name: string;
 }
 
-const Name = ({id, name}: INameProps) => {
-  const history = useHistory();
-
-  const onNavigateToRecipe = () => {
-    history.push(`/recipe/${id}`);
-  };
-
+const Name = ({name}: INameProps) => {
   return (
-    <Button intent="text" onClick={onNavigateToRecipe}>
+    <Button intent="text">
       <Text fontSize={24} color="primary">
         {name}
       </Text>

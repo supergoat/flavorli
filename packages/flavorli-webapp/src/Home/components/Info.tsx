@@ -5,49 +5,40 @@ interface InfoProps {
   cookingTime: number;
   preparationTime: number;
   portions: string;
+  difficulty: string;
 }
-const Info = ({cookingTime, preparationTime, portions}: InfoProps) => {
+const Info = ({
+  cookingTime,
+  preparationTime,
+  portions,
+  difficulty,
+}: InfoProps) => {
   return (
     <Stack
       width="100%"
       direction="horizontal"
       background="secondaryLight"
+      distribution="space-evenly"
       padding={16}
     >
-      <Stack
-        width="30%"
-        direction="horizontal"
-        alignment="center"
-        gap={8}
-        aria-label="Preparation Time"
-        title="Preparation Time"
-      >
-        <Icon name="preparationTime" size="20px" />
-        <Text fontSize={16}>{preparationTime} mins</Text>
+      <Stack alignment="center" gap={8}>
+        <Text fontSize={16}>{preparationTime}'</Text>
+        <p>Hands On</p>
       </Stack>
 
-      <Stack
-        width="30%"
-        direction="horizontal"
-        alignment="center"
-        gap={8}
-        aria-label="Cooking Time"
-        title="Cooking Time"
-      >
-        <Icon name="cookingTime" size="20px" />
-        <Text fontSize={16}>{cookingTime} mins</Text>
+      <Stack alignment="center" gap={8}>
+        <Text fontSize={16}>{cookingTime}'</Text>
+        <p>Hands Off</p>
       </Stack>
 
-      <Stack
-        width="40%"
-        direction="horizontal"
-        alignment="center"
-        gap={8}
-        aria-label="Portions"
-        title="Portions"
-      >
-        <Icon name="serves" size="20px" />
-        <Text fontSize={16}>{portions} people</Text>
+      <Stack alignment="center" gap={8}>
+        <Text fontSize={16}>{portions}</Text>
+        <p>Portions</p>
+      </Stack>
+
+      <Stack alignment="center" gap={8}>
+        <Text fontSize={16}>{difficulty}</Text>
+        <p>Difficulty</p>
       </Stack>
     </Stack>
   );

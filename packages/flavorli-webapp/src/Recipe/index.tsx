@@ -1,69 +1,78 @@
 import React from 'react';
-import {Stack, H1, Button, Scroll} from '@flavorli/elements';
-import {motion} from 'framer-motion';
-import SectionHeading from './components/SectionHeading';
-import Info from './components/Info';
-import IngredientList from './components/IngredientList';
-// import PreparationStepList from './components/PreparationStepList';
-import useFetchRecipe from './useFetchRecipe';
-import {useHistory} from 'react-router';
+import {Stack, H1, H2, H3, Text} from '@flavorli/elements';
+import styled from 'styled-components';
 
-const Recipe = () => {
-  const history = useHistory();
-  const {recipe, loading, error} = useFetchRecipe();
+interface IRecipeProps {
+  author: string;
+  name: string;
+  image: string;
+  preparationTime: number;
+  cookingTime: number;
+  portions: string;
+  difficulty: string;
+}
 
-  if (loading) return <div>Loading...</div>;
-
-  if (error) return <div>{error}</div>;
-
-  if (!recipe) return null;
-
+const Recipe = ({
+  author,
+  name,
+  image,
+  preparationTime,
+  cookingTime,
+  portions,
+  difficulty,
+}: IRecipeProps) => {
   return (
-    <Scroll background="surface">
-      <article data-testid="recipe">
-        <motion.img src={recipe.image} alt="" width="100%" />
+    <>
+      <Stack width="100%" gap={16}>
+        <Stack gap={4} width="100%">
+          <Text intent="secondary">By {author}</Text>
+          <H1>{name}</H1>
+        </Stack>
 
-        <Stack padding={16} gap={16} width="100%" role="main">
-          <H1>{recipe.name}</H1>
+        {/* <Stack gap={8} width="100%">
+          <H3>MAIN INGREDIENTS</H3>
+          <p>Nutritional yeast</p>
+          <p>Cashews</p>
+          <p>Macaroni</p>
+          <p>Plant based milk</p>
+        </Stack>
 
-          <Stack direction="horizontal" width="100%">
-            <Info
-              name="Preparation"
-              value={`${recipe.preparationTime}'`}
-              icon="preparationTime"
-            />
+        <Stack gap={8} width="100%">
+          <H3>NOTES</H3>
+          <p>This recipe requires a blender</p>
+        </Stack> */}
 
-            <Info
-              name="Cooking"
-              value={`${recipe.cookingTime}'`}
-              icon="cookingTime"
-            />
-
-            <Info name="Portions" value={recipe.portions} icon="serves" />
-
-            <Info
-              name="Difficulty"
-              value={recipe.difficulty}
-              icon="difficulty"
-            />
+        <Stack direction="horizontal" width="100%">
+          <Stack width="25%" gap={4} alignment="center" distribution="center">
+            <Text intent="highlight">{preparationTime}'</Text>
+            <Text intent="secondary">Hands on</Text>
           </Stack>
 
-          <SectionHeading icon="ingredients">Ingredients</SectionHeading>
+          <Stack width="25%" gap={4} alignment="center" distribution="center">
+            <Text intent="highlight">{cookingTime}'</Text>
+            <Text intent="secondary">Hands off</Text>
+          </Stack>
 
-          <IngredientList ingredients={recipe.ingredients} />
+          <Stack width="25%" gap={4} alignment="center" distribution="center">
+            <Text intent="highlight">{portions}</Text>
+            <Text intent="secondary">Portions</Text>
+          </Stack>
 
-          <SectionHeading icon="preparation">Preparation</SectionHeading>
-
-          <Button
-            width="100%"
-            onClick={() => history.push(`/step-by-step/${recipe.id}`)}
-          >
-            Step By Step
-          </Button>
+          <Stack width="25%" gap={4} alignment="center" distribution="center">
+            <Text intent="highlight">{difficulty}</Text>
+            <Text intent="secondary">Difficulty</Text>
+          </Stack>
         </Stack>
-      </article>
-    </Scroll>
+      </Stack>
+      <Image src={image} alt="" />
+    </>
   );
 };
 
 export default Recipe;
+
+const Image = styled.img`
+  width: 100%;
+  border-radius: ${p => `${p.theme.spacings[8]}px`};
+  box-shadow: ${p => p.theme.shadows.LIGHT};
+`;

@@ -20,35 +20,30 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
         you are not missing anything before you begin
       </Text>
 
-      <Stack gap={8} width="100%">
-        {ingredients.map(ingredient => {
+      <Stack>
+        {ingredients.map((ingredient, index) => {
           return (
-            <Stack
-              direction="horizontal"
-              gap={16}
-              width="100%"
-              key={ingredient.name}
+            <Label
+              htmlFor={`ingredient-${ingredient.name}-${ingredient.qty}`}
+              key={`ingredient-${ingredient.name}-${ingredient.qty}`}
             >
               <CheckBox
                 id={`ingredient-${ingredient.name}-${ingredient.qty}`}
               />
-              <Stack gap={4}>
-                <label
-                  htmlFor={`ingredient-${ingredient.name}-${ingredient.qty}`}
-                >
-                  {ingredient.link ? (
-                    <Link target="_blank" href={ingredient.link}>
-                      {ingredient.qty} {ingredient.name}
-                    </Link>
-                  ) : (
-                    <>
-                      {ingredient.qty} {ingredient.name}
-                    </>
-                  )}
-                </label>
+
+              <Stack>
+                {ingredient.link ? (
+                  <Link target="_blank" href={ingredient.link}>
+                    {ingredient.qty} {ingredient.name}
+                  </Link>
+                ) : (
+                  <>
+                    {ingredient.qty} {ingredient.name}
+                  </>
+                )}
                 <Text intent="secondary">{ingredient?.notes}</Text>
               </Stack>
-            </Stack>
+            </Label>
           );
         })}
       </Stack>
@@ -81,4 +76,10 @@ const CheckBox = styled.input.attrs(() => ({
 
 const Link = styled.a`
   color: ${p => p.theme.colors.primary};
+`;
+
+const Label = styled.label`
+  display: flex;
+  width: 100%;
+  padding: 8px 0;
 `;

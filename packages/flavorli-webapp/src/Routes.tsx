@@ -2,7 +2,6 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Home from './Home';
-import Recipe from './Recipe';
 import StepByStep from './StepByStep';
 
 const Routes = () => {
@@ -10,9 +9,8 @@ const Routes = () => {
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/recipe/:recipeId" component={Recipe} />
+        <Route path="/recipe/:recipeId" component={StepByStep} />
       </Switch>
-      <Route path="/step-by-step/:recipeId" component={StepByStep} />
     </Router>
   );
 };

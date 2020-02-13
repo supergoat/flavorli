@@ -10,7 +10,6 @@ interface InfoProps {
 const Info = ({name, icon, value}: InfoProps) => {
   return (
     <Stack width="25%" gap={4} alignment="center" distribution="center">
-      <Icon name={icon} />
       <Text intent="highlight">{value}</Text>
       <Text intent="secondary">{name}</Text>
     </Stack>

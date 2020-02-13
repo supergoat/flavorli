@@ -12,13 +12,12 @@ const Ingredients = ({ingredients = []}: {ingredients?: IIngredient[]}) => {
           <Stack
             width="100%"
             direction="horizontal"
-            // alignment="center"
             gap={8}
             key={ingredient.name}
           >
-            {/* <Text width="25%">{ingredient.qty}</Text>
-            <Text width="75%">{ingredient.name}</Text> */}
-            <Text>{ingredient.name}</Text>
+            <Text>
+              {ingredient.qty} {ingredient.name}
+            </Text>
           </Stack>
         );
       })}
