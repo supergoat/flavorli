@@ -6,8 +6,7 @@ export const recipes: IRecipe[] = [
     createdAt: '2020-01-19T19:37:42.873Z',
     author: 'Robin Robertson',
     name: 'Cherry Berry Smoothie',
-    image:
-      'https://flavorli-bucket-2.s3.eu-west-2.amazonaws.com/CherryBerrySmoothie.jpeg',
+    image: 'image.jpeg',
     preparationTime: 7,
     cookingTime: 0,
     portions: '1',
@@ -105,13 +104,13 @@ export const recipes: IRecipe[] = [
           },
         ],
         tasks: [
-          'Add 1 cup/100 g Frozen Blueberries in a blender',
-          'Add 1/2 cup/110 g fresh or frozen pitted cherries',
-          'Add 1 frozen ripe banana, cut into chunks before freezing',
-          'Add 1 tbsp ground flaxseeds (or linseeds)',
-          'Add 1 tbsp almond butter (or peanut butter)',
-          'Add 1 cup/22.5 g raw spinach leaves',
-          'Add 1 1/2 cup cup (360 ml) water',
+          {name: 'Add 1 cup/100 g Frozen Blueberries in a blender'},
+          {name: 'Add 1/2 cup/110 g fresh or frozen pitted cherries'},
+          {name: 'Add 1 frozen ripe banana, cut into chunks before freezing'},
+          {name: 'Add 1 tbsp ground flaxseeds (or linseeds)'},
+          {name: 'Add 1 tbsp almond butter (or peanut butter)'},
+          {name: 'Add 1 cup/22.5 g raw spinach leaves'},
+          {name: 'Add 1 1/2 cup cup (360 ml) water'},
         ],
         images: [],
       },
@@ -125,9 +124,12 @@ export const recipes: IRecipe[] = [
         items: [],
         ingredients: [],
         tasks: [
-          'Blend all the ingredients until smooth and creamy for about 1 minute',
-          'Add more water if you prefer a thinner consistency',
-          'Serve immediately',
+          {
+            name:
+              'Blend all the ingredients until smooth and creamy for about 1 minute',
+          },
+          {name: 'Add more water if you prefer a thinner consistency'},
+          {name: 'Serve immediately'},
         ],
         timer: {
           id: '2',
@@ -177,7 +179,9 @@ export const preparationStep: IStep = {
     text: 'Sauce',
     color: 'tagRed',
   },
-  tasks: ['Add the coconul oil in a ramekin and place it first in order'],
+  tasks: [
+    {name: 'Add the coconul oil in a ramekin and place it first in order'},
+  ],
   ingredients: [
     {
       qty: '2 tbsps',
@@ -201,7 +205,7 @@ export const recipeStep: IStep = {
     color: 'tagRed',
   },
   links: [],
-  tasks: ['Heat the coconut oil in a small pot on low heat'],
+  tasks: [{name: 'Heat the coconut oil in a small pot on low heat'}],
   ingredients: [
     {
       qty: '2 tbsps',

@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash b4eca9a7c2accab934e1fcbebbdd7848 */
+/* @relayHash 6c589a3d4dc8a7c244fe24a8a43bd4bd */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type StepType = 'MISE_EN_PLACE' | 'PREPARATION' | '%future added value';
@@ -54,7 +54,10 @@ export type useFetchStepByStepRecipeQueryResponse = {
         readonly notes: string | null;
         readonly link: string | null;
       } | null> | null;
-      readonly tasks: ReadonlyArray<string | null> | null;
+      readonly tasks: ReadonlyArray<{
+        readonly name: string;
+        readonly description: string | null;
+      } | null> | null;
       readonly timer: {
         readonly id: string;
         readonly name: string;
@@ -123,7 +126,10 @@ query useFetchStepByStepRecipeQuery(
         notes
         link
       }
-      tasks
+      tasks {
+        name
+        description
+      }
       timer {
         id
         name
@@ -363,11 +369,23 @@ const node: ConcreteRequest = (function() {
               },
               v7 /*: any*/,
               {
-                kind: 'ScalarField',
+                kind: 'LinkedField',
                 alias: null,
                 name: 'tasks',
-                args: null,
                 storageKey: null,
+                args: null,
+                concreteType: 'Task',
+                plural: true,
+                selections: [
+                  v2 /*: any*/,
+                  {
+                    kind: 'ScalarField',
+                    alias: null,
+                    name: 'description',
+                    args: null,
+                    storageKey: null,
+                  },
+                ],
               },
               {
                 kind: 'LinkedField',
@@ -447,10 +465,10 @@ const node: ConcreteRequest = (function() {
       name: 'useFetchStepByStepRecipeQuery',
       id: null,
       text:
-        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      no\n      type\n      links {\n        heading\n        name\n        from\n        timerId\n      }\n      tag {\n        color\n        text\n      }\n      ingredients {\n        qty\n        name\n        notes\n        link\n      }\n      items {\n        name\n        qty\n        notes\n        link\n      }\n      tasks\n      timer {\n        id\n        name\n        minutes\n        seconds\n      }\n      images {\n        src\n        alt\n      }\n    }\n  }\n}\n',
+        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      no\n      type\n      links {\n        heading\n        name\n        from\n        timerId\n      }\n      tag {\n        color\n        text\n      }\n      ingredients {\n        qty\n        name\n        notes\n        link\n      }\n      items {\n        name\n        qty\n        notes\n        link\n      }\n      tasks {\n        name\n        description\n      }\n      timer {\n        id\n        name\n        minutes\n        seconds\n      }\n      images {\n        src\n        alt\n      }\n    }\n  }\n}\n',
       metadata: {},
     },
   };
 })();
-(node as any).hash = '62c55913e4b1d8ac514e3a670ed45c57';
+(node as any).hash = '5cf6383caa416fe951dc7dc9505aea61';
 export default node;

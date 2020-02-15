@@ -22,49 +22,63 @@ const ImageList = ({images}: IImageListProps) => {
 
   return (
     <Section aria-label="List of step images">
-      <ImageListContainer
-        id="step-images"
-        data-testid="step-images"
-        aria-live="polite"
-        paddingBottom={24}
-      >
-        {images.map((image, index) => {
-          const isCurrentImage = index === currentImage - 1;
-          return (
-            isCurrentImage && (
-              <Stack
-                width="100%"
-                height="100%"
-                key={image.alt}
-                distribution="center"
-                alignment="center"
-                role="group"
-                aria-label={`Image ${currentImage} of ${images.length}`}
-              >
-                <Image src={image.src} alt={image.alt} />
-              </Stack>
-            )
-          );
-        })}
-
-        <LeftArrowButton
-          hide={currentImage === 1}
-          aria-label="Previous Image"
-          aria-controls="step-images"
-          onClick={() => onChangeImage(-1)}
+      <Stack width="100%" gap={16} paddingBottom={8}>
+        <Stack direction="horizontal" width="100%" overflowY>
+          {images.length > 1 &&
+            images.map((image, index) => {
+              return (
+                <SmallImage
+                  onClick={() => setCurrentImage(index + 1)}
+                  key={image.alt}
+                  src={image.src}
+                  alt={image.alt}
+                />
+              );
+            })}
+        </Stack>
+        <ImageListContainer
+          id="step-images"
+          data-testid="step-images"
+          aria-live="polite"
         >
-          <img src={ChevronRight} alt="" />
-        </LeftArrowButton>
+          {images.map((image, index) => {
+            const isCurrentImage = index === currentImage - 1;
+            return (
+              isCurrentImage && (
+                <Stack
+                  width="100%"
+                  height="100%"
+                  key={image.alt}
+                  distribution="center"
+                  alignment="center"
+                  role="group"
+                  aria-label={`Image ${currentImage} of ${images.length}`}
+                >
+                  <Image src={image.src} alt={image.alt} />
+                </Stack>
+              )
+            );
+          })}
 
-        <RightArrowButton
-          hide={currentImage === images.length}
-          aria-label="Next Image"
-          aria-controls="step-images"
-          onClick={() => onChangeImage(1)}
-        >
-          <img src={ChevronRight} alt="" />
-        </RightArrowButton>
-      </ImageListContainer>
+          <LeftArrowButton
+            hide={currentImage === 1}
+            aria-label="Previous Image"
+            aria-controls="step-images"
+            onClick={() => onChangeImage(-1)}
+          >
+            <img src={ChevronRight} alt="" />
+          </LeftArrowButton>
+
+          <RightArrowButton
+            hide={currentImage === images.length}
+            aria-label="Next Image"
+            aria-controls="step-images"
+            onClick={() => onChangeImage(1)}
+          >
+            <img src={ChevronRight} alt="" />
+          </RightArrowButton>
+        </ImageListContainer>
+      </Stack>
     </Section>
   );
 };
@@ -78,9 +92,18 @@ const Section = styled.section`
 const Image = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: ${p => `${p.theme.spacings[16]}px`};
+  border-radius: ${p => `${p.theme.spacings[8]}px`};
   object-fit: cover;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+`;
+
+const SmallImage = styled.img`
+  width: 48px;
+  height: 48px;
+  border-radius: ${p => `${p.theme.spacings[4]}px`};
+  object-fit: cover;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+  margin-right: 10px;
 `;
 
 const ArrowButton = styled.button<{hide: boolean}>`
@@ -120,6 +143,6 @@ const RightArrowButton = styled(ArrowButton)`
 
 const ImageListContainer = styled(Stack)`
   max-width: 100%;
-  width: calc(100vw - 48px);
-  height: calc(100vw - 48px);
+  width: calc(100vw - 73px);
+  height: calc(100vw - 73px);
 `;

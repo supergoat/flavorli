@@ -36,9 +36,14 @@ export interface IStep {
   links?: ILink[];
   items?: IItem[];
   ingredients?: IIngredient[];
-  tasks: string[];
+  tasks: ITask[];
   timer?: ITimer;
   images?: IImage[];
+}
+
+export interface ITask {
+  name: string;
+  description?: string;
 }
 
 export interface ITag {

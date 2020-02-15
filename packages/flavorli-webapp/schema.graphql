@@ -108,7 +108,7 @@ type Step {
   tag: Tag
   items: [Item]
   ingredients: [Ingredient]
-  tasks: [String]
+  tasks: [Task]
   images: [Image]
   timer: Timer
 }
@@ -120,7 +120,7 @@ input StepInput {
   tag: TagInput
   items: [ItemInput]
   ingredients: [IngredientInput]
-  tasks: [String]
+  tasks: [TaskInput]
   images: [ImageInput]
   timer: TimerInput
 }
@@ -138,6 +138,16 @@ type Tag {
 input TagInput {
   text: String!
   color: String!
+}
+
+type Task {
+  name: String!
+  description: String
+}
+
+input TaskInput {
+  name: String!
+  description: String
 }
 
 type Timer {

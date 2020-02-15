@@ -51,7 +51,10 @@ const useFetchStepByStepRecipeQuery = graphql`
           notes
           link
         }
-        tasks
+        tasks {
+          name
+          description
+        }
         timer {
           id
           name
