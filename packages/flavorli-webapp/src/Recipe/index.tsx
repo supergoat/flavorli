@@ -45,22 +45,30 @@ const Recipe = ({
         <Stack direction="horizontal" width="100%">
           <Stack width="25%" gap={4} alignment="center" distribution="center">
             <Text intent="highlight">{preparationTime}'</Text>
-            <Text intent="secondary">Hands on</Text>
+            <Text fontSize={14} intent="secondary">
+              Hands on
+            </Text>
           </Stack>
 
           <Stack width="25%" gap={4} alignment="center" distribution="center">
             <Text intent="highlight">{cookingTime}'</Text>
-            <Text intent="secondary">Hands off</Text>
+            <Text fontSize={14} intent="secondary">
+              Hands off
+            </Text>
           </Stack>
 
           <Stack width="25%" gap={4} alignment="center" distribution="center">
             <Text intent="highlight">{portions}</Text>
-            <Text intent="secondary">Portions</Text>
+            <Text fontSize={14} intent="secondary">
+              Portions
+            </Text>
           </Stack>
 
           <Stack width="25%" gap={4} alignment="center" distribution="center">
             <Text intent="highlight">{difficulty}</Text>
-            <Text intent="secondary">Difficulty</Text>
+            <Text fontSize={14} intent="secondary">
+              Difficulty
+            </Text>
           </Stack>
         </Stack>
       </Stack>

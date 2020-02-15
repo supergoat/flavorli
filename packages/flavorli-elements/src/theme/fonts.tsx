@@ -3,23 +3,23 @@ import WebFont from 'webfontloader';
 WebFont.load({
   google: {
     families: [
-      'Titillium Web:300,400,700',
       'Lato:300,400,700',
       'Pacifico',
       'Patrick Hand',
+      'Muli:300,400,700',
     ],
   },
 });
 
 export enum families {
-  TitilliumWeb = 'Titillium Web',
   Lato = 'Lato',
   PatrickHand = 'Patrick Hand',
   Pacifico = 'Pacifico',
+  Muli = 'Muli',
 }
 
 export const weights = {
-  TitilliumWeb: {
+  Muli: {
     LIGHT: 300,
     REGULAR: 400,
     BOLD: 700,

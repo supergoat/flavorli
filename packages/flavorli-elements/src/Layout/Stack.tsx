@@ -14,7 +14,7 @@ export interface IStackProps extends React.HTMLAttributes<HTMLDivElement> {
     | 'space-between'
     | 'space-around'
     | 'space-evenly';
-  alignment?: 'start' | 'center' | 'end';
+  alignment?: 'start' | 'center' | 'end' | 'stretch' | 'space-between';
   width?: string;
   height?: string;
   background?: IColor;

@@ -22,23 +22,23 @@ const Info = ({
       padding={16}
     >
       <Stack alignment="center" gap={8}>
-        <Text fontSize={16}>{preparationTime}'</Text>
-        <p>Hands On</p>
+        <Text intent="highlight">{preparationTime}'</Text>
+        <Text fontSize={14}>Hands On</Text>
       </Stack>
 
       <Stack alignment="center" gap={8}>
-        <Text fontSize={16}>{cookingTime}'</Text>
-        <p>Hands Off</p>
+        <Text intent="highlight">{cookingTime}'</Text>
+        <Text fontSize={14}>Hands Off</Text>
       </Stack>
 
       <Stack alignment="center" gap={8}>
-        <Text fontSize={16}>{portions}</Text>
-        <p>Portions</p>
+        <Text intent="highlight">{portions}</Text>
+        <Text fontSize={14}>Portions</Text>
       </Stack>
 
       <Stack alignment="center" gap={8}>
-        <Text fontSize={16}>{difficulty}</Text>
-        <p>Difficulty</p>
+        <Text intent="highlight">{difficulty}</Text>
+        <Text fontSize={14}>Difficulty</Text>
       </Stack>
     </Stack>
   );

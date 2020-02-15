@@ -7,10 +7,10 @@ interface IH2 {
   color?: IColor;
 }
 export const H2 = styled.h2<IH2>`
-  font-family: ${p => p.theme.families.TitilliumWeb};
+  font-family: ${p => p.theme.families.Muli};
   color: ${p => (p.color ? p.theme.colors[p.color] : p.theme.colors.textColor)};
   font-size: ${p => p.theme.fontSizes[24]};
-  font-weight: ${p => p.theme.weights.TitilliumWeb.REGULAR};
+  font-weight: ${p => p.theme.weights.Muli.REGULAR};
   width: ${p => p.width};
   text-align: ${p => p.align};
 `;

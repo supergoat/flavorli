@@ -26,18 +26,21 @@ const ItemsStep = ({items}: IItemsStepProps) => {
               htmlFor={`item-${item.name}-${item.qty}`}
               key={`item-${item.name}-${item.qty}`}
             >
-              <CheckBox id={`item-${item.name}-${item.qty}`} />
-
-              {item.link ? (
-                <Link target="_blank" href={item.link}>
-                  {item.qty} {item.name}
-                </Link>
-              ) : (
-                <>
-                  {item.qty} {item.name}
-                </>
-              )}
-              <Text intent="secondary">{item?.notes}</Text>
+              <Stack direction="horizontal" alignment="center">
+                <CheckBox id={`item-${item.name}-${item.qty}`} />
+                <div>
+                  {item.link ? (
+                    <Link target="_blank" href={item.link}>
+                      {item.qty} {item.name}
+                    </Link>
+                  ) : (
+                    <>
+                      {item.qty} {item.name}
+                    </>
+                  )}
+                  <Text intent="secondary">{item?.notes}</Text>
+                </div>
+              </Stack>
             </Label>
           );
         })}

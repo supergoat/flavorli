@@ -4,7 +4,7 @@ import {families} from '../theme/fonts';
 export const global = css`
   * {
     box-sizing: border-box;
-    font-family: ${families.TitilliumWeb};
+    font-family: ${families.Muli};
   }
 
   a {
@@ -32,6 +32,6 @@ export const global = css`
   input,
   textarea,
   select {
-    font-family: ${families.TitilliumWeb};
+    font-family: ${families.Muli};
   }
 `;

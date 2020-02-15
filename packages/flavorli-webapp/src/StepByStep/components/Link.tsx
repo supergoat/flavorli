@@ -27,16 +27,16 @@ const Link = ({link}: ILinkProps) => {
       <Stack
         direction="horizontal"
         distribution="space-between"
-        alignment="end"
+        alignment="space-between"
         width="100%"
       >
-        <Stack gap={4} width="72%">
+        <Stack gap={4} style={{flex: 1}}>
           <Text intent="secondary" fontSize={14}>
             {link.heading}
           </Text>
           <Text color="primary">{link.name}</Text>
         </Stack>
-        <Stack gap={4} alignment="end" width="28%">
+        <Stack distribution="space-between">
           {link.timerId && (
             <RemainingTime recipeTimer={recipeTimers[link.timerId]} />
           )}

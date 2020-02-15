@@ -8,7 +8,7 @@ interface IH1 {
   color?: IColor;
 }
 export const H1 = styled.h1<IH1>`
-  font-family: ${p => p.theme.families.TitilliumWeb};
+  font-family: ${p => p.theme.families.Muli};
   color: ${p =>
     p.color
       ? p.theme.colors[p.color]
@@ -16,7 +16,7 @@ export const H1 = styled.h1<IH1>`
       ? p.theme.colors.secondaryTextColor
       : p.theme.colors.textColor};
   font-size: ${p => p.theme.fontSizes[32]};
-  font-weight: ${p => p.theme.weights.TitilliumWeb.REGULAR};
+  font-weight: ${p => p.theme.weights.Muli.REGULAR};
   width: ${p => p.width};
   text-align: ${p => p.align};
 `;

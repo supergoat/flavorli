@@ -15,7 +15,7 @@ interface IText extends MotionProps {
   color?: IColor;
 }
 export const Text = styled(motion.p)<IText>`
-  font-family: ${p => p.theme.families.TitilliumWeb};
+  font-family: ${p => p.theme.families.Muli};
   color: ${p =>
     p.color
       ? p.theme.colors[p.color]
@@ -34,8 +34,8 @@ export const Text = styled(motion.p)<IText>`
       : p.theme.fontSizes[16]};
   font-weight: ${p =>
     p.intent === 'highlight'
-      ? p.theme.weights.TitilliumWeb.BOLD
-      : p.theme.weights.TitilliumWeb.REGULAR};
+      ? p.theme.weights.Muli.BOLD
+      : p.theme.weights.Muli.REGULAR};
   width: ${p => p.width};
   text-align: ${p => p.align || 'left'};
   line-height: ${p => p?.spacing?.line};

@@ -31,7 +31,7 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
                 id={`ingredient-${ingredient.name}-${ingredient.qty}`}
               />
 
-              <Stack>
+              <Stack width="100%">
                 {ingredient.link ? (
                   <Link target="_blank" href={ingredient.link}>
                     {ingredient.qty} {ingredient.name}
@@ -82,4 +82,5 @@ const Label = styled.label`
   display: flex;
   width: 100%;
   padding: 8px 0;
+  width: 100%;
 `;

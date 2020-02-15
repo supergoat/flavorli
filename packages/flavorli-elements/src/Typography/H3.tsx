@@ -7,11 +7,11 @@ interface IH3 {
   color?: IColor;
 }
 export const H3 = styled.h3<IH3>`
-  font-family: ${props => props.theme.families.TitilliumWeb};
+  font-family: ${props => props.theme.families.Muli};
   color: ${p =>
     p.color ? p.theme.colors[p.color] : p.theme.colors.secondaryTextColor};
   font-size: ${p => p.theme.fontSizes[16]};
-  font-weight: ${props => props.theme.weights.TitilliumWeb.BOLD};
+  font-weight: ${props => props.theme.weights.Muli.BOLD};
   width: ${props => props.width};
   text-align: ${props => props.align};
 `;
