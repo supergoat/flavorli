@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, H1, H2, H3, Text} from '@flavorli/elements';
+import {Stack, H1, H3, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 
 interface IRecipeProps {

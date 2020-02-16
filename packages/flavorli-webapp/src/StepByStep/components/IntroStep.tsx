@@ -1,7 +1,4 @@
 import React from 'react';
-import {Stack, H1, H2} from '@flavorli/elements';
-import styled from 'styled-components';
-import Info from './Info';
 import Step from './Step';
 import Recipe from '../../Recipe';
 

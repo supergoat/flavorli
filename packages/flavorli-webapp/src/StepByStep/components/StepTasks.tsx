@@ -1,7 +1,6 @@
 import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
-import ImageList from './ImageList';
 import {ITask} from '../../types';
 
 interface IStepTasks {
@@ -19,7 +18,9 @@ const Tasks = ({tasks}: IStepTasks) => {
               <label htmlFor={`task-${task}`}>{task.name}</label>
               <Stack gap={4}>
                 {(task?.notes || []).map(note => (
-                  <Text intent="secondary">{note}</Text>
+                  <Text key={note} intent="secondary">
+                    {note}
+                  </Text>
                 ))}
               </Stack>
             </Stack>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Icon, Text} from '@flavorli/elements';
+import {Stack, Text} from '@flavorli/elements';
 
 interface InfoProps {
   cookingTime: number;
