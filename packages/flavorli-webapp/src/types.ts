@@ -39,11 +39,12 @@ export interface IStep {
   tasks: ITask[];
   timer?: ITimer;
   images?: IImage[];
+  notes?: string[];
 }
 
 export interface ITask {
   name: string;
-  description?: string;
+  notes?: string[];
 }
 
 export interface ITag {

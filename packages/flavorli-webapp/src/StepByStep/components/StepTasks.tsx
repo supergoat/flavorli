@@ -17,7 +17,11 @@ const Tasks = ({tasks}: IStepTasks) => {
             <CheckBox id={`task-${task}`} />
             <Stack width="100%" gap={4}>
               <label htmlFor={`task-${task}`}>{task.name}</label>
-              <Text intent="secondary">{task.description}</Text>
+              <Stack gap={4}>
+                {(task?.notes || []).map(note => (
+                  <Text intent="secondary">{note}</Text>
+                ))}
+              </Stack>
             </Stack>
           </Stack>
         );

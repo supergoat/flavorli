@@ -14,6 +14,7 @@ const useFetchStepByStepRecipeQuery = graphql`
       cookingTime
       portions
       difficulty
+
       ingredients {
         name
         qty
@@ -53,7 +54,7 @@ const useFetchStepByStepRecipeQuery = graphql`
         }
         tasks {
           name
-          description
+          notes
         }
         timer {
           id
@@ -65,6 +66,7 @@ const useFetchStepByStepRecipeQuery = graphql`
           src
           alt
         }
+        notes
       }
     }
   }

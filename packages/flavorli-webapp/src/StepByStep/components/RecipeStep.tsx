@@ -9,7 +9,7 @@ import {IStep} from '../../types';
 import Step from './Step';
 import StepNo from './StepNo';
 import StepTasks from './StepTasks';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack, Text, Icon} from '@flavorli/elements';
 import styled from 'styled-components';
 
 interface IRecipeStepProps {
@@ -34,6 +34,26 @@ const RecipeStep = ({step}: IRecipeStepProps) => {
         )}
       </Stack>
 
+      {step?.notes && (
+        <Stack
+          background="primary"
+          padding={16}
+          gap={8}
+          borderRadius={4}
+          width="100%"
+          direction="horizontal"
+        >
+          <Icon name="exclamation" />
+
+          <Stack width="calc(100% - 26px)" gap={4}>
+            {(step?.notes || []).map(note => (
+              <Text width="100%" key={note} color="textOnPrimary">
+                {note}
+              </Text>
+            ))}
+          </Stack>
+        </Stack>
+      )}
       <Tag tag={step.tag} />
 
       <Links links={step.links} />

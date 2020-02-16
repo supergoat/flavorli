@@ -6,3 +6,4 @@ export {default as preparation} from './preparation.svg';
 export {default as serves} from './serves.svg';
 export {default as timer} from './timer.svg';
 export {default as boiling} from './boiling.svg';
+export {default as exclamation} from './exclamation.svg';

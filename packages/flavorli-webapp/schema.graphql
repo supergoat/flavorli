@@ -111,6 +111,7 @@ type Step {
   tasks: [Task]
   images: [Image]
   timer: Timer
+  notes: [String]
 }
 
 input StepInput {
@@ -142,7 +143,7 @@ input TagInput {
 
 type Task {
   name: String!
-  description: String
+  notes: [String]
 }
 
 input TaskInput {
