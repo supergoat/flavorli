@@ -9,6 +9,7 @@ export type IRecipe = {
   cookingTime: number;
   portions: string;
   difficulty: string;
+  notes?: string[];
   createdAt: string;
   ingredients: IIngredient[];
   items: IItem[];

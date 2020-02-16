@@ -79,6 +79,7 @@ type Recipe {
   cookingTime: Int
   portions: String
   difficulty: String
+  notes: [String]
   ingredients: [Ingredient]
   items: [Item]
   steps: [Step]
@@ -94,6 +95,7 @@ input RecipeInput {
   ingredients: [IngredientInput]
   items: [ItemInput]
   steps: [StepInput]
+  notes: [String]
 }
 
 type schema {
@@ -148,7 +150,7 @@ type Task {
 
 input TaskInput {
   name: String!
-  description: String
+  notes: [String]
 }
 
 type Timer {

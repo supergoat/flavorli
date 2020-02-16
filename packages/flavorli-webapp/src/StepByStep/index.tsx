@@ -59,6 +59,7 @@ const StepByStep = () => {
                     cookingTime={recipe.cookingTime}
                     portions={recipe.portions}
                     difficulty={recipe.difficulty}
+                    notes={recipe.notes}
                   />
 
                   <NextUp heading="Mise En Place">

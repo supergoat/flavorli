@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 7311110c2eaacbbf2251b379dba23e94 */
+/* @relayHash 5b9da9027147152bd1c0eb6b8e1ba35a */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type StepType = 'MISE_EN_PLACE' | 'PREPARATION' | '%future added value';
@@ -17,6 +17,7 @@ export type useFetchStepByStepRecipeQueryResponse = {
     readonly cookingTime: number | null;
     readonly portions: string | null;
     readonly difficulty: string | null;
+    readonly notes: ReadonlyArray<string | null> | null;
     readonly ingredients: ReadonlyArray<{
       readonly name: string | null;
       readonly qty: string | null;
@@ -90,6 +91,7 @@ query useFetchStepByStepRecipeQuery(
     cookingTime
     portions
     difficulty
+    notes
     ingredients {
       name
       qty
@@ -173,14 +175,14 @@ const node: ConcreteRequest = (function() {
     v3 = {
       kind: 'ScalarField',
       alias: null,
-      name: 'qty',
+      name: 'notes',
       args: null,
       storageKey: null,
     },
     v4 = {
       kind: 'ScalarField',
       alias: null,
-      name: 'notes',
+      name: 'qty',
       args: null,
       storageKey: null,
     },
@@ -191,7 +193,7 @@ const node: ConcreteRequest = (function() {
       args: null,
       storageKey: null,
     },
-    v6 = [v2 /*: any*/, v3 /*: any*/, v4 /*: any*/, v5 /*: any*/],
+    v6 = [v2 /*: any*/, v4 /*: any*/, v3 /*: any*/, v5 /*: any*/],
     v7 = {
       kind: 'LinkedField',
       alias: null,
@@ -262,6 +264,7 @@ const node: ConcreteRequest = (function() {
             args: null,
             storageKey: null,
           },
+          v3 /*: any*/,
           {
             kind: 'LinkedField',
             alias: null,
@@ -363,9 +366,9 @@ const node: ConcreteRequest = (function() {
                 concreteType: 'Ingredient',
                 plural: true,
                 selections: [
-                  v3 /*: any*/,
-                  v2 /*: any*/,
                   v4 /*: any*/,
+                  v2 /*: any*/,
+                  v3 /*: any*/,
                   v5 /*: any*/,
                 ],
               },
@@ -378,7 +381,7 @@ const node: ConcreteRequest = (function() {
                 args: null,
                 concreteType: 'Task',
                 plural: true,
-                selections: [v2 /*: any*/, v4 /*: any*/],
+                selections: [v2 /*: any*/, v3 /*: any*/],
               },
               {
                 kind: 'LinkedField',
@@ -432,7 +435,7 @@ const node: ConcreteRequest = (function() {
                   },
                 ],
               },
-              v4 /*: any*/,
+              v3 /*: any*/,
             ],
           },
         ],
@@ -459,10 +462,10 @@ const node: ConcreteRequest = (function() {
       name: 'useFetchStepByStepRecipeQuery',
       id: null,
       text:
-        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      no\n      type\n      links {\n        heading\n        name\n        from\n        timerId\n      }\n      tag {\n        color\n        text\n      }\n      ingredients {\n        qty\n        name\n        notes\n        link\n      }\n      items {\n        name\n        qty\n        notes\n        link\n      }\n      tasks {\n        name\n        notes\n      }\n      timer {\n        id\n        name\n        minutes\n        seconds\n      }\n      images {\n        src\n        alt\n      }\n      notes\n    }\n  }\n}\n',
+        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    notes\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      no\n      type\n      links {\n        heading\n        name\n        from\n        timerId\n      }\n      tag {\n        color\n        text\n      }\n      ingredients {\n        qty\n        name\n        notes\n        link\n      }\n      items {\n        name\n        qty\n        notes\n        link\n      }\n      tasks {\n        name\n        notes\n      }\n      timer {\n        id\n        name\n        minutes\n        seconds\n      }\n      images {\n        src\n        alt\n      }\n      notes\n    }\n  }\n}\n',
       metadata: {},
     },
   };
 })();
-(node as any).hash = 'fac4dac7d910a1afaa171c92e938f7c6';
+(node as any).hash = '74e5b39c822281dd0d13f9b38470d055';
 export default node;

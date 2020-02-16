@@ -10,6 +10,7 @@ interface IRecipeProps {
   cookingTime: number;
   portions: string;
   difficulty: string;
+  notes?: string[];
 }
 
 const Recipe = ({
@@ -20,6 +21,7 @@ const Recipe = ({
   cookingTime,
   portions,
   difficulty,
+  notes,
 }: IRecipeProps) => {
   return (
     <>
@@ -35,12 +37,21 @@ const Recipe = ({
           <p>Cashews</p>
           <p>Macaroni</p>
           <p>Plant based milk</p>
-        </Stack>
-
-        <Stack gap={8} width="100%">
-          <H3>NOTES</H3>
-          <p>This recipe requires a blender</p>
         </Stack> */}
+
+        {notes && notes.length > 0 && (
+          <Stack gap={8}>
+            <H3>NOTES</H3>
+
+            <Stack width="100%" gap={4}>
+              {(notes || []).map(note => (
+                <Text width="100%" key={note}>
+                  {note}
+                </Text>
+              ))}
+            </Stack>
+          </Stack>
+        )}
 
         <Stack direction="horizontal" width="100%">
           <Stack width="25%" gap={4} alignment="center" distribution="center">

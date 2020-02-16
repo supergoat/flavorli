@@ -14,7 +14,7 @@ const useFetchStepByStepRecipeQuery = graphql`
       cookingTime
       portions
       difficulty
-
+      notes
       ingredients {
         name
         qty

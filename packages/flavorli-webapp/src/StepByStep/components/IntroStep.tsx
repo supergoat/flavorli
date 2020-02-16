@@ -13,6 +13,7 @@ const Intro = ({
   cookingTime,
   portions,
   difficulty,
+  notes,
 }: IIntroProps) => {
   return (
     <Step>
@@ -24,6 +25,7 @@ const Intro = ({
         cookingTime={cookingTime}
         portions={portions}
         difficulty={difficulty}
+        notes={notes}
       />
     </Step>
   );
@@ -39,4 +41,5 @@ interface IIntroProps {
   cookingTime: number;
   portions: string;
   difficulty: string;
+  notes?: string[];
 }
