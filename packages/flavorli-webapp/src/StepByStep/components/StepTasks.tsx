@@ -12,10 +12,10 @@ const Tasks = ({tasks}: IStepTasks) => {
     <Stack gap={8} id="step-tasks">
       {tasks.map((task, index) => {
         return (
-          <Stack direction="horizontal" gap={8} key={`task-${index}`}>
-            <CheckBox id={`task-${task}`} />
-            <Stack width="100%" gap={4}>
-              <label htmlFor={`task-${task}`}>{task.name}</label>
+          <Stack direction="horizontal" gap={8} key={`task-${task.name}`}>
+            <CheckBox id={`task-${task.name}`} />
+            <Stack width="calc(100% - 22px)" gap={4}>
+              <label htmlFor={`task-${task.name}`}>{task.name}</label>
               <Stack gap={4}>
                 {(task?.notes || []).map(note => (
                   <Text key={note} intent="secondary">

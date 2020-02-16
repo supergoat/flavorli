@@ -12,7 +12,10 @@ export const Timers = () => {
   useRestoreFocus(refEl, !showRecipeTimers);
 
   const context = useRecipeTimersContext();
-  const recipeTimers = Object.values(context.recipeTimers);
+
+  const recipeTimers = Object.keys(context.recipeTimers).map(function(timerId) {
+    return context.recipeTimers[timerId];
+  });
 
   return (
     <>

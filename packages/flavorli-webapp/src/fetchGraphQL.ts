@@ -1,9 +1,6 @@
 import {Variables} from 'relay-runtime';
 
-const API_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://ajilir8bg6.execute-api.eu-west-2.amazonaws.com/prod/graphql'
-    : 'http://localhost:4000/dev/graphql';
+const API_URL = process.env.REACT_APP_API_URL as string;
 
 async function fetchGraphQL(text?: string | null, variables?: Variables) {
   const response = await fetch(API_URL, {

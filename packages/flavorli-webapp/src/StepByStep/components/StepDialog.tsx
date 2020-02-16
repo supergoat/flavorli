@@ -52,7 +52,7 @@ const StepDialog = () => {
 export default StepDialog;
 
 const DialogWrapper = styled(Dialog)`
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;

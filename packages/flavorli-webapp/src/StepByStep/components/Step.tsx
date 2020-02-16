@@ -2,7 +2,7 @@ import React from 'react';
 import {Stack} from '@flavorli/elements';
 import Navigation from './Navigation';
 
-const NAVIGATION_COMPONENT_HEIGHT = '71px';
+const NAVIGATION_COMPONENT_HEIGHT = '67px';
 export interface IPreparationStepListProps {
   children: React.ReactNode;
   isDialog?: boolean;
@@ -16,6 +16,7 @@ const Step = ({isDialog, children}: IPreparationStepListProps) => {
       borderRadiusTopLeft={isDialog ? undefined : 8}
       borderRadiusTopRight={isDialog ? undefined : 8}
       paddingTop={24}
+      style={{position: 'relative'}}
     >
       <Stack
         width="100%"
@@ -29,9 +30,7 @@ const Step = ({isDialog, children}: IPreparationStepListProps) => {
         {children}
       </Stack>
 
-      <Stack width="100%" paddingLeft={24} paddingRight={24} paddingBottom={24}>
-        <Navigation isDialog={isDialog} />
-      </Stack>
+      <Navigation isDialog={isDialog} />
     </Stack>
   );
 };

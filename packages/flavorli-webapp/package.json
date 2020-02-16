@@ -34,6 +34,7 @@
     "@types/relay-runtime": "^8.0.0",
     "@types/relay-test-utils": "^6.0.1",
     "babel-plugin-relay": "^8.0.0",
+    "env-cmd": "^10.1.0",
     "get-graphql-schema": "^2.1.2",
     "graphql": "^14.5.8",
     "jest-axe": "^3.2.0",
@@ -44,14 +45,18 @@
     "typescript": "^3.7.4"
   },
   "scripts": {
-    "start": "yarn relay && react-scripts start",
+    "start": "yarn schema && yarn relay && react-scripts start",
     "build": "yarn relay && react-scripts build",
-    "relay": "yarn schema && yarn relay-compiler --schema schema.graphql  --language typescript --src ./src/ --watchman false $@",
+    "build:staging": "env-cmd -f .env.staging yarn build",
+    "relay": " yarn relay-compiler --schema schema.graphql  --language typescript --src ./src/ --watchman false $@",
     "schema": "get-graphql-schema http://localhost:4000/dev/graphql > schema.graphql",
+    "schema:staging": "get-graphql-schema https://ajilir8bg6.execute-api.eu-west-2.amazonaws.com/staging/graphql > schema.graphql",
+    "schema:prod": "get-graphql-schema https://ajilir8bg6.execute-api.eu-west-2.amazonaws.com/prod/graphql > schema.graphql",
     "test:watch": "react-scripts test",
     "test": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "deploy": "NODE_ENV=production yarn build && aws s3 sync ./build s3://flavorli-eu-west-2-prod-bucket"
+    "deploy:prod": "yarn build && aws s3 sync ./build s3://flavorli-eu-west-2-prod-bucket",
+    "deploy:staging": "yarn build:staging && aws s3 sync ./build s3://flavorli-eu-west-2-staging-bucket"
   },
   "browserslist": {
     "production": [

@@ -23,72 +23,78 @@ const Navigation = ({isDialog}: INavigationProps) => {
 
   const navigateToPreviousStep = () => {
     if (currentStep === 1) {
-      history.goBack();
+      navigateToHome();
     } else {
       onNavigate(-1);
     }
   };
 
-  const navigateToRecipe = () => {
+  const navigateToHome = () => {
     // For now we can go back in history once but this might change in the future
-    history.goBack();
+    history.replace('/');
   };
 
   const isFirstStep = currentStep === 1;
   const isLastStep = currentStep === noOfSteps;
 
-  const hideBackButton = isFirstStep;
   const hideNextButton = isLastStep;
 
   return (
-    <NavigationWrapper
-      direction="horizontal"
-      gap={8}
-      distribution="end"
+    <Stack
+      background="surface"
       width="100%"
-      paddingTop={16}
+      paddingBottom={16}
+      paddingLeft={24}
+      paddingRight={24}
     >
-      {!isDialog && (
-        <>
-          <PreviousButton
-            aria-controls="recipe-steps"
-            tabIndex={hideBackButton ? -1 : undefined}
-            onClick={navigateToPreviousStep}
-            intent="secondary"
-          >
-            back
-          </PreviousButton>
-
-          {!hideNextButton && (
-            <Button
+      <NavigationWrapper
+        direction="horizontal"
+        gap={8}
+        distribution="end"
+        width="100%"
+        paddingTop={16}
+      >
+        {!isDialog && (
+          <>
+            <PreviousButton
               aria-controls="recipe-steps"
-              width="100%"
-              onClick={navigateToNextStep}
-              intent="primary"
+              onClick={navigateToPreviousStep}
+              intent="secondary"
             >
-              Next
-              <ButtonIcon />
-            </Button>
-          )}
+              back
+            </PreviousButton>
 
-          {isLastStep && (
-            <Button
-              aria-controls="recipe-steps"
-              width="100%"
-              onClick={navigateToRecipe}
-              intent="primary"
-            >
-              Done
-            </Button>
-          )}
-        </>
-      )}
-      {isDialog && (
-        <Button width="100%" intent="secondary" onClick={onCloseDialogStep}>
-          Close
-        </Button>
-      )}
-    </NavigationWrapper>
+            {!hideNextButton && (
+              <Button
+                aria-controls="recipe-steps"
+                width="100%"
+                onClick={navigateToNextStep}
+                intent="primary"
+              >
+                Next
+                <ButtonIcon />
+              </Button>
+            )}
+
+            {isLastStep && (
+              <Button
+                aria-controls="recipe-steps"
+                width="100%"
+                onClick={navigateToHome}
+                intent="primary"
+              >
+                Done
+              </Button>
+            )}
+          </>
+        )}
+        {isDialog && (
+          <Button width="100%" intent="secondary" onClick={onCloseDialogStep}>
+            Close
+          </Button>
+        )}
+      </NavigationWrapper>
+    </Stack>
   );
 };
 
@@ -105,5 +111,5 @@ const ButtonIcon = styled.img.attrs(() => ({
   alt: '',
 }))`
   position: absolute;
-  right: 15px;
+  right: 35px;
 `;

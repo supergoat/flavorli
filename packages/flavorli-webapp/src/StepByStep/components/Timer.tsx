@@ -50,7 +50,6 @@ const Timer = ({timerInfo, type}: ITimerProps) => {
         {(minutes > 0 || seconds > 0) && (
           <Button
             intent="text"
-            width="47px"
             onClick={toggleTimer}
             aria-controls={`timer-${timer.id}`}
           >
