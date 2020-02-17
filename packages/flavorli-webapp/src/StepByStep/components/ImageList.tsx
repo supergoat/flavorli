@@ -21,21 +21,21 @@ const ImageList = ({images}: IImageListProps) => {
   if (!images || images.length === 0) return null;
 
   return (
-    <Section aria-label="List of step images">
-      <Stack width="100%" gap={16} paddingBottom={8}>
-        <Stack direction="horizontal" width="100%" overflowY>
-          {images.length > 1 &&
-            images.map((image, index) => {
-              return (
-                <SmallImage
-                  onClick={() => setCurrentImage(index + 1)}
-                  key={image.alt}
-                  src={image.src}
-                  alt={image.alt}
-                />
-              );
-            })}
-        </Stack>
+    <Stack width="100%" gap={16} paddingBottom={8}>
+      <Stack direction="horizontal" width="100%" overflowY>
+        {images.length > 1 &&
+          images.map((image, index) => {
+            return (
+              <SmallImage
+                onClick={() => setCurrentImage(index + 1)}
+                key={image.alt}
+                src={image.src}
+                alt={image.alt}
+              />
+            );
+          })}
+      </Stack>
+      <Section aria-label="List of step images">
         <ImageListContainer
           id="step-images"
           data-testid="step-images"
@@ -78,8 +78,8 @@ const ImageList = ({images}: IImageListProps) => {
             <img src={ChevronRight} alt="" />
           </RightArrowButton>
         </ImageListContainer>
-      </Stack>
-    </Section>
+      </Section>
+    </Stack>
   );
 };
 

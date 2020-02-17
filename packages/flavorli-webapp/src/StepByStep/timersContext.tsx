@@ -1,12 +1,13 @@
 import React from 'react';
 import {IRecipeTimer} from '../types';
-import {getSavedTimersFromLocalStorage} from './useRecipeTimer';
+import {getRecipeTimers} from './useRecipeTimer';
 
 interface IRecipeTimersContext {
   recipeId: string;
-  recipeTimers: {[timerId: string]: IRecipeTimer};
+  recipeTimers: Map<string, IRecipeTimer>;
   setRecipeTimers: React.Dispatch<{
-    [timerId: string]: IRecipeTimer;
+    timerId: string;
+    recipeTimer: IRecipeTimer;
   }>;
 }
 
@@ -20,21 +21,25 @@ export function RecipeTimersProvider({
   ...props
 }: {
   recipeId: string;
-  initialValues?: {[timerId: string]: IRecipeTimer};
+  initialValues?: Map<string, IRecipeTimer>;
   children: React.ReactNode;
 }) {
+  const savedRecipeTimers = getRecipeTimers(recipeId);
+
   const [initState] = React.useState(
-    initialValues || getSavedTimersFromLocalStorage()[recipeId] || {},
+    initialValues || savedRecipeTimers || new Map<string, IRecipeTimer>([]),
   );
 
   const [recipeTimers, setRecipeTimers] = React.useReducer(
     (
-      state: {[timerId: string]: IRecipeTimer},
-      action: {[timerId: string]: IRecipeTimer},
-    ) => ({
-      ...state,
-      ...action,
-    }),
+      state: Map<string, IRecipeTimer>,
+      action: {timerId: string; recipeTimer: IRecipeTimer},
+    ) => {
+      const {timerId, recipeTimer} = action;
+      const cloneState = new Map(state);
+      cloneState.set(timerId, recipeTimer);
+      return cloneState;
+    },
     initState,
   );
 

@@ -34,7 +34,6 @@ const Navigation = ({isDialog}: INavigationProps) => {
     history.replace('/');
   };
 
-  const isFirstStep = currentStep === 1;
   const isLastStep = currentStep === noOfSteps;
 
   const hideNextButton = isLastStep;

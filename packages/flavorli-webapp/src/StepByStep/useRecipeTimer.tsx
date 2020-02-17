@@ -12,13 +12,16 @@ export function useAddRecipeTimerIfItDoesNotExist(timerInfo: ITimer) {
   const {setRecipeTimers, recipeTimers, recipeId} = useRecipeTimersContext();
 
   // Return timer if it exists in context
-  if (recipeTimers[timerInfo.id]) return recipeTimers[timerInfo.id];
+  const recipeTimer = recipeTimers.get(timerInfo.id);
+  if (recipeTimer) {
+    return recipeTimer;
+  }
 
   const newRecipeTimer = createRecipeNewTimer(timerInfo);
   updatedRecipeTimerInLocalStorage(newRecipeTimer, recipeId);
 
   // Update the recipe timers context with the new recipe timer
-  setRecipeTimers({[newRecipeTimer.id]: newRecipeTimer});
+  setRecipeTimers({timerId: newRecipeTimer.id, recipeTimer: newRecipeTimer});
 
   return newRecipeTimer;
 }
@@ -97,7 +100,8 @@ export function useToggleTimer(timer: IRecipeTimer, remainingTime: number) {
       isPaused: !timer.isPaused,
     };
 
-    setRecipeTimers({[timer.id]: updatedTimer});
+    setRecipeTimers({timerId: timer.id, recipeTimer: updatedTimer});
+
     updatedRecipeTimerInLocalStorage(updatedTimer, recipeId);
   };
 }
@@ -113,7 +117,7 @@ export function useResetTimer(timer: ITimer) {
       isPaused: true,
     };
 
-    setRecipeTimers({[timer.id]: updatedTimer});
+    setRecipeTimers({timerId: timer.id, recipeTimer: updatedTimer});
     updatedRecipeTimerInLocalStorage(updatedTimer, recipeId);
   };
 }
@@ -132,12 +136,13 @@ function updatedRecipeTimerInLocalStorage(
 ) {
   const allSavedTimers = getSavedTimersFromLocalStorage();
 
+  const recipeTimers = getRecipeTimers(recipeId);
+
+  recipeTimers.set(updatedTimer.id, updatedTimer);
+
   const updatedTimers = {
     ...allSavedTimers,
-    [recipeId]: {
-      ...allSavedTimers?.[recipeId],
-      [updatedTimer.id]: updatedTimer,
-    },
+    [recipeId]: JSON.stringify(Array.from(recipeTimers.entries())),
   };
 
   localStorage.setItem('__timers__', JSON.stringify(updatedTimers));
@@ -147,4 +152,25 @@ function updatedRecipeTimerInLocalStorage(
 
 export function getSavedTimersFromLocalStorage() {
   return JSON.parse(localStorage.getItem('__timers__') || '{}');
+}
+
+export function getRecipeTimers(recipeId: string) {
+  const allSavedTimers = getSavedTimersFromLocalStorage();
+  const recipeTimers = allSavedTimers?.[recipeId];
+
+  if (isPlainObject(recipeTimers)) {
+    const recipeTimersMap = new Map<string, IRecipeTimer>();
+
+    Object.keys(recipeTimers).forEach(timerId => {
+      recipeTimersMap.set(timerId, recipeTimers[timerId]);
+    });
+
+    return recipeTimersMap;
+  }
+
+  return new Map<string, IRecipeTimer>(JSON.parse(recipeTimers || '[]'));
+}
+
+function isPlainObject(input: any) {
+  return input && !Array.isArray(input) && typeof input === 'object';
 }

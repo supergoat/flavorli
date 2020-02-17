@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack, Button, Text, useCloseOnEsc} from '@flavorli/elements';
-import {ITimer} from '../../types';
+import {IRecipeTimer} from '../../types';
 import Timer from './Timer';
 import {useRestoreFocus} from '../../helpers/hooks';
 import {useRecipeTimersContext} from '../timersContext';
@@ -13,8 +13,10 @@ export const Timers = () => {
 
   const context = useRecipeTimersContext();
 
-  const recipeTimers = Object.keys(context.recipeTimers).map(function(timerId) {
-    return context.recipeTimers[timerId];
+  let recipeTimers: IRecipeTimer[] = [];
+
+  context.recipeTimers.forEach(function(recipeTimer) {
+    recipeTimers.push(recipeTimer);
   });
 
   return (
@@ -33,7 +35,7 @@ export const Timers = () => {
           >
             {showRecipeTimers && (
               <Stack gap={4} width="100%">
-                {recipeTimers.map((timer: ITimer) => {
+                {recipeTimers.map(timer => {
                   return (
                     <Stack
                       key={timer.id}

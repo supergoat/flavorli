@@ -24,7 +24,7 @@ export function StepByStepProvider({
   children: React.ReactNode;
 }) {
   const [currentStep, setCurrentStep] = React.useState(
-    initialValues?.currentStep || 1,
+    initialValues?.currentStep || 12,
   );
   const [currentDialogStep, setCurrentDialogStep] = React.useState();
 

@@ -38,7 +38,9 @@ const Link = ({link}: ILinkProps) => {
         </Stack>
         <Stack distribution="space-between">
           {link.timerId && (
-            <RemainingTime recipeTimer={recipeTimers[link.timerId]} />
+            <RemainingTime
+              recipeTimer={recipeTimers.get(link.timerId) as IRecipeTimer}
+            />
           )}
 
           <Button intent="text" onClick={() => onOpenDialogStep(link.from)}>
