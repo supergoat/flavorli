@@ -36,7 +36,7 @@ const Link = ({link}: ILinkProps) => {
           </Text>
           <Text color="primary">{link.name}</Text>
         </Stack>
-        <Stack distribution="space-between">
+        <Stack distribution="space-between" alignment="end">
           {link.timerId && (
             <RemainingTime
               recipeTimer={recipeTimers.get(link.timerId) as IRecipeTimer}
