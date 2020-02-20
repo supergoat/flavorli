@@ -81,3 +81,18 @@ export interface ILink {
   from: number;
   timerId?: string;
 }
+
+export interface IUser {
+  id: string;
+  createdAt: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  cookbooks: ICookbook[];
+}
+
+export interface ICookbook {
+  id: string;
+  name: string;
+  recipes: IRecipe[];
+}

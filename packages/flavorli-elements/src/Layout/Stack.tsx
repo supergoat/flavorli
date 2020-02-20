@@ -28,6 +28,7 @@ export interface IStackProps extends React.HTMLAttributes<HTMLDivElement> {
   borderRadiusTopRight?: keyof typeof spacings;
   borderRadiusBottomRight?: keyof typeof spacings;
   borderRadiusBottomLeft?: keyof typeof spacings;
+  wrap?: boolean;
   gap?: keyof typeof spacings;
   shadow?: keyof typeof shadows;
   className?: string;
@@ -102,6 +103,7 @@ export const StackWrapper = styled.div<IStackProps>`
   border: ${p => p.border};
   overflow-y: ${p => (p.overflowY ? 'scroll' : 'initial')};
   overflow-x: ${p => (p.overflowX ? 'scroll' : 'initial')};
+  flex-wrap: ${p => (p.wrap ? 'wrap' : 'nowrap')};
 
   background: ${p => p.background && p.theme.colors[p.background]};
 

@@ -8,6 +8,12 @@ enum CacheControlScope {
   PRIVATE
 }
 
+type Cookbook {
+  id: String!
+  name: String!
+  recipes: [Recipe!]!
+}
+
 type Image {
   src: String!
   alt: String
@@ -65,6 +71,7 @@ type Mutation {
 }
 
 type Query {
+  user(id: String!): User!
   recipes: [Recipe!]!
   recipe(id: String!): Recipe!
 }
@@ -165,4 +172,13 @@ input TimerInput {
   name: String!
   minutes: Int!
   seconds: Int!
+}
+
+type User {
+  id: String!
+  createdAt: String!
+  firstName: String
+  lastName: String
+  email: String
+  cookbooks: [Cookbook!]!
 }

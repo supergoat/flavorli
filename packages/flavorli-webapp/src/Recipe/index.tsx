@@ -1,6 +1,7 @@
 import React from 'react';
 import {Stack, H1, H3, Text} from '@flavorli/elements';
 import styled from 'styled-components';
+import {ProfileAvatar, SaveRecipe} from '../components';
 
 interface IRecipeProps {
   author: string;
@@ -26,9 +27,18 @@ const Recipe = ({
   return (
     <>
       <Stack width="100%" gap={16}>
-        <Stack gap={4} width="100%">
-          <Text intent="secondary">By {author}</Text>
-          <H1>{name}</H1>
+        <Stack gap={8} width="100%">
+          <Stack
+            paddingTop={4}
+            width="100%"
+            direction="horizontal"
+            distribution="space-between"
+          >
+            <H1>{name}</H1>
+            <SaveRecipe />
+          </Stack>
+
+          <ProfileAvatar name={author} />
         </Stack>
 
         {/* <Stack gap={8} width="100%">
