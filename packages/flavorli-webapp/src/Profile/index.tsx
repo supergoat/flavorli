@@ -69,6 +69,7 @@ const Avatar = styled.div`
 `;
 
 const Recipes = styled(Stack)`
+  border-top: 1px solid ${p => p.theme.colors.secondarySurface};
   padding: calc((100vw - (44vw * 2)) / 3);
 `;
 
