@@ -5,6 +5,8 @@
   "homepage": "/",
   "dependencies": {
     "@flavorli/elements": "1.0.0",
+    "amazon-cognito-identity-js": "^3.2.4",
+    "aws-sdk": "^2.624.0",
     "framer-motion": "^1.6.17",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

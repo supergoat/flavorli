@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {IColor} from '../theme/colors';
 
-const DEFAULT_WIDTH = '120px';
+const DEFAULT_MIN_WIDTH = '120px';
 const DEFAULT_HEIGHT = '35px';
 
 export interface IButtonProps {
@@ -15,11 +15,15 @@ export const Button = styled.button<IButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
   height: ${p =>
     p.height ? p.height : p.intent === 'text' ? 'auto' : DEFAULT_HEIGHT};
-  width: ${p =>
-    p.width ? p.width : p.intent === 'text' ? 'auto' : DEFAULT_WIDTH};
+  min-width: ${p =>
+    p.width || p.intent === 'text' ? 'auto' : DEFAULT_MIN_WIDTH};
+  width: ${p => p.width};
+  padding: ${p =>
+    p.intent === 'text'
+      ? `0 ${p.theme.spacings[4]}px`
+      : `0 ${p.theme.spacings[16]}px`};
   background-color: ${p =>
     p.intent === 'secondary'
       ? p.theme.colors.white
@@ -33,7 +37,7 @@ export const Button = styled.button<IButtonProps>`
       : p.intent === 'secondary' || p.intent === 'text'
       ? p.theme.colors.primary
       : p.theme.colors.textOnPrimary};
-  border-radius: ${p => `${p.theme.spacings['4']}px`};
+  border-radius: ${p => `${p.theme.spacings['2']}px`};
   border: ${p =>
     p.intent === 'secondary'
       ? `1px solid ${p.theme.colors.primary}`

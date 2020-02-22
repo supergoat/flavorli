@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import {fontSizes, families, weights} from '../theme/fonts';
-import {motion, MotionProps} from 'framer-motion';
 import {IColor} from '../theme/colors';
 
-interface IText extends MotionProps {
+interface IText {
   width?: string;
   align?: 'left' | 'center' | 'right';
   intent?: 'secondary' | 'highlight' | 'textOnPrimary';
@@ -14,7 +13,7 @@ interface IText extends MotionProps {
   fontSize?: keyof typeof fontSizes;
   color?: IColor;
 }
-export const Text = styled(motion.p)<IText>`
+export const Text = styled.p<IText>`
   font-family: ${p => p.theme.families.Muli};
   color: ${p =>
     p.color
