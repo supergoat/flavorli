@@ -11,6 +11,7 @@ const Home = () => {
   if (loading) return <div>Loading...</div>;
 
   if (!recipes || !recipes.length) return null;
+
   return (
     <Stack
       overflowY

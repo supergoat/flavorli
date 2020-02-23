@@ -5,17 +5,20 @@ import {RelayEnvironmentProvider} from 'react-relay/hooks';
 import RelayEnvironment from './RelayEnvironment';
 
 import Routes from './Routes';
+import {AuthProvider} from './helpers/auth/useAuthContext';
 
-export default () => {
+const App = () => {
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <RelayEnvironmentProvider environment={RelayEnvironment}>
           <React.StrictMode>
-            <App>
-              <Routes />
-            </App>
+            <AppWrapper>
+              <AuthProvider>
+                <Routes />
+              </AuthProvider>
+            </AppWrapper>
           </React.StrictMode>
         </RelayEnvironmentProvider>
       </ThemeProvider>
@@ -23,6 +26,8 @@ export default () => {
   );
 };
 
-const App = styled.div`
+export default App;
+
+const AppWrapper = styled.div`
   height: 100vh;
 `;

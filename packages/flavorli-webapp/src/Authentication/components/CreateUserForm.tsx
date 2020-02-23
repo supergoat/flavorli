@@ -1,26 +1,28 @@
 import React from 'react';
 import {Stack, Button, Input, Label, Icon, Text} from '@flavorli/elements';
 import {IconName} from '@flavorli/elements/lib/miscellaneous/Icon';
-import {useCognitoUserContext} from '../useCognitoUserContext';
-import {createUser} from '../awsAuth';
+import {useNewUserContext} from '../useCognitoUserContext';
+import {createNewUser} from '../../helpers/auth';
 
 function CreateUserForm() {
-  const {user, setUser, stage, setStage} = useCognitoUserContext();
+  const {user, setUser, stage, setStage} = useNewUserContext();
+  const [errors, setErrors] = React.useState();
 
   async function onCreateUser(e: any) {
     e.preventDefault();
-    const {result, err} = await createUser(user);
-    if (err) {
-      alert(JSON.stringify(err));
-    }
+    const {result, err} = await createNewUser(user);
 
     if (result) {
       setStage(2);
     }
+
+    if (err) {
+      setErrors(err);
+    }
   }
 
   return stage === 1 ? (
-    <form onSubmit={onCreateUser}>
+    <form onSubmit={onCreateUser} style={{width: '100%'}}>
       <Stack gap={16} width="100%">
         <Stack gap={4} width="100%">
           <Label>PRONOUNS</Label>
@@ -57,6 +59,7 @@ function CreateUserForm() {
           <Label>USERNAME</Label>
           <Input
             width="100%"
+            value={user.username}
             onChange={e => setUser({username: e.target.value})}
             type="text"
             placeholder="pn"
@@ -67,6 +70,7 @@ function CreateUserForm() {
           <Label>EMAIL</Label>
           <Input
             width="100%"
+            value={user.email}
             onChange={e => setUser({email: e.target.value})}
             type="email"
             placeholder="pn@flavor.li"
@@ -77,6 +81,7 @@ function CreateUserForm() {
           <Label>PHONE</Label>
           <Input
             width="100%"
+            value={user.phone}
             onChange={e => setUser({phone: e.target.value})}
             type="tel"
             placeholder="+447960778401"
@@ -86,6 +91,7 @@ function CreateUserForm() {
           <Label>PASSWORD</Label>
           <Input
             width="100%"
+            value={user.password}
             onChange={e => setUser({password: e.target.value})}
             type="password"
             placeholder="****"

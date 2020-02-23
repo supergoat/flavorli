@@ -1,4 +1,4 @@
-export interface ICognitoUser {
+export interface INewUser {
   pronouns: string;
   email: string;
   phone: string;

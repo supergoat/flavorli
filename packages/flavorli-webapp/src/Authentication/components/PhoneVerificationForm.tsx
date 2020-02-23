@@ -1,12 +1,13 @@
 import React from 'react';
 import {Stack, Button, Input, Label} from '@flavorli/elements';
-import {verifyPhoneNumber, authenticate} from '../awsAuth';
-import {useCognitoUserContext} from '../useCognitoUserContext';
-import {useHistory} from 'react-router';
+import {verifyPhoneNumber, authenticate} from '../../helpers/auth';
+import {useNewUserContext} from '../useCognitoUserContext';
+import {useAuthContext} from '../../helpers/auth/useAuthContext';
 
 function PhoneVerificationForm() {
-  const history = useHistory();
-  const {user, stage} = useCognitoUserContext();
+  const {setCognitoUser} = useAuthContext();
+
+  const {user, stage} = useNewUserContext();
 
   const [code, setCode] = React.useState('');
 
@@ -22,9 +23,7 @@ function PhoneVerificationForm() {
     if (result) {
       const {result, err} = await authenticate(user.username, user.password);
       if (result) {
-        var accessToken = result.getAccessToken().getJwtToken();
-        localStorage.setItem('__flavorli_token__', accessToken);
-        history.push('/');
+        setCognitoUser(result);
       }
 
       if (err) {
@@ -37,7 +36,7 @@ function PhoneVerificationForm() {
   }
 
   return stage === 2 ? (
-    <form onSubmit={onSubmitVerificationCode}>
+    <form onSubmit={onSubmitVerificationCode} style={{width: '100%'}}>
       <Stack gap={16} width="100%">
         <Stack gap={4} width="100%">
           <Label>Code</Label>

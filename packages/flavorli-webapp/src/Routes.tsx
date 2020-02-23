@@ -1,24 +1,40 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import Home from './Home';
 import StepByStep from './StepByStep';
 import Profile from './Profile';
-import SignUp from './SignUp';
+import Authentication from './Authentication';
+import {useAuthContext} from './helpers/auth/useAuthContext';
 
 import {Navbar} from './components';
+import {establishUserSession} from './helpers/auth';
 
 const Routes = () => {
+  const {cognitoUser} = useAuthContext();
+
+  React.useEffect(() => {
+    if (cognitoUser) {
+      establishUserSession(cognitoUser);
+    }
+  }, [cognitoUser]);
+
   return (
     <>
       <Router>
-        <Route path="/signup" component={SignUp} />
-
         <>
           <Navbar />
+
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/recipe/:recipeId" component={StepByStep} />
-            <Route path="/profile/:profileId" component={Profile} />
+            <ProtectedRoute exact path="/" component={Home} />
+
+            <ProtectedRoute path="/recipe/:recipeId" component={StepByStep} />
+            <ProtectedRoute path="/profile/:profileId" component={Profile} />
+            <Route path="/login" component={Authentication} />
           </Switch>
         </>
       </Router>
@@ -27,3 +43,32 @@ const Routes = () => {
 };
 
 export default Routes;
+
+const ProtectedRoute = ({
+  component: Component,
+  ...rest
+}: {
+  component: any;
+  path: string;
+  exact?: boolean;
+}) => {
+  const {cognitoUser} = useAuthContext();
+
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        cognitoUser ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: {from: props.location},
+            }}
+          />
+        )
+      }
+    />
+  );
+};
