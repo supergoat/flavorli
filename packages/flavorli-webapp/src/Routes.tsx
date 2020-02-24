@@ -26,17 +26,15 @@ const Routes = () => {
   return (
     <>
       <Router>
-        <>
-          <Navbar />
+        <Route path="/login" component={Authentication} />
 
-          <Switch>
-            <ProtectedRoute exact path="/" component={Home} />
+        {cognitoUser && <Navbar />}
 
-            <ProtectedRoute path="/recipe/:recipeId" component={StepByStep} />
-            <ProtectedRoute path="/profile/:profileId" component={Profile} />
-            <Route path="/login" component={Authentication} />
-          </Switch>
-        </>
+        <Switch>
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute path="/recipe/:recipeId" component={StepByStep} />
+          <ProtectedRoute path="/profile/:profileId" component={Profile} />
+        </Switch>
       </Router>
     </>
   );

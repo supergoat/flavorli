@@ -12,7 +12,7 @@ function SignUp() {
   const {cognitoUser} = useAuthContext();
   const location = useLocation();
   const {from} = location.state || {from: {pathname: '/'}};
-  const [hasAccount, setHasAccount] = React.useState(true);
+  const [hasAccount, setHasAccount] = React.useState(false);
 
   if (cognitoUser) {
     return <Redirect to={from.pathname} />;
@@ -38,10 +38,12 @@ function SignUp() {
           )}
 
           <Stack
-            gap={8}
+            gap={16}
             width="100%"
-            style={{borderTop: '1px solid #eee'}}
-            paddingTop={8}
+            style={{
+              borderTop: '1px solid #eee',
+            }}
+            paddingTop={16}
           >
             <Text>
               {!hasAccount
@@ -74,5 +76,5 @@ const Logo = styled.p`
 const FormContainer = styled.div`
   width: 100vw;
   max-width: 300px;
-  padding: ${p => `${p.theme.spacings[64]}px 0`};
+  padding: ${p => `${p.theme.spacings[32]}px 0`};
 `;

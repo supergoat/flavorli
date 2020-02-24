@@ -49,14 +49,19 @@ export const Button = styled.button<IButtonProps>`
       ? 'none'
       : p.theme.shadows.LIGHT};
 
-  &:hover {
-    background-color: ${p =>
-      p.intent === 'secondary'
+  &:hover:not([disabled]) {
+    background-color: ${p => {
+      return p.intent === 'secondary'
         ? p.theme.colors.secondarySurface
         : p.intent === 'secondaryOnPrimary'
         ? 'rgba(255, 255, 255, 0.1);'
         : p.intent === 'text'
         ? 'none'
-        : p.theme.colors.primaryDark};
+        : p.theme.colors.primaryDark;
+    }};
+  }
+
+  &:disabled {
+    opacity: 0.8;
   }
 `;
