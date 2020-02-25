@@ -7,16 +7,13 @@ function LoginForm() {
   const {setCognitoUser} = useAuthContext();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [errors, setErrors] = React.useState<{
-    username: string;
-    password: string;
-  }>({username: '', password: ''});
+  const [errors, setErrors] = React.useState({username: '', password: ''});
   const [isLoading, setIsLoading] = React.useState(false);
 
   const isUsernameBlank = username.trim() === '';
   const isPasswordBlank = password.trim() === '';
 
-  const isFormDisabled = isUsernameBlank || isPasswordBlank || isLoading;
+  const isButtonDisabled = isLoading;
 
   function isLoginFormValid() {
     if (isUsernameBlank) {
@@ -106,7 +103,7 @@ function LoginForm() {
           />
           <Text color="error">{errors['password']}</Text>
         </Stack>
-        <Button width="100%" disabled={isFormDisabled}>
+        <Button width="100%" disabled={isButtonDisabled}>
           {isLoading ? 'Loading...' : 'Log In'}
         </Button>
       </Stack>

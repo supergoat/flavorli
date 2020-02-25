@@ -8,7 +8,7 @@ import {NewUserProvider} from './useCognitoUserContext';
 import {useLocation, Redirect} from 'react-router';
 import {useAuthContext} from '../helpers/auth/useAuthContext';
 
-function SignUp() {
+function Authentication() {
   const {cognitoUser} = useAuthContext();
   const location = useLocation();
   const {from} = location.state || {from: {pathname: '/'}};
@@ -64,7 +64,7 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Authentication;
 
 const Logo = styled.p`
   text-align: center;
