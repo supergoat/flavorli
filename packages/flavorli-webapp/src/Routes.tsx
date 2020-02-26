@@ -1,4 +1,5 @@
 import React from 'react';
+import mixpanel from 'mixpanel-browser';
 import {
   BrowserRouter as Router,
   Route,
@@ -20,6 +21,14 @@ const Routes = () => {
   React.useEffect(() => {
     if (cognitoUser) {
       establishUserSession(cognitoUser);
+      const username = cognitoUser.getUsername();
+
+      mixpanel.identify(username);
+
+      mixpanel.people.set({
+        $last_login: new Date().toISOString(),
+        userId: username,
+      });
     }
   }, [cognitoUser]);
 

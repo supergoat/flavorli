@@ -29,6 +29,10 @@ const Navigation = ({isDialog}: INavigationProps) => {
     }
   };
 
+  const onDone = () => {
+    navigateToHome();
+  };
+
   const navigateToHome = () => {
     // For now we can go back in history once but this might change in the future
     history.replace('/');
@@ -79,7 +83,7 @@ const Navigation = ({isDialog}: INavigationProps) => {
               <Button
                 aria-controls="recipe-steps"
                 width="100%"
-                onClick={navigateToHome}
+                onClick={onDone}
                 intent="primary"
               >
                 Done

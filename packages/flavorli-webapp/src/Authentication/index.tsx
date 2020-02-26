@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Button, Input, Label, Icon, Text} from '@flavorli/elements';
+import {Stack, Button, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 import LoginForm from './components/LoginForm';
 import CreateUserForm from './components/CreateUserForm';

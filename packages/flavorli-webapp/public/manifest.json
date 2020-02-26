@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Flavorli",
+  "name": "Find and cook healthy recipes everyday with no effort",
   "icons": [
     {
       "src": "favicon.ico",
