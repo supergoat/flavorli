@@ -1,8 +1,4 @@
-import {
-  CognitoUser,
-  AuthenticationDetails,
-  CognitoUserSession,
-} from 'amazon-cognito-identity-js';
+import {CognitoUser, AuthenticationDetails} from 'amazon-cognito-identity-js';
 import {userPool} from '.';
 
 export async function authenticate(username: string, password: string) {

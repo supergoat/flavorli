@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Stack, Text} from '@flavorli/elements';
-import Step from './Step';
 import {IIngredient} from '../../types';
 
 interface IIngredientsStepProps {
@@ -9,12 +8,8 @@ interface IIngredientsStepProps {
 }
 const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
   return (
-    <Step>
-      <Stack gap={4} paddingBottom={8}>
-        <Heading>Mise en place</Heading>
-        <SubHeading>Ingredients</SubHeading>
-      </Stack>
-
+    <Stack width="100%" gap={16}>
+      <Dot />
       <Text>
         Here is a list of all the ingredients you will need. Check to make sure
         you are not missing anything before you begin
@@ -47,25 +42,11 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
           );
         })}
       </Stack>
-    </Step>
+    </Stack>
   );
 };
 
 export default IngredientsStep;
-
-const Heading = styled.h1`
-  font-family: ${p => p.theme.families.Pacifico};
-  font-size: ${p => p.theme.fontSizes[32]};
-  color: ${p => p.theme.colors.primary};
-  font-weight: normal;
-`;
-
-const SubHeading = styled.h2`
-  font-family: ${p => p.theme.families.PatrickHand};
-  font-size: ${p => p.theme.fontSizes[24]};
-  color: ${p => p.theme.colors.primary};
-  font-weight: normal;
-`;
 
 const CheckBox = styled.input.attrs(() => ({
   type: 'checkbox',
@@ -83,4 +64,15 @@ const Label = styled.label`
   width: 100%;
   padding: 8px 0;
   width: 100%;
+`;
+
+const Dot = styled.div`
+  position: absolute;
+  top: 4px;
+  left: -40px;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid ${p => p.theme.colors.tagRed};
 `;

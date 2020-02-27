@@ -2,19 +2,14 @@ import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 import {IItem} from '../../types';
-import Step from './Step';
 
 interface IItemsStepProps {
   items: IItem[];
 }
 const ItemsStep = ({items}: IItemsStepProps) => {
   return (
-    <Step>
-      <Stack gap={4} paddingBottom={8}>
-        <Heading>Mise en place</Heading>
-        <SubHeading>Items</SubHeading>
-      </Stack>
-
+    <Stack width="100%" gap={16}>
+      <Dot />
       <Text>
         Make sure that you have all of your equipment ready and available to use
       </Text>
@@ -45,25 +40,11 @@ const ItemsStep = ({items}: IItemsStepProps) => {
           );
         })}
       </Stack>
-    </Step>
+    </Stack>
   );
 };
 
 export default ItemsStep;
-
-const Heading = styled.h1`
-  font-family: ${p => p.theme.families.Pacifico};
-  font-size: ${p => p.theme.fontSizes[32]};
-  color: ${p => p.theme.colors.primary};
-  font-weight: normal;
-`;
-
-const SubHeading = styled.h2`
-  font-family: ${p => p.theme.families.PatrickHand};
-  font-size: ${p => p.theme.fontSizes[24]};
-  color: ${p => p.theme.colors.primary};
-  font-weight: normal;
-`;
 
 const CheckBox = styled.input.attrs(() => ({
   type: 'checkbox',
@@ -79,4 +60,15 @@ const Link = styled.a`
 const Label = styled.label`
   width: 100%;
   padding: 8px 0;
+`;
+
+const Dot = styled.div`
+  position: absolute;
+  top: 4px;
+  left: -40px;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid ${p => p.theme.colors.tagRed};
 `;

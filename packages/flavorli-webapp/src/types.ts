@@ -4,7 +4,8 @@ export type IRecipe = {
   id: string;
   author: string;
   name: string;
-  image: string;
+  image?: string;
+  video?: string;
   preparationTime: number;
   cookingTime: number;
   portions: string;
@@ -31,21 +32,17 @@ export interface IItem {
 }
 
 export interface IStep {
-  type: 'MISE_EN_PLACE' | 'PREPARATION';
-  no?: number;
-  tag: ITag;
-  links?: ILink[];
-  items?: IItem[];
-  ingredients?: IIngredient[];
+  for: string;
   tasks: ITask[];
-  timer?: ITimer;
-  images?: IImage[];
   notes?: string[];
+  images?: IImage[];
+  video?: string;
 }
 
 export interface ITask {
   name: string;
   notes?: string[];
+  timer?: ITimer;
 }
 
 export interface ITag {

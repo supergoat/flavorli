@@ -10,3 +10,5 @@ export {default as exclamation} from './exclamation.svg';
 export {default as chef_male} from './chef_male.svg';
 export {default as chef_female} from './chef_female.svg';
 export {default as chef_they} from './chef_they.svg';
+export {default as play} from './play.svg';
+export {default as pause} from './pause.svg';

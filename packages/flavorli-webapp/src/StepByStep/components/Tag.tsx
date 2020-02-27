@@ -1,20 +1,19 @@
 import React from 'react';
 import {Stack, Text} from '@flavorli/elements';
-import {ITag} from '../../types';
 
-const Tag = ({tag}: {tag: ITag}) => {
+const Tag = ({tag}: {tag: string}) => {
   return (
     <Stack
       distribution="center"
       width="auto"
-      paddingTop={4}
-      paddingRight={16}
-      paddingLeft={16}
-      paddingBottom={4}
+      paddingTop={2}
+      paddingRight={8}
+      paddingLeft={8}
+      paddingBottom={2}
       borderRadius={4}
-      background={tag.color}
+      background={'tagRed'}
     >
-      <Text intent="textOnPrimary">{tag.text}</Text>
+      <Text intent="textOnPrimary">{tag}</Text>
     </Stack>
   );
 };

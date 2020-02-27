@@ -10,6 +10,7 @@ const useFetchStepByStepRecipeQuery = graphql`
       author
       name
       image
+      video
       preparationTime
       cookingTime
       portions
@@ -28,45 +29,23 @@ const useFetchStepByStepRecipeQuery = graphql`
         link
       }
       steps {
-        no
-        type
-        links {
-          heading
-          name
-          from
-          timerId
-        }
-        tag {
-          color
-          text
-        }
-        ingredients {
-          qty
-          name
-          notes
-          link
-        }
-        items {
-          name
-          qty
-          notes
-          link
-        }
-        tasks {
-          name
-          notes
-        }
-        timer {
-          id
-          name
-          minutes
-          seconds
-        }
+        for
+        notes
+        video
         images {
           src
           alt
         }
-        notes
+        tasks {
+          name
+          notes
+          timer {
+            id
+            name
+            minutes
+            seconds
+          }
+        }
       }
     }
   }

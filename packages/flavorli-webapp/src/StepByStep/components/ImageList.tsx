@@ -22,19 +22,6 @@ const ImageList = ({images}: IImageListProps) => {
 
   return (
     <Stack width="100%" gap={16} paddingBottom={8}>
-      <Stack direction="horizontal" width="100%" overflowY>
-        {images.length > 1 &&
-          images.map((image, index) => {
-            return (
-              <SmallImage
-                onClick={() => setCurrentImage(index + 1)}
-                key={image.alt}
-                src={image.src}
-                alt={image.alt}
-              />
-            );
-          })}
-      </Stack>
       <Section aria-label="List of step images">
         <ImageListContainer
           id="step-images"
@@ -95,15 +82,6 @@ const Image = styled.img`
   border-radius: ${p => `${p.theme.spacings[8]}px`};
   object-fit: cover;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
-`;
-
-const SmallImage = styled.img`
-  width: 48px;
-  height: 48px;
-  border-radius: ${p => `${p.theme.spacings[4]}px`};
-  object-fit: cover;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
-  margin-right: 10px;
 `;
 
 const ArrowButton = styled.button<{hide: boolean}>`

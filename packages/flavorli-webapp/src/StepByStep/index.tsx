@@ -1,104 +1,65 @@
 import React from 'react';
-import styled from 'styled-components';
-import {useTrapFocus, Stack} from '@flavorli/elements';
-import StepList from './components/StepList';
+import {Stack} from '@flavorli/elements';
 import RecipeStep from './components/RecipeStep';
-import Timers from './components/Timers';
 import {RecipeTimersProvider} from './timersContext';
 
 import IntroStep from './components/IntroStep';
-import MiseEnPlace from './components/MiseEnPlace';
-import NextUp from './components/NextUp';
 
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
-import {StepByStepProvider} from './stepByStepContext';
 import useFetchStepByStepRecipe from './useFetchStepByStepRecipe';
+import Timers from './components/Timers';
 
 const StepByStep = () => {
-  const refEl = React.useRef<HTMLDivElement>(null);
-  useTrapFocus(refEl);
-
   const {loading, error, recipe} = useFetchStepByStepRecipe();
 
-  let miseEnPlaceSteps: React.ReactElement[] = [];
-  let preparationSteps: React.ReactElement[] = [];
-
-  recipe?.steps.map((step, index) => {
-    if (step.type === 'MISE_EN_PLACE') {
-      miseEnPlaceSteps.push(<RecipeStep key={`${index}-step`} step={step} />);
-    } else {
-      preparationSteps.push(<RecipeStep key={`${index}-step`} step={step} />);
-    }
-  });
-
   return (
-    <DialogWrapper ref={refEl}>
+    <>
       {loading && <div>Loading...</div>}
       {error && <div>{error}</div>}
 
       {recipe && (
         <RecipeTimersProvider recipeId={recipe.id}>
-          <StepByStepProvider
-            initialValues={{
-              noOfSteps: 5 + recipe.steps.length,
-            }}
+          {/* <Timers /> */}
+          <Stack
+            width="100%"
+            height="100%"
+            overflowY
+            paddingLeft={32}
+            paddingBottom={32}
+            paddingTop={32}
           >
-            <Stack width="100%" height="100%">
-              <Timers />
-              <Section
-                aria-label="List of recipe steps"
-                id="list-of-recipe-steps"
-              >
-                <StepList>
-                  <IntroStep
-                    author={recipe.author}
-                    name={recipe.name}
-                    image={recipe.image}
-                    preparationTime={recipe.preparationTime}
-                    cookingTime={recipe.cookingTime}
-                    portions={recipe.portions}
-                    difficulty={recipe.difficulty}
-                    notes={recipe.notes}
-                  />
+            <Stack
+              width="100%"
+              style={{borderLeft: '1px solid grey'}}
+              paddingLeft={32}
+              paddingRight={24}
+              gap={104}
+            >
+              <IntroStep
+                author={recipe.author}
+                name={recipe.name}
+                image={recipe?.image}
+                video={recipe?.video}
+                preparationTime={recipe.preparationTime}
+                cookingTime={recipe.cookingTime}
+                portions={recipe.portions}
+                difficulty={recipe.difficulty}
+                notes={recipe.notes}
+              />
 
-                  <NextUp heading="Mise En Place">
-                    <MiseEnPlace />
-                  </NextUp>
+              <IngredientsStep ingredients={recipe.ingredients} />
+              <ItemsStep items={recipe.items} />
 
-                  <IngredientsStep ingredients={recipe.ingredients} />
-                  <ItemsStep items={recipe.items} />
-
-                  {miseEnPlaceSteps}
-
-                  <NextUp heading="Preparation" />
-
-                  {preparationSteps}
-                </StepList>
-              </Section>
+              {recipe?.steps.map((step, index) => {
+                return <RecipeStep key={index} step={step} />;
+              })}
             </Stack>
-          </StepByStepProvider>
+          </Stack>
         </RecipeTimersProvider>
       )}
-    </DialogWrapper>
+    </>
   );
 };
 
 export default StepByStep;
-
-const DialogWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: ${p => p.theme.colors.backdropDark};
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-`;
-
-const Section = styled.section`
-  width: 100%;
-  height: calc(100% - 46px);
-`;

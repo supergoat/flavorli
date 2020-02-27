@@ -37,7 +37,7 @@ const Routes = () => {
       <Router>
         <Route path="/login" component={Authentication} />
 
-        {cognitoUser && <Navbar />}
+        {/* {cognitoUser && <Navbar />} */}
 
         <Switch>
           <ProtectedRoute exact path="/" component={Home} />

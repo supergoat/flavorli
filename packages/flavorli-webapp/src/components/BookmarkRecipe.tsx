@@ -2,7 +2,6 @@ import React from 'react';
 import {Button, usePortal, Dialog, H2, Stack, Text} from '@flavorli/elements';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import {colors} from '@flavorli/elements/lib/theme/colors';
 
 const el = document.createElement('div');
 const BookmarkRecipe = () => {

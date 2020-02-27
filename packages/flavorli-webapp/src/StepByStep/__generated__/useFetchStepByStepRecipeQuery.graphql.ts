@@ -1,9 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 5b9da9027147152bd1c0eb6b8e1ba35a */
+/* @relayHash 397f7fd5685032cc11f0d2582de78400 */
 
 import {ConcreteRequest} from 'relay-runtime';
-export type StepType = 'MISE_EN_PLACE' | 'PREPARATION' | '%future added value';
 export type useFetchStepByStepRecipeQueryVariables = {
   id: string;
 };
@@ -13,6 +12,7 @@ export type useFetchStepByStepRecipeQueryResponse = {
     readonly author: string | null;
     readonly name: string | null;
     readonly image: string | null;
+    readonly video: string | null;
     readonly preparationTime: number | null;
     readonly cookingTime: number | null;
     readonly portions: string | null;
@@ -31,45 +31,23 @@ export type useFetchStepByStepRecipeQueryResponse = {
       readonly link: string | null;
     } | null> | null;
     readonly steps: ReadonlyArray<{
-      readonly no: number | null;
-      readonly type: StepType | null;
-      readonly links: ReadonlyArray<{
-        readonly heading: string | null;
-        readonly name: string;
-        readonly from: string;
-        readonly timerId: string | null;
-      } | null> | null;
-      readonly tag: {
-        readonly color: string;
-        readonly text: string;
-      } | null;
-      readonly ingredients: ReadonlyArray<{
-        readonly qty: string | null;
-        readonly name: string | null;
-        readonly notes: string | null;
-        readonly link: string | null;
-      } | null> | null;
-      readonly items: ReadonlyArray<{
-        readonly name: string | null;
-        readonly qty: string | null;
-        readonly notes: string | null;
-        readonly link: string | null;
-      } | null> | null;
-      readonly tasks: ReadonlyArray<{
-        readonly name: string;
-        readonly notes: ReadonlyArray<string | null> | null;
-      } | null> | null;
-      readonly timer: {
-        readonly id: string;
-        readonly name: string;
-        readonly minutes: number;
-        readonly seconds: number;
-      } | null;
+      readonly for: string | null;
+      readonly notes: ReadonlyArray<string | null> | null;
+      readonly video: string | null;
       readonly images: ReadonlyArray<{
         readonly src: string;
         readonly alt: string | null;
       } | null> | null;
-      readonly notes: ReadonlyArray<string | null> | null;
+      readonly tasks: ReadonlyArray<{
+        readonly name: string;
+        readonly notes: ReadonlyArray<string | null> | null;
+        readonly timer: {
+          readonly id: string;
+          readonly name: string;
+          readonly minutes: number;
+          readonly seconds: number;
+        } | null;
+      } | null> | null;
     } | null> | null;
   };
 };
@@ -87,6 +65,7 @@ query useFetchStepByStepRecipeQuery(
     author
     name
     image
+    video
     preparationTime
     cookingTime
     portions
@@ -105,45 +84,23 @@ query useFetchStepByStepRecipeQuery(
       link
     }
     steps {
-      no
-      type
-      links {
-        heading
-        name
-        from
-        timerId
-      }
-      tag {
-        color
-        text
-      }
-      ingredients {
-        qty
-        name
-        notes
-        link
-      }
-      items {
-        name
-        qty
-        notes
-        link
-      }
-      tasks {
-        name
-        notes
-      }
-      timer {
-        id
-        name
-        minutes
-        seconds
-      }
+      for
+      notes
+      video
       images {
         src
         alt
       }
-      notes
+      tasks {
+        name
+        notes
+        timer {
+          id
+          name
+          minutes
+          seconds
+        }
+      }
     }
   }
 }
@@ -175,36 +132,36 @@ const node: ConcreteRequest = (function() {
     v3 = {
       kind: 'ScalarField',
       alias: null,
-      name: 'notes',
+      name: 'video',
       args: null,
       storageKey: null,
     },
     v4 = {
       kind: 'ScalarField',
       alias: null,
-      name: 'qty',
+      name: 'notes',
       args: null,
       storageKey: null,
     },
-    v5 = {
-      kind: 'ScalarField',
-      alias: null,
-      name: 'link',
-      args: null,
-      storageKey: null,
-    },
-    v6 = [v2 /*: any*/, v4 /*: any*/, v3 /*: any*/, v5 /*: any*/],
-    v7 = {
-      kind: 'LinkedField',
-      alias: null,
-      name: 'items',
-      storageKey: null,
-      args: null,
-      concreteType: 'Item',
-      plural: true,
-      selections: v6 /*: any*/,
-    },
-    v8 = [
+    v5 = [
+      v2 /*: any*/,
+      {
+        kind: 'ScalarField',
+        alias: null,
+        name: 'qty',
+        args: null,
+        storageKey: null,
+      },
+      v4 /*: any*/,
+      {
+        kind: 'ScalarField',
+        alias: null,
+        name: 'link',
+        args: null,
+        storageKey: null,
+      },
+    ],
+    v6 = [
       {
         kind: 'LinkedField',
         alias: null,
@@ -236,6 +193,7 @@ const node: ConcreteRequest = (function() {
             args: null,
             storageKey: null,
           },
+          v3 /*: any*/,
           {
             kind: 'ScalarField',
             alias: null,
@@ -264,7 +222,7 @@ const node: ConcreteRequest = (function() {
             args: null,
             storageKey: null,
           },
-          v3 /*: any*/,
+          v4 /*: any*/,
           {
             kind: 'LinkedField',
             alias: null,
@@ -273,9 +231,18 @@ const node: ConcreteRequest = (function() {
             args: null,
             concreteType: 'Ingredient',
             plural: true,
-            selections: v6 /*: any*/,
+            selections: v5 /*: any*/,
           },
-          v7 /*: any*/,
+          {
+            kind: 'LinkedField',
+            alias: null,
+            name: 'items',
+            storageKey: null,
+            args: null,
+            concreteType: 'Item',
+            plural: true,
+            selections: v5 /*: any*/,
+          },
           {
             kind: 'LinkedField',
             alias: null,
@@ -288,128 +255,12 @@ const node: ConcreteRequest = (function() {
               {
                 kind: 'ScalarField',
                 alias: null,
-                name: 'no',
+                name: 'for',
                 args: null,
                 storageKey: null,
               },
-              {
-                kind: 'ScalarField',
-                alias: null,
-                name: 'type',
-                args: null,
-                storageKey: null,
-              },
-              {
-                kind: 'LinkedField',
-                alias: null,
-                name: 'links',
-                storageKey: null,
-                args: null,
-                concreteType: 'Link',
-                plural: true,
-                selections: [
-                  {
-                    kind: 'ScalarField',
-                    alias: null,
-                    name: 'heading',
-                    args: null,
-                    storageKey: null,
-                  },
-                  v2 /*: any*/,
-                  {
-                    kind: 'ScalarField',
-                    alias: null,
-                    name: 'from',
-                    args: null,
-                    storageKey: null,
-                  },
-                  {
-                    kind: 'ScalarField',
-                    alias: null,
-                    name: 'timerId',
-                    args: null,
-                    storageKey: null,
-                  },
-                ],
-              },
-              {
-                kind: 'LinkedField',
-                alias: null,
-                name: 'tag',
-                storageKey: null,
-                args: null,
-                concreteType: 'Tag',
-                plural: false,
-                selections: [
-                  {
-                    kind: 'ScalarField',
-                    alias: null,
-                    name: 'color',
-                    args: null,
-                    storageKey: null,
-                  },
-                  {
-                    kind: 'ScalarField',
-                    alias: null,
-                    name: 'text',
-                    args: null,
-                    storageKey: null,
-                  },
-                ],
-              },
-              {
-                kind: 'LinkedField',
-                alias: null,
-                name: 'ingredients',
-                storageKey: null,
-                args: null,
-                concreteType: 'Ingredient',
-                plural: true,
-                selections: [
-                  v4 /*: any*/,
-                  v2 /*: any*/,
-                  v3 /*: any*/,
-                  v5 /*: any*/,
-                ],
-              },
-              v7 /*: any*/,
-              {
-                kind: 'LinkedField',
-                alias: null,
-                name: 'tasks',
-                storageKey: null,
-                args: null,
-                concreteType: 'Task',
-                plural: true,
-                selections: [v2 /*: any*/, v3 /*: any*/],
-              },
-              {
-                kind: 'LinkedField',
-                alias: null,
-                name: 'timer',
-                storageKey: null,
-                args: null,
-                concreteType: 'Timer',
-                plural: false,
-                selections: [
-                  v1 /*: any*/,
-                  v2 /*: any*/,
-                  {
-                    kind: 'ScalarField',
-                    alias: null,
-                    name: 'minutes',
-                    args: null,
-                    storageKey: null,
-                  },
-                  {
-                    kind: 'ScalarField',
-                    alias: null,
-                    name: 'seconds',
-                    args: null,
-                    storageKey: null,
-                  },
-                ],
-              },
+              v4 /*: any*/,
+              v3 /*: any*/,
               {
                 kind: 'LinkedField',
                 alias: null,
@@ -435,7 +286,46 @@ const node: ConcreteRequest = (function() {
                   },
                 ],
               },
-              v3 /*: any*/,
+              {
+                kind: 'LinkedField',
+                alias: null,
+                name: 'tasks',
+                storageKey: null,
+                args: null,
+                concreteType: 'Task',
+                plural: true,
+                selections: [
+                  v2 /*: any*/,
+                  v4 /*: any*/,
+                  {
+                    kind: 'LinkedField',
+                    alias: null,
+                    name: 'timer',
+                    storageKey: null,
+                    args: null,
+                    concreteType: 'Timer',
+                    plural: false,
+                    selections: [
+                      v1 /*: any*/,
+                      v2 /*: any*/,
+                      {
+                        kind: 'ScalarField',
+                        alias: null,
+                        name: 'minutes',
+                        args: null,
+                        storageKey: null,
+                      },
+                      {
+                        kind: 'ScalarField',
+                        alias: null,
+                        name: 'seconds',
+                        args: null,
+                        storageKey: null,
+                      },
+                    ],
+                  },
+                ],
+              },
             ],
           },
         ],
@@ -449,23 +339,23 @@ const node: ConcreteRequest = (function() {
       type: 'Query',
       metadata: null,
       argumentDefinitions: v0 /*: any*/,
-      selections: v8 /*: any*/,
+      selections: v6 /*: any*/,
     },
     operation: {
       kind: 'Operation',
       name: 'useFetchStepByStepRecipeQuery',
       argumentDefinitions: v0 /*: any*/,
-      selections: v8 /*: any*/,
+      selections: v6 /*: any*/,
     },
     params: {
       operationKind: 'query',
       name: 'useFetchStepByStepRecipeQuery',
       id: null,
       text:
-        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    notes\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      no\n      type\n      links {\n        heading\n        name\n        from\n        timerId\n      }\n      tag {\n        color\n        text\n      }\n      ingredients {\n        qty\n        name\n        notes\n        link\n      }\n      items {\n        name\n        qty\n        notes\n        link\n      }\n      tasks {\n        name\n        notes\n      }\n      timer {\n        id\n        name\n        minutes\n        seconds\n      }\n      images {\n        src\n        alt\n      }\n      notes\n    }\n  }\n}\n',
+        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    video\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    notes\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      for\n      notes\n      video\n      images {\n        src\n        alt\n      }\n      tasks {\n        name\n        notes\n        timer {\n          id\n          name\n          minutes\n          seconds\n        }\n      }\n    }\n  }\n}\n',
       metadata: {},
     },
   };
 })();
-(node as any).hash = '74e5b39c822281dd0d13f9b38470d055';
+(node as any).hash = 'f0368d05d975d822eb581a889ee9a7d4';
 export default node;

@@ -1,7 +1,8 @@
 import React from 'react';
-import {Stack, Text, Button} from '@flavorli/elements';
+import {Stack, Text} from '@flavorli/elements';
 import styled from 'styled-components';
 import {ITask} from '../../types';
+import Timer from './Timer';
 
 interface IStepTasks {
   tasks: ITask[];
@@ -16,7 +17,6 @@ const Tasks = ({tasks}: IStepTasks) => {
             <CheckBox id={`task-${task.name}`} />
             <Stack width="calc(100% - 22px)" gap={8}>
               <label htmlFor={`task-${task.name}`}>{task.name}</label>
-              {/* <HowToLink intent="text">How to: Finely chop an onion</HowToLink> */}
 
               <Stack gap={4}>
                 {(task?.notes || []).map(note => (
@@ -25,6 +25,8 @@ const Tasks = ({tasks}: IStepTasks) => {
                   </Text>
                 ))}
               </Stack>
+
+              {task.timer && <Timer timerInfo={task.timer} />}
             </Stack>
           </Stack>
         );
@@ -40,9 +42,4 @@ const CheckBox = styled.input.attrs(() => ({
 }))`
   flex-shrink: 0;
   margin-right: 8px;
-`;
-
-const HowToLink = styled(Button)`
-  color: ${p => p.theme.colors.secondaryTextColor};
-  text-align: left;
 `;
