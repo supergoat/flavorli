@@ -8,6 +8,7 @@ import IntroStep from './components/IntroStep';
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
 import useFetchStepByStepRecipe from './useFetchStepByStepRecipe';
+import NotesStep from './components/NotesStep';
 
 const StepByStep = () => {
   const {loading, error, recipe} = useFetchStepByStepRecipe();
@@ -46,6 +47,8 @@ const StepByStep = () => {
                 difficulty={recipe.difficulty}
                 notes={recipe.notes}
               />
+
+              <NotesStep notes={recipe.notes} />
 
               <IngredientsStep ingredients={recipe.ingredients} />
               <ItemsStep items={recipe.items} />

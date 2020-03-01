@@ -16,7 +16,7 @@ const Tasks = ({tasks}: IStepTasks) => {
           <Stack direction="horizontal" gap={8} key={`task-${task.name}`}>
             <CheckBox id={`task-${task.name}`} />
             <Stack width="calc(100% - 22px)" gap={8}>
-              <label htmlFor={`task-${task.name}`}>{task.name}</label>
+              <Task htmlFor={`task-${task.name}`}>{task.name}</Task>
 
               <Stack gap={4}>
                 {(task?.notes || []).map(note => (
@@ -42,4 +42,8 @@ const CheckBox = styled.input.attrs(() => ({
 }))`
   flex-shrink: 0;
   margin-right: 8px;
+`;
+
+const Task = styled.label`
+  font-size: ${p => p.theme.fontSizes[18]};
 `;

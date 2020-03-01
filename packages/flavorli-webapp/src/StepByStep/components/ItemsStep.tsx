@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack, Text, H2} from '@flavorli/elements';
 import styled from 'styled-components';
 import {IItem} from '../../types';
 
@@ -10,32 +10,28 @@ const ItemsStep = ({items}: IItemsStepProps) => {
   return (
     <Stack width="100%" gap={16}>
       <Dot />
-      <Text>
-        Make sure that you have all of your equipment ready and available to use
-      </Text>
+      <H2>Items</H2>
 
-      <Stack>
+      <Stack width="100%">
         {items.map((item, index) => {
           return (
             <Label
               htmlFor={`item-${item.name}-${item.qty}`}
               key={`item-${item.name}-${item.qty}`}
             >
-              <Stack direction="horizontal" alignment="center">
-                <CheckBox id={`item-${item.name}-${item.qty}`} />
-                <div>
-                  {item.link ? (
-                    <Link target="_blank" href={item.link}>
-                      {item.qty} {item.name}
-                    </Link>
-                  ) : (
-                    <>
-                      {item.qty} {item.name}
-                    </>
-                  )}
-                  <Text intent="secondary">{item?.notes}</Text>
-                </div>
-              </Stack>
+              <CheckBox id={`item-${item.name}-${item.qty}`} />
+              <div>
+                {item.link ? (
+                  <Link target="_blank" href={item.link}>
+                    {item.qty} {item.name}
+                  </Link>
+                ) : (
+                  <>
+                    {item.qty} {item.name}
+                  </>
+                )}
+                <Text intent="secondary">{item?.notes}</Text>
+              </div>
             </Label>
           );
         })}
@@ -58,8 +54,10 @@ const Link = styled.a`
 `;
 
 const Label = styled.label`
+  display: flex;
   width: 100%;
   padding: 8px 0;
+  width: 100%;
 `;
 
 const Dot = styled.div`

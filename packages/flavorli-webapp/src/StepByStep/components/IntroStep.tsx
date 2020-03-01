@@ -1,8 +1,8 @@
 import React from 'react';
 import {ProfileAvatar, BookmarkRecipe} from '../../components';
-
 import {Stack, H1, H3, Text} from '@flavorli/elements';
 import styled from 'styled-components';
+import Video from '../../components/Video';
 
 const Intro = ({
   author,
@@ -21,15 +21,7 @@ const Intro = ({
 
       <Stack width="100%" gap={16}>
         <Stack gap={8} width="100%">
-          <Stack
-            paddingTop={4}
-            width="100%"
-            direction="horizontal"
-            distribution="space-between"
-          >
-            <H1>{name}</H1>
-            <BookmarkRecipe />
-          </Stack>
+          <H1>{name}</H1>
 
           <ProfileAvatar name={author} />
         </Stack>
@@ -43,36 +35,7 @@ const Intro = ({
       </Stack>
 
       {(image || video) &&
-        (video ? (
-          <Media borderRadius={16} shadow="LIGHT">
-            <video
-              width="100%"
-              height="100%"
-              controls
-              controlsList="nodownload"
-              playsInline
-            >
-              <source src={video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </Media>
-        ) : (
-          <Image src={image} alt="" />
-        ))}
-
-      {notes && notes.length > 0 && (
-        <Stack gap={8}>
-          <H3>NOTES</H3>
-
-          <Stack width="100%" gap={4}>
-            {(notes || []).map(note => (
-              <Text width="100%" key={note}>
-                {note}
-              </Text>
-            ))}
-          </Stack>
-        </Stack>
-      )}
+        (video ? <Video video={video} /> : <Image src={image} alt="" />)}
     </Stack>
   );
 };
@@ -126,7 +89,7 @@ const Media = styled(Stack)`
 `;
 const Dot = styled.div`
   position: absolute;
-  top: 4px;
+  top: 10px;
   left: -24px;
   width: 15px;
   height: 15px;

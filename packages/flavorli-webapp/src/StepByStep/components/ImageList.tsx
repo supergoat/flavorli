@@ -21,49 +21,47 @@ const ImageList = ({images}: IImageListProps) => {
   if (!images || images.length === 0) return null;
 
   return (
-    <Stack width="100%" gap={16} paddingBottom={8}>
-      <Section aria-label="List of step images">
-        <Stack
-          width="100%"
-          id="step-images"
-          data-testid="step-images"
-          aria-live="polite"
+    <Section aria-label="List of step images">
+      <Stack
+        width="100%"
+        id="step-images"
+        data-testid="step-images"
+        aria-live="polite"
+      >
+        {images.map((image, index) => {
+          const isCurrentImage = index === currentImage - 1;
+          return (
+            isCurrentImage && (
+              <Media
+                key={image.alt}
+                role="group"
+                aria-label={`Image ${currentImage} of ${images.length}`}
+              >
+                <Image src={image.src} alt={image.alt} />
+              </Media>
+            )
+          );
+        })}
+
+        <LeftArrowButton
+          hide={currentImage === 1}
+          aria-label="Previous Image"
+          aria-controls="step-images"
+          onClick={() => onChangeImage(-1)}
         >
-          {images.map((image, index) => {
-            const isCurrentImage = index === currentImage - 1;
-            return (
-              isCurrentImage && (
-                <Media
-                  key={image.alt}
-                  role="group"
-                  aria-label={`Image ${currentImage} of ${images.length}`}
-                >
-                  <Image src={image.src} alt={image.alt} />
-                </Media>
-              )
-            );
-          })}
+          <img src={ChevronRight} alt="" />
+        </LeftArrowButton>
 
-          <LeftArrowButton
-            hide={currentImage === 1}
-            aria-label="Previous Image"
-            aria-controls="step-images"
-            onClick={() => onChangeImage(-1)}
-          >
-            <img src={ChevronRight} alt="" />
-          </LeftArrowButton>
-
-          <RightArrowButton
-            hide={currentImage === images.length}
-            aria-label="Next Image"
-            aria-controls="step-images"
-            onClick={() => onChangeImage(1)}
-          >
-            <img src={ChevronRight} alt="" />
-          </RightArrowButton>
-        </Stack>
-      </Section>
-    </Stack>
+        <RightArrowButton
+          hide={currentImage === images.length}
+          aria-label="Next Image"
+          aria-controls="step-images"
+          onClick={() => onChangeImage(1)}
+        >
+          <img src={ChevronRight} alt="" />
+        </RightArrowButton>
+      </Stack>
+    </Section>
   );
 };
 
@@ -71,6 +69,28 @@ export default ImageList;
 
 const Section = styled.section`
   width: 100%;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: ${p => `${p.theme.spacings[8]}px`};
+  object-fit: cover;
+`;
+
+const Media = styled(Stack)`
+  overflow: hidden;
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 `;
 
 const ArrowButton = styled.button<{hide: boolean}>`
@@ -97,7 +117,7 @@ const ArrowButton = styled.button<{hide: boolean}>`
 `;
 
 const LeftArrowButton = styled(ArrowButton)`
-  left: -20px;
+  left: -15px;
 
   img {
     transform: rotate(180deg);
@@ -105,27 +125,5 @@ const LeftArrowButton = styled(ArrowButton)`
 `;
 
 const RightArrowButton = styled(ArrowButton)`
-  right: -20px;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: ${p => `${p.theme.spacings[8]}px`};
-  object-fit: cover;
-`;
-
-const Media = styled(Stack)`
-  overflow: hidden;
-  width: 100%;
-  padding-top: 100%;
-  position: relative;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
+  right: -15px;
 `;

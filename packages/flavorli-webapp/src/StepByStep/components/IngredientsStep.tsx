@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Stack, Text} from '@flavorli/elements';
+import {Stack, Text, H2} from '@flavorli/elements';
 import {IIngredient} from '../../types';
 
 interface IIngredientsStepProps {
@@ -10,12 +10,9 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
   return (
     <Stack width="100%" gap={16}>
       <Dot />
-      <Text>
-        Here is a list of all the ingredients you will need. Check to make sure
-        you are not missing anything before you begin
-      </Text>
+      <H2>Ingredients</H2>
 
-      <Stack>
+      <Stack width="100%">
         {ingredients.map((ingredient, index) => {
           return (
             <Label
@@ -26,7 +23,7 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
                 id={`ingredient-${ingredient.name}-${ingredient.qty}`}
               />
 
-              <Stack width="100%">
+              <div>
                 {ingredient.link ? (
                   <Link target="_blank" href={ingredient.link}>
                     {ingredient.qty} {ingredient.name}
@@ -37,7 +34,7 @@ const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
                   </>
                 )}
                 <Text intent="secondary">{ingredient?.notes}</Text>
-              </Stack>
+              </div>
             </Label>
           );
         })}
