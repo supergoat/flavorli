@@ -4,7 +4,7 @@ import Tag from './Tag';
 
 import StepTasks from './StepTasks';
 import {Stack, Text, Icon} from '@flavorli/elements';
-import styled from 'styled-components';
+import styled, {keyframes, css} from 'styled-components';
 import ImageList from './ImageList';
 
 interface IRecipeStepProps {
@@ -53,6 +53,7 @@ export default RecipeStep;
 
 const Video = ({video}: {video: string}) => {
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
+  const [isVideoLoading, setIsVideoLoading] = React.useState(true);
   const [isVideoPaused, setIsVideoPaused] = React.useState(true);
 
   const [startTime, endTime] = video.split('#t=')[1].split(',');
@@ -80,6 +81,22 @@ const Video = ({video}: {video: string}) => {
   }
 
   React.useEffect(() => {
+    const onLoadStart = () => {
+      setIsVideoLoading(true);
+    };
+    const onCanPlay = () => {
+      setIsVideoLoading(false);
+    };
+    videoRef?.current?.addEventListener('loadstart', onLoadStart);
+    videoRef?.current?.addEventListener('canplay', onCanPlay);
+
+    return () => {
+      videoRef?.current?.removeEventListener('loadstart', onLoadStart);
+      videoRef?.current?.removeEventListener('canplay', onCanPlay);
+    };
+  }, []);
+
+  React.useEffect(() => {
     // Playing event
     videoRef?.current?.addEventListener('playing', onPlay);
 
@@ -93,21 +110,33 @@ const Video = ({video}: {video: string}) => {
   });
 
   return (
-    <Media borderRadius={16} shadow="LIGHT">
-      <video ref={videoRef} width="100%" height="100%" playsinline>
+    <Media>
+      <video ref={videoRef} width="100%" height="100%" playsInline>
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       <Controls onClick={onToggleVideo} isVideoPaused={isVideoPaused}>
-        {isVideoPaused ? <Icon name="play" /> : <Icon name="pause" />}
+        {isVideoLoading && <Icon name="chef_male" />}
+        {!isVideoLoading &&
+          (isVideoPaused ? <Icon name="play" /> : <Icon name="pause" />)}
       </Controls>
     </Media>
   );
 };
 
+const fade = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+`;
+
 const Controls = styled.div<{isVideoPaused: boolean}>`
-  display: ${p => (p.isVideoPaused ? 'flex' : 'none')};
+  display: flex;
   content: '';
   position: absolute;
   top: 0;
@@ -120,12 +149,20 @@ const Controls = styled.div<{isVideoPaused: boolean}>`
   color: white;
   font-size: 30px;
   cursor: pointer;
+  border-radius: ${p => `${p.theme.spacings[8]}px`};
+
+  ${p =>
+    !p.isVideoPaused &&
+    css`
+      animation: ${fade} 0.5s forwards;
+      animation-delay: 1s;
+    `}
 `;
 
 const Media = styled(Stack)`
   overflow: hidden;
 
-  background-color: rgba(0, 0, 0, 1);
+  background: none;
   width: 100%;
   padding-top: 100%; /* 1:1 Aspect Ratio */
   position: relative; /* If you want text inside of it */
@@ -136,6 +173,7 @@ const Media = styled(Stack)`
     left: 0;
     bottom: 0;
     right: 0;
+    border-radius: ${p => `${p.theme.spacings[8]}px`};
   }
 
   &:hover {
@@ -148,7 +186,7 @@ const Media = styled(Stack)`
 const Dot = styled.div`
   position: absolute;
   top: 4px;
-  left: -40px;
+  left: -24px;
   width: 15px;
   height: 15px;
   background: white;

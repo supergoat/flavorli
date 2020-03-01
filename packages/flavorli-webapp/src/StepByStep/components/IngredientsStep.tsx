@@ -69,7 +69,7 @@ const Label = styled.label`
 const Dot = styled.div`
   position: absolute;
   top: 4px;
-  left: -40px;
+  left: -24px;
   width: 15px;
   height: 15px;
   background: white;

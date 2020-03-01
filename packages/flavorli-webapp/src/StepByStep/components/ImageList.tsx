@@ -23,7 +23,8 @@ const ImageList = ({images}: IImageListProps) => {
   return (
     <Stack width="100%" gap={16} paddingBottom={8}>
       <Section aria-label="List of step images">
-        <ImageListContainer
+        <Stack
+          width="100%"
           id="step-images"
           data-testid="step-images"
           aria-live="polite"
@@ -32,17 +33,13 @@ const ImageList = ({images}: IImageListProps) => {
             const isCurrentImage = index === currentImage - 1;
             return (
               isCurrentImage && (
-                <Stack
-                  width="100%"
-                  height="100%"
+                <Media
                   key={image.alt}
-                  distribution="center"
-                  alignment="center"
                   role="group"
                   aria-label={`Image ${currentImage} of ${images.length}`}
                 >
                   <Image src={image.src} alt={image.alt} />
-                </Stack>
+                </Media>
               )
             );
           })}
@@ -64,7 +61,7 @@ const ImageList = ({images}: IImageListProps) => {
           >
             <img src={ChevronRight} alt="" />
           </RightArrowButton>
-        </ImageListContainer>
+        </Stack>
       </Section>
     </Stack>
   );
@@ -74,14 +71,6 @@ export default ImageList;
 
 const Section = styled.section`
   width: 100%;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: ${p => `${p.theme.spacings[8]}px`};
-  object-fit: cover;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const ArrowButton = styled.button<{hide: boolean}>`
@@ -119,8 +108,24 @@ const RightArrowButton = styled(ArrowButton)`
   right: -20px;
 `;
 
-const ImageListContainer = styled(Stack)`
-  max-width: 100%;
-  width: calc(100vw - 73px);
-  height: calc(100vw - 73px);
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: ${p => `${p.theme.spacings[8]}px`};
+  object-fit: cover;
+`;
+
+const Media = styled(Stack)`
+  overflow: hidden;
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 `;

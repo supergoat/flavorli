@@ -8,7 +8,6 @@ import IntroStep from './components/IntroStep';
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
 import useFetchStepByStepRecipe from './useFetchStepByStepRecipe';
-import Timers from './components/Timers';
 
 const StepByStep = () => {
   const {loading, error, recipe} = useFetchStepByStepRecipe();
@@ -25,15 +24,15 @@ const StepByStep = () => {
             width="100%"
             height="100%"
             overflowY
-            paddingLeft={32}
+            paddingLeft={16}
             paddingBottom={32}
             paddingTop={32}
           >
             <Stack
               width="100%"
               style={{borderLeft: '1px solid grey'}}
-              paddingLeft={32}
-              paddingRight={24}
+              paddingLeft={16}
+              paddingRight={16}
               gap={104}
             >
               <IntroStep

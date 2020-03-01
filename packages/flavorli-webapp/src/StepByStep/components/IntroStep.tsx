@@ -50,7 +50,7 @@ const Intro = ({
               height="100%"
               controls
               controlsList="nodownload"
-              playsinline
+              playsInline
             >
               <source src={video} type="video/mp4" />
               Your browser does not support the video tag.
@@ -127,7 +127,7 @@ const Media = styled(Stack)`
 const Dot = styled.div`
   position: absolute;
   top: 4px;
-  left: -40px;
+  left: -24px;
   width: 15px;
   height: 15px;
   background: white;
