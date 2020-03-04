@@ -12,3 +12,7 @@ export {default as chef_female} from './chef_female.svg';
 export {default as chef_they} from './chef_they.svg';
 export {default as play} from './play.svg';
 export {default as pause} from './pause.svg';
+export {default as harvest} from './harvest.svg';
+export {default as notebook} from './notebook.svg';
+export {default as lightbulb} from './lightbulb.svg';
+export {default as question} from './question.svg';
