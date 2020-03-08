@@ -21,7 +21,6 @@ const Home = () => {
       width="100%"
       height="100%"
       role="main"
-      background="surface"
     >
       <H1 color="primary">Recipes</H1>
       <Stack gap={32} width="100%">

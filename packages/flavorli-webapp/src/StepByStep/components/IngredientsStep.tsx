@@ -65,11 +65,11 @@ const Label = styled.label`
 
 const Dot = styled.div`
   position: absolute;
-  top: 4px;
+  top: 6px;
   left: -24px;
   width: 15px;
   height: 15px;
   background: white;
   border-radius: 50%;
-  border: 2px solid ${p => p.theme.colors.tagRed};
+  border: 1px solid ${p => p.theme.colors.textColor};
 `;

@@ -18,7 +18,6 @@ const Intro = ({
   return (
     <Stack width="100%" gap={16}>
       <Dot />
-
       <Stack width="100%" gap={16}>
         <Stack gap={8} width="100%">
           <H1>{name}</H1>
@@ -33,7 +32,6 @@ const Intro = ({
           <InfoItem name="Difficulty" value={difficulty} />
         </Stack>
       </Stack>
-
       {(image || video) &&
         (video ? <Video video={video} /> : <Image src={image} alt="" />)}
     </Stack>
@@ -89,11 +87,11 @@ const Media = styled(Stack)`
 `;
 const Dot = styled.div`
   position: absolute;
-  top: 10px;
+  top: 9px;
   left: -24px;
   width: 15px;
   height: 15px;
   background: white;
   border-radius: 50%;
-  border: 2px solid ${p => p.theme.colors.tagRed};
+  border: 1px solid ${p => p.theme.colors.textColor};
 `;

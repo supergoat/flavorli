@@ -33,6 +33,7 @@ export interface IItem {
 
 export interface IStep {
   for: string;
+  links?: ILink[];
   tasks: ITask[];
   notes?: string[];
   images?: IImage[];
@@ -73,9 +74,8 @@ export interface IImage {
 }
 
 export interface ILink {
-  heading: string;
-  name: string;
   from: number;
+  name: string;
   timerId?: string;
 }
 

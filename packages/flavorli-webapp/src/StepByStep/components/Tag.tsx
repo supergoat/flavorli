@@ -6,10 +6,10 @@ const Tag = ({tag}: {tag: string}) => {
     <Stack
       distribution="center"
       width="auto"
-      paddingTop={2}
+      paddingTop={4}
       paddingRight={8}
       paddingLeft={8}
-      paddingBottom={2}
+      paddingBottom={4}
       borderRadius={4}
       background={'tagRed'}
     >

@@ -30,12 +30,18 @@ const useFetchStepByStepRecipeQuery = graphql`
       }
       steps {
         for
+        links {
+          from
+          name
+          timerId
+        }
         notes
         video
         images {
           src
           alt
         }
+
         tasks {
           name
           notes

@@ -16,15 +16,15 @@ const Navbar = () => {
       alignment="center"
       padding={16}
     >
-      <NavItem />
+      {/* <NavItem /> */}
       <Logo onClick={() => history.push('/')}>flavor.li</Logo>
-      <NavItem>
+      {/* <NavItem>
         <Avatar
           onClick={() =>
             history.push('/profile/9b2ba367-08ec-4b49-8334-7dc28bcce0c0')
           }
         />
-      </NavItem>
+      </NavItem> */}
     </NavbarWrapper>
   );
 };
@@ -32,7 +32,12 @@ const Navbar = () => {
 export default Navbar;
 
 const NavbarWrapper = styled(Stack)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   border-bottom: 1px solid #eee;
+  z-index: 1;
 `;
 
 const Logo = styled.p`

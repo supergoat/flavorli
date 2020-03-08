@@ -16,33 +16,33 @@ import {Navbar} from './components';
 import {establishUserSession} from './helpers/auth';
 
 const Routes = () => {
-  const {cognitoUser} = useAuthContext();
+  // const {cognitoUser} = useAuthContext();
 
-  React.useEffect(() => {
-    if (cognitoUser) {
-      establishUserSession(cognitoUser);
-      const username = cognitoUser.getUsername();
+  // React.useEffect(() => {
+  //   if (cognitoUser) {
+  //     establishUserSession(cognitoUser);
+  //     const username = cognitoUser.getUsername();
 
-      mixpanel.identify(username);
+  //     mixpanel.identify(username);
 
-      mixpanel.people.set({
-        $last_login: new Date().toISOString(),
-        userId: username,
-      });
-    }
-  }, [cognitoUser]);
+  //     mixpanel.people.set({
+  //       $last_login: new Date().toISOString(),
+  //       userId: username,
+  //     });
+  //   }
+  // }, [cognitoUser]);
 
   return (
     <>
       <Router>
-        <Route path="/login" component={Authentication} />
+        {/* <Route path="/login" component={Authentication} /> */}
 
-        {/* {cognitoUser && <Navbar />} */}
+        <Navbar />
 
         <Switch>
-          <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute path="/recipe/:recipeId" component={StepByStep} />
-          <ProtectedRoute path="/profile/:profileId" component={Profile} />
+          <Route exact path="/" component={Home} />
+          <Route path="/recipe/:recipeId" component={StepByStep} />
+          <Route path="/profile/:profileId" component={Profile} />
         </Switch>
       </Router>
     </>
@@ -51,31 +51,31 @@ const Routes = () => {
 
 export default Routes;
 
-const ProtectedRoute = ({
-  component: Component,
-  ...rest
-}: {
-  component: any;
-  path: string;
-  exact?: boolean;
-}) => {
-  const {cognitoUser} = useAuthContext();
+// const ProtectedRoute = ({
+//   component: Component,
+//   ...rest
+// }: {
+//   component: any;
+//   path: string;
+//   exact?: boolean;
+// }) => {
+//   const {cognitoUser} = useAuthContext();
 
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        cognitoUser ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: {from: props.location},
-            }}
-          />
-        )
-      }
-    />
-  );
-};
+//   return (
+//     <Route
+//       {...rest}
+//       render={props =>
+//         cognitoUser ? (
+//           <Component {...props} />
+//         ) : (
+//           <Redirect
+//             to={{
+//               pathname: '/login',
+//               state: {from: props.location},
+//             }}
+//           />
+//         )
+//       }
+//     />
+//   );
+// };

@@ -32,5 +32,7 @@ const App = () => {
 export default App;
 
 const AppWrapper = styled.div`
-  height: 100vh;
+  height: calc(
+    100vh - 45px
+  ); /* This subtracts the navbar height to ensure the content is not hidden */
 `;

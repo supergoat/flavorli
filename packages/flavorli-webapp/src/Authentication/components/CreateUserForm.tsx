@@ -113,7 +113,7 @@ function CreateUserForm() {
     <form onSubmit={onCreateUser} style={{width: '100%'}}>
       <Stack gap={16} width="100%">
         <Stack gap={4} width="100%">
-          <Label>PRONOUNS</Label>
+          <Label>Avatar</Label>
           <Stack
             direction="horizontal"
             gap={8}

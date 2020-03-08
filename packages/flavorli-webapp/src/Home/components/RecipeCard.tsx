@@ -25,6 +25,7 @@ const RecipeCard = ({recipe}: IRecipeCardProps) => {
       overflowX
       overflowY
       onClick={onNavigateToRecipe}
+      background="surface"
     >
       <Image src={recipe.image} alt="" />
       <Stack width="100%" gap={16} padding={16}>

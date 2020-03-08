@@ -20,7 +20,6 @@ const StepByStep = () => {
 
       {recipe && (
         <RecipeTimersProvider recipeId={recipe.id}>
-          {/* <Timers /> */}
           <Stack
             width="100%"
             height="100%"
@@ -54,7 +53,14 @@ const StepByStep = () => {
               <ItemsStep items={recipe.items} />
 
               {recipe?.steps.map((step, index) => {
-                return <RecipeStep key={index} step={step} />;
+                return (
+                  <RecipeStep
+                    key={index}
+                    stepNo={index + 1}
+                    noOfSteps={recipe.steps.length}
+                    step={step}
+                  />
+                );
               })}
             </Stack>
           </Stack>

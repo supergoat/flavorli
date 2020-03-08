@@ -15,8 +15,8 @@ body {
   width: 100vw;
   max-width: 500px;
   height: 100vh;
-
   overflow: hidden;
+  padding-top: 45px; /* This is the same as the navbar height */
 }
 
 *:focus {

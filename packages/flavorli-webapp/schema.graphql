@@ -52,6 +52,12 @@ input ItemInput {
   link: String
 }
 
+type Link {
+  name: String!
+  from: Int!
+  timerId: String
+}
+
 input LinkInput {
   heading: String
   name: String!
@@ -106,6 +112,7 @@ type schema {
 
 type Step {
   for: String
+  links: [Link]
   tasks: [Task]
   notes: [String]
   images: [Image]

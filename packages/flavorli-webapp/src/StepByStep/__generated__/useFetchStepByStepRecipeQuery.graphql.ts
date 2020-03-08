@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 397f7fd5685032cc11f0d2582de78400 */
+/* @relayHash 0385ba440ebaa7f0f6f9384dde336f6d */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type useFetchStepByStepRecipeQueryVariables = {
@@ -32,6 +32,11 @@ export type useFetchStepByStepRecipeQueryResponse = {
     } | null> | null;
     readonly steps: ReadonlyArray<{
       readonly for: string | null;
+      readonly links: ReadonlyArray<{
+        readonly from: number;
+        readonly name: string;
+        readonly timerId: string | null;
+      } | null> | null;
       readonly notes: ReadonlyArray<string | null> | null;
       readonly video: string | null;
       readonly images: ReadonlyArray<{
@@ -85,6 +90,11 @@ query useFetchStepByStepRecipeQuery(
     }
     steps {
       for
+      links {
+        from
+        name
+        timerId
+      }
       notes
       video
       images {
@@ -259,6 +269,32 @@ const node: ConcreteRequest = (function() {
                 args: null,
                 storageKey: null,
               },
+              {
+                kind: 'LinkedField',
+                alias: null,
+                name: 'links',
+                storageKey: null,
+                args: null,
+                concreteType: 'Link',
+                plural: true,
+                selections: [
+                  {
+                    kind: 'ScalarField',
+                    alias: null,
+                    name: 'from',
+                    args: null,
+                    storageKey: null,
+                  },
+                  v2 /*: any*/,
+                  {
+                    kind: 'ScalarField',
+                    alias: null,
+                    name: 'timerId',
+                    args: null,
+                    storageKey: null,
+                  },
+                ],
+              },
               v4 /*: any*/,
               v3 /*: any*/,
               {
@@ -352,10 +388,10 @@ const node: ConcreteRequest = (function() {
       name: 'useFetchStepByStepRecipeQuery',
       id: null,
       text:
-        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    video\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    notes\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      for\n      notes\n      video\n      images {\n        src\n        alt\n      }\n      tasks {\n        name\n        notes\n        timer {\n          id\n          name\n          minutes\n          seconds\n        }\n      }\n    }\n  }\n}\n',
+        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    video\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    notes\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      for\n      links {\n        from\n        name\n        timerId\n      }\n      notes\n      video\n      images {\n        src\n        alt\n      }\n      tasks {\n        name\n        notes\n        timer {\n          id\n          name\n          minutes\n          seconds\n        }\n      }\n    }\n  }\n}\n',
       metadata: {},
     },
   };
 })();
-(node as any).hash = 'f0368d05d975d822eb581a889ee9a7d4';
+(node as any).hash = 'abe41facc9f0a4e2425e8bb9e7ab9065';
 export default node;

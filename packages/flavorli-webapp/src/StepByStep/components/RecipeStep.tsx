@@ -7,16 +7,24 @@ import StepTasks from './StepTasks';
 import {Stack, Text, Icon} from '@flavorli/elements';
 import styled from 'styled-components';
 import ImageList from './ImageList';
+import Links from './Links';
 
 interface IRecipeStepProps {
+  stepNo: number;
+  noOfSteps: number;
   step: IStep;
 }
-const RecipeStep = ({step}: IRecipeStepProps) => {
+const RecipeStep = ({stepNo, noOfSteps, step}: IRecipeStepProps) => {
   return (
-    <Stack width="100%" gap={16}>
+    <Stack width="100%" gap={16} id={`step-${stepNo}`}>
       <Dot />
+      <Stack gap={8}>
+        <Text>
+          Step {stepNo} of {noOfSteps}
+        </Text>
+        <Tag tag={step.for} />
+      </Stack>
 
-      <Tag tag={`for ${step.for}`} />
       {step?.notes && (
         <Stack
           background="primary"
@@ -37,13 +45,13 @@ const RecipeStep = ({step}: IRecipeStepProps) => {
           </Stack>
         </Stack>
       )}
-
       {(step.images || step.video) &&
         (step.video ? (
           <Video video={step.video} />
         ) : (
           <ImageList images={step.images} />
         ))}
+      <Links links={step.links} />
 
       <StepTasks tasks={step.tasks} />
     </Stack>
@@ -54,11 +62,11 @@ export default RecipeStep;
 
 const Dot = styled.div`
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: -24px;
   width: 15px;
   height: 15px;
   background: white;
   border-radius: 50%;
-  border: 2px solid ${p => p.theme.colors.tagRed};
+  border: 1px solid ${p => p.theme.colors.textColor};
 `;

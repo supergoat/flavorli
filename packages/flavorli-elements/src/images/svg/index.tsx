@@ -16,3 +16,7 @@ export {default as harvest} from './harvest.svg';
 export {default as notebook} from './notebook.svg';
 export {default as lightbulb} from './lightbulb.svg';
 export {default as question} from './question.svg';
+export {default as fireOne} from './fireOne.svg';
+export {default as fireTwo} from './fireTwo.svg';
+export {default as fireThree} from './fireThree.svg';
+export {default as fireFour} from './fireFour.svg';
