@@ -112,6 +112,8 @@ type schema {
 
 type Step {
   for: String
+  heatLevel: String
+  ovenTemperature: String
   links: [Link]
   tasks: [Task]
   notes: [String]

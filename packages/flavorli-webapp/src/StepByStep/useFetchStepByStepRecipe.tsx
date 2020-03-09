@@ -30,6 +30,8 @@ const useFetchStepByStepRecipeQuery = graphql`
       }
       steps {
         for
+        heatLevel
+        ovenTemperature
         links {
           from
           name

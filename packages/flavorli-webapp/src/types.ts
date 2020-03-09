@@ -34,6 +34,8 @@ export interface IItem {
 export interface IStep {
   for: string;
   links?: ILink[];
+  heatLevel?: 'low' | 'mediumLow' | 'medium' | 'high';
+  ovenTemperature?: string;
   tasks: ITask[];
   notes?: string[];
   images?: IImage[];
