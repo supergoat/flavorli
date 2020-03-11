@@ -46,6 +46,7 @@
     "react-test-renderer": "^16.12.0",
     "relay-compiler": "^8.0.0",
     "relay-compiler-language-typescript": "^10.1.4",
+    "serverless-single-page-app-plugin": "^1.0.2",
     "typescript": "^3.7.4"
   },
   "scripts": {
@@ -59,8 +60,10 @@
     "test:watch": "react-scripts test",
     "test": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "deploy:prod": "yarn build && aws s3 sync ./build s3://flavorli-eu-west-2-prod-bucket",
-    "deploy:staging": "yarn build:staging && aws s3 sync ./build s3://flavorli-eu-west-2-staging-bucket"
+    "deploy:prod": "yarn build && aws s3 sync ./build s3://flavorli-webapp-eu-west-2-prod/",
+    "deploy:staging": "yarn build:staging && aws s3 sync ./build s3://flavorli-webapp-eu-west-2-staging/",
+    "sls:prod": "sls deploy --stage prod --region eu-west-2",
+    "sls:staging": "sls deploy --stage staging --region eu-west-2"
   },
   "browserslist": {
     "production": [

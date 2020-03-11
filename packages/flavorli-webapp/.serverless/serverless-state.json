@@ -1,0 +1,363 @@
+{
+  "service": {
+    "service": "flavorli-webapp",
+    "serviceObject": {
+      "name": "flavorli-webapp"
+    },
+    "provider": {
+      "stage": "staging",
+      "variableSyntax": "\\${([ ~:a-zA-Z0-9._@'\",\\-\\/\\(\\)*?]+?)}",
+      "name": "aws",
+      "runtime": "nodejs12.x",
+      "region": "eu-west-2",
+      "versionFunctions": true,
+      "remoteFunctionData": null,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ServerlessDeploymentBucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "Bucket": {
+                "Ref": "ServerlessDeploymentBucket"
+              },
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Action": "s3:*",
+                    "Effect": "Deny",
+                    "Principal": "*",
+                    "Resource": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":s3:::",
+                            {
+                              "Ref": "ServerlessDeploymentBucket"
+                            },
+                            "/*"
+                          ]
+                        ]
+                      }
+                    ],
+                    "Condition": {
+                      "Bool": {
+                        "aws:SecureTransport": false
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "FlavorliWebAppBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketName": "flavorli-webapp-eu-west-2-staging",
+              "AccessControl": "PublicRead",
+              "WebsiteConfiguration": {
+                "IndexDocument": "index.html",
+                "ErrorDocument": "index.html"
+              }
+            }
+          },
+          "FlavorliWebAppBucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "Bucket": {
+                "Ref": "FlavorliWebAppBucket"
+              },
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Sid": "PublicReadGetObject",
+                    "Effect": "Allow",
+                    "Principal": "*",
+                    "Action": ["s3:GetObject"],
+                    "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-staging/*"
+                  }
+                ]
+              }
+            }
+          },
+          "FlavorliWebAppCloudFrontDistribution": {
+            "Type": "AWS::CloudFront::Distribution",
+            "Properties": {
+              "DistributionConfig": {
+                "Origins": [
+                  {
+                    "DomainName": "flavorli-webapp-eu-west-2-staging.s3.amazonaws.com",
+                    "Id": "FlavorliWebApp",
+                    "CustomOriginConfig": {
+                      "HTTPPort": 80,
+                      "HTTPSPort": 443,
+                      "OriginProtocolPolicy": "https-only"
+                    }
+                  }
+                ],
+                "Enabled": "true",
+                "DefaultRootObject": "index.html",
+                "CustomErrorResponses": [
+                  {
+                    "ErrorCode": 404,
+                    "ResponseCode": 200,
+                    "ResponsePagePath": "/index.html"
+                  },
+                  {
+                    "ErrorCode": 403,
+                    "ResponseCode": 200,
+                    "ResponsePagePath": "/index.html"
+                  }
+                ],
+                "DefaultCacheBehavior": {
+                  "AllowedMethods": [
+                    "DELETE",
+                    "GET",
+                    "HEAD",
+                    "OPTIONS",
+                    "PATCH",
+                    "POST",
+                    "PUT"
+                  ],
+                  "TargetOriginId": "FlavorliWebApp",
+                  "ForwardedValues": {
+                    "QueryString": "false",
+                    "Cookies": {
+                      "Forward": "none"
+                    }
+                  },
+                  "ViewerProtocolPolicy": "redirect-to-https"
+                },
+                "ViewerCertificate": {
+                  "CloudFrontDefaultCertificate": "true"
+                }
+              }
+            },
+            "DependsOn": ["FlavorliWebAppBucket"]
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          },
+          "WebAppS3BucketOutput": {
+            "Value": {
+              "Ref": "FlavorliWebAppBucket"
+            }
+          },
+          "WebAppCloudFrontDistributionOutput": {
+            "Value": {
+              "Fn::GetAtt": [
+                "FlavorliWebAppCloudFrontDistribution",
+                "DomainName"
+              ]
+            }
+          }
+        }
+      },
+      "coreCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ServerlessDeploymentBucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "Bucket": {
+                "Ref": "ServerlessDeploymentBucket"
+              },
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Action": "s3:*",
+                    "Effect": "Deny",
+                    "Principal": "*",
+                    "Resource": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":s3:::",
+                            {
+                              "Ref": "ServerlessDeploymentBucket"
+                            },
+                            "/*"
+                          ]
+                        ]
+                      }
+                    ],
+                    "Condition": {
+                      "Bool": {
+                        "aws:SecureTransport": false
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          }
+        }
+      }
+    },
+    "custom": {
+      "prefix": "flavorli-webapp-eu-west-2-staging",
+      "s3Bucket": "flavorli-webapp-eu-west-2-staging"
+    },
+    "plugins": ["serverless-single-page-app-plugin"],
+    "pluginsData": {},
+    "functions": {},
+    "resources": {
+      "Resources": {
+        "FlavorliWebAppBucket": {
+          "Type": "AWS::S3::Bucket",
+          "Properties": {
+            "BucketName": "flavorli-webapp-eu-west-2-staging",
+            "AccessControl": "PublicRead",
+            "WebsiteConfiguration": {
+              "IndexDocument": "index.html",
+              "ErrorDocument": "index.html"
+            }
+          }
+        },
+        "FlavorliWebAppBucketPolicy": {
+          "Type": "AWS::S3::BucketPolicy",
+          "Properties": {
+            "Bucket": {
+              "Ref": "FlavorliWebAppBucket"
+            },
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Sid": "PublicReadGetObject",
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": ["s3:GetObject"],
+                  "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-staging/*"
+                }
+              ]
+            }
+          }
+        },
+        "FlavorliWebAppCloudFrontDistribution": {
+          "Type": "AWS::CloudFront::Distribution",
+          "Properties": {
+            "DistributionConfig": {
+              "Origins": [
+                {
+                  "DomainName": "flavorli-webapp-eu-west-2-staging.s3.amazonaws.com",
+                  "Id": "FlavorliWebApp",
+                  "CustomOriginConfig": {
+                    "HTTPPort": 80,
+                    "HTTPSPort": 443,
+                    "OriginProtocolPolicy": "https-only"
+                  }
+                }
+              ],
+              "Enabled": "true",
+              "DefaultRootObject": "index.html",
+              "CustomErrorResponses": [
+                {
+                  "ErrorCode": 404,
+                  "ResponseCode": 200,
+                  "ResponsePagePath": "/index.html"
+                },
+                {
+                  "ErrorCode": 403,
+                  "ResponseCode": 200,
+                  "ResponsePagePath": "/index.html"
+                }
+              ],
+              "DefaultCacheBehavior": {
+                "AllowedMethods": [
+                  "DELETE",
+                  "GET",
+                  "HEAD",
+                  "OPTIONS",
+                  "PATCH",
+                  "POST",
+                  "PUT"
+                ],
+                "TargetOriginId": "FlavorliWebApp",
+                "ForwardedValues": {
+                  "QueryString": "false",
+                  "Cookies": {
+                    "Forward": "none"
+                  }
+                },
+                "ViewerProtocolPolicy": "redirect-to-https"
+              },
+              "ViewerCertificate": {
+                "CloudFrontDefaultCertificate": "true"
+              }
+            }
+          },
+          "DependsOn": ["FlavorliWebAppBucket"]
+        }
+      },
+      "Outputs": {
+        "WebAppS3BucketOutput": {
+          "Value": {
+            "Ref": "FlavorliWebAppBucket"
+          }
+        },
+        "WebAppCloudFrontDistributionOutput": {
+          "Value": {
+            "Fn::GetAtt": ["FlavorliWebAppCloudFrontDistribution", "DomainName"]
+          }
+        }
+      }
+    },
+    "serviceFilename": "serverless.yml",
+    "layers": {}
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/flavorli-webapp/staging/1583781048634-2020-03-09T19:10:48.634Z",
+    "artifact": ""
+  }
+}
