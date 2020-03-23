@@ -12,11 +12,7 @@ export interface IImageListProps {
   images?: IImage[];
 }
 const ImageList = ({images}: IImageListProps) => {
-  const [currentImage, setCurrentImage] = React.useState(1);
-
-  const onChangeImage = (direction: 1 | -1) => {
-    setCurrentImage(s => s + direction);
-  };
+  const [currentImage, setCurrentImage] = React.useState<null | number>(null);
 
   if (!images || images.length === 0) return null;
 
@@ -27,39 +23,38 @@ const ImageList = ({images}: IImageListProps) => {
         id="step-images"
         data-testid="step-images"
         aria-live="polite"
+        gap={8}
       >
-        {images.map((image, index) => {
-          const isCurrentImage = index === currentImage - 1;
-          return (
-            isCurrentImage && (
+        <Stack direction="horizontal" gap={8} overflowX width="100%">
+          {images.map((image, index) => {
+            return (
               <Media
+                onClick={() =>
+                  currentImage === index + 1
+                    ? setCurrentImage(null)
+                    : setCurrentImage(index + 1)
+                }
                 key={image.alt}
-                role="group"
-                aria-label={`Image ${currentImage} of ${images.length}`}
+                width="70px"
               >
                 <Image src={image.src} alt={image.alt} />
               </Media>
-            )
-          );
-        })}
+            );
+          })}
+        </Stack>
 
-        <LeftArrowButton
-          hide={currentImage === 1}
-          aria-label="Previous Image"
-          aria-controls="step-images"
-          onClick={() => onChangeImage(-1)}
-        >
-          <img src={ChevronRight} alt="" />
-        </LeftArrowButton>
-
-        <RightArrowButton
-          hide={currentImage === images.length}
-          aria-label="Next Image"
-          aria-controls="step-images"
-          onClick={() => onChangeImage(1)}
-        >
-          <img src={ChevronRight} alt="" />
-        </RightArrowButton>
+        {currentImage && images[currentImage - 1] && (
+          <Media
+            onClick={() => setCurrentImage(null)}
+            key={images[currentImage - 1].alt}
+            width="100%"
+          >
+            <Image
+              src={images[currentImage - 1].src}
+              alt={images[currentImage - 1].alt}
+            />
+          </Media>
+        )}
       </Stack>
     </Section>
   );
@@ -78,10 +73,11 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Media = styled(Stack)`
+const Media = styled(Stack)<{width: string}>`
   overflow: hidden;
-  width: 100%;
-  padding-top: 100%;
+  width: ${p => p.width};
+  padding-top: ${p => p.width};
+
   position: relative;
 
   img {

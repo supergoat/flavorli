@@ -25,15 +25,20 @@ input ImageInput {
 }
 
 type Ingredient {
-  qty: String
-  name: String
-  notes: String
-  link: String
+  for: String
+  list: [IngredientItem]
 }
 
 input IngredientInput {
   qty: String!
   name: String!
+  notes: String
+  link: String
+}
+
+type IngredientItem {
+  qty: String
+  name: String
   notes: String
   link: String
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Stack, Text, H2} from '@flavorli/elements';
+import {Stack, Text, H2, H3} from '@flavorli/elements';
 import {IIngredient} from '../../types';
 
 interface IIngredientsStepProps {
@@ -8,37 +8,55 @@ interface IIngredientsStepProps {
 }
 const IngredientsStep = ({ingredients}: IIngredientsStepProps) => {
   return (
-    <Stack width="100%" gap={16}>
-      <Dot />
+    <Stack
+      width="100%"
+      gap={16}
+      background="surface"
+      padding={24}
+      shadow="LIGHT"
+      borderRadius={8}
+    >
       <H2>Ingredients</H2>
+      {ingredients.map((ingredients, index) => {
+        return (
+          <Stack key={index} width="100%">
+            <H3>{ingredients.for}</H3>
+            {ingredients.list.map(ingredient => {
+              return (
+                <Label
+                  htmlFor={`ingredient-${ingredient.name}-${ingredient.qty}`}
+                  key={`ingredient-${ingredient.name}-${ingredient.qty}`}
+                >
+                  <CheckBox
+                    id={`ingredient-${ingredient.name}-${ingredient.qty}`}
+                  />
 
-      <Stack width="100%">
-        {ingredients.map((ingredient, index) => {
-          return (
-            <Label
-              htmlFor={`ingredient-${ingredient.name}-${ingredient.qty}`}
-              key={`ingredient-${ingredient.name}-${ingredient.qty}`}
-            >
-              <CheckBox
-                id={`ingredient-${ingredient.name}-${ingredient.qty}`}
-              />
-
-              <div>
-                {ingredient.link ? (
-                  <Link target="_blank" href={ingredient.link}>
-                    {ingredient.qty} {ingredient.name}
-                  </Link>
-                ) : (
-                  <>
-                    {ingredient.qty} {ingredient.name}
-                  </>
-                )}
-                <Text intent="secondary">{ingredient?.notes}</Text>
-              </div>
-            </Label>
-          );
-        })}
-      </Stack>
+                  <Stack gap={4} width="calc(100% - 24px)">
+                    {ingredient.link ? (
+                      <Link target="_blank" href={ingredient.link}>
+                        <Stack width="100%" gap={4} direction="horizontal">
+                          {ingredient.qty !== '-' && (
+                            <Text intent="secondary">{ingredient.qty}</Text>
+                          )}
+                          <Text>{ingredient.name}</Text>
+                        </Stack>
+                      </Link>
+                    ) : (
+                      <Stack width="100%" gap={4} direction="horizontal">
+                        {ingredient.qty !== '-' && (
+                          <Text intent="secondary">{ingredient.qty}</Text>
+                        )}
+                        <Text>{ingredient.name}</Text>
+                      </Stack>
+                    )}
+                    <Text intent="secondary">{ingredient?.notes}</Text>
+                  </Stack>
+                </Label>
+              );
+            })}
+          </Stack>
+        );
+      })}
     </Stack>
   );
 };

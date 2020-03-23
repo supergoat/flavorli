@@ -18,6 +18,10 @@ export type IRecipe = {
 };
 
 export interface IIngredient {
+  for: string;
+  list: IIngredientItem[];
+}
+export interface IIngredientItem {
   qty: string;
   name: string;
   notes?: string;
@@ -34,7 +38,7 @@ export interface IItem {
 export interface IStep {
   for: string;
   links?: ILink[];
-  heatLevel?: 'low' | 'mediumLow' | 'medium' | 'high';
+  heatLevel?: 'low' | 'mediumLow' | 'medium' | 'mediumHigh' | 'high';
   ovenTemperature?: string;
   tasks: ITask[];
   notes?: string[];

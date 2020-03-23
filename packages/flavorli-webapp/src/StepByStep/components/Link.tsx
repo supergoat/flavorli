@@ -16,22 +16,29 @@ const Link = ({link}: ILinkProps) => {
   };
 
   return (
-    <Stack width="100%" gap={4} direction="horizontal" alignment="center">
-      <Button
-        intent="text"
-        onClick={() => onGoToStep(link.from)}
-        style={{padding: 0, fontWeight: 'normal'}}
+    <Button
+      intent="text"
+      onClick={() => onGoToStep(link.from)}
+      style={{
+        padding: 0,
+        fontWeight: 'normal',
+      }}
+    >
+      <Stack
+        direction="horizontal"
+        gap={4}
+        width="100%"
+        style={{flexWrap: 'wrap'}}
       >
-        From step {link.from}:
-      </Button>
-
-      <Text color="secondaryTextColor">{link.name}</Text>
-      {link.timerId && recipeTimers.get(link.timerId) && (
-        <RemainingTime
-          recipeTimer={recipeTimers.get(link.timerId) as IRecipeTimer}
-        />
-      )}
-    </Stack>
+        <Text>From step {link.from}: </Text>
+        <Text color="secondaryTextColor">{link.name}</Text>
+        {link.timerId && recipeTimers.get(link.timerId) && (
+          <RemainingTime
+            recipeTimer={recipeTimers.get(link.timerId) as IRecipeTimer}
+          />
+        )}
+      </Stack>
+    </Button>
   );
 };
 

@@ -8,10 +8,15 @@ interface IItemsStepProps {
 }
 const ItemsStep = ({items}: IItemsStepProps) => {
   return (
-    <Stack width="100%" gap={16}>
-      <Dot />
+    <Stack
+      width="100%"
+      gap={16}
+      background="surface"
+      padding={24}
+      shadow="LIGHT"
+      borderRadius={8}
+    >
       <H2>Items</H2>
-
       <Stack width="100%">
         {items.map((item, index) => {
           return (

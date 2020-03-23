@@ -17,11 +17,9 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <RelayEnvironmentProvider environment={RelayEnvironment}>
           <React.StrictMode>
-            <AppWrapper>
-              <AuthProvider>
-                <Routes />
-              </AuthProvider>
-            </AppWrapper>
+            <AuthProvider>
+              <Routes />
+            </AuthProvider>
           </React.StrictMode>
         </RelayEnvironmentProvider>
       </ThemeProvider>
@@ -30,9 +28,3 @@ const App = () => {
 };
 
 export default App;
-
-const AppWrapper = styled.div`
-  height: calc(
-    100vh - 45px
-  ); /* This subtracts the navbar height to ensure the content is not hidden */
-`;

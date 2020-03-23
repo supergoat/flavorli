@@ -20,6 +20,8 @@ const Info = ({
       background="secondaryLight"
       distribution="space-evenly"
       padding={16}
+      borderRadiusBottomLeft={16}
+      borderRadiusBottomRight={16}
     >
       <Stack alignment="center" gap={8}>
         <Text intent="highlight">{preparationTime}'</Text>

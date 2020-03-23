@@ -59,7 +59,7 @@
     "FlavorliWebAppBucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "flavorli-webapp-eu-west-2-staging",
+        "BucketName": "flavorli-webapp-eu-west-2-prod",
         "AccessControl": "PublicRead",
         "WebsiteConfiguration": {
           "IndexDocument": "index.html",
@@ -80,7 +80,7 @@
               "Effect": "Allow",
               "Principal": "*",
               "Action": ["s3:GetObject"],
-              "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-staging/*"
+              "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-prod/*"
             }
           ]
         }
@@ -92,7 +92,7 @@
         "DistributionConfig": {
           "Origins": [
             {
-              "DomainName": "flavorli-webapp-eu-west-2-staging.s3.amazonaws.com",
+              "DomainName": "flavorli-webapp-eu-west-2-prod.s3.amazonaws.com",
               "Id": "FlavorliWebApp",
               "CustomOriginConfig": {
                 "HTTPPort": 80,

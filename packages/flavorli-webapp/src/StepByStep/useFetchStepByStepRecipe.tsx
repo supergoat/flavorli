@@ -17,10 +17,13 @@ const useFetchStepByStepRecipeQuery = graphql`
       difficulty
       notes
       ingredients {
-        name
-        qty
-        notes
-        link
+        for
+        list {
+          name
+          qty
+          notes
+          link
+        }
       }
       items {
         name

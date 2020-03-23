@@ -32,12 +32,12 @@ const Navbar = () => {
 export default Navbar;
 
 const NavbarWrapper = styled(Stack)`
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  /* margin: 0 auto; */
   border-bottom: 1px solid #eee;
   z-index: 1;
+  width: 600px;
 `;
 
 const Logo = styled.p`

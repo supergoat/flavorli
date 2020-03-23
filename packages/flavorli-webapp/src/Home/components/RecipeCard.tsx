@@ -22,8 +22,6 @@ const RecipeCard = ({recipe}: IRecipeCardProps) => {
       width="100%"
       shadow="LIGHT"
       borderRadius={16}
-      overflowX
-      overflowY
       onClick={onNavigateToRecipe}
       background="surface"
     >
@@ -50,4 +48,6 @@ const Image = styled.img`
   width: 100%;
   height: 388px;
   object-fit: cover;
+  border-top-right-radius: ${p => `${p.theme.spacings[16]}px`};
+  border-top-left-radius: ${p => `${p.theme.spacings[16]}px`};
 `;

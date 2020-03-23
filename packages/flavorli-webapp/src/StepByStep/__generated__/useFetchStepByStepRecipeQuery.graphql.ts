@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 60c36870f6de3263ab1578a2de07b151 */
+/* @relayHash 0cb79d3e784b189d410123ad9fd5a440 */
 
 import {ConcreteRequest} from 'relay-runtime';
 export type useFetchStepByStepRecipeQueryVariables = {
@@ -19,10 +19,13 @@ export type useFetchStepByStepRecipeQueryResponse = {
     readonly difficulty: string | null;
     readonly notes: ReadonlyArray<string | null> | null;
     readonly ingredients: ReadonlyArray<{
-      readonly name: string | null;
-      readonly qty: string | null;
-      readonly notes: string | null;
-      readonly link: string | null;
+      readonly for: string | null;
+      readonly list: ReadonlyArray<{
+        readonly name: string | null;
+        readonly qty: string | null;
+        readonly notes: string | null;
+        readonly link: string | null;
+      } | null> | null;
     } | null> | null;
     readonly items: ReadonlyArray<{
       readonly name: string | null;
@@ -79,10 +82,13 @@ query useFetchStepByStepRecipeQuery(
     difficulty
     notes
     ingredients {
-      name
-      qty
-      notes
-      link
+      for
+      list {
+        name
+        qty
+        notes
+        link
+      }
     }
     items {
       name
@@ -157,7 +163,14 @@ const node: ConcreteRequest = (function() {
       args: null,
       storageKey: null,
     },
-    v5 = [
+    v5 = {
+      kind: 'ScalarField',
+      alias: null,
+      name: 'for',
+      args: null,
+      storageKey: null,
+    },
+    v6 = [
       v2 /*: any*/,
       {
         kind: 'ScalarField',
@@ -175,7 +188,7 @@ const node: ConcreteRequest = (function() {
         storageKey: null,
       },
     ],
-    v6 = [
+    v7 = [
       {
         kind: 'LinkedField',
         alias: null,
@@ -245,7 +258,19 @@ const node: ConcreteRequest = (function() {
             args: null,
             concreteType: 'Ingredient',
             plural: true,
-            selections: v5 /*: any*/,
+            selections: [
+              v5 /*: any*/,
+              {
+                kind: 'LinkedField',
+                alias: null,
+                name: 'list',
+                storageKey: null,
+                args: null,
+                concreteType: 'IngredientItem',
+                plural: true,
+                selections: v6 /*: any*/,
+              },
+            ],
           },
           {
             kind: 'LinkedField',
@@ -255,7 +280,7 @@ const node: ConcreteRequest = (function() {
             args: null,
             concreteType: 'Item',
             plural: true,
-            selections: v5 /*: any*/,
+            selections: v6 /*: any*/,
           },
           {
             kind: 'LinkedField',
@@ -266,13 +291,7 @@ const node: ConcreteRequest = (function() {
             concreteType: 'Step',
             plural: true,
             selections: [
-              {
-                kind: 'ScalarField',
-                alias: null,
-                name: 'for',
-                args: null,
-                storageKey: null,
-              },
+              v5 /*: any*/,
               {
                 kind: 'ScalarField',
                 alias: null,
@@ -393,23 +412,23 @@ const node: ConcreteRequest = (function() {
       type: 'Query',
       metadata: null,
       argumentDefinitions: v0 /*: any*/,
-      selections: v6 /*: any*/,
+      selections: v7 /*: any*/,
     },
     operation: {
       kind: 'Operation',
       name: 'useFetchStepByStepRecipeQuery',
       argumentDefinitions: v0 /*: any*/,
-      selections: v6 /*: any*/,
+      selections: v7 /*: any*/,
     },
     params: {
       operationKind: 'query',
       name: 'useFetchStepByStepRecipeQuery',
       id: null,
       text:
-        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    video\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    notes\n    ingredients {\n      name\n      qty\n      notes\n      link\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      for\n      heatLevel\n      ovenTemperature\n      links {\n        from\n        name\n        timerId\n      }\n      notes\n      video\n      images {\n        src\n        alt\n      }\n      tasks {\n        name\n        notes\n        timer {\n          id\n          name\n          minutes\n          seconds\n        }\n      }\n    }\n  }\n}\n',
+        'query useFetchStepByStepRecipeQuery(\n  $id: String!\n) {\n  recipe(id: $id) {\n    id\n    author\n    name\n    image\n    video\n    preparationTime\n    cookingTime\n    portions\n    difficulty\n    notes\n    ingredients {\n      for\n      list {\n        name\n        qty\n        notes\n        link\n      }\n    }\n    items {\n      name\n      qty\n      notes\n      link\n    }\n    steps {\n      for\n      heatLevel\n      ovenTemperature\n      links {\n        from\n        name\n        timerId\n      }\n      notes\n      video\n      images {\n        src\n        alt\n      }\n      tasks {\n        name\n        notes\n        timer {\n          id\n          name\n          minutes\n          seconds\n        }\n      }\n    }\n  }\n}\n',
       metadata: {},
     },
   };
 })();
-(node as any).hash = '8e8d196963f093a1503215ad89d7e6eb';
+(node as any).hash = 'ba2825a47c97162f9583c305cc5c3657';
 export default node;

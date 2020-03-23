@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack} from '@flavorli/elements';
+import {Stack, Text} from '@flavorli/elements';
 import RecipeStep from './components/RecipeStep';
 import {RecipeTimersProvider} from './timersContext';
 
@@ -8,7 +8,10 @@ import IntroStep from './components/IntroStep';
 import IngredientsStep from './components/IngredientsStep';
 import ItemsStep from './components/ItemsStep';
 import useFetchStepByStepRecipe from './useFetchStepByStepRecipe';
-import NotesStep from './components/NotesStep';
+
+import styled from 'styled-components';
+import {ProfileAvatar} from '../components';
+import Author from './components/Author';
 
 const StepByStep = () => {
   const {loading, error, recipe} = useFetchStepByStepRecipe();
@@ -23,18 +26,12 @@ const StepByStep = () => {
           <Stack
             width="100%"
             height="100%"
-            overflowY
             paddingLeft={16}
             paddingBottom={32}
             paddingTop={32}
           >
-            <Stack
-              width="100%"
-              style={{borderLeft: '1px solid grey'}}
-              paddingLeft={16}
-              paddingRight={16}
-              gap={104}
-            >
+            <Stack width="100%" paddingRight={16} gap={48}>
+              <Line />
               <IntroStep
                 author={recipe.author}
                 name={recipe.name}
@@ -45,12 +42,12 @@ const StepByStep = () => {
                 portions={recipe.portions}
                 difficulty={recipe.difficulty}
                 notes={recipe.notes}
+                ingredients={recipe.ingredients}
+                items={recipe.items}
               />
 
-              <NotesStep notes={recipe.notes} />
-
-              <IngredientsStep ingredients={recipe.ingredients} />
-              <ItemsStep items={recipe.items} />
+              {/* <IngredientsStep ingredients={recipe.ingredients} />
+              <ItemsStep items={recipe.items} /> */}
 
               {recipe?.steps.map((step, index) => {
                 return (
@@ -62,6 +59,8 @@ const StepByStep = () => {
                   />
                 );
               })}
+
+              <Author />
             </Stack>
           </Stack>
         </RecipeTimersProvider>
@@ -71,3 +70,13 @@ const StepByStep = () => {
 };
 
 export default StepByStep;
+
+const Line = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  width: 1px;
+  height: calc(100% + 30px);
+  background: black;
+`;

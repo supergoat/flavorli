@@ -5,7 +5,7 @@
       "name": "flavorli-webapp"
     },
     "provider": {
-      "stage": "staging",
+      "stage": "prod",
       "variableSyntax": "\\${([ ~:a-zA-Z0-9._@'\",\\-\\/\\(\\)*?]+?)}",
       "name": "aws",
       "runtime": "nodejs12.x",
@@ -73,7 +73,7 @@
           "FlavorliWebAppBucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
-              "BucketName": "flavorli-webapp-eu-west-2-staging",
+              "BucketName": "flavorli-webapp-eu-west-2-prod",
               "AccessControl": "PublicRead",
               "WebsiteConfiguration": {
                 "IndexDocument": "index.html",
@@ -94,7 +94,7 @@
                     "Effect": "Allow",
                     "Principal": "*",
                     "Action": ["s3:GetObject"],
-                    "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-staging/*"
+                    "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-prod/*"
                   }
                 ]
               }
@@ -106,7 +106,7 @@
               "DistributionConfig": {
                 "Origins": [
                   {
-                    "DomainName": "flavorli-webapp-eu-west-2-staging.s3.amazonaws.com",
+                    "DomainName": "flavorli-webapp-eu-west-2-prod.s3.amazonaws.com",
                     "Id": "FlavorliWebApp",
                     "CustomOriginConfig": {
                       "HTTPPort": 80,
@@ -246,8 +246,8 @@
       }
     },
     "custom": {
-      "prefix": "flavorli-webapp-eu-west-2-staging",
-      "s3Bucket": "flavorli-webapp-eu-west-2-staging"
+      "prefix": "flavorli-webapp-eu-west-2-prod",
+      "s3Bucket": "flavorli-webapp-eu-west-2-prod"
     },
     "plugins": ["serverless-single-page-app-plugin"],
     "pluginsData": {},
@@ -257,7 +257,7 @@
         "FlavorliWebAppBucket": {
           "Type": "AWS::S3::Bucket",
           "Properties": {
-            "BucketName": "flavorli-webapp-eu-west-2-staging",
+            "BucketName": "flavorli-webapp-eu-west-2-prod",
             "AccessControl": "PublicRead",
             "WebsiteConfiguration": {
               "IndexDocument": "index.html",
@@ -278,7 +278,7 @@
                   "Effect": "Allow",
                   "Principal": "*",
                   "Action": ["s3:GetObject"],
-                  "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-staging/*"
+                  "Resource": "arn:aws:s3:::flavorli-webapp-eu-west-2-prod/*"
                 }
               ]
             }
@@ -290,7 +290,7 @@
             "DistributionConfig": {
               "Origins": [
                 {
-                  "DomainName": "flavorli-webapp-eu-west-2-staging.s3.amazonaws.com",
+                  "DomainName": "flavorli-webapp-eu-west-2-prod.s3.amazonaws.com",
                   "Id": "FlavorliWebApp",
                   "CustomOriginConfig": {
                     "HTTPPort": 80,
@@ -357,7 +357,7 @@
     "layers": {}
   },
   "package": {
-    "artifactDirectoryName": "serverless/flavorli-webapp/staging/1583781048634-2020-03-09T19:10:48.634Z",
+    "artifactDirectoryName": "serverless/flavorli-webapp/prod/1584734291365-2020-03-20T19:58:11.365Z",
     "artifact": ""
   }
 }
