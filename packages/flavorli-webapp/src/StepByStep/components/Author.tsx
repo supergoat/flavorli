@@ -36,8 +36,8 @@ const Author = () => {
 export default Author;
 
 const Avatar = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   background: ${p => p.theme.colors.secondarySurface};
   border-radius: 100%;
 `;

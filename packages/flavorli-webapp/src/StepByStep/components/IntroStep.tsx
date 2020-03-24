@@ -114,33 +114,35 @@ const Intro = ({
         })}
       </Stack>
 
-      <Stack width="100%" gap={8}>
-        <H2>Items</H2>
-        <Stack width="100%">
-          {items.map((item, index) => {
-            return (
-              <Label
-                htmlFor={`item-${item.name}-${item.qty}`}
-                key={`item-${item.name}-${item.qty}`}
-              >
-                <CheckBox id={`item-${item.name}-${item.qty}`} />
-                <div>
-                  {item.link ? (
-                    <Link target="_blank" href={item.link}>
-                      {item.qty} {item.name}
-                    </Link>
-                  ) : (
-                    <>
-                      {item.qty} {item.name}
-                    </>
-                  )}
-                  <Text intent="secondary">{item?.notes}</Text>
-                </div>
-              </Label>
-            );
-          })}
+      {!!items.length && (
+        <Stack width="100%" gap={8}>
+          <H2>Items</H2>
+          <Stack width="100%">
+            {items.map((item, index) => {
+              return (
+                <Label
+                  htmlFor={`item-${item.name}-${item.qty}`}
+                  key={`item-${item.name}-${item.qty}`}
+                >
+                  <CheckBox id={`item-${item.name}-${item.qty}`} />
+                  <div>
+                    {item.link ? (
+                      <Link target="_blank" href={item.link}>
+                        {item.qty} {item.name}
+                      </Link>
+                    ) : (
+                      <>
+                        {item.qty} {item.name}
+                      </>
+                    )}
+                    <Text intent="secondary">{item?.notes}</Text>
+                  </div>
+                </Label>
+              );
+            })}
+          </Stack>
         </Stack>
-      </Stack>
+      )}
     </Stack>
   );
 };
